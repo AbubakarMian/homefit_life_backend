@@ -52,7 +52,7 @@ Route::post('product/update/{id}','Admin\productController@update')->name('produ
 Route::post('product/delete/{id}','Admin\productController@destroy_undestroy')->name('product.delete');
 
 // ================================================
-// country
+// Package
 
 //Route::get('user', 'Admin\UserController@index');
 //Route::get('country', 'Admin\CountryController@index');
@@ -63,3 +63,31 @@ Route::post('package/save', 'Admin\PackageController@save')->name('package.save'
 Route::get('package/edit/{id}','Admin\PackageController@edit')->name('package.edit');
 Route::post('package/update/{id}','Admin\PackageController@update')->name('package.update');
 Route::post('package/delete/{id}','Admin\PackageController@destroy_undestroy')->name('package.delete');
+
+// ================================================
+// Training_Type
+
+//Route::get('user', 'Admin\UserController@index');
+//Route::get('country', 'Admin\CountryController@index');
+Route::get('training_type', 'Admin\Training_TypeController@index')->name('training_type.index');
+Route::get('training_type/create', 'Admin\Training_TypeController@create')->name('training_type.create');
+Route::post('training_type/save', 'Admin\Training_TypeController@save')->name('training_type.save');
+
+Route::get('training_type/edit/{id}','Admin\Training_TypeController@edit')->name('training_type.edit');
+Route::post('training_type/update/{id}','Admin\Training_TypeController@update')->name('training_type.update');
+Route::post('training_type/delete/{id}','Admin\Training_TypeController@destroy_undestroy')->name('training_type.delete');
+
+
+// ================================================
+// Users
+
+//Route::get('user', 'Admin\UserController@index');
+//Route::get('country', 'Admin\CountryController@index');
+Route::get('user', 'Admin\UserController@index')->name('user.index');
+//Route::get('user/create', 'Admin\UserController@create')->name('training_type.create');
+//Route::post('user/save', 'Admin\UserController@save')->name('training_type.save');
+
+//Route::get('user/edit/{id}','Admin\UserController@edit')->name('training_type.edit');
+//Route::post('traiuserning_type/update/{id}','Admin\Training_TypeController@update')->name('training_type.update');
+Route::post('user/delete/{id}','Admin\UserController@destroy_undestroy')->name('user.delete');
+

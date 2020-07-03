@@ -103,7 +103,7 @@ class Admincontroller extends Controller
         $count = Training_Type::count('id');
 
         $modules[] = [
-            'url' => 'trainingtype',
+            'url' => 'training_type',
             'title' => 'Training Type',
             'count' => $count
         ];
