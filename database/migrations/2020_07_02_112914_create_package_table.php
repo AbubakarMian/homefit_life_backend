@@ -17,6 +17,7 @@ class CreatePackageTable extends Migration
             $table->unsignedBigInteger('id', true)->length(20);
             $table->string('name')->default(2);
             $table->string('details')->default(2);
+            $table->string('price');
             $table->string('total_sessions')->default(2);
             $table->rememberToken();
             $table->timestamps();
