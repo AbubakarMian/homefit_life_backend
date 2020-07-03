@@ -1,50 +1,32 @@
 <div class="form-group">
-    {!! Form::label('name_ur','Name_Urdu ') !!}
+    {!! Form::label('name','Name') !!}
     <div>
-        {!! Form::text('name_ur',null, ['class' => 'form-control',
+        {!! Form::text('name',null, ['class' => 'form-control',
                                 'data-parsley-required'=>'true',
                                 'data-parsley-trigger'=>'change',
-                                'placeholder'=>'Name in Urdu','required',
+                                'placeholder'=>'Name','required',
              								'maxlength'=>"50"]) !!}
     </div>
 </div>
 
+
 <div class="form-group">
-    {!! Form::label('name_en','English Name') !!}
+    {!! Form::label('details','Details') !!}
     <div>
-        {!! Form::text('name_en',null, ['class' => 'form-control',
+        {!! Form::text('details',null, ['class' => 'form-control',
                                 'data-parsley-required'=>'true',
                                 'data-parsley-trigger'=>'change',
-                                'placeholder'=>'Name in English','required',
-             								'maxlength'=>"50"]) !!}
+                                'placeholder'=>'details','required',
+             								'maxlength'=>"250"]) !!}
     </div>
 </div>
 <div class="form-group">
-    {!! Form::label('latitude','Latitude') !!}
+    {!! Form::label('price','Price') !!}
     <div>
-        {!! Form::text('latitude',null, ['class' => 'form-control',
+        {!! Form::text('price',null, ['class' => 'form-control',
                                 'data-parsley-required'=>'true',
                                 'data-parsley-trigger'=>'change',
-                                'placeholder'=>'latitude','required',
-             								'maxlength'=>"50"]) !!}
-    </div>
-</div>
-<div class="form-group">
-    {!! Form::label('longitude','Longitude') !!}
-    <div>
-        {!! Form::text('longitude',null, ['class' => 'form-control',
-                                'data-parsley-required'=>'true',
-                                'data-parsley-trigger'=>'change',
-                                'placeholder'=>'longitude','required',
-             								'maxlength'=>"50"]) !!}
-    </div>
-</div><div class="form-group">
-    {!! Form::label('shortName','ShortName') !!}
-    <div>
-        {!! Form::text('shortName',null, ['class' => 'form-control',
-                                'data-parsley-required'=>'true',
-                                'data-parsley-trigger'=>'change',
-                                'placeholder'=>'Country short Name ','required',
+                                'placeholder'=>'price','required',
              								'maxlength'=>"50"]) !!}
     </div>
 </div>
@@ -58,39 +40,39 @@
     {{--</div>--}}
 {{--</div>--}}
 
+{{----}}
+{{--<?php--}}
 
-<?php
-
-        $image =  asset('avatar/default_img.jpg');
-
-    if(isset($product)){
-
-        if($product->image){
-            $image = $product->image;
-        }
-    }
-?>
+{{--//        $image =  asset('avatar/default_img.jpg');--}}
+{{--//--}}
+{{--//    if(isset($product)){--}}
+{{--//--}}
+{{--//        if($product->image){--}}
+{{--//            $image = $product->image;--}}
+{{--//        }--}}
+{{--//    }--}}
+{{--//?>--}}
 
 
-<div class="form-group">
+{{--<div class="form-group">--}}
 
-    <div class="form-group pull-right">
-        <img src="{!! $image !!}"  class="show-product-img" data-toggle="modal" data-target=".imagemodal">
-    </div>
+    {{--<div class="form-group pull-right">--}}
+        {{--<img src="{!! $image !!}"  class="show-product-img" data-toggle="modal" data-target=".imagemodal">--}}
+    {{--</div>--}}
 
-    <div class="form-group">
-        {!! Form::label('image','Flag') !!}
-        {!! Form::file('image', ['class' => 'choose-image', 'id'=>'image'] ) !!}
-        <p class="help-block" id="error">Limit 2MB</p>
-    </div>
-    <div class="form-group">
-        {!! Form::textarea('image_visible',null,['class'=>'form-control' ,
-         'rows'=>'3','placeholder'=>'Image URL',
-             								'maxlength'=>"225"]) !!}
-        {!!Form::hidden('image')!!}
+    {{--<div class="form-group">--}}
+        {{--{!! Form::label('image','Flag') !!}--}}
+        {{--{!! Form::file('image', ['class' => 'choose-image', 'id'=>'image'] ) !!}--}}
+        {{--<p class="help-block" id="error">Limit 2MB</p>--}}
+    {{--</div>--}}
+    {{--<div class="form-group">--}}
+        {{--{!! Form::textarea('image_visible',null,['class'=>'form-control' ,--}}
+         {{--'rows'=>'3','placeholder'=>'Image URL',--}}
+             								{{--'maxlength'=>"225"]) !!}--}}
+        {{--{!!Form::hidden('image')!!}--}}
 
-    </div>
-</div>
+    {{--</div>--}}
+{{--</div>--}}
 
 
 

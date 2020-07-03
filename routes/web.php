@@ -44,9 +44,22 @@ Route::get('logout', 'Admin\AdminController@logout');
 //Route::get('user', 'Admin\productController@index');
 //Route::get('product/index', 'Admin\productController@index');
 Route::get('product', 'Admin\productController@index')->name('product.index');
-//Route::get('product/create', 'Admin\productController@create')->name('product.create');
-//Route::post('product/save', 'Admin\productController@save')->name('product.save');
-//
-//Route::get('product/edit/{id}','Admin\productController@edit')->name('product.edit');
-//Route::post('product/update/{id}','Admin\productController@update')->name('product.update');
-//Route::post('product/delete/{id}','Admin\productController@destroy_undestroy')->name('product.delete');
+Route::get('product/create', 'Admin\productController@create')->name('product.create');
+Route::post('product/save', 'Admin\productController@save')->name('product.save');
+
+Route::get('product/edit/{id}','Admin\productController@edit')->name('product.edit');
+Route::post('product/update/{id}','Admin\productController@update')->name('product.update');
+Route::post('product/delete/{id}','Admin\productController@destroy_undestroy')->name('product.delete');
+
+// ================================================
+// country
+
+//Route::get('user', 'Admin\UserController@index');
+//Route::get('country', 'Admin\CountryController@index');
+Route::get('package', 'Admin\PackageController@index')->name('package.index');
+Route::get('package/create', 'Admin\PackageController@create')->name('package.create');
+Route::post('package/save', 'Admin\PackageController@save')->name('package.save');
+
+Route::get('package/edit/{id}','Admin\PackageController@edit')->name('package.edit');
+Route::post('package/update/{id}','Admin\PackageController@update')->name('package.update');
+Route::post('package/delete/{id}','Admin\PackageController@destroy_undestroy')->name('package.delete');

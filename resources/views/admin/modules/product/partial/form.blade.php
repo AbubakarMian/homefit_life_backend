@@ -1,46 +1,59 @@
 <div class="form-group">
-    {!! Form::label('name_ur','Urdu Name') !!}
+    {!! Form::label('name','Name') !!}
     <div>
-        {!! Form::text('name_ur',null, ['class' => 'form-control',
+        {!! Form::text('name',null, ['class' => 'form-control',
                                 'data-parsley-required'=>'true',
                                 'data-parsley-trigger'=>'change',
-                                'placeholder'=>'Enter Name in urdu','required',
+                                'placeholder'=>'Name','required',
              								'maxlength'=>"50"]) !!}
     </div>
 </div>
 
 <div class="form-group">
-    {!! Form::label('name_en','English Name') !!}
+    {!! Form::label('avatar','Avatar') !!}
     <div>
-        {!! Form::text('name_en',null, ['class' => 'form-control',
+        {!! Form::text('avatar',null, ['class' => 'form-control',
                                 'data-parsley-required'=>'true',
                                 'data-parsley-trigger'=>'change',
-                                'placeholder'=>'Enter Name in english','required',
+                                'placeholder'=>'avatar','required',
              								'maxlength'=>"50"]) !!}
     </div>
 </div>
 <div class="form-group">
-    {!! Form::label('type_id','Type') !!}
+    {!! Form::label('price','Price') !!}
     <div>
-        {!! Form::select('type_id',$all_types,null, ['class' => 'form-control',
-                                         'data-parsley-required'=>'true',
-                                         'data-parsley-trigger'=>'change',
-                                         'placeholder'=>'Select A Company','required',
-                                         'maxlength'=>"50"]) !!}
+        {!! Form::text('price',null, ['class' => 'form-control',
+                                'data-parsley-required'=>'true',
+                                'data-parsley-trigger'=>'change',
+                                'placeholder'=>'price','required',
+                                             'maxlength'=>"50"]) !!}
     </div>
 </div>
+
+<div class="form-group">
+    {!! Form::label('details','Details') !!}
+    <div>
+        {!! Form::text('details',null, ['class' => 'form-control',
+    'data-parsley-required'=>'true',
+    'data-parsley-trigger'=>'change',
+    'placeholder'=>'details','required',
+    'maxlength'=>"50"]) !!}
     </div>
 </div>
 <div class="form-group">
-    {!! Form::label('company_id','Company') !!}
+    {!! Form::label('rating','Rating') !!}
     <div>
-        {!! Form::select('company_id',$all_companies,null, ['class' => 'form-control',
-                                         'data-parsley-required'=>'true',
-                                         'data-parsley-trigger'=>'change',
-                                         'placeholder'=>'Select A Country','required',
-                                         'maxlength'=>"50"]) !!}
+        {!! Form::text('rating',null, ['class' => 'form-control',
+                                'data-parsley-required'=>'true',
+                                'data-parsley-trigger'=>'change',
+                                'placeholder'=>'rating','required',
+             								'maxlength'=>"50"]) !!}
     </div>
 </div>
+
+
+
+
 {{--<div class="form-group">--}}
     {{--{!! Form::label('type','Type') !!}--}}
     {{--<div>--}}
@@ -50,65 +63,65 @@
     {{--</div>--}}
 {{--</div>--}}
 
-
-<?php
-
-        $image =  asset('avatar/default_img.jpg');
-
-    if(isset($product)){
-
-        if($product->image){
-            $image = $product->image;
-        }
-    }
-?>
-
-
-<div class="form-group">
-
-    <div class="form-group pull-right">
-        <img src="{!! $image !!}"  class="show-product-img" data-toggle="modal" data-target=".imagemodal">
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('image','Product Image') !!}
-        {!! Form::file('image', ['class' => 'choose-image', 'id'=>'image'] ) !!}
-        <p class="help-block" id="error">Limit 2MB</p>
-    </div>
-    <div class="form-group">
-        {!! Form::textarea('image_visible',null,['class'=>'form-control' ,
-         'rows'=>'3','placeholder'=>'Enter Image URL',
-             								'maxlength'=>"225"]) !!}
-        {!!Form::hidden('image')!!}
-
-    </div>
-</div>
+{{----}}
+{{--<?php--}}
+{{--//--}}
+//        $image =  asset('avatar/default_img.jpg');
+//
+//    if(isset($product)){
+//
+//        if($product->image){
+//            $image = $product->image;
+//        }
+//    }
+//?>
 
 
+{{--<div class="form-group">--}}
 
-<div class="form-group">
-    {!! Form::label('description','English Description') !!}
-    <div>
-        {!! Form::textarea('description',null, ['class' => 'form-control',
-                                'data-parsley-required'=>'true',
-                                'data-parsley-trigger'=>'change',
-                                'placeholder'=>'Enter Description in English',
-                               'rows'=>'5',
-             								'maxlength'=>"225"]) !!}
-    </div>
-</div>
+    {{--<div class="form-group pull-right">--}}
+        {{--<img src="{!! $image !!}"  class="show-product-img" data-toggle="modal" data-target=".imagemodal">--}}
+    {{--</div>--}}
 
-<div class="form-group">
-     {!! Form::label('description_ur','Urdu Description') !!}
-     <div>
-            {!! Form::textarea('description_ur',null, ['class' => 'form-control urdu',
-                                    'data-parsley-required'=>'true',
-                                    'data-parsley-trigger'=>'change',
-                                    'placeholder'=>'Enter Description in Urdu',
-                                    'maxlength'=>"225",
-                                    'rows'=>'3','onblur'=>'validateForm();']) !!}
-      </div>
-</div>
+    {{--<div class="form-group">--}}
+        {{--{!! Form::label('image','Product Image') !!}--}}
+        {{--{!! Form::file('image', ['class' => 'choose-image', 'id'=>'image'] ) !!}--}}
+        {{--<p class="help-block" id="error">Limit 2MB</p>--}}
+    {{--</div>--}}
+    {{--<div class="form-group">--}}
+        {{--{!! Form::textarea('image_visible',null,['class'=>'form-control' ,--}}
+         {{--'rows'=>'3','placeholder'=>'Enter Image URL',--}}
+             								{{--'maxlength'=>"225"]) !!}--}}
+        {{--{!!Form::hidden('image')!!}--}}
+
+    {{--</div>--}}
+{{--</div>--}}
+
+
+
+{{--<div class="form-group">--}}
+    {{--{!! Form::label('description','English Description') !!}--}}
+    {{--<div>--}}
+        {{--{!! Form::textarea('description',null, ['class' => 'form-control',--}}
+                                {{--'data-parsley-required'=>'true',--}}
+                                {{--'data-parsley-trigger'=>'change',--}}
+                                {{--'placeholder'=>'Enter Description in English',--}}
+                               {{--'rows'=>'5',--}}
+             								{{--'maxlength'=>"225"]) !!}--}}
+    {{--</div>--}}
+{{--</div>--}}
+
+{{--<div class="form-group">--}}
+     {{--{!! Form::label('description_ur','Urdu Description') !!}--}}
+     {{--<div>--}}
+            {{--{!! Form::textarea('description_ur',null, ['class' => 'form-control urdu',--}}
+                                    {{--'data-parsley-required'=>'true',--}}
+                                    {{--'data-parsley-trigger'=>'change',--}}
+                                    {{--'placeholder'=>'Enter Description in Urdu',--}}
+                                    {{--'maxlength'=>"225",--}}
+                                    {{--'rows'=>'3','onblur'=>'validateForm();']) !!}--}}
+      {{--</div>--}}
+{{--</div>--}}
 
 
 @include('admin.modules.product.partial.image_modal')

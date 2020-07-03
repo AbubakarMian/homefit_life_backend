@@ -58,6 +58,7 @@ class Admincontroller extends Controller
 
         $admin_common = new \stdClass();
         $admin_dashboard = $this->admin_dashboard();
+
         $modules = $admin_dashboard['modules'];
         $reports = $admin_dashboard['reports'];
 
@@ -88,7 +89,7 @@ class Admincontroller extends Controller
 
         $modules[] = [
             'url' => 'product',
-            'title' => 'Products',
+            'title' => 'PRODUCTS',
             'count' => $count
         ];
         $count = Package::count('id');
@@ -107,6 +108,11 @@ class Admincontroller extends Controller
             'count' => $count
         ];
 
+        $myvar = [];
+        $myvar['modules'] = $modules;
+        $myvar['reports'] = [];
+        $myvar['chart'] = [];
 
+        return $myvar;
     }
 }
