@@ -1,11 +1,11 @@
 @extends('layouts.default_module')
 
 @section('module_name')
-	Countries
+	PACKAGES
 @stop
 @section('add_btn')
 
-	{!! Form::open(['method' => 'get', 'route' => ['country.create'], 'files'=>true]) !!}
+	{!! Form::open(['method' => 'get', 'route' => ['package.create'], 'files'=>true]) !!}
 	<span >{!! Form::submit('Add', ['class' => 'btn btn-success pull-right']) !!}</span>
 	{!! Form::close() !!}
 @stop
@@ -25,37 +25,27 @@
 
 	<thead>
 	<tr>
-		<th>Name in English</th>
-		<th>Name in Urdu</th>
-		<th>Flag</th>
-		<th>latitude</th>
-		<th>longitude</th>
-		<th>Short Name</th>
+		<th>Name</th>
+		<th>Details</th>
+		<th>Price</th>
 	</tr>
 	</thead>
 	<tbody>
 
-	@foreach($country as $c)
-		<tr>   <?php
-            if(!$c->avatar){
-                $c->avatar = asset('avatar/default_img.jpg');
-            }
-            ?>
+	@foreach($package as $c)
 
-			<td>{!! $c->name_en !!}</td>
-			<td>{!! $c->name_ur !!}</td>
-			<td>{!! $c->image !!}</td>
-			<td>{!! $c->latitude !!}</td>
-			<td>{!! $c->longitude !!}</td>
-			<td>{!! $c->shortName !!}</td>
-			<td>{!! Form::open(['method' => 'POST', 'route' => ['country.delete', $c->id]]) !!}
+		<td>{!! $c->name !!}</td>
+			<td>{!! $c->details !!}</td>
+			<td>{!! $c->price !!}</td>
+
+			<td>{!! Form::open(['method' => 'POST', 'route' => ['package.delete', $c->id]]) !!}
 				<a href="" data-toggle="modal"  name="activate_delete" data-target=".delete">
 				   <span class="badge bg-danger">
 				         Delete</span></a>
 				{!! Form::close() !!}
 			</td>
 			<td>
-				{!!link_to_action('Admin\CountryController@edit',
+				{!!link_to_action('Admin\PackageController@edit',
 				'Edit', array($c['id']), array('class' => 'badge bg-info'))!!}
 
 			</td>
@@ -63,7 +53,7 @@
 	@endforeach
 	</tbody>
 @section('pagination')
-	<span class="pagination pagination-md pull-right">{!! $country->render() !!}</span>
+	<span class="pagination pagination-md pull-right">{!! $package->render() !!}</span>
 	<div class="col-md-3 pull-left">
 		<div class="form-group text-center">
 			<div>

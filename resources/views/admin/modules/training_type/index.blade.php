@@ -1,11 +1,11 @@
 @extends('layouts.default_module')
 @section('module_name')
-    Companies
+Training Type
 @stop
 
 
 @section('add_btn')
-    {!! Form::open(['method' => 'get', 'route' => ['company.create'], 'files'=>true]) !!}
+    {!! Form::open(['method' => 'get', 'route' => ['training_type.create'], 'files'=>true]) !!}
     <span >{!! Form::submit('Add', ['class' => 'btn btn-success pull-right']) !!}</span>
     {!! Form::close() !!}
 @stop
@@ -13,36 +13,25 @@
     <thead>
     <tr>
 
-        <th>Name in English</th>
-        <th>Name in Urdu</th>
-        <th>Type</th>
-        <th>image</th>
+        <th>Name</th>
+        
 
 
     </tr>
     </thead>
     <tbody>
 
-    @foreach($company as $c)
-        <tr>
-            <?php
-//            dd($c->types->name_ur);
-            if(!$c->image){
-                $c->avatar = asset('images/default_img.jpg');
-            }
-            ?>
-            {{--<td><img src="{!! $company->image !!}"  class="show-product-img"></td>--}}
-            <td>{!! $c->name_en !!}</td>
-            <td>{!! $c->name_ur !!}</td>
-                <td>{!! $c->type->name_en!!}</td>
+    @foreach($training_type as $c)
+        <
+            <td>{!! $c->name !!}</td>
             <td>
-                {!!link_to_action('Admin\CompanyController@edit',
+                {!!link_to_action('Admin\Training_TypeController@edit',
                 'Edit', array($c->id), array('class' => 'badge bg-info'))!!}
 
             </td>
 
             <td>
-                {!! Form::open(['method' => 'POST', 'route' => ['company.delete', $c->id]]) !!}
+                {!! Form::open(['method' => 'POST', 'route' => ['training_type.delete', $c->id]]) !!}
 
                 <a href="" data-toggle="modal"  name="activate_delete" data-target=".delete">
                     <span class=" badge bg-info btn-danger">
@@ -59,7 +48,7 @@
 @stop
 
 @section('pagination')
-<span class="pagination pagination-md pull-right">{!! $company->render() !!}</span>
+<span class="pagination pagination-md pull-right">{!! $training_type->render() !!}</span>
 <div class="col-md-3 pull-left">
 <div class="form-group text-center">
 <div>

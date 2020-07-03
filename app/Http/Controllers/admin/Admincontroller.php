@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Package;
+use App\Models\Product;
+use App\Models\Training_Type;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Validator;
@@ -63,59 +67,52 @@ class Admincontroller extends Controller
         $admin_common->reports = $reports;
         $admin_common->name = 'Admin';
 
+//        dd($admin_common->modules);
         $chart = $admin_dashboard['chart'];
-//dd($admin_common->modules);
+
         session(['admin_common' => $admin_common]);
         return \View('layouts.default_dashboard',compact(
             'chart'));
     }
     public function admin_dashboard()
     {
+        $count = Users::count('id');
+
+        $modules[] = [
+            'url' => 'users',
+            'title' => 'USERS',
+            'count' => $count
+        ];
 
 
         $count = Product::count('id');
 
         $modules[] = [
             'url' => 'product',
-            'title' => 'Products',
+            'title' => 'PRODUCTS',
             'count' => $count
         ];
-        $count = Company::count('id');
+        $count = Package::count('id');
 
         $modules[] = [
-            'url' => 'company',
-            'title' => 'Companies',
+            'url' => 'package',
+            'title' => 'PACKAGES',
             'count' => $count
         ];
 
-        $count = Country::count('id');
+        $count = Training_Type::count('id');
 
         $modules[] = [
-            'url' => 'country',
-            'title' => 'Countries',
+            'url' => 'training_type',
+            'title' => 'Training Type',
             'count' => $count
         ];
 
-        $count = Faqs::count('id');
+        $myvar = [];
+        $myvar['modules'] = $modules;
+        $myvar['reports'] = [];
+        $myvar['chart'] = [];
 
-        $modules[] = [
-            'url' => 'faqs',
-            'title' => 'FAQs',
-            'count' => $count
-        ];
-        $count = Type::count('id');
-
-        $modules[] = [
-            'url' => 'type',
-            'title' => 'Types',
-            'count' => $count
-        ];
-        $chart = [];
-
-        $response['modules'] = $modules;
-        $response['reports'] = [];
-        $response['chart'] = $chart;
-        return $response;
-
+        return $myvar;
     }
 }

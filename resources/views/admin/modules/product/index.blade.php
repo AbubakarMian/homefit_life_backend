@@ -24,29 +24,29 @@
 
 	<thead>
 	<tr>
-		<th>Name in English</th>
-		<th>Name in Urdu</th>
-		<th>Type</th>
-		<th>Company </th>
-		<th>Image</th>
+		<th>Name</th>
+		<th>Avatar</th>
+		<th>Price</th>
+		<th>Details </th>
+		<th>Rating</th>
 	</tr>
 	</thead>
 	<tbody>
 
 	@foreach($product as $key=>$p)
 
-		<tr>   <?php
-            if(!$p->avatar){
-                $p->avatar = asset('avatar/default_img.jpg');
-            }
-            ?>
+		{{--<tr>   <?php--}}
+            {{--if(!$p->avatar){--}}
+                {{--$p->avatar = asset('avatar/default_img.jpg');--}}
+            {{--}--}}
+            {{--?>--}}
 
 
-			<td>{!! $p->name_en !!}</td>
-			<td>{!! $p->name_ur !!}</td>
-			<td>{!! $p->type->name_en!!}</td>
-			<td>{!! $p->company->name_en!!}</td>
-			<td>{!! $p->image !!}</td>
+			<td>{!! $p->name !!}</td>
+			<td>{!! $p->avatar !!}</td>
+			<td>{!! $p->price!!}</td>
+			<td>{!! $p->details!!}</td>
+			<td>{!! $p->rating !!}</td>
 			<td>
 				{!!link_to_action('Admin\productController@edit',
 				'Edit', array($p['id']), array('class' => 'badge bg-info'))!!}
