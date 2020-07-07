@@ -9,6 +9,8 @@ use App\Models\Training_Type;
 use App\Models\Nutritions;
 use App\Models\Users;
 use App\Models\Food;
+use App\Models\Food_Nutritions;
+use App\Models\Food_Parameters;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Validator;
@@ -121,6 +123,22 @@ class Admincontroller extends Controller
         $modules[] = [
             'url' => 'food',
             'title' => 'FOOD',
+            'count' => $count
+        ];
+
+        $count = Food_Nutritions::count('id');
+
+        $modules[] = [
+            'url' => 'Food_Nutritions',
+            'title' => 'Food Nutritions',
+            'count' => $count
+        ];
+        
+        $count = Food_Parameters::count('id');
+
+        $modules[] = [
+            'url' => 'food_parameters',
+            'title' => 'Food Parameters',
             'count' => $count
         ];
 
