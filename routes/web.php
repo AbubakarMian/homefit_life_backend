@@ -90,3 +90,33 @@ Route::get('user', 'Admin\UserController@index')->name('user.index');
 // Route::post('user/update/{id}','Admin\UserController@update')->name('user.update');
 Route::post('user/delete/{id}','Admin\UserController.@destroy_undestroy')->name('user.delete');
 
+// ================================================
+// Food
+
+//Route::get('user', 'Admin\UserController@index');
+//Route::get('country', 'Admin\CountryController@index');
+Route::get('food', 'Admin\FoodController@index')->name('food.index');
+Route::get('food/create', 'Admin\FoodController@create')->name('food.create');
+Route::post('food/save', 'Admin\FoodController@save')->name('food.save');
+
+Route::get('food/edit/{id}','Admin\FoodController@edit')->name('food.edit');
+Route::post('food/update/{id}','Admin\FoodController@update')->name('food.update');
+Route::post('food/delete/{id}','Admin\FoodController@destroy_undestroy')->name('food.delete');
+
+
+
+// ================================================
+// Nutritions
+
+//Route::get('user', 'Admin\UserController@index');
+//Route::get('country', 'Admin\CountryController@index');
+Route::get('nutritions', 'Admin\NutritionsController@index')->name('nutritions.index');
+Route::get('nutritions/create', 'Admin\NutritionsController@create')->name('nutritions.create');
+Route::post('nutritions/save', 'Admin\NutritionsController@save')->name('nutritions.save');
+
+Route::get('nutritions/edit/{id}','Admin\NutritionsController@edit')->name('nutritions.edit');
+Route::post('nutritions/update/{id}','Admin\NutritionsController@update')->name('nutritions.update');
+Route::post('nutritions/delete/{id}','Admin\NutritionsController@destroy_undestroy')->name('nutritions.delete');
+
+
+
