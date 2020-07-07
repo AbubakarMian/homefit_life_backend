@@ -81,13 +81,12 @@ Route::post('training_type/delete/{id}','Admin\Training_TypeController@destroy_u
 // ================================================
 // Users
 
-//Route::get('user', 'Admin\UserController@index');
-//Route::get('country', 'Admin\CountryController@index');
-Route::get('user', 'Admin\UserController@index')->name('user.index');
-//Route::get('user/create', 'Admin\UserController@create')->name('training_type.create');
-//Route::post('user/save', 'Admin\UserController@save')->name('training_type.save');
 
-//Route::get('user/edit/{id}','Admin\UserController@edit')->name('training_type.edit');
-//Route::post('traiuserning_type/update/{id}','Admin\Training_TypeController@update')->name('training_type.update');
-Route::post('user/delete/{id}','Admin\UserController@destroy_undestroy')->name('user.delete');
+Route::get('user', 'Admin\UserController@index')->name('user.index');
+// Route::get('user/create', 'Admin\UserController@create')->name('user.create');
+// Route::post('user/save', 'Admin\UserController@save')->name('user.save');
+
+// Route::get('user/edit/{id}','Admin\UserController@edit')->name('user.edit');
+// Route::post('user/update/{id}','Admin\UserController@update')->name('user.update');
+Route::post('user/delete/{id}','Admin\UserController.@destroy_undestroy')->name('user.delete');
 
