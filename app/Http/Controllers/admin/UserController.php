@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index(){
 
-        $users = Users::paginate(5,['id','name','email','role_id']);
+        $users = Users::paginate(5,['id','name','email','role_id','user']);
 
         return \View::make('admin.modules.users.index',compact('users'));
     }
@@ -49,13 +49,15 @@ class UserController extends Controller
 
 
     public function add_or_update(Request $request , $users  ){
-//        dd($request->name_en);
         $users->name = $request->name;
-        $users->details = $request->details;
-        $users->price = $request->price;
+        $users->email = $request->email;
+        $users->role_id = $request->role_id;
+        $users->user = $request->user;
 
         $user->save();
     }
+    
+
     public function destroy_undestroy($id){
 
         $users = Users::find($id);

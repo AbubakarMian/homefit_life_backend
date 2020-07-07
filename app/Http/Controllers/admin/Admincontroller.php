@@ -79,7 +79,7 @@ class Admincontroller extends Controller
         $count = Users::count('id');
 
         $modules[] = [
-            'url' => 'users',
+            'url' => 'user',
             'title' => 'USERS',
             'count' => $count
         ];
@@ -105,6 +105,20 @@ class Admincontroller extends Controller
         $modules[] = [
             'url' => 'training_type',
             'title' => 'Training Type',
+            'count' => $count
+        ];
+        $count = Nutritions::count('id');
+
+        $modules[] = [
+            'url' => 'nutritions',
+            'title' => 'Nutritions',
+            'count' => $count
+        ];
+        $count = Food::count('id');
+
+        $modules[] = [
+            'url' => 'food',
+            'title' => 'FOOD',
             'count' => $count
         ];
 
