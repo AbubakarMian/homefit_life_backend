@@ -111,7 +111,7 @@ $admin_common = session()->get('admin_common');
             <!-- logo -->
             <a href="{{asset('index.php/home')}}" class="navbar-brand">
                 <img src="{{ asset('theme/images/logo.png') }}" alt="">
-                <span class="heading-font">Khatme Nabowat</span>
+                <span class="heading-font">HOME FIT LIFE</span>
             </a>
             <!-- /logo -->
         </div>

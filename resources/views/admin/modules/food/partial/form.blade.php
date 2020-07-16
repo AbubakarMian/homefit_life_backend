@@ -11,58 +11,18 @@
 
 
 <div class="form-group">
-    {!! Form::label('details','Details') !!}
+    {!! Form::label('calories','Calories') !!}
     <div>
-        {!! Form::text('details',null, ['class' => 'form-control',
+        {!! Form::text('calories',null, ['class' => 'form-control',
                                 'data-parsley-required'=>'true',
                                 'data-parsley-trigger'=>'change',
-                                'placeholder'=>'details','required',
+                                'placeholder'=>'calories','required',
              								'maxlength'=>"250"]) !!}
     </div>
 </div>
-<div class="form-group">
-    {!! Form::label('price','Price') !!}
-    <div>
-        {!! Form::text('price',null, ['class' => 'form-control',
-                                'data-parsley-required'=>'true',
-                                'data-parsley-trigger'=>'change',
-                                'placeholder'=>'price','required',
-             								'maxlength'=>"50"]) !!}
-    </div>
-</div>
 
 
 
-{{--//        $image =  asset('avatar/default_img.jpg');--}}
-{{--//--}}
-{{--//    if(isset($product)){--}}
-{{--//--}}
-{{--//        if($product->image){--}}
-{{--//            $image = $product->image;--}}
-{{--//        }--}}
-{{--//    }--}}
-{{--//?>--}}
-
-
-{{--<div class="form-group">--}}
-
-    {{--<div class="form-group pull-right">--}}
-        {{--<img src="{!! $image !!}"  class="show-product-img" data-toggle="modal" data-target=".imagemodal">--}}
-    {{--</div>--}}
-
-    {{--<div class="form-group">--}}
-        {{--{!! Form::label('image','Flag') !!}--}}
-        {{--{!! Form::file('image', ['class' => 'choose-image', 'id'=>'image'] ) !!}--}}
-        {{--<p class="help-block" id="error">Limit 2MB</p>--}}
-    {{--</div>--}}
-    {{--<div class="form-group">--}}
-        {{--{!! Form::textarea('image_visible',null,['class'=>'form-control' ,--}}
-         {{--'rows'=>'3','placeholder'=>'Image URL',--}}
-             								{{--'maxlength'=>"225"]) !!}--}}
-        {{--{!!Form::hidden('image')!!}--}}
-
-    {{--</div>--}}
-{{--</div>--}}
 
 
 
