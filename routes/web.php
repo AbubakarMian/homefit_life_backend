@@ -120,3 +120,17 @@ Route::post('nutritions/delete/{id}','Admin\NutritionsController@destroy_undestr
 
 
 
+
+
+
+//=============================================================
+//Reports
+//=============================================================
+
+//=============================================================
+//lead
+
+
+Route::get('admin/reports/leads', 'Admin\Reports\LeadsController@index')->name('lead.index');
+Route::get('excel', array('as' => 'leads.excel', 'uses' => 'Admin\Reports\LeadsController@index_excel'));
+Route::post('leads/delete/{id}','Admin\Reports\LeadsController@destroy_undestroy')->name('leads.delete');

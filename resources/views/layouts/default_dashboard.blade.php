@@ -3,6 +3,7 @@
 $admin_common = session()->get('admin_common');
 $modules = $admin_common->modules;
 $reports = $admin_common->reports;
+
 ?>
 @section('content')
     <!-- Dashboard Components -->
