@@ -66,15 +66,7 @@
 {{----}}
 {{--<?php--}}
 {{--//--}}
-//        $image =  asset('avatar/default_img.jpg');
-//
-//    if(isset($product)){
-//
-//        if($product->image){
-//            $image = $product->image;
-//        }
-//    }
-//?>
+
 
 
 {{--<div class="form-group">--}}

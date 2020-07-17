@@ -142,9 +142,14 @@ class Admincontroller extends Controller
             'count' => $count
         ];
 
+        $reports[] = [
+            'url' => 'admin/reports/leads',
+            'title' => 'Leads',
+        ];
+
         $myvar = [];
         $myvar['modules'] = $modules;
-        $myvar['reports'] = [];
+        $myvar['reports'] = $reports;
         $myvar['chart'] = [];
 
         return $myvar;

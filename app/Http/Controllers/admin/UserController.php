@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index(){
 
-        $users = Users::paginate(5,['id','name','email','role_id','user']);
+        $users = Users::paginate(5,['id','name','email','role_id']);
 
         return \View::make('admin.modules.users.index',compact('users'));
     }
@@ -35,7 +35,6 @@ class UserController extends Controller
     public function edit($id){
 
         $users = 'edit';
-//        $all_types = Type::pluck('name_en','id');
         $users = Users::find($id);
         return \View::make('admin.modules.users.create',compact('control','users'
 
