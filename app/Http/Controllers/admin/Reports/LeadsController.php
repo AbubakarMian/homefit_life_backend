@@ -4,11 +4,14 @@ namespace App\Http\Controllers\admin\Reports;
 
 use App\Exports\LeadsExport;
 use App\Http\Controllers\Controller;
+use App\Libraries\ExcelExport;
 use App\Models\Leads;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Concerns\FromArray;
 
 
 class LeadsController extends Controller
@@ -43,6 +46,9 @@ class LeadsController extends Controller
     public function query($date, $name)
     {
 
+        $data = Leads::select('id','status','message');
+        return $data;
+
         $report = DB::table('leads');
 
         $datearr = explode(' - ', $date);
@@ -69,13 +75,25 @@ class LeadsController extends Controller
 
     public function index_excel(Request $request)
     {
-        return Excel::download(new LeadsExport, 'leads.xlsx');
+        // $data = array(
+        //     array('data11', 'data12'),
+        //     array('data19', 'data19')
+        // );
+        
+        // $header = ['Heading 11', 'Heading 12']; //headers
+        
+        // $excel = Excel::download(new ExcelExport($data, $header), 'leads.xlsx');
+        // return $excel;
+        #Null comparision
+        // return Excel::download(new LeadsExport, 'leads.xlsx');
         $name = $request->user_id;
         $date = $request->status;
         $type = $request->message;
-        $data = $this->query($date, $name, $type)->get();
-        $data = $this->prepare_excel($data);
-        $this->export_excel('leads ', $data);
+        $data = $this->query($date, $name)->get()->toArray();
+        $headings = ['Id', 'Status','Message']; 
+
+        $excel = Excel::download(new ExcelExport($data, $headings), 'leads.xlsx');
+        return $excel;
         $response = Response::json(["status" => true
         ]);
         return $response;
