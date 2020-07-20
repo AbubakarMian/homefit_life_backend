@@ -16,32 +16,17 @@ return [
 		'twitter'=>'twitter',
 		'gmail'=>'gmail',
 	],
-    'settings'=>[
-        'shipping_cost_id'=>1,
-        'shipping_cost'=>'shipping_cost',
-
-        'shipping_cost_ar_id'=>2,
-        'shipping_cost_ar'=>'shipping_cost_ar',
-
-        'shipping_policy_id'=>3,
-        'shipping_policy'=>'shipping_policy',
-
-        'shipping_policy_ar_id'=>4,
-        'shipping_policy_ar'=>'shipping_policy_ar',
-
-        'terms_and_conditions_id'=>5,
-        'terms_and_conditions'=>'terms_and_conditions',
-
-        'terms_and_conditions_ar_id'=>6,
-        'terms_and_conditions_ar'=>'terms_and_conditions_ar',
-
-        'new_arrival_id'=>7,
-        'new_arrival'=>'new_arrival',
-    ],
     'request_status'=>[
         'all'=>'all',
         'pending'=>'pending',
         'accepted'=>'accepted',
+        'rejected'=>'rejected',
+    ],
+    'order_status'=>[
+        'all'=>'all',
+        'pending'=>'pending',
+        'inprogress'=>'inprogress',
+        'completed'=>'completed',
         'rejected'=>'rejected',
     ],
     'twitter-constants' => [
@@ -54,24 +39,6 @@ return [
     'ajax_action'=>[
         'update'=>'update',
         'delete'=>'delete',
-    ],
-    'cart'=>[
-        'param_1'=>'param_1',
-        'param_2'=>'param_2',
-    ],
-    'categories'=>[
-        'New_Arrival_id'=>1,
-        'New_Arrival'=>'New Arrival',
-        'New_Arrival_ar'=>'منتجات حديثة',
-        'Brands_id'=>2,
-        'Brands'=>'Brands',
-        'Brands_ar'=>'الماركات',
-        'All_Products_id'=>3,
-        'All_Products'=>'All Products',
-        'All_Products_ar'=>'الكل',
-    ],
-    'no_of_days'=>[
-        "week"=>7,
     ],
     'mail'=>[
         'to'=>'developer.mobiwhiz@gmail.com',

@@ -19,8 +19,7 @@ class CreateProductTable extends Migration
             $table->string('avatar', 255)->nullable()->default(null);
             $table->string('price', 50);
             $table->string('details', 50);
-            $table->float('rating', 50);
-            $table->rememberToken();
+            $table->float('rating');
             $table->timestamps();
             $table->softDeletes();
         });

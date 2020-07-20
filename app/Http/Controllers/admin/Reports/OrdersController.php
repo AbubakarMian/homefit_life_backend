@@ -2,26 +2,24 @@
 
 namespace App\Http\Controllers\admin\Reports;
 
-use App\Exports\LeadsExport;
 use App\Http\Controllers\Controller;
 use App\Libraries\ExcelExport;
-use App\Models\Leads;
-use App\Models\Trainer;
+use App\Models\Request as ModelsRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Response;
 use Maatwebsite\Excel\Facades\Excel;
 
-
-class LeadsController extends Controller
+class OrdersController extends Controller
 {
     public function index(Request $request)
     {
-        $all = Config::get('constants.request_status.all');
-        $pending = Config::get('constants.request_status.pending');
-        $rejected = Config::get('constants.request_status.rejected');
-        $accepted = Config::get('constants.request_status.accepted');
+        $all = Config::get('constants.order_status.all');
+        $pending = Config::get('constants.order_status.pending');
+        $inprogress = Config::get('constants.order_status.inprogress');
+        $completed = Config::get('constants.order_status.completed');
+        $rejected = Config::get('constants.order_status.rejected');
 
         $search_text = $request->user;
         $date = $request->date;
@@ -30,8 +28,9 @@ class LeadsController extends Controller
         $status_arr =[
             $all=>ucwords($all) ,
             $pending=>ucwords($pending) ,
-            $rejected=>ucwords($rejected),
-            $accepted=>ucwords($accepted)
+            $inprogress=>ucwords($inprogress) ,
+            $completed=>ucwords($completed),
+            $rejected=>ucwords($rejected)
         ];
 
         if(!$date){
@@ -40,36 +39,16 @@ class LeadsController extends Controller
             $date = $fromdate.' - '.$todate;
         }
         
-        $leads = $this->query($search_text ,$date  ,$status)->paginate(10);
+        $orders = $this->query($search_text ,$date  ,$status)->paginate(10);
 
         // $leads = Leads::paginate(5, ['id', 'user_id', 'status', 'message']);
 
-        return \View::make('admin.reports.leads.index', compact(
-        'leads',
+        return \View::make('admin.reports.orders.index', compact(
+        'orders',
         'search_text',
         'status_arr',
         'status',
         'date'));
-    }
-
-    public function status_update(Request $request,$id){
-
-        $lead = leads::find($id);
-        $lead->status = $request->status;
-        $lead->save();
-//        dd($lead);
-        if($request->status == Config::get('constants.request_status.accepted') ){
-            $trainer = new Trainer();
-            $trainer->user_id = $lead->user->id;
-            $trainer->name = $lead->user->name;
-            $trainer->save();
-        }
-        
-        $response = Response::json(["status"=>true,
-            'action'=>Config::get('constants.ajax_action.delete'),
-            'new_value'=>ucwords($request->status)
-        ]);//dd($response );
-        return $response;
     }
 
     public function query($search_text ,$date  ,$status)
@@ -78,15 +57,16 @@ class LeadsController extends Controller
         $fromdate = date("m/d/Y H:i:s", strtotime(str_replace('-', '/', $datearr[0])));
         $todate = date("m/d/Y H:i:s", strtotime(str_replace('-', '/', $datearr[1])));
 
-        $report = Leads::with('user')
-        ->whereRaw('(date(created_at))>= ?',
-        [date('Y-m-d H:i:s', strtotime($fromdate))])
-        ->whereRaw('(date(created_at))<= ?',
-            [date('Y-m-d H:i:s', strtotime($todate))]) ;
+        $report = ModelsRequest::with('request_items')
+        // ->whereRaw('(date(created_at))>= ?',
+        // [date('Y-m-d H:i:s', strtotime($fromdate))])
+        // ->whereRaw('(date(created_at))<= ?',
+        //     [date('Y-m-d H:i:s', strtotime($todate))]) ;
 
-            $report = $report->whereHas('user',function($q)use($search_text){
-                $q->where('name','like','%'.$search_text.'%');
-            });
+        //     $report = $report->whereHas('user',function($q)use($search_text){
+        //         $q->where('name','like','%'.$search_text.'%');
+        //     })
+            ;
 
         if (strtolower($status)!='all') {
             $report = $report->where('status',$status);            
@@ -96,9 +76,22 @@ class LeadsController extends Controller
         return $report->select(
             'id',
             'user_id',
-            'status',
-            'message'
+            'address',
+            'total_price'
         );
+    }
+
+    public function status_update(Request $request,$id){
+
+        $lead = ModelsRequest::find($id);
+        $lead->status = $request->status;
+        $lead->save();
+        
+        $response = Response::json(["status"=>true,
+            'action'=>Config::get('constants.ajax_action.delete'),
+            'new_value'=>ucwords($request->status)
+        ]);//dd($response );
+        return $response;
     }
 
     public function index_excel(Request $request)
@@ -113,10 +106,5 @@ class LeadsController extends Controller
 
         $excel = Excel::download(new ExcelExport($data, $headings), 'leads.xlsx');
         return $excel;
-        $response = Response::json(["status" => true
-        ]);
-        return $response;
-        //    return Redirect::back();
     }
-
 }

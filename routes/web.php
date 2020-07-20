@@ -144,9 +144,10 @@ Route::post('trainer/delete/{id}','Admin\TrainerController@destroy_undestroy')->
 
 Route::get('admin/reports/leads', 'Admin\Reports\LeadsController@index')->name('lead.index');
 Route::post('admin/reports/leads', 'Admin\Reports\LeadsController@index')->name('lead.index');
-
-// Route::get('orders', array('as' => 'reports.profile.orders', 'uses' => 'Admin\Reports\OrderController@index'));
-// Route::post('orders', array('as' => 'reports.profile.orders', 'uses' => 'Admin\Reports\OrderController@index'));
-
-Route::get('excel', array('as' => 'leads.excel', 'uses' => 'Admin\Reports\LeadsController@index_excel'));
+Route::post('excel', 'Admin\Reports\LeadsController@index_excel')->name('leads.excel');
 Route::post('leads/status_update/{id}','Admin\Reports\LeadsController@status_update')->name('leads.status_update');
+
+Route::get('admin/reports/orders', 'Admin\Reports\OrdersController@index')->name('orders.index');
+Route::post('admin/reports/orders', 'Admin\Reports\OrdersController@index')->name('orders.index');
+Route::post('orders/excel', 'Admin\Reports\OrdersController@index_excel')->name('orders.excel');
+Route::post('orders/status_update/{id}','Admin\Reports\OrdersController@status_update')->name('orders.status_update');
