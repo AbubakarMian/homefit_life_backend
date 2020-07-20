@@ -6,6 +6,7 @@ use App\Exports\LeadsExport;
 use App\Http\Controllers\Controller;
 use App\Libraries\ExcelExport;
 use App\Models\Leads;
+use App\Models\Trainer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -18,24 +19,23 @@ use Maatwebsite\Excel\Concerns\FromArray;
 class LeadsController extends Controller
 {
     public function index(Request $request)
-    {        
-        $search_text = $request->user;
-        $date = $request->date;
-        $status = $request->status;
+    {
 
+        $all = Config::get('constants.request_status.all');
         $pending = Config::get('constants.request_status.pending');
         $rejected = Config::get('constants.request_status.rejected');
-        $confirmed = Config::get('constants.request_status.accepted');
+        $accepted = Config::get('constants.request_status.accepted');
 
-        $status_arr =['All'=>'All',
-            Config::get('constants.request_status.pending')=>ucwords($pending) ,
-            Config::get('constants.request_status.rejected')=>ucwords($rejected),
-            Config::get('constants.request_status.accepted')=>ucwords($confirmed)
+        $search_text = $request->user;
+        $date = $request->date;
+        $status = $request->status ?? $all;
+
+        $status_arr =[
+            $all=>ucwords($all) ,
+            $pending=>ucwords($pending) ,
+            $rejected=>ucwords($rejected),
+            $accepted=>ucwords($accepted)
         ];
-
-        if(!$status){
-            $status='All';
-        }
 
         if(!$date){
             $fromdate = Carbon::now()->subDay()->format('m/d/Y');
@@ -55,57 +55,28 @@ class LeadsController extends Controller
         'date'));
     }
 
-
-    public function accept_trainer(Request $request,$id){
-
-        $lead = leads::find($id);
-        dd($request->all());
-        $lead->status = 'accepted';
-        $lead->save();
-        
-        $response = Response::json(["status"=>true,
-            'action'=>Config::get('constants.ajax_action.update'),
-            'new_value'=>'Accepted'
-        ]);
-        return $response;
-    }
-
-    public function reject_trainer(Request $request,$id){
-
-        $lead = leads::find($id);
-        $lead->status = 'rejected';
-        $lead->save();
-        
-        $response = Response::json(["status"=>true,
-            'action'=>Config::get('constants.ajax_action.update'),
-            'new_value'=>'Rejected'
-        ]);
-        return $response;
-    }
-
     public function status_update(Request $request,$id){
 
         $lead = leads::find($id);
-        dd($request->all());
-        $lead->status = $request->request_status;
+        $lead->status = $request->status;
         $lead->save();
+//        dd($lead);
+        if($request->status == Config::get('constants.request_status.accepted') ){
+            $trainer = new Trainer();
+            $trainer->user_id = $lead->user->id;
+            $trainer->name = $lead->user->name;
+            $trainer->save();
+        }
         
         $response = Response::json(["status"=>true,
             'action'=>Config::get('constants.ajax_action.delete'),
-            'new_value'=>$request->request_status
+            'new_value'=>ucwords($request->status)
         ]);//dd($response );
         return $response;
     }
 
     public function query($search_text ,$date  ,$status)
     {
-
-        // $data = Leads::select();
-        // return $data;
-
-        // $report = DB::table('leads');
-
-
         $datearr = explode(' - ', $date);
         $fromdate = date("m/d/Y H:i:s", strtotime(str_replace('-', '/', $datearr[0])));
         $todate = date("m/d/Y H:i:s", strtotime(str_replace('-', '/', $datearr[1])));
@@ -114,16 +85,11 @@ class LeadsController extends Controller
         ->whereRaw('(date(created_at))>= ?',
         [date('Y-m-d H:i:s', strtotime($fromdate))])
         ->whereRaw('(date(created_at))<= ?',
-            [date('Y-m-d H:i:s', strtotime($todate))])
-        ;
-        // dd($todate);
+            [date('Y-m-d H:i:s', strtotime($todate))]) ;
 
             $report = $report->whereHas('user',function($q)use($search_text){
                 $q->where('name','like','%'.$search_text.'%');
             });
-
-
-       
 
         if (strtolower($status)!='all') {
             $report = $report->where('status',$status);            

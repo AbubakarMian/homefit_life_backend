@@ -4,6 +4,12 @@ USERS
 @stop
 
 
+@section('add_btn')
+    {!! Form::open(['method' => 'get', 'route' => ['training_type.create'], 'files'=>true]) !!}
+
+    {!! Form::close() !!}
+@stop
+
 @section('table')
     <thead>
     <tr>
