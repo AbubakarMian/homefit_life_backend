@@ -1,34 +1,37 @@
-<div class="modal fade detail in" id="ordermodal" tabindex="-1" role="dialog" aria-hidden="false">
-    <div class="modal-dialog modal-lg ">
-        <div class="modal-content" id="confirm">
+<div id="myModal" class="modal fade detail_{!! $order->id!!} " role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Orders</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Order</h4>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <table class="table table-bordered table-striped mg-t editable-datatable">
+                <table class="table table-bordered table-striped mg-t editable-datatable">
 
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Brand</th>
-                                <th>Promotion</th>
-                                <th>Quantity</th>
-                                <th>Total Price</th>
-                                <th>Discount</th>
-                                <th>Total Price</th>
-                            </tr>
-                            </thead>
-                            <tbody id="my-modal-table">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                    </tr>
+                    </thead>
+                    <tbody id="my-modal-table">
+                        @foreach($order->request_items as $item)
+                        <tr>
+                            <td>{!! $item->product->name !!}</td>
+                            <td>{!! $item->unit_price !!}</td>
+                            <td>{!! $item->quantity !!}</td>
+                            <td>{!! $item->total_price!!}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
             </div>
         </div>
+
     </div>
 </div>

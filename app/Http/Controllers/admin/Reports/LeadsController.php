@@ -10,17 +10,14 @@ use App\Models\Trainer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use Maatwebsite\Excel\Facades\Excel;
-use Maatwebsite\Excel\Concerns\FromArray;
 
 
 class LeadsController extends Controller
 {
     public function index(Request $request)
     {
-
         $all = Config::get('constants.request_status.all');
         $pending = Config::get('constants.request_status.pending');
         $rejected = Config::get('constants.request_status.rejected');
@@ -105,11 +102,13 @@ class LeadsController extends Controller
     }
 
     public function index_excel(Request $request)
-    {
-        $name = $request->user_id;
-        $date = $request->status;
-        $type = $request->message;
-        $data = $this->query($date, $name)->get()->toArray();
+    {        
+        $all = Config::get('constants.request_status.all');
+
+        $search_text = $request->user;
+        $date = $request->date;
+        $status = $request->status ?? $all;
+        $data = $this->query($search_text ,$date  ,$status)->get()->toArray();
         $headings = ['Id', 'Status','Message']; 
 
         $excel = Excel::download(new ExcelExport($data, $headings), 'leads.xlsx');
