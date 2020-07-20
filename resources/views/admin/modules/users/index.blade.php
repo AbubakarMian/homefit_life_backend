@@ -3,19 +3,14 @@
 USERS
 @stop
 
-
-@section('add_btn')
-    {!! Form::open(['method' => 'get', 'route' => ['training_type.create'], 'files'=>true]) !!}
-
-    {!! Form::close() !!}
-@stop
-
 @section('table')
     <thead>
     <tr>
 
         <th>Name</th>
-        
+        <th>Email</th>
+        <th>Role</th>
+
 
 
     </tr>
@@ -23,13 +18,11 @@ USERS
     <tbody>
 
     @foreach($users as $c)
-        <
-            <td>{!! $c->name !!}</td>
-            <td>
-                {!!link_to_action('Admin\UserController@edit',
-                'Edit', array($c->id), array('class' => 'badge bg-info'))!!}
 
-            </td>
+            <td>{!! $c->name !!}</td>
+            <td>{!! $c->email !!}</td>
+            <td>{!! $c->role_id!!}</td>
+
 
             <td>
                 {!! Form::open(['method' => 'POST', 'route' => ['user.delete', $c->id]]) !!}

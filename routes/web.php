@@ -119,7 +119,18 @@ Route::post('nutritions/update/{id}','Admin\NutritionsController@update')->name(
 Route::post('nutritions/delete/{id}','Admin\NutritionsController@destroy_undestroy')->name('nutritions.delete');
 
 
+// ================================================
+// Trainer
 
+//Route::get('user', 'Admin\UserController@index');
+//Route::get('country', 'Admin\CountryController@index');
+Route::get('trainer', 'Admin\TrainerController@index')->name('trainer.index');
+Route::get('trainer/create', 'Admin\TrainerController@create')->name('trainer.create');
+Route::post('trainer/save', 'Admin\TrainerController@save')->name('trainer.save');
+
+Route::get('trainer/edit/{id}','Admin\TrainerController@edit')->name('trainer.edit');
+Route::post('trainer/update/{id}','Admin\TrainerController@update')->name('trainer.update');
+Route::post('trainer/delete/{id}','Admin\TrainerController@destroy_undestroy')->name('trainer.delete');
 
 
 
