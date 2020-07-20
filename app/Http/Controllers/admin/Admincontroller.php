@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Package;
 use App\Models\Product;
+use App\Models\Trainer;
 use App\Models\Training_Type;
 use App\Models\Nutritions;
 use App\Models\Users;
@@ -84,7 +85,7 @@ class Admincontroller extends Controller
 
         $modules[] = [
             'url' => 'user',
-            'title' => 'USERS',
+            'title' => 'User',
             'count' => $count
         ];
 
@@ -93,14 +94,14 @@ class Admincontroller extends Controller
 
         $modules[] = [
             'url' => 'product',
-            'title' => 'PRODUCTS',
+            'title' => 'Products',
             'count' => $count
         ];
         $count = Package::count('id');
 
         $modules[] = [
             'url' => 'package',
-            'title' => 'PACKAGES',
+            'title' => 'Packages',
             'count' => $count
         ];
 
@@ -118,29 +119,36 @@ class Admincontroller extends Controller
             'title' => 'Nutritions',
             'count' => $count
         ];
-        $count = Food::count('id');
+        $count = Trainer::count('id');
 
         $modules[] = [
-            'url' => 'food',
-            'title' => 'FOOD',
+            'url' => 'trainer',
+            'title' => 'Trainer',
             'count' => $count
         ];
-
-        $count = Food_Nutritions::count('id');
-
-        $modules[] = [
-            'url' => 'Food_Nutritions',
-            'title' => 'Food Nutritions',
-            'count' => $count
-        ];
-        
-        $count = Food_Parameters::count('id');
-
-        $modules[] = [
-            'url' => 'food_parameters',
-            'title' => 'Food Parameters',
-            'count' => $count
-        ];
+//        $count = Food::count('id');
+//
+//        $modules[] = [
+//            'url' => 'food',
+//            'title' => 'Food',
+//            'count' => $count
+//        ];
+//
+//        $count = Food_Nutritions::count('id');
+//
+//        $modules[] = [
+//            'url' => 'Food_Nutritions',
+//            'title' => 'Food Nutritions',
+//            'count' => $count
+//        ];
+//
+//        $count = Food_Parameters::count('id');
+//
+//        $modules[] = [
+//            'url' => 'food_parameters',
+//            'title' => 'Food Parameters',
+//            'count' => $count
+//        ];
 
         $reports[] = [
             'url' => 'admin/reports/leads',

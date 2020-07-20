@@ -16,10 +16,10 @@ class CreateTrainerTable extends Migration
         Schema::create('trainer', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
             $table->integer('user_id')->length(20);
+            $table->string('name', 50);
             $table->float('user_latitude')->default(0);
             $table->float('user_longitude')->default(0);
-            $table->string('name', 50);
-            $table->string('gender', 50);
+            $table->tinyInteger('gender')->default(1);
             $table->BigInteger('training_type_id')->length(20)->default(0);
             $table->string('specialities', 50)->nullable()->default(null);
             $table->string('rating', 50)->nullable()->default(null);
