@@ -132,5 +132,12 @@ Route::post('nutritions/delete/{id}','Admin\NutritionsController@destroy_undestr
 
 
 Route::get('admin/reports/leads', 'Admin\Reports\LeadsController@index')->name('lead.index');
+Route::post('admin/reports/leads', 'Admin\Reports\LeadsController@index')->name('lead.index');
+
+// Route::get('orders', array('as' => 'reports.profile.orders', 'uses' => 'Admin\Reports\OrderController@index'));
+// Route::post('orders', array('as' => 'reports.profile.orders', 'uses' => 'Admin\Reports\OrderController@index'));
+
 Route::get('excel', array('as' => 'leads.excel', 'uses' => 'Admin\Reports\LeadsController@index_excel'));
-Route::post('leads/delete/{id}','Admin\Reports\LeadsController@destroy_undestroy')->name('leads.delete');
+Route::post('leads/accept_trainer/{id}','Admin\Reports\LeadsController@accept_trainer')->name('leads.accept');
+Route::post('leads/reject_trainer/{id}','Admin\Reports\LeadsController@reject_trainer')->name('leads.reject');
+Route::post('leads/status_update/{id}','Admin\Reports\LeadsController@status_update')->name('leads.status_update');

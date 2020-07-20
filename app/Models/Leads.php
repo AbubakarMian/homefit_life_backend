@@ -9,4 +9,8 @@ class Leads extends Model
 {
     use SoftDeletes;
     protected $table='leads';
+
+    public function user(){
+        return $this->hasOne('App\User','id','user_id');
+    }
 }
