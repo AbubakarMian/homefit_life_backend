@@ -1,21 +1,24 @@
-@extends('layouts.default_module')
+@extends('layouts.default_report')
 
 @section('module_name')
-	Lead
+Lead
 @stop
 @section('module_search_top')
-	{!!Form::open(['method'=>'get','route' =>array('leads.excel')])!!}
-	{!!Form::hidden('name',null,['id'=>'name'])!!}
-	{!!Form::hidden('status',null,['id'=>'status'])!!}
-	{!!Form::hidden('message',null,['id'=>'message'])!!}
-	{!!Form::submit('Export To Excel',['class'=>'btn btn-success pull-right',
-		'onclick'=>'return excel();', 'id'=>'export'])!!}
+{!!Form::open(['method'=>'get','route' =>array('leads.excel')])!!}
+{!!Form::hidden('name',null,['id'=>'name'])!!}
+{!!Form::hidden('status',null,['id'=>'status'])!!}
+{!!Form::hidden('message',null,['id'=>'message'])!!}
+{!!Form::submit('Export To Excel',['class'=>'btn btn-success pull-right',
+'onclick'=>'return excel();', 'id'=>'export'])!!}
+{!!Form::close()!!}
+@stop
+
+@section('form')
+	{!!Form::open(array('id'=>'search_form', 'method'=>'post','route' =>array('lead.index'),'class'=>'form-horizontal')) !!}
+		@include('admin.reports.leads.partial.searchfilters')
 	{!!Form::close()!!}
 @stop
 
-@section('table-properties')
-	width="400px" style="table-layout:fixed;"
-@endsection
 <style>
 	td {
 		white-space: nowrap;
@@ -27,7 +30,7 @@
 </style>
 @section('table')
 
-	<thead>
+<thead>
 	<tr>
 		<th>User</th>
 		<th>Status</th>
@@ -35,68 +38,55 @@
 		<th>Activate/Deactivate</th>
 
 	</tr>
-	</thead>
-	<tbody>
+</thead>
+<tbody>
 
 	@foreach($leads as $c)
 
-		<td>{!! $c->user_id !!}</td>
-			<td>{!! $c->status !!}</td>
-			<td>{!! $c->message !!}</td>
-		<td>
-			{!! Form::open(['method' => 'POST', 'route' => ['leads.delete', $c->id]]) !!}
-			@if($c->deleted_at == null)
-                <?php
-                $status = 'Deactivate';
-                $delete_title_modal = $status;
-                $delete_msg_modal = 'Do you want to Deactivate';
-                ?>
-			@else
-                <?php
-                $status = 'Activate';
-                $delete_title_modal = $status;
-                $delete_msg_modal ='Do you want to Deactivate';
-                ?>
-			@endif
-			<a href="" data-toggle="modal"  name="activate_delete" data-target=".delete">
-	<span class=" badge bg-info btn-success"
-		  onclick="change_modal_warning(this);">
-	{!! $status !!}</span></a>
-			{!! Form::close() !!}
+	<td>{!! $c->user_id !!}</td>
+	<td>{!! $c->status !!}</td>
+	<td>{!! $c->message !!}</td>
+	<td>
+		@if($c->status == 'pending')
+			{!! Form::open(['method' => 'POST', 'route' => ['leads.accept', $c->id]]) !!}
 
-		</td>
-		</tr>
+			<a href="" data-toggle="modal" name="activate_delete" data-target=".delete">
+				<span class=" badge bg-info btn-success" onclick="change_modal_warning('Accepted as Trainer ?');">
+					Accept</span></a>
+			{!! Form::close() !!}
+			{!! Form::open(['method' => 'POST', 'route' => ['leads.reject', $c->id]]) !!}
+
+			<a href="" data-toggle="modal" name="activate_delete" data-target=".delete">
+				<span class=" badge bg-info btn-success" onclick="change_modal_warning('Rejected as Trainer ?');">
+					Reject</span></a>
+			{!! Form::close() !!}
+		@else
+			{!! $c->status!!}
+		@endif
+
+	</td>
+	</tr>
 
 
 	@endforeach
-	</tbody>
+</tbody>
 @section('pagination')
-	<span class="pagination pagination-md pull-right">{!! $leads->render() !!}</span>
-	<div class="col-md-3 pull-left">
-		<div class="form-group text-center">
-			<div>
-				{!! Form::open(['method' => 'get', 'route' => ['dashboard']]) !!}
-				{!! Form::submit('Cancel', ['class' => 'btn btn-default btn-block btn-lg btn-parsley']) !!}
-				{!! Form::close() !!}
-			</div>
+<span class="pagination pagination-md pull-right">{!! $leads->render() !!}</span>
+<div class="col-md-3 pull-left">
+	<div class="form-group text-center">
+		<div>
+			{!! Form::open(['method' => 'get', 'route' => ['dashboard']]) !!}
+			{!! Form::submit('Cancel', ['class' => 'btn btn-default btn-block btn-lg btn-parsley']) !!}
+			{!! Form::close() !!}
 		</div>
 	</div>
+</div>
 @endsection
 @stop
 @section('app_jquery')
-	<script>
-        function change_modal_warning(x){
-            var status =$.trim(x.innerHTML) ;
-            var msg = 'Do You Want to Deactivate?';
-            $('#modal-heading').html(status);
-            if(status == 'Activate'){
-                msg = 'Do You Want to Activate?';
-            }
-            else if(status == 'Deactivate'){
-                msg = 'Do You Want to Deactivate?';
-            }
+<script>
+	function change_modal_warning(msg){
             $('#modal_msg').html(msg) ;
         }
-	</script>
+</script>
 @endsection
-                   
