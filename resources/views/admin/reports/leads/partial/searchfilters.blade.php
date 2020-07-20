@@ -27,30 +27,6 @@
                     ['class'=>'form-control' , 'id'=>'user','placeholder'=>'User'])!!}
 </div>
 
-{{-- <div class="col-xs-3">
-    <div class="form-group">
-        <label>Search Request #</label>
-        <div class="mb15">
-            <fieldset>
-                <div class="control-group">
-                    <small>Enter Num</small>
-                    <div class="controls">
-                        <div class="input-prepend input-group">
-                            <span class="add-on input-group-addon"></span>
-                            {!! Form::text('req_num',$req_num, ['class' => 'form-control',
-                            'data-parsley-required'=>'true',
-                            'data-parsley-trigger'=>'change',
-                            'placeholder'=>'Request #','id'=>'req_num']) !!}
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-        </div>
-    </div>
-</div> --}}
-
-
-
 <div class="col-xs-2">
     <label class="control-label">Status</label>
     <br>
