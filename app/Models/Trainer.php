@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Trainer extends Model
 {
     use SoftDeletes;
-    protected $table='trainer';
+    protected $table = 'trainer';
+
+    public function training_type()
+    {
+        return $this->hasOne('App\models\Training_Type', 'id', 'training_type_id');
+    }
 }

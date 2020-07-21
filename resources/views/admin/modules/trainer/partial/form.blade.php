@@ -27,6 +27,15 @@
                                 'placeholder'=>'rating','required',
              								'maxlength'=>"50"]) !!}
     </div>
+</div><div class="form-group">
+    {!! Form::label('specialities','specialities') !!}
+    <div>
+        {!! Form::text('specialities',null, ['class' => 'form-control',
+                                'data-parsley-required'=>'true',
+                                'data-parsley-trigger'=>'change',
+                                'placeholder'=>'specialities','required',
+             								'maxlength'=>"50"]) !!}
+    </div>
 </div>
 <div class="form-group">
     {!! Form::label('is_featured','Featured') !!}
@@ -35,6 +44,15 @@
                                 'data-parsley-required'=>'true',
                                 'data-parsley-trigger'=>'change',
                                 'placeholder'=>'is_featured','required',
+             								'maxlength'=>"50"]) !!}
+    </div>
+</div><div class="form-group">
+    {!! Form::label('training_type_id','Training Type') !!}
+    <div>
+        {!! Form::select('training_type_id',$all_training_type,null, ['class' => 'form-control',
+                                'data-parsley-required'=>'true',
+                                'data-parsley-trigger'=>'change',
+                                'placeholder'=>'Training type','required',
              								'maxlength'=>"50"]) !!}
     </div>
 </div>
