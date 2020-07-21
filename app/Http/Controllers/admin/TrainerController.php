@@ -15,44 +15,42 @@ class TrainerController extends Controller
 {
     public function index(){
 
-        $trainer = Trainer::paginate(5,['id','user_id','name','gender','rating','specialities','training_type_id','is_featured']);
+        $trainer = Trainer::withTrashed()->paginate(5,['id','user_id','name','gender','rating','specialities','training_type_id','is_featured','deleted_at']);
 
         return \View::make('admin.modules.trainer.index',compact('trainer'));
     }
 
-    public function create(){
-        $control = 'create';
+    // public function create(){
+    //     $control = 'create';
 
-        return \View::make('admin.modules.trainer.create',
-            compact('control'));
-    }
+    //     return \View::make('admin.modules.trainer.create',
+    //         compact('control'));
+    // }
 
-    public function save(Request $request){
+    // public function save(Request $request){
 
-        $trainer = new Trainer();
+    //     $trainer = new Trainer();
 
-        $this->add_or_update($request , $trainer );
-        return redirect('trainer');
+    //     $this->add_or_update($request , $trainer );
+    //     return redirect('trainer');
 
-    }
+    // }
     public function edit($id){
         $all_training_type = Training_Type::pluck('name','id');
-
         $control = 'edit';
-        $trainer = Trainer::find($id);
+        $trainer = Trainer::withTrashed()->find($id);
         return \View::make('admin.modules.trainer.create',compact('control','all_training_type','trainer'
 
         ));
     }
     public function update(Request $request , $id  ){
-        $trainer = Trainer::find($id);
+        $trainer = Trainer::withTrashed()->find($id);
         $this->add_or_update($request , $trainer );
         return Redirect('trainer');
     }
 
 
     public function add_or_update(Request $request , $trainer  ){
-//        $trainer->user_id = $request->user_id;
         $trainer->name = $request->name;
         $trainer->gender= $request->gender;
         $trainer->rating= $request->rating;
@@ -67,11 +65,11 @@ class TrainerController extends Controller
         $trainer = Trainer::find($id);
         if($trainer){
             Trainer::destroy($id);
-            $new_value = 'enable';
+            $new_value = 'Enable';
         }
         else{
             Trainer::withTrashed()->find($id)->restore();
-            $new_value = 'disable';
+            $new_value = 'Disable';
         }
         $response = Response::json(["status"=>true,
             'action'=>Config::get('constants.ajax_action.update'),
