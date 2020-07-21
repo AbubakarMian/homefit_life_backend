@@ -22,7 +22,7 @@ Training Type
     <tbody>
 
     @foreach($training_type as $c)
-        <
+
             <td>{!! $c->name !!}</td>
             <td>
                 {!!link_to_action('Admin\Training_TypeController@edit',

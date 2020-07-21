@@ -19,7 +19,16 @@ trait Common
         return $users;
     }
 
-
+    public function move_img_get_path($image,$root,$type,$image_name='')
+    {
+        $uniqid = time();
+        $extension = mb_strtolower($image->getClientOriginalExtension());
+        $name = $uniqid . $image_name . '.' . $extension;//.$image->getClientOriginalName();
+        $imgPath = public_path() . '/images/' . $type;
+        $image->move($imgPath, $name);
+        $remove_index = str_replace("index.php", "", $root);
+        return $remove_index . '/images/' . $type . '/' . $name;
+    }
     public function export_excel($report_name,$users){
 
         Excel::create($report_name, function ($excel) use ($users) {

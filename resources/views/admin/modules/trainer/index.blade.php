@@ -26,9 +26,11 @@
 	<thead>
 	<tr>
 		<th>Name</th>
-		<th>gender</th>
-		<th>rating</th>
+		<th>Gender</th>
+		<th>Rating</th>
+		<th>Specialities</th>
 		<th>Featured</th>
+		<th>Training Type</th>
 
 	</tr>
 	</thead>
@@ -39,19 +41,36 @@
 		<td>{!! $c->name !!}</td>
 		<td>{!! $c->gender !!}</td>
 		<td>{!! $c->rating !!}</td>
+		<td>{!! $c->specialities !!}</td>
 		<td>{!! $c->is_featured !!}</td>
+		<td>{!! $c->training_type->name !!}</td>
+		<td>
+			{!!link_to_action('Admin\TrainerController@edit',
+			'Edit', array($c['id']), array('class' => 'badge bg-info'))!!}
 
-			<td>{!! Form::open(['method' => 'POST', 'route' => ['trainer.delete', $c->id]]) !!}
-				<a href="" data-toggle="modal"  name="activate_delete" data-target=".delete">
-				   <span class="badge bg-danger">
-				         Delete</span></a>
-				{!! Form::close() !!}
-			</td>
-			<td>
-				{!!link_to_action('Admin\TrainerController@edit',
-				'Edit', array($c['id']), array('class' => 'badge bg-info'))!!}
+		</td>
+		<td>
+			{!! Form::open(['method' => 'POST', 'route' => ['trainer.delete', $c->id]]) !!}
+			@if($c->deleted_at == null)
+                <?php
+                $status = 'disable';
+                $delete_title_modal = $status;
+                $delete_msg_modal = 'Do you want to disable this trainer ?';
+                ?>
+			@else
+                <?php
+                $status = 'enable';
+                $delete_title_modal = $status;
+                $delete_msg_modal ='Do you want to enable this trainer ?';
+                ?>
+			@endif
+			<a href="" data-toggle="modal"  name="activate_delete" data-target=".delete">
+	<span class=" badge bg-info btn-success"
+		  onclick="change_modal_warning(this);">
+	{!! $status !!}</span></a>
+			{!! Form::close() !!}
 
-			</td>
+		</td>
 		</tr>
 	@endforeach
 	</tbody>
@@ -68,4 +87,20 @@
 	</div>
 @endsection
 @stop
+@section('app_jquery')
+	<script>
+        function change_modal_warning(x){
+            var status =$.trim(x.innerHTML) ;
+            var msg = 'Do you want to disable this trainer ?';
+            $('#modal-heading').html(status);
+            if(status == 'enable'){
+                msg = 'Do you want to enable this trainer ?';
+            }
+            else if(status == 'disable'){
+                msg = 'Do you want to disable this trainer ?';
+            }
+            $('#modal_msg').html(msg) ;
+        }
+	</script>
+@endsection
                    
