@@ -11,11 +11,10 @@
 <div class="form-group">
     {!! Form::label('gender','Gender') !!}
     <div>
-        {!! Form::text('gender',null, ['class' => 'form-control',
-                                'data-parsley-required'=>'true',
-                                'data-parsley-trigger'=>'change',
-                                'placeholder'=>'gender','required',
-             								'maxlength'=>"50"]) !!}
+        {!! Form::select('gender', [1=>'male',0=>'female'], null,['class' => 'form-control',
+                                                                'data-parsley-required'=>'true',
+                                                                'data-parsley-trigger'=>'change',
+                                                                'placeholder'=>'gender','required']) !!}       
     </div>
 </div>
 <div class="form-group">
@@ -25,7 +24,7 @@
                                 'data-parsley-required'=>'true',
                                 'data-parsley-trigger'=>'change',
                                 'placeholder'=>'rating','required',
-             								'maxlength'=>"50"]) !!}
+             								'readonly']) !!}
     </div>
 </div><div class="form-group">
     {!! Form::label('specialities','specialities') !!}
@@ -40,7 +39,7 @@
 <div class="form-group">
     {!! Form::label('is_featured','Featured') !!}
     <div>
-        {!! Form::text('is_featured',null, ['class' => 'form-control',
+        {!! Form::checkbox('is_featured',null, ['class' => 'form-control',
                                 'data-parsley-required'=>'true',
                                 'data-parsley-trigger'=>'change',
                                 'placeholder'=>'is_featured','required',
@@ -56,16 +55,6 @@
              								'maxlength'=>"50"]) !!}
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 @include('admin.modules.product.partial.image_modal')

@@ -53,13 +53,13 @@
 			{!! Form::open(['method' => 'POST', 'route' => ['trainer.delete', $c->id]]) !!}
 			@if($c->deleted_at == null)
                 <?php
-                $status = 'disable';
+                $status = 'Disable';
                 $delete_title_modal = $status;
                 $delete_msg_modal = 'Do you want to disable this trainer ?';
                 ?>
 			@else
                 <?php
-                $status = 'enable';
+                $status = 'Enable';
                 $delete_title_modal = $status;
                 $delete_msg_modal ='Do you want to enable this trainer ?';
                 ?>
