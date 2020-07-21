@@ -173,8 +173,11 @@ $('#hiddden_name').val(id);
 }
 
 function set_lat_long(lat , long , location){
-    $('#lat').val(lat);
-    $('#long').val(long);
+console.log("asdasdasd");
+            $('#lat').val('24.8607');
+            $('#long').val('67.0011');
+    // $('#lat').val(lat);
+    // $('#long').val(long);
     $('#map-title').html('<b>Address: 	&nbsp;	&nbsp;</b>'+location);
     showPosition();return;
     if (navigator.geolocation) {

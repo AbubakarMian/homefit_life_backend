@@ -58,14 +58,14 @@ class OrdersController extends Controller
         $todate = date("m/d/Y H:i:s", strtotime(str_replace('-', '/', $datearr[1])));
 
         $report = ModelsRequest::with('request_items')
-        // ->whereRaw('(date(created_at))>= ?',
-        // [date('Y-m-d H:i:s', strtotime($fromdate))])
-        // ->whereRaw('(date(created_at))<= ?',
-        //     [date('Y-m-d H:i:s', strtotime($todate))]) ;
+        ->whereRaw('(date(created_at))>= ?',
+        [date('Y-m-d H:i:s', strtotime($fromdate))])
+        ->whereRaw('(date(created_at))<= ?',
+            [date('Y-m-d H:i:s', strtotime($todate))]) ;
 
-        //     $report = $report->whereHas('user',function($q)use($search_text){
-        //         $q->where('name','like','%'.$search_text.'%');
-        //     })
+            $report = $report->whereHas('user',function($q)use($search_text){
+                $q->where('name','like','%'.$search_text.'%');
+            })
             ;
 
         if (strtolower($status)!='all') {
@@ -77,15 +77,16 @@ class OrdersController extends Controller
             'id',
             'user_id',
             'address',
-            'total_price'
+            'total_price',
+            'status'
         );
     }
 
     public function status_update(Request $request,$id){
 
-        $lead = ModelsRequest::find($id);
-        $lead->status = $request->status;
-        $lead->save();
+        $modelRequest = ModelsRequest::find($id);
+        $modelRequest->status = $request->status;
+        $modelRequest->save();
         
         $response = Response::json(["status"=>true,
             'action'=>Config::get('constants.ajax_action.delete'),

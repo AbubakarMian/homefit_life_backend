@@ -25,7 +25,8 @@ function initAutocomplete() {
     $(".map-modal").on("shown.bs.modal", function(e) {
         google.maps.event.trigger(map, "resize");
         if (navigator.geolocation) {
-
+alert("lat value is ",$('#lat').val());
+alert("long value is ",$('#long').val());
             if (!($('#lat').val() == '' || $('#lat').val() == 0)){
                 var pos = {
                     lat: parseFloat($('#lat').val()),
@@ -116,7 +117,7 @@ function initAutocomplete() {
             marker.setMap(null);
         }
         $.get("http://ipinfo.io", function(response) {
-            //      console.log(response);
+                 console.log("my info",response);
         }, "jsonp");
         var geocoder = new google.maps.Geocoder;
         //   var geo = new google.maps.TransitFare.DirectionsRoute;
