@@ -150,4 +150,4 @@ Route::post('leads/status_update/{id}','Admin\Reports\LeadsController@status_upd
 Route::get('admin/reports/orders', 'Admin\Reports\OrdersController@index')->name('orders.index');
 Route::post('admin/reports/orders', 'Admin\Reports\OrdersController@index')->name('orders.index');
 Route::post('orders/excel', 'Admin\Reports\OrdersController@index_excel')->name('orders.excel');
-Route::post('orders/status_update/{id}','Admin\Reports\OrdersController@status_update')->name('orders.status_update');
+Route::post('admin/reports/orders/status_update/{id}','Admin\Reports\OrdersController@status_update')->name('orders.status_update');
