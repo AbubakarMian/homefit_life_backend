@@ -25,10 +25,12 @@
 	<thead>
 	<tr>
 		<th>Name</th>
-		<th>Avatar</th>
 		<th>Price</th>
 		<th>Details </th>
 		<th>Rating</th>
+		<th>Product Image</th>
+		<th>Edit</th>
+		<th>Delete</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -43,11 +45,13 @@
 
 
 			<td>{!! $p->name !!}</td>
-			<td>{!! $p->avatar !!}</td>
 			<td>{!! $p->price!!}</td>
-			<td>{!! $p->details!!}</td>
-			<td>{!! $p->rating !!}</td>
-			<td>
+		<td>{!! $p->details!!}</td>
+		<td>{!! $p->rating !!}</td>
+		<td><img src="{!! $p->avatar !!}"  class="show-product-img"></td>
+
+
+		<td>
 				{!!link_to_action('Admin\productController@edit',
 				'Edit', array($p['id']), array('class' => 'badge bg-info'))!!}
 

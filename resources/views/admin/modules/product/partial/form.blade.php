@@ -10,23 +10,13 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('avatar','Avatar') !!}
-    <div>
-        {!! Form::text('avatar',null, ['class' => 'form-control',
-                                'data-parsley-required'=>'true',
-                                'data-parsley-trigger'=>'change',
-                                'placeholder'=>'avatar','required',
-             								'maxlength'=>"50"]) !!}
-    </div>
-</div>
-<div class="form-group">
     {!! Form::label('price','Price') !!}
     <div>
         {!! Form::text('price',null, ['class' => 'form-control',
-                                'data-parsley-required'=>'true',
-                                'data-parsley-trigger'=>'change',
-                                'placeholder'=>'price','required',
-                                             'maxlength'=>"50"]) !!}
+    'data-parsley-required'=>'true',
+    'data-parsley-trigger'=>'change',
+    'placeholder'=>'price','required',
+    'maxlength'=>"50"]) !!}
     </div>
 </div>
 
@@ -44,23 +34,55 @@
     {!! Form::label('rating','Rating') !!}
     <div>
         {!! Form::text('rating',null, ['class' => 'form-control',
-                                'data-parsley-required'=>'true',
-                                'data-parsley-trigger'=>'change',
-                                'placeholder'=>'rating','required',
-             								'maxlength'=>"50"]) !!}
+    'data-parsley-required'=>'true',
+    'data-parsley-trigger'=>'change',
+    'placeholder'=>'rating','required',
+    'maxlength'=>"50"]) !!}
+    </div>
+</div>
+
+<?php
+
+$avatar =  asset('avatar/default_img.jpg');
+
+if(isset($product)){
+
+    if($product->avatar){
+        $avatar = $product->avatar;
+    }
+}
+?>
+
+
+<div class="form-group">
+
+    <div class="form-group pull-right">
+        <img src="{!! $avatar !!}"  class="show-product-img" data-toggle="modal" data-target=".imagemodal">
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('avatar','Product Image') !!}
+        {!! Form::file('avatar', ['class' => 'choose-image', 'id'=>'avatar'] ) !!}
+        <p class="help-block" id="error">Limit 2MB</p>
+    </div>
+    <div class="form-group">
+        {!! Form::textarea('image_visible',null,['class'=>'form-control' ,
+         'rows'=>'3','placeholder'=>'enter image URL',
+             								'maxlength'=>"225"]) !!}
+        {!!Form::hidden('image')!!}
+
     </div>
 </div>
 
 
 
-
 {{--<div class="form-group">--}}
-    {{--{!! Form::label('type','Type') !!}--}}
-    {{--<div>--}}
-        {{--{!!Form::select('type',$type,--}}
-                                   {{--null,--}}
-                            {{--['class'=>'form-control'])!!}--}}
-    {{--</div>--}}
+{{--{!! Form::label('type','Type') !!}--}}
+{{--<div>--}}
+{{--{!!Form::select('type',$type,--}}
+{{--null,--}}
+{{--['class'=>'form-control'])!!}--}}
+{{--</div>--}}
 {{--</div>--}}
 
 {{----}}

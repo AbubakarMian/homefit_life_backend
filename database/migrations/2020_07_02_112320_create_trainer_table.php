@@ -21,7 +21,7 @@ class CreateTrainerTable extends Migration
             $table->float('user_longitude')->default(0);
             $table->tinyInteger('gender')->default(1);
             $table->BigInteger('training_type_id')->length(20)->default(0);
-            $table->string('specialities', 50)->nullable()->default(null);
+            $table->string('specialities', 250)->nullable()->default(null);
             $table->string('rating', 50)->nullable()->default(null);
             $table->tinyInteger('is_featured')->nullable()->default(null);
             $table->string('details', 250)->nullable()->default(null);;
