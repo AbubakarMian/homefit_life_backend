@@ -15,10 +15,10 @@ class CreateTrainingclassUsersTable extends Migration
     {
         Schema::create('trainingclass_users', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
-            $table->integer('trainingclass_id')->default(2);
+            $table->integer('training_class_id')->default(2);
             $table->integer('user_id')->default(2);
-            $table->tinyInteger('is_connected')->default(2);
-            $table->rememberToken();
+            $table->integer('total_purchased_session')->default(0);
+            $table->integer('sessions_left')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

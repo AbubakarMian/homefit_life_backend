@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaymentTable extends Migration
+class CreateTrainingSessionSheduleUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreatePaymentTable extends Migration
      */
     public function up()
     {
-        Schema::create('payment', function (Blueprint $table) {
+        Schema::create('training_session_shedule_users', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
+            $table->integer('training_session_schedule_id')->default(2);
             $table->integer('user_id')->default(2);
-            $table->string('card_type')->default(2);
-            $table->string('payment_id')->default(2);
-            $table->text('payment_response')->default(2);
-            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +29,6 @@ class CreatePaymentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment');
+        Schema::dropIfExists('training_session_shedule_users');
     }
 }

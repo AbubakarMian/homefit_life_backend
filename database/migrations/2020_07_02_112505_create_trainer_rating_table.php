@@ -18,7 +18,7 @@ class CreateTrainerRatingTable extends Migration
             $table->integer('trainer_id')->default(2);
             $table->integer('user_id')->default(2);
             $table->float('rating')->default(2);
-            $table->rememberToken();
+            $table->integer('trainer_session_schedule_users_id')->default(2);
             $table->timestamps();
             $table->softDeletes();
 
