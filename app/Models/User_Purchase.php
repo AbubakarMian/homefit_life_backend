@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class Training_Rating extends Model
+
+class User_Purchase extends Model
 {
     use SoftDeletes;
-    protected $table='training_rating';
+    protected $table='users_purchase';
 }

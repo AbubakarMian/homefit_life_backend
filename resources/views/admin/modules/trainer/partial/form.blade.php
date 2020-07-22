@@ -37,15 +37,15 @@
     </div>
 </div>
 <div class="form-group">
-    {!! Form::label('is_featured','Featured') !!}
+    {!! Form::label('is_featured','Is Featured') !!}
     <div>
-        {!! Form::checkbox('is_featured',null, ['class' => 'form-control',
+        {!! Form::checkbox('is_featured',null,null, [
                                 'data-parsley-required'=>'true',
-                                'data-parsley-trigger'=>'change',
-                                'placeholder'=>'is_featured','required',
-             								'maxlength'=>"50"]) !!}
+                                'data-parsley-trigger'=>'change']) !!}
     </div>
-</div><div class="form-group">
+</div>
+
+<div class="form-group">
     {!! Form::label('training_type_id','Training Type') !!}
     <div>
         {!! Form::select('training_type_id',$all_training_type,null, ['class' => 'form-control',
