@@ -15,18 +15,16 @@ class CreateTrainerTable extends Migration
     {
         Schema::create('trainer', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
-            $table->integer('user_id')->length(20);
+            $table->bigInteger('user_id');
             $table->string('name', 50);
-            $table->float('user_latitude')->default(0);
-            $table->float('user_longitude')->default(0);
+            $table->float('lat')->default(0);
+            $table->float('long')->default(0);
             $table->tinyInteger('gender')->default(1);
-            $table->BigInteger('training_type_id')->length(20)->default(0);
+            $table->BigInteger('training_type_id')->default(0);
             $table->string('specialities', 250)->nullable()->default(null);
-            $table->string('rating', 50)->nullable()->default(null);
-            $table->tinyInteger('is_featured')->nullable()->default(null);
-            $table->string('details', 250)->nullable()->default(null);;
-
-            $table->rememberToken();
+            $table->integer('rating')->default(0);
+            $table->tinyInteger('is_featured')->default(0);
+            $table->string('details', 250)->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });

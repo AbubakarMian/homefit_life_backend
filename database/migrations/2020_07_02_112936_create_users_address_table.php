@@ -15,9 +15,8 @@ class CreateUsersAddressTable extends Migration
     {
         Schema::create('users_address', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
-            $table->integer('user_id')->default(2);
-            $table->string('address')->default(2);
-            $table->rememberToken();
+            $table->bigInteger('user_id')->default(0);
+            $table->string('address')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });

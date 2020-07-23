@@ -15,10 +15,9 @@ class CreateUsersBookingTable extends Migration
     {
         Schema::create('users_booking', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
-            $table->integer('user_id')->default(2);
-            $table->integer('training_class_id')->default(2);
-            $table->integer('package_id')->default(2);
-            $table->rememberToken();
+            $table->bigInteger('user_id')->default(0);
+            $table->bigInteger('training_class_id')->default(0);
+            $table->bigInteger('package_id')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

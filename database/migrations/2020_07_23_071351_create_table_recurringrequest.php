@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePackageTable extends Migration
+class CreateTableRecurringrequest extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreatePackageTable extends Migration
      */
     public function up()
     {
-        Schema::create('package', function (Blueprint $table) {
+        Schema::create('recurringrequest', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
-            $table->string('name',50);
-            $table->string('details',255)->nullable()->default(null);
-            $table->float('price')->default(0);
-            $table->integer('total_sessions')->default(0);
+            $table->bigInteger('user_id')->default(0);
+            $table->string('address',256)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +29,6 @@ class CreatePackageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('package');
+        Schema::dropIfExists('table_recurringrequest');
     }
 }

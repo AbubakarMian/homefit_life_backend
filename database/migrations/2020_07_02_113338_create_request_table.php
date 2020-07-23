@@ -15,10 +15,11 @@ class CreateRequestTable extends Migration
     {
         Schema::create('request', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
-            $table->integer('user_id')->default(0);
-            $table->string('address')->nullable();
-            $table->integer('total_price')->default(0);
-            $table->rememberToken();
+            $table->bigInteger('user_id')->default(0);
+            $table->bigInteger('payment_id')->default(0);
+            $table->string('address')->nullable()->default(null);
+            $table->float('total_price')->default(0);
+            $table->tinyInteger('is_recurring')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
