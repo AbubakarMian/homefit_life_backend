@@ -1,9 +1,9 @@
 @extends('layouts.default_report')
 @section('report_name')
-Confirmed Orders
+Orders
 @stop
 @section('report_description')
-All Sales
+Product Sales
 @stop
 
 @section('excel')

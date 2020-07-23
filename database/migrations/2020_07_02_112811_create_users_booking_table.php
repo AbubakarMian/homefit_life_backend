@@ -18,6 +18,8 @@ class CreateUsersBookingTable extends Migration
             $table->bigInteger('user_id')->default(0);
             $table->bigInteger('training_class_id')->default(0);
             $table->bigInteger('package_id')->default(0);
+            $table->integer('total_sessions')->default(0);
+            $table->bigInteger('payment_id')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
