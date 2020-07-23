@@ -1,38 +1,12 @@
-<div class="col-xs-4">
-    <div class="form-group">
-        <label>Date Range Picker</label>
-        <div class="mb15">
-            <fieldset>
-                <div class="control-group">
-                    <small>Select Date Range</small>
-                    <div class="controls">
-                        <div class="input-prepend input-group">
-                            <span class="add-on input-group-addon"><i class="ti-calendar"></i></span>
-                            <input type="text" name="date" id="reservationtime"
-                                   class="form-control active" value="{!!$date!!}">
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-        </div>
-    </div>
-</div>
 
 <div class="col-xs-3 pull-left" style="padding-top: 16px;">
 
-    <label class="control-label">User</label>
+    <label class="control-label">Trainer/Class</label>
 
     <br>
     {!!Form::text('user',$search_text,
-                    ['class'=>'form-control' , 'id'=>'user','placeholder'=>'User'])!!}
+                    ['class'=>'form-control' , 'id'=>'user','placeholder'=>'Trainer/Class'])!!}
 </div>
-
-{{--<div class="col-xs-2">--}}
-    {{--<label class="control-label">Status</label>--}}
-    {{--<br>--}}
-    {{--<small>Choose Status</small>--}}
-    {{--{!!Form::select('status',$status_arr ,$status,['class'=>'form-control' , 'id'=>'status'])!!}--}}
-{{--</div>--}}
 
 
 <input type="hidden" name="lat" id="lat" >

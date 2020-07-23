@@ -14,8 +14,5 @@ class Trainer extends Model
         return $this->hasOne('App\models\Training_Type', 'id', 'training_type_id');
     }
 
-    public function all_trainers()
-    {
-        return $this->hasOne('App\models\Trainer', 'id', 'trainer_id');
-    }
+
 }
