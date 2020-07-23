@@ -15,13 +15,10 @@ class CreateTrainingClassTable extends Migration
     {
         Schema::create('training_class', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
-            $table->string('type', 50); // personal , group
+            $table->bigInteger('type_id')->default(0); // personal , group
             $table->string('name', 50);
             $table->bigInteger('trainer_id');
-            $table->date('date');
-            $table->time('time');
-            $table->time('session_time');
-            $table->string('status')->default(3);
+            $table->string('details')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });
