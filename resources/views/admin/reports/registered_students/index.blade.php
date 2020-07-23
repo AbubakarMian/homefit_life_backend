@@ -26,9 +26,9 @@
 @section('table')
 <thead>
 	<tr>
-		<th>Trainers</th>
-		<th>speciality</th>
-		<th>Gender</th>
+		<th>Class</th>
+		<th>Trainer</th>
+		<th>Type</th>
 
 	</tr>
 </thead>
@@ -36,88 +36,19 @@
 
 	@foreach($registered_students as $r)
 	<tr>
-		<td>{!! $r->all_trainers->name !!}</td>
-		<td>{!! $r->all_trainers->specialities !!}</td>
-		<td>{!! $r->all_trainers->gender !!}</td>
+		<td>{!! $r->name !!}</td>
+		<td>{!! $r->trainer_id !!}</td>
+		<td>{!! $r->type!!}</td>
 		<td>
 
 			<a href="" data-toggle="modal" name="activate_delete" data-target=".detail_{!! $r->id !!}">
 				<span class=" badge bg-info btn-success">
-					Detail</span></a>
-			@include('admin.reports.orders.partial.order_modal',['order'=>$r])
+					Registered Students </span></a>
+			@include('admin.reports.registered_students.partial.order_modal',['registered_students'=>$r])
 
 		</td>
-		<td>
-			<div class="form-group">
-				{{-- <a href="" onclick="set_lat_long('{!! $pending_order->Lat !!}',
-							'{!! $order->lat !!}',
-							'{!! $order->long !!}');"
-					   data-toggle="modal" data-target=".map-modal" > --}}
-				<a href="" onclick="set_lat_long('37', '64','karachi');" data-toggle="modal" data-target=".map_modal">
-					<span onclick="set_lat_long('37', '64','karachi');" class="ti-direction"></span>Click</a>
-			</div>
-		</td>
-		<td>
-			<?php 
-				$pending_display = $completed_display = $final_status_display ='display:none';
-				if($r->status == 'pending'){
-					$pending_display = 'display:block';
-				}
-				elseif($r->status == 'inprogress'){
-					$completed_display = 'display:block';
-				}
-				else{
-					$final_status_display = 'display:block';
-				}
-			?>
-			
-			<div id="pending_btn_{!!$r->id!!}" style="{!!$pending_display!!}">
-				<a href="" data-toggle="modal" name="" data-target=".inprogress_request_{!! $order->id !!}">
-					<span class=" badge bg-info btn-success ">
-						In Progress
-					</span>
-				</a>
-				@include('admin.reports.orders.partial.confirmation_modal',
-				[
-				'order_id'=>$r->id,
-				'cell_id'=>'td_'.$r->id,
-				'req_status'=>'inprogress_request_'.$r->id,
-				'url'=>asset('admin/reports/orders/status_update/'.$r->id),
-				'status'=>'inprogress',
-				'btn_class'=>'btn-primary'
-				])
-				<a href="" data-toggle="modal" name="" data-target=".reject_request_{!! $r->id !!}">
-					<span class=" badge bg-info btn-danger">
-						Reject
-					</span>
-				</a>
-				@include('admin.reports.orders.partial.confirmation_modal',
-				[
-				'order_id'=>$r->id,
-				'cell_id'=>'td_'.$r->id,
-				'req_status'=>'reject_request_'.$r->id,
-				'url'=>asset('admin/reports/orders/status_update/'.$r->id),
-				'status'=>'rejected',
-				'btn_class'=>'btn-danger' ])
-			</div>
-			<div id="inprogress_btn_{!!$order->id!!}" style="{!!$completed_display!!}">
-			<a href="" data-toggle="modal" name="" data-target=".completed_request_{!! $order->id !!}">
-				<span class=" badge bg-info btn-success">
-					Complete</span></a>
-			@include('admin.reports.orders.partial.confirmation_modal',
-			[
-			'order_id'=>$r->id,
-			'cell_id'=>'td_'.$r->id,
-			'req_status'=>'completed_request_'.$r->id,
-			'url'=>asset('admin/reports/orders/status_update/'.$r->id),
-			'status'=>'completed',
-			'btn_class'=>'btn-success'
-			])
-			</div>
-			<div id="finalstatus_btn_{!!$r->id!!}" style="{!!$final_status_display!!}">
-			{!! ucwords($r->status) !!}
-			</div>
-		</td>
+
+
 
 
 	</tr>
@@ -139,7 +70,7 @@
 @endsection
 @stop
 
-@include('admin.reports.orders.partial.msg_modal')
+@include('admin.reports.registered_students.partial.msg_modal')
 @section('extra_css')
 <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="{!! asset('css/MonthPicker.min.css') !!}" rel="stylesheet" type="text/css" />

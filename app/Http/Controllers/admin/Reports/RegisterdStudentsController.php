@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin\Reports;
 
 use App\Http\Controllers\Controller;
 use App\Models\Request as ModelsRequest;
+use App\Models\Trainer;
+use App\Models\Training_Class;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Libraries\ExcelExport;
@@ -33,37 +35,35 @@ class RegisterdStudentsController extends Controller
 //            $rejected=>ucwords($rejected)
 //        ];
 
-//        if(!$date){
-//            $fromdate = Carbon::now()->subDay()->format('m/d/Y');
-//            $todate = Carbon::now()->format('m/d/Y');
-//            $date = $fromdate.' - '.$todate;
-//        }
+        if(!$date){
+            $fromdate = Carbon::now()->subDay()->format('m/d/Y');
+            $todate = Carbon::now()->format('m/d/Y');
+            $date = $fromdate.' - '.$todate;
+        }
 
-        $registered_students= $this->query($search_text   )->paginate(10);
+        $registered_students= $this->query($search_text ,$date  )->paginate(10);
 
         // $leads = Leads::paginate(5, ['id', 'user_id', 'status', 'message']);
 
         return \View::make('admin.reports.registered_students.index', compact(
             'registered_students',
-            'search_text'
-            ));
+            'search_text',
+            'date'));
     }
 
     public function query($search_text ,$date  )
     {
-//        $datearr = explode(' - ', $date);
-//        $fromdate = date("m/d/Y H:i:s", strtotime(str_replace('-', '/', $datearr[0])));
-//        $todate = date("m/d/Y H:i:s", strtotime(str_replace('-', '/', $datearr[1])));
+        $datearr = explode(' - ', $date);
+        $fromdate = date("m/d/Y H:i:s", strtotime(str_replace('-', '/', $datearr[0])));
+        $todate = date("m/d/Y H:i:s", strtotime(str_replace('-', '/', $datearr[1])));
 
-        $report = ModelsRequest::with('all_trainers');
+    //    $trainers = Trainer;//::paginate(5,['id','name']);
 //            ->whereRaw('(date(created_at))>= ?',
 //                [date('Y-m-d H:i:s', strtotime($fromdate))])
 //            ->whereRaw('(date(created_at))<= ?',
 //                [date('Y-m-d H:i:s', strtotime($todate))]) ;
 
-        $report = $report->whereHas('user',function($q)use($search_text){
-            $q->where('name','like','%'.$search_text.'%');
-        })
+        $trainers= Training_Class::where('name','like','%'.$search_text.'%');
         ;
 
 //        if (strtolower($status)!='all') {
@@ -71,11 +71,11 @@ class RegisterdStudentsController extends Controller
 //        }
 //        $report = $report->orderBy('created_at');
 
-        return $report->select(
+        return $trainers->select(
             'id',
-            'user_id',
-            'address',
-            'total_price'
+            'name',
+            'type',
+            'trainer_id'
         );
     }
 
