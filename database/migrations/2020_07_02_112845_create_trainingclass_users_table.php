@@ -16,7 +16,7 @@ class CreateTrainingclassUsersTable extends Migration
         Schema::create('trainingclass_users', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
             $table->integer('training_class_id')->default(2);
-            $table->integer('user_id')->default(2);
+            $table->bigInteger('user_id')->default(0);
             $table->integer('total_purchased_session')->default(0);
             $table->integer('sessions_left')->default(0);
             $table->timestamps();

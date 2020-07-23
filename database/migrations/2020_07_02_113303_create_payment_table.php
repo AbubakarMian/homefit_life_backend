@@ -15,11 +15,10 @@ class CreatePaymentTable extends Migration
     {
         Schema::create('payment', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
-            $table->integer('user_id')->default(2);
-            $table->string('card_type')->default(2);
-            $table->string('payment_id')->default(2);
-            $table->text('payment_response')->default(2);
-            $table->rememberToken();
+            $table->integer('user_id')->default(0);
+            $table->string('card_type',25);
+            $table->string('payment_id');
+            $table->text('payment_response')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });

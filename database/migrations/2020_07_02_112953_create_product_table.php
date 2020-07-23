@@ -17,9 +17,9 @@ class CreateProductTable extends Migration
             $table->unsignedBigInteger('id', true)->length(20);
             $table->string('name', 50);
             $table->string('avatar', 255)->nullable()->default(null);
-            $table->string('price', 50);
-            $table->string('details', 50);
-            $table->float('rating');
+            $table->integer('price')->default(0);
+            $table->string('details',255)->nullable()->default(null);
+            $table->float('rating')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -14,4 +14,8 @@ class Request_Item extends Model
         return $this->hasOne('App\Models\Product','id','product_id');
     }
 
+    public function recommendedByTrainer(){
+        return $this->hasOne('App\Models\Trainer','id','recommended_by_trainer_id');
+    }
+
 }
