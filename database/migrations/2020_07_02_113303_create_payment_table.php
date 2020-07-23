@@ -15,7 +15,7 @@ class CreatePaymentTable extends Migration
     {
         Schema::create('payment', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
-            $table->integer('user_id')->default(0);
+            $table->bigInteger('user_id')->default(0);
             $table->string('card_type',25);
             $table->string('payment_id');
             $table->text('payment_response')->nullable()->default(null);
