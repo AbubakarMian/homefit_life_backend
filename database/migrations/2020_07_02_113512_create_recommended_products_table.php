@@ -15,10 +15,9 @@ class CreateRecommendedProductsTable extends Migration
     {
         Schema::create('recommended_products', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
-            $table->integer('product_id')->default(2);
-            $table->integer('user_id')->default(2);
-            $table->integer('trainer_id')->default(2);
-            $table->rememberToken();
+            $table->bigInteger('product_id')->default(0);
+            $table->bigInteger('user_id')->default(0);
+            $table->bigInteger('trainer_id')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

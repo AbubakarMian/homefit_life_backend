@@ -16,6 +16,7 @@
                         <th>Unit Price</th>
                         <th>Quantity</th>
                         <th>Total Price</th>
+                        <th>Recommended Trainer</th>
                     </tr>
                     </thead>
                     <tbody id="my-modal-table">
@@ -25,6 +26,7 @@
                             <td>{!! $item->unit_price !!}</td>
                             <td>{!! $item->quantity !!}</td>
                             <td>{!! $item->total_price!!}</td>
+                            <td>{!! $item->recommendedByTrainer->name ?? null!!}</td>
                         </tr>
                         @endforeach
                     </tbody>

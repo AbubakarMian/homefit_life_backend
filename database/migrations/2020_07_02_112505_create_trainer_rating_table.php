@@ -15,10 +15,9 @@ class CreateTrainerRatingTable extends Migration
     {
         Schema::create('trainer_rating', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
-            $table->integer('trainer_id')->default(2);
-            $table->integer('user_id')->default(2);
-            $table->float('rating')->default(2);
-            $table->rememberToken();
+            $table->bigInteger('trainer_id')->default(0);
+            $table->bigInteger('user_id')->default(0);
+            $table->float('rating')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

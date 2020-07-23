@@ -15,12 +15,12 @@ class CreateRequestItemTable extends Migration
     {
         Schema::create('request_item', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
-            $table->integer('request_id')->default(0);
-            $table->integer('product_id')->default(0);
-            $table->integer('unit_price')->default(0);
-            $table->integer('total_price')->default(0);
+            $table->bigInteger('request_id')->default(0);
+            $table->bigInteger('product_id')->default(0);
+            $table->float('unit_price')->default(0);
+            $table->float('total_price')->default(0);
             $table->string('quantity')->default(0);
-            $table->rememberToken();
+            $table->bigInteger('recommended_by_trainer_id')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -15,10 +15,9 @@ class CreateProductRatingTable extends Migration
     {
         Schema::create('product_rating', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
-            $table->integer('user_id')->default(2);
-            $table->integer('product_id')->default(2);
-            $table->float('rating')->default(2);
-            $table->rememberToken();
+            $table->bigInteger('user_id');
+            $table->bigInteger('product_id');
+            $table->float('rating')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

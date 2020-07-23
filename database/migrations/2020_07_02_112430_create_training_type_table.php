@@ -16,7 +16,6 @@ class CreateTrainingTypeTable extends Migration
         Schema::create('training_type', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
             $table->string('name', 50);
-            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });
