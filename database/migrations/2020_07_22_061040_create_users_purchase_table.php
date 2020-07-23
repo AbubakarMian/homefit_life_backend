@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTrainingclassUsersTable extends Migration
+class CreateUsersPurchaseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateTrainingclassUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('trainingclass_users', function (Blueprint $table) {
+        Schema::create('users_purchase', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
+            $table->integer('user_id')->default(2);
             $table->integer('training_class_id')->default(2);
-            $table->bigInteger('user_id')->default(0);
-            $table->integer('total_purchased_session')->default(0);
-            $table->integer('sessions_left')->default(0);
+            $table->integer('package_id')->default(2);
+            $table->integer('training_session_personal_id')->default(2);
+            $table->string('total_classes')->default(2);
+            $table->integer('payment_id')->default(2);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +33,6 @@ class CreateTrainingclassUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trainingclass_users');
+        Schema::dropIfExists('users_purchase');
     }
 }

@@ -39,7 +39,7 @@ class TrainerController extends Controller
         $all_training_type = Training_Type::pluck('name','id');
         $control = 'edit';
         $trainer = Trainer::withTrashed()->find($id);
-        return \View::make('admin.modules.trainer.create',compact('control','all_training_type','trainer'
+        return \View::make('admin.modules.trainer.create',compact('control','all_training_type','trainer','all_trainers'
 
         ));
     }
@@ -52,10 +52,10 @@ class TrainerController extends Controller
 
     public function add_or_update(Request $request , $trainer  ){
         $trainer->name = $request->name;
-        $trainer->gender= $request->gender;
+        $trainer->gender= $request->gender=='1' ?1:0;
         $trainer->rating= $request->rating;
         $trainer->specialities= $request->specialities;
-        $trainer->is_featured = $request->is_featured;
+        $trainer->is_featured =$request->is_featured =='on' ?1:0;
         $trainer->training_type_id = $request->training_type_id;
 
         $trainer->save();
