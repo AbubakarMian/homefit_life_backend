@@ -5,22 +5,22 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Registered students under this trainer</h4>
+                <h4 class="modal-title">Registered students in this class</h4>
             </div>
             <div class="modal-body">
                 <table class="table table-bordered table-striped mg-t editable-datatable">
 
                     <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Students</th>
                     </tr>
                     </thead>
                     <tbody id="my-modal-table">
-                        {{--@foreach($registered_students->request_items as $item)--}}
-                        {{--<tr>--}}
-                            {{--<td>{!! $item->product->name !!}</td>--}}
-                        {{--</tr>--}}
-                        {{--@endforeach--}}
+                        @foreach($registered_students->students as $student)
+                        <tr>
+                            <td>{!! $student->user->name !!}</td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
 

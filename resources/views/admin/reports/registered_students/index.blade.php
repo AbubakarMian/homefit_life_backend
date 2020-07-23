@@ -37,13 +37,13 @@
 	@foreach($registered_students as $r)
 	<tr>
 		<td>{!! $r->name !!}</td>
-		<td>{!! $r->trainer_id !!}</td>
-		<td>{!! $r->type!!}</td>
+		<td>{!! $r->trainer->name !!}</td>
+		<td>{!! $r->trainer_type->name!!}</td>
 		<td>
 
 			<a href="" data-toggle="modal" name="activate_delete" data-target=".detail_{!! $r->id !!}">
 				<span class=" badge bg-info btn-success">
-					Registered Students </span></a>
+					Show registered students </span></a>
 			@include('admin.reports.registered_students.partial.order_modal',['registered_students'=>$r])
 
 		</td>
