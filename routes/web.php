@@ -147,7 +147,18 @@ Route::post('admin/reports/leads', 'Admin\Reports\LeadsController@index')->name(
 Route::post('excel', 'Admin\Reports\LeadsController@index_excel')->name('leads.excel');
 Route::post('leads/status_update/{id}','Admin\Reports\LeadsController@status_update')->name('leads.status_update');
 
+
+//=============================================================
+//orders
 Route::get('admin/reports/orders', 'Admin\Reports\OrdersController@index')->name('orders.index');
 Route::post('admin/reports/orders', 'Admin\Reports\OrdersController@index')->name('orders.index');
 Route::post('orders/excel', 'Admin\Reports\OrdersController@index_excel')->name('orders.excel');
 Route::post('admin/reports/orders/status_update/{id}','Admin\Reports\OrdersController@status_update')->name('orders.status_update');
+
+//=============================================================
+//Regisered students
+
+Route::get('admin/reports/registered_students', 'Admin\Reports\RegisterdStudentsController@index')->name('registered_students.index');
+Route::post('admin/reports/registered_students', 'Admin\Reports\RegisterdStudentsController@index')->name('registered_students.index');
+Route::post('registered_students/excel', 'Admin\Reports\RegisterdStudentsController@index_excel')->name('registered_students.excel');
+Route::post('admin/reports/registered_students/status_update/{id}','Admin\Reports\RegisterdStudentsController@status_update')->name('registered_students.status_update');

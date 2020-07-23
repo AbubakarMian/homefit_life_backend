@@ -160,6 +160,11 @@ class Admincontroller extends Controller
             'title' => 'Orders',
         ];
 
+        $reports[] = [
+            'url' => 'admin/reports/registered_students',
+            'title' => 'Registered Students',
+        ];
+
         $myvar = [];
         $myvar['modules'] = $modules;
         $myvar['reports'] = $reports;

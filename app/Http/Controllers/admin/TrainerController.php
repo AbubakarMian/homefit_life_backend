@@ -39,7 +39,7 @@ class TrainerController extends Controller
         $all_training_type = Training_Type::pluck('name','id');
         $control = 'edit';
         $trainer = Trainer::withTrashed()->find($id);
-        return \View::make('admin.modules.trainer.create',compact('control','all_training_type','trainer'
+        return \View::make('admin.modules.trainer.create',compact('control','all_training_type','trainer','all_trainers'
 
         ));
     }
