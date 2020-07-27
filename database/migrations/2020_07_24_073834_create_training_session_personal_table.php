@@ -15,10 +15,12 @@ class CreateTrainingSessionPersonalTable extends Migration
     {
         Schema::create('training_session_personal', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true)->length(20);
-            $table->integer('trainer_id')->default(2);
-            $table->integer('user_id')->default(2);
+            $table->integer('trainer_id')->default(0);
+            $table->integer('user_id')->default(0);
+            $table->float('price')->default(0);
             $table->date('class_date');
             $table->time('class_time');
+            $table->integer('payment_id')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

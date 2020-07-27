@@ -1,53 +1,45 @@
 @extends('layouts.default_report')
 @section('report_name')
-	Registered Student
+Personal Session Payments
 @stop
 @section('report_description')
-  All Registered Students
+  All Personal Session Payments
 @stop
 
 @section('excel')
-{!!Form::open(['method'=>'get','route' =>array('registered_students.index')])!!}
+{!!Form::open(['method'=>'get','route' =>array('personal_session_payments.index')])!!}
 {!!Form::hidden('user_excel',null,['id'=>'user_excel'])!!}
 {!!Form::hidden('date_excel',null,['id'=>'date_excel'])!!}
 {!!Form::hidden('status_excel',null,['id'=>'status_excel'])!!}
 {!!Form::submit('Export Excel',['class'=>'btn btn-success pull-right',
-'onclick'=>'return registered_students_excel(event);',
-'data-url'=>asset('index.php/admin/pending_registered_students/excel')
+'onclick'=>'return personal_session_payments_excel(event);',
+'data-url'=>asset('index.php/admin/pending_personal_session_payments/excel')
 ])!!}
 {!!Form::close()!!}
 @stop
 @section('form')
-{!!Form::open(array('id'=>'search_form', 'method'=>'post','route' =>array('registered_students.index'),'class'=>'form-horizontal'))
+{!!Form::open(array('id'=>'search_form', 'method'=>'post','route' =>array('personal_session_payments.index'),'class'=>'form-horizontal'))
 !!}
-@include('admin.reports.registered_students.partial.searchfilters')
+@include('admin.reports.personal_session_payments.partial.searchfilters')
 {!!Form::close()!!}
 @stop
 @section('table')
 <thead>
 	<tr>
-		<th>Class</th>
+		<th>User</th>
 		<th>Trainer</th>
-		<th>Type</th>
+		<th>Payments</th>
 
 	</tr>
 </thead>
 <tbody>
 
-	@foreach($registered_students as $r)
+	@foreach($personal_session_payments as $r)
 	<tr>
-
-		<td>{!! $r->name !!}</td>
+		<td>{!! $r->user->name !!}</td>
 		<td>{!! $r->trainer->name !!}</td>
-		<td>{!! $r->trainer_type->name!!}</td>
-		<td>
+		<td>{!! $r->payments->payment_id !!}</td>
 
-			<a href="" data-toggle="modal" name="activate_delete" data-target=".detail_{!! $r->id !!}">
-				<span class=" badge bg-info btn-success">
-					Show registered students </span></a>
-			@include('admin.reports.registered_students.partial.order_modal',['registered_students'=>$r])
-
-		</td>
 
 
 
@@ -57,7 +49,7 @@
 </tbody>
 
 @section('pagination')
-<span class="pagination pagination-md pull-right">{!! $registered_students->render() !!}</span>
+<span class="pagination pagination-md pull-right">{!! $personal_session_payments->render() !!}</span>
 
 <div class="col-md-3 pull-left">
 	<div class="form-group text-center">
@@ -71,7 +63,7 @@
 @endsection
 @stop
 
-@include('admin.reports.registered_students.partial.msg_modal')
+@include('admin.reports.personal_session_payments.partial.msg_modal')
 @section('extra_css')
 <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="{!! asset('css/MonthPicker.min.css') !!}" rel="stylesheet" type="text/css" />

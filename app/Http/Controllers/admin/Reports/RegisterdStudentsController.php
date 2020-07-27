@@ -19,7 +19,7 @@ class RegisterdStudentsController extends Controller
     {
         $search_text = $request->user;
 
-        $registered_students= $this->query($search_text  )->paginate(10);
+        $registered_students= $this->query($search_text )->paginate(10);
 
         return \View::make('admin.reports.registered_students.index', compact(
             'registered_students',

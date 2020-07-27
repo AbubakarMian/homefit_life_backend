@@ -22,6 +22,10 @@ class Training_Class extends Model
 
     public function students()
     {
-        return $this->hasMany('App\models\Training_Class_Users', 'trainingclass_id', 'id');
+        return $this->hasMany('App\models\Training_Class_Users', 'training_class_id', 'id');
+    }
+    public function user()
+    {
+        return $this->hasMany('App\user', 'user_id', 'id');
     }
 }
