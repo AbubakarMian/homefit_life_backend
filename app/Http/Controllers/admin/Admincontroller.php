@@ -164,6 +164,14 @@ class Admincontroller extends Controller
             'url' => 'admin/reports/registered_students',
             'title' => 'Registered Students',
         ];
+$reports[] = [
+            'url' => 'admin/reports/group_session_payments',
+            'title' => 'Group Session Payments',
+        ];
+$reports[] = [
+            'url' => 'admin/reports/personal_session_payments',
+            'title' => 'Personal Session Payments',
+        ];
 
         $myvar = [];
         $myvar['modules'] = $modules;

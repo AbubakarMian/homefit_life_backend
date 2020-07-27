@@ -162,3 +162,27 @@ Route::get('admin/reports/registered_students', 'Admin\Reports\RegisterdStudents
 Route::post('admin/reports/registered_students', 'Admin\Reports\RegisterdStudentsController@index')->name('registered_students.index');
 Route::post('registered_students/excel', 'Admin\Reports\RegisterdStudentsController@index_excel')->name('registered_students.excel');
 Route::post('admin/reports/registered_students/status_update/{id}','Admin\Reports\RegisterdStudentsController@status_update')->name('registered_students.status_update');
+
+
+
+
+//=============================================================
+//Group_Session_PaymentsController
+
+Route::get('admin/reports/group_session_payments', 'Admin\Reports\Group_Session_PaymentsController@index')->name('group_session_payments.index');
+Route::post('admin/reports/group_session_payments', 'Admin\Reports\Group_Session_PaymentsController@index')->name('group_session_payments.index');
+Route::post('group_session_payments/excel', 'Admin\Reports\Group_Session_PaymentsController@index_excel')->name('group_session_payments.excel');
+Route::post('admin/reports/group_session_payments/status_update/{id}','Admin\Reports\Group_Session_PaymentsController@status_update')->name('group_session_payments.status_update');
+
+
+
+
+
+//=============================================================
+//Personal_Session_PaymentsController
+
+Route::get('admin/reports/personal_session_payments', 'Admin\Reports\Personal_Session_PaymentsController@index')->name('personal_session_payments.index');
+Route::post('admin/reports/personal_session_payments', 'Admin\Reports\Personal_Session_PaymentsController@index')->name('personal_session_payments.index');
+Route::post('personal_session_payments/excel', 'Admin\Reports\Personal_Session_PaymentsController@index_excel')->name('personal_session_payments.excel');
+Route::post('admin/reports/personal_session_payments/status_update/{id}','Admin\Reports\Personal_Session_PaymentsController@status_update')->name('personal_session_payments.status_update');
+

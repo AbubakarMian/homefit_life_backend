@@ -18,7 +18,10 @@ class CreateTrainingclassUsersTable extends Migration
             $table->integer('training_class_id')->default(2);
             $table->bigInteger('user_id')->default(0);
             $table->integer('total_purchased_session')->default(0);
-            $table->integer('sessions_left')->default(0);
+            $table->integer('session_left')->default(0);
+            $table->integer('package_id')->default(0);
+            $table->integer('payment_id')->default(0);
+            $table->integer('price')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

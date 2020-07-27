@@ -1,55 +1,47 @@
 @extends('layouts.default_report')
 @section('report_name')
-	Registered Student
+	Group Session Payments
 @stop
 @section('report_description')
-  All Registered Students
+	All Group Session Payments
 @stop
 
 @section('excel')
-{!!Form::open(['method'=>'get','route' =>array('registered_students.index')])!!}
+{!!Form::open(['method'=>'get','route' =>array('group_session_payments.index')])!!}
 {!!Form::hidden('user_excel',null,['id'=>'user_excel'])!!}
 {!!Form::hidden('date_excel',null,['id'=>'date_excel'])!!}
 {!!Form::hidden('status_excel',null,['id'=>'status_excel'])!!}
 {!!Form::submit('Export Excel',['class'=>'btn btn-success pull-right',
-'onclick'=>'return registered_students_excel(event);',
-'data-url'=>asset('index.php/admin/pending_registered_students/excel')
+'onclick'=>'return group_session_payments_excel(event);',
+'data-url'=>asset('index.php/admin/pending_group_session_payments/excel')
 ])!!}
 {!!Form::close()!!}
 @stop
 @section('form')
-{!!Form::open(array('id'=>'search_form', 'method'=>'post','route' =>array('registered_students.index'),'class'=>'form-horizontal'))
+{!!Form::open(array('id'=>'search_form', 'method'=>'post','route' =>array('group_session_payments.index'),'class'=>'form-horizontal'))
 !!}
-@include('admin.reports.registered_students.partial.searchfilters')
+@include('admin.reports.group_session_payments.partial.searchfilters')
 {!!Form::close()!!}
 @stop
 @section('table')
 <thead>
 	<tr>
+		<th>User</th>
 		<th>Class</th>
-		<th>Trainer</th>
-		<th>Type</th>
+		<th>Packages</th>
+		<th>Payments</th>
 
 	</tr>
 </thead>
 <tbody>
-
-	@foreach($registered_students as $r)
-	<tr>
-
-		<td>{!! $r->name !!}</td>
-		<td>{!! $r->trainer->name !!}</td>
-		<td>{!! $r->trainer_type->name!!}</td>
-		<td>
-
-			<a href="" data-toggle="modal" name="activate_delete" data-target=".detail_{!! $r->id !!}">
-				<span class=" badge bg-info btn-success">
-					Show registered students </span></a>
-			@include('admin.reports.registered_students.partial.order_modal',['registered_students'=>$r])
-
-		</td>
-
-
+{{----}}
+	@foreach($group_session_payments as $r)
+{{--		{!! dd($r->user) !!}--}}
+		<tr>
+			<td>{!! $r->user->name??''!!}</td>
+		<td>{!! $r->trainingclass->name??''!!}</td>
+		<td>{!! $r->packages->name??''!!}</td>
+		<td>{!! $r->payments->payment_id??''!!}</td>
 
 
 	</tr>
@@ -57,7 +49,7 @@
 </tbody>
 
 @section('pagination')
-<span class="pagination pagination-md pull-right">{!! $registered_students->render() !!}</span>
+<span class="pagination pagination-md pull-right">{!! $group_session_payments->render() !!}</span>
 
 <div class="col-md-3 pull-left">
 	<div class="form-group text-center">
@@ -71,7 +63,7 @@
 @endsection
 @stop
 
-@include('admin.reports.registered_students.partial.msg_modal')
+@include('admin.reports.group_session_payments.partial.msg_modal')
 @section('extra_css')
 <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="{!! asset('css/MonthPicker.min.css') !!}" rel="stylesheet" type="text/css" />
