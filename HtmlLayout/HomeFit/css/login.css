@@ -1,0 +1,77 @@
+.pageTitle {
+    text-align: center;
+}
+.forgetPass {
+    text-align: right;
+    margin-top: 15px;
+}
+.createAcc input,
+.ResetForm input,
+.LoginForm input {
+    height: 41px;
+    border: 1px solid #0c94ea;
+    border-left: 0;
+}
+.input-group-addon {
+
+    background-color: transparent;
+    border: 1px solid #0c94ea;
+    border-radius: 4px;
+}
+.createAcc .fa,
+.ResetForm .fa,
+.LoginForm .fa {
+		color: #0c94ea;
+}
+.btnLogIn {
+    text-align: center;
+}
+.btnLogin {
+    padding: 10px 40px;
+    font-size: 18px;
+}
+
+
+.LoginForm {
+    margin: 0px auto;
+    margin-top: 100px;
+}
+.createAcc input,
+.LoginForm input {
+    height: 50px;
+}
+h4.modal-title {
+    color: #0c94ea;
+    font-weight: 700;
+}
+#LoginModal .modal-body input {
+    height: 50px;
+}
+.input-group-addon:first-child {
+    font-size: 21px;
+}
+.createAcc,
+.ResetForm {
+    margin: 0px auto;
+    margin-top: 30px;
+}
+.ResetForm input {
+    height: 50px;
+}
+.pageTitle img {
+    margin: 0 auto;
+    width: 8%;
+    margin-top: 20px;
+}
+.btnAcc {
+	padding: 10px 40px;
+    font-size: 18px;
+    margin: 10px;
+}
+.desclaimerText,
+.HaveAcc{
+	text-align: center;
+	margin-top: 10px;
+    margin-bottom: 10px;
+	color: #a5a5a5;
+}
