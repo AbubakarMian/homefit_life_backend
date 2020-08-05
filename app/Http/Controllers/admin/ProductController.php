@@ -33,11 +33,7 @@ class ProductController extends Controller
 
     }
     public function edit($id){
-
         $control = 'edit';
-//        $all_companies = Company::pluck('name_en','id');
-//        $all_types = Type::pluck('name_en','id');
-
         $product = Product::find($id);
         return \View::make('admin.modules.product.create',compact(
             'control','product'
@@ -53,7 +49,6 @@ class ProductController extends Controller
     public function add_or_update(Request $request , $product  ){
 
         $product->name = $request->name;
-        $product->avatar = $request->avatar;
         $product->price=$request->price;
         $product->details =$request->details;
         $product->rating =$request->rating;
@@ -63,9 +58,12 @@ class ProductController extends Controller
 
             $product->avatar =$this->move_img_get_path($avatar, $root, 'product');
         }
-        else if(strcmp($request->avatar_visible, "")  !==0){
-            $product->avatar = $request->avatar_visible;
-        }$product->save();
+        else if($request->image_visible){
+            $product->avatar = $request->image_visible;
+        }
+        // dd($request->avatar_visible);
+        // dd($request->image_visible);
+        $product->save();
     }
     public function destroy_undestroy($id){
 

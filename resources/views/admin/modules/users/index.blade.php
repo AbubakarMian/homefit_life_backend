@@ -6,25 +6,21 @@ USERS
 @section('table')
     <thead>
     <tr>
-
         <th>Name</th>
         <th>Email</th>
-        <th>Role</th>
-
-
-
+        {{-- <th>Role</th> --}}
     </tr>
     </thead>
     <tbody>
 
     @foreach($users as $c)
 
-            <td>{!! $c->name !!}</td>
+            <td>{!! ucfirst($c->name) !!}</td>
             <td>{!! $c->email !!}</td>
-            <td>{!! $c->role_id!!}</td>
+            {{-- <td>{!! $c->role_id !!}</td> --}}
 
 
-            <td>
+            {{-- <td>
                 {!! Form::open(['method' => 'POST', 'route' => ['user.delete', $c->id]]) !!}
 
                 <a href="" data-toggle="modal"  name="activate_delete" data-target=".delete">
@@ -34,7 +30,7 @@ USERS
                 </a>
 
                 {!! Form::close() !!}
-            </td>
+            </td> --}}
         </tr>
     @endforeach
     </tbody>

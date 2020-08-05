@@ -18,6 +18,7 @@ class CreateRequestTable extends Migration
             $table->bigInteger('user_id')->default(0);
             $table->bigInteger('payment_id')->default(0);
             $table->string('address')->nullable()->default(null);
+            $table->string('status',50)->nullable()->default('pending');
             $table->float('total_price')->default(0);
             $table->tinyInteger('is_recurring')->default(0);
             $table->timestamps();
