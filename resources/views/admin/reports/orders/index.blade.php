@@ -42,12 +42,10 @@ Product Sales
 		<td>{!! $order->address !!}</td>
 		<td>{!! $order->total_price!!}</td>
 		<td>
-
 			<a href="" data-toggle="modal" name="activate_delete" data-target=".detail_{!! $order->id !!}">
 				<span class=" badge bg-info btn-success">
 					Detail</span></a>
 			@include('admin.reports.orders.partial.order_modal',['order'=>$order])
-
 		</td>
 		<td>
 			<div class="form-group">
@@ -72,7 +70,7 @@ Product Sales
 					$final_status_display = 'display:block';
 				}
 			?>
-			
+
 			<div id="pending_btn_{!!$order->id!!}" style="{!!$pending_display!!}">
 				<a href="" data-toggle="modal" name="" data-target=".inprogress_request_{!! $order->id !!}">
 					<span class=" badge bg-info btn-success ">
@@ -103,21 +101,21 @@ Product Sales
 				'btn_class'=>'btn-danger' ])
 			</div>
 			<div id="inprogress_btn_{!!$order->id!!}" style="{!!$completed_display!!}">
-			<a href="" data-toggle="modal" name="" data-target=".completed_request_{!! $order->id !!}">
-				<span class=" badge bg-info btn-success">
-					Complete</span></a>
-			@include('admin.reports.orders.partial.confirmation_modal',
-			[
-			'order_id'=>$order->id,
-			'cell_id'=>'td_'.$order->id,
-			'req_status'=>'completed_request_'.$order->id,
-			'url'=>asset('admin/reports/orders/status_update/'.$order->id),
-			'status'=>'completed',
-			'btn_class'=>'btn-success'
-			])
+				<a href="" data-toggle="modal" name="" data-target=".completed_request_{!! $order->id !!}">
+					<span class=" badge bg-info btn-success">
+						Complete</span></a>
+				@include('admin.reports.orders.partial.confirmation_modal',
+				[
+				'order_id'=>$order->id,
+				'cell_id'=>'td_'.$order->id,
+				'req_status'=>'completed_request_'.$order->id,
+				'url'=>asset('admin/reports/orders/status_update/'.$order->id),
+				'status'=>'completed',
+				'btn_class'=>'btn-success'
+				])
 			</div>
 			<div id="finalstatus_btn_{!!$order->id!!}" style="{!!$final_status_display!!}">
-			{!! ucwords($order->status) !!}
+				{!! ucwords($order->status) !!}
 			</div>
 		</td>
 

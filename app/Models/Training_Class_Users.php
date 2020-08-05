@@ -25,13 +25,13 @@ class Training_Class_Users extends Model
        return $this->hasOne('App\Models\Training_class', 'id', 'training_class_id');
     }
 
-    public function packages()
+    public function package()
     {
        return $this->hasOne('App\Models\Package', 'id', 'package_id');
     }
 
-    public function payments()
+    public function payment()
     {
-       return $this->hasOne('App\Models\Package', 'id', 'payment_id');
+       return $this->hasOne('App\Models\Payment', 'id', 'payment_id');
     }
 }

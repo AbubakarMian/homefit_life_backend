@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 
 class Admincontroller extends Controller
 {
@@ -81,7 +82,8 @@ class Admincontroller extends Controller
     }
     public function admin_dashboard()
     {
-        $count = Users::count('id');
+        $count = Users::where('role_id',Config::get('constants.roles_id.user'))
+                        ->count('id');
 
         $modules[] = [
             'url' => 'user',
@@ -97,13 +99,13 @@ class Admincontroller extends Controller
             'title' => 'Products',
             'count' => $count
         ];
-        $count = Package::count('id');
+        // $count = Package::count('id');
 
-        $modules[] = [
-            'url' => 'package',
-            'title' => 'Packages',
-            'count' => $count
-        ];
+        // $modules[] = [
+        //     'url' => 'package',
+        //     'title' => 'Packages',
+        //     'count' => $count
+        // ];
 
         $count = Training_Type::count('id');
 
@@ -114,12 +116,12 @@ class Admincontroller extends Controller
         ];
         $count = Nutritions::count('id');
 
-        $modules[] = [
-            'url' => 'nutritions',
-            'title' => 'Nutritions',
-            'count' => $count
-        ];
-        $count = Trainer::count('id');
+        // $modules[] = [
+        //     'url' => 'nutritions',
+        //     'title' => 'Nutritions',
+        //     'count' => $count
+        // ];
+        // $count = Trainer::count('id');
 
         $modules[] = [
             'url' => 'trainer',

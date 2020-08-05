@@ -28,20 +28,19 @@
 	<tr>
 		<th>User</th>
 		<th>Class</th>
-		<th>Packages</th>
-		<th>Payments</th>
+		<th>Package</th>
+		<th>PaymentID</th>
 
 	</tr>
 </thead>
 <tbody>
 {{----}}
 	@foreach($group_session_payments as $r)
-{{--		{!! dd($r->user) !!}--}}
 		<tr>
 			<td>{!! $r->user->name??''!!}</td>
 		<td>{!! $r->trainingclass->name??''!!}</td>
-		<td>{!! $r->packages->name??''!!}</td>
-		<td>{!! $r->payments->payment_id??''!!}</td>
+		<td>{!! $r->package->name!!}</td>
+		<td>{!! $r->payment->payment_id??''!!}</td>
 
 
 	</tr>

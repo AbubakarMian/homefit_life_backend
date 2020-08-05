@@ -18,7 +18,6 @@ class CreateLeadsTable extends Migration
             $table->integer('user_id');
             $table->string('status',25);
             $table->string('message',250);
-            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

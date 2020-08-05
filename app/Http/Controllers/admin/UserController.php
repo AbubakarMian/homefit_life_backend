@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Users;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Config;
 
 class UserController extends Controller
 {
     public function index(){
 
-        $users = Users::paginate(5,['id','name','email','role_id']);
+        $users = Users::where('role_id',Config::get('constants.roles_id.user'))
+                        ->paginate(5,['id','name','email','role_id']);
 
         return \View::make('admin.modules.users.index',compact('users'));
     }
