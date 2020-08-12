@@ -15,10 +15,10 @@ class Group_Session_PaymentsController extends Controller
 {
     public function index(Request $request)
     {
-        $search_text = $request->user??'';
+        $search_text = $request->user;
 
-        $group_session_payments= $this->query($search_text )->paginate(10);
-// dd($group_session_payments);
+        $group_session_payments= $this->query($search_text  )->paginate(10);
+
         return \View::make('admin.reports.group_session_payments.index', compact(
             'group_session_payments',
             'search_text'));
@@ -41,7 +41,7 @@ class Group_Session_PaymentsController extends Controller
         return $report->select(
             'id',
             'total_purchased_session',
-            'session_left','user_id','training_class_id','package_id','payment_id'
+            'session_left','user_id','training_class_id'
         );
     }
 

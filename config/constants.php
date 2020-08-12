@@ -11,18 +11,6 @@ return [
 		'ios' => "fitness-app-ios"
 	],
 
-	'roles' => [
-		'1'=>'super_admin',
-		'2'=>'user',
-		'3'=>'trainer',
-	],
-
-	'roles_id' => [
-		'super_admin'=>'1',
-		'user'=>'2',
-		'trainer'=>'3'
-	],
-
 	'social_login' => [
 		'facebook'=>'facebook',
 		'twitter'=>'twitter',
@@ -53,7 +41,7 @@ return [
         'delete'=>'delete',
     ],
     'mail'=>[
-        'to'=>'developer.hatinco@gmail.com',
+        'to'=>'developer.mobiwhiz@gmail.com',
         'name'=>'Admin'
     ]
 ];

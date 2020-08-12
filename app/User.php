@@ -36,18 +36,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function getRoleIdAttribute($value)
-    {
-        if($value == 1){
-            $role = 'Super Admin';
-        }
-        elseif($value == 3){
-            $role = 'Trainer';
-        }
-        else{
-            $role = 'User';
-        }
-        return ucfirst('asdasdasdsa');
-    }
 }
