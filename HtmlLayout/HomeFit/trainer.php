@@ -1,11 +1,11 @@
 <?php 
-include 'header.php'
+include 'dashBordHead.php'
 ?>
 <link href="css/trainer.css" rel="stylesheet">
 <link href="css/advancesearch.css" rel="stylesheet">
 <section>
 	<div class="innerPage">
-		<div class="container">
+		<div class="">
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="pageTitle">
@@ -32,7 +32,7 @@ include 'header.php'
 		<!-- trainer container -->
 		<div class="featuredTrainerArea">
 		
-		<div class="container bgContainer">
+		<div class=" bgContainer">
 			<h2>Featured Trainers</h2>
 			<div class="row">
 				<div class="col-sm-12">
@@ -539,5 +539,5 @@ include 'header.php'
 <!-- Modal Advance Search -->
 <script type="text/javascript" src="js/advancesearch.js"></script>
 <?php 
-include 'footer.php'
+include 'dashBordFooter.php'
 ?>

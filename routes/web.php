@@ -82,13 +82,13 @@ Route::post('training_type/delete/{id}','Admin\Training_TypeController@destroy_u
 // Users
 
 
-Route::get('user', 'Admin\UserController@index')->name('user.index');
+Route::get('admin/user', 'Admin\UserController@index')->name('user.index');
 // Route::get('user/create', 'Admin\UserController@create')->name('user.create');
 // Route::post('user/save', 'Admin\UserController@save')->name('user.save');
 
 // Route::get('user/edit/{id}','Admin\UserController@edit')->name('user.edit');
 // Route::post('user/update/{id}','Admin\UserController@update')->name('user.update');
-Route::post('user/delete/{id}','Admin\UserController.@destroy_undestroy')->name('user.delete');
+Route::post('Admin/user/delete/{id}','Admin\UserController.@destroy_undestroy')->name('user.delete');
 
 // ================================================
 // Food
@@ -186,3 +186,27 @@ Route::post('admin/reports/personal_session_payments', 'Admin\Reports\Personal_S
 Route::post('personal_session_payments/excel', 'Admin\Reports\Personal_Session_PaymentsController@index_excel')->name('personal_session_payments.excel');
 Route::post('admin/reports/personal_session_payments/status_update/{id}','Admin\Reports\Personal_Session_PaymentsController@status_update')->name('personal_session_payments.status_update');
 
+
+//=============================================================
+//user area
+Route::get('user','userController@user')->name('user');
+Route::get('userlogin','userController@userlogin')->name('userlogin');
+Route::get('userreset','userController@userreset')->name('userreset');
+Route::get('usercreate','userController@usercreate')->name('usercreate');
+Route::get('userdashboard','userController@userdashboard')->name('userdashboard');
+Route::get('profileedit','userController@profileedit')->name('profileedit');
+Route::get('changepass','userController@changepass')->name('changepass');
+Route::get('paymentinfo','userController@paymentinfo')->name('paymentinfo');
+Route::get('payment','userController@payment')->name('payment');
+Route::get('trainerrequest','userController@trainerrequest')->name('trainerrequest');
+Route::get('trainer','userController@trainer')->name('trainer');
+Route::get('profile','userController@profile')->name('profile');
+Route::get('groupclass','userController@groupclass')->name('groupclass');
+Route::get('categories','userController@categories')->name('categories');
+Route::get('description','userController@description')->name('description');
+Route::get('livesession','userController@livesession')->name('livesession');
+Route::get('productcart','userController@productcart')->name('productcart');
+Route::get('shippingform','userController@shippingform')->name('shippingform');
+Route::get('paymentcard','userController@paymentcard')->name('paymentcard');
+Route::get('freelivesession','userController@freelivesession')->name('freelivesession');
+Route::get('productdetail','userController@productdetail')->name('productdetail');
