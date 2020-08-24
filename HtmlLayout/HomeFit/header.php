@@ -29,7 +29,7 @@
 						<a href="/homefit/home.php"><img src="images/logo.png" class="img-responsive"></a>
 					</div>
 				</div>
-				<div class="col-sm-7 col-xs-12">
+				<div class="col-sm-6 col-xs-12">
 					<div class="row mobileNav">
 						<div class="col-xs-4 visible-xs xs-marker">
 							<a href="https://goo.gl/maps/iE4esX3uT4hkjbuE9" target="_blank" title="Google Map"><i class="fa fa-map-marker "></i>Find</a>
@@ -56,7 +56,7 @@
 										</li>
 										<li id="">									
 										
-											<a href=""><span>Trainers</span> </a>									
+											<a href="trainer.php"><span>Trainers</span> </a>									
 										</li>
 										<li id="">									
 											<a href=""><span>Store</span> </a>									
@@ -70,9 +70,60 @@
 						</nav>
 					</div>
 				</div>
-				<div class="col-sm-2 hidden-xs">
-					<div class="cartArea"><!---<i class="flaticon-shopping-cart"></i>--->
-						<a href="" class="btn btn-link btn-sm btn-cart"><i class="flaticon-cart" aria-hidden="true" style="font-size: 20px;"></i></a>
+				<div class="col-sm-3 hidden-xs">
+					<div class="cartArea">
+						<button id="notification" class="btn btn-link btn-sm btn-notification"><i class="flaticon-bell" aria-hidden="true"></i></button>
+						<div class="notificationArea"  style="display: none;">
+							<h3>Yoga Group Class</h3>
+							<p>Starts in 15 Min</p>
+							<ul class="list-inline">
+								<li><a href="" class="btn btn-primary btn-sm">Join!</a></li>
+								<li><a href="" class="btn btn-primary btn-sm">HomePage</a></li>
+							</ul>
+						</div>
+						<button id="cartItems" class="btn btn-link btn-sm btn-cart"><i class="flaticon-cart" aria-hidden="true"></i></button>
+						<div class="cartItemArea" style="display: none;"  >
+							  <table class="table">
+							    <thead>
+							      <tr>
+							        <th>Item </th>
+							        <th>Details</th>
+							        <th>Price</th>
+							        <th>Qty</th>
+							        <th>Total</th>
+							        <th></th>
+							      </tr>
+							    </thead>
+							    <tbody>
+							      <tr>
+							        <td class="cartImg"><img src="images/product-02.jpg" class="img-responsive"></td>
+							        <td>Gym Product 1</td>
+							        <td>22.22 $</td>
+							        <td>02</td>
+							        <td>44.44$</td>
+							        <td>X</td>
+							      </tr>
+							      <tr>
+							        <td class="cartImg"><img src="images/product-02.jpg" class="img-responsive"></td>
+							        <td>Gym Product 1</td>
+							        <td>22.22 $</td>
+							        <td>02</td>
+							        <td>44.44$</td>
+							        <td>X</td>
+							      </tr>
+							      <tr>
+							        <td class="cartImg"><img src="images/product-02.jpg" class="img-responsive"></td>
+							        <td>Gym Product 1</td>
+							        <td>22.22 $</td>
+							        <td>02</td>
+							        <td>44.44$</td>
+							        <td>X</td>
+							      </tr>
+							    </tbody>
+							  </table>
+							   <center><a href="" class="btn btn-primary btn-xs">Checkout</a></center>
+
+						</div>
 						<a href="/homefit/login.php" class="btn btn-primary btn-sm btn-UserLogin " >User Login <i class="fa fa-user-circle" aria-hidden="true"></i></a>
 					</div>
 				</div>
@@ -80,4 +131,17 @@
 		</div>
 	</div>
 </header>
+<script>
+$(document).ready(function(){
+  $("#notification").click(function(){
+   $(".notificationArea").toggle();
+  });
+});
+
+$(document).ready(function(){
+  $("#cartItems").click(function(){
+   $(".cartItemArea").toggle();
+  });
+});
+</script>
 	

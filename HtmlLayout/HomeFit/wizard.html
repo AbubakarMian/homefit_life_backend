@@ -16,360 +16,260 @@
 
 	</head>
 	<body>
-	<header>
-		<div class="topHeader">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-3 col-xs-12">
-						<div class="logoArea">
-							<img src="images/logo.png" class="img-responsive">
-						</div>
-					</div>
-					<div class="col-sm-7 col-xs-12">
-						<div class="row mobileNav">
-							<div class="col-xs-4 visible-xs xs-marker">
-								<a href="https://goo.gl/maps/iE4esX3uT4hkjbuE9" target="_blank" title="Google Map"><i class="fa fa-map-marker "></i>Find</a>
-							</div>
-							<div class="col-xs-4 visible-xs xs-phone">
-								<a href="tel:+92-21-38897770" target="_blank" title="Contact Number"><i class="fa fa-phone "></i>Call</a>
-							</div>
-							<div class="col-xs-4 visible-xs">
-								<button data-target=".navbar-collapse" data-toggle="collapse" id="mnav-button" class="navbar-toggle fa fa-bars fa-2x collapsed" type="button">
-								</button>
-							</div>
-						</div>
-						<div class="menuBar">
-							<nav>
-								<div class="jump">  
-									<div class="navbar-collapse nav-collapse collapse" aria-expanded="false" style="height: 1px;">
-										<!-- responsive nav -->
-										<ul class="nav navbar-nav">
-											<li id="" class="inMenu">
-												<a href=""><span>Home</span> </a>									
-											</li>
-											<li id="">									
-												<a href=""><span>Classes</span> </a>									
-											</li>
-											<li id="">									
-											
-												<a href=""><span>Trainers</span> </a>									
-											</li>
-											<li id="">									
-												<a href=""><span>Store</span> </a>									
-											</li>
-											<li id="">									
-												<a href=""><span>Live Sessions</span> </a>									
-											</li>									
-										</ul>
-									</div> <!-- .nav-collapse -->
-								</div> <!-- .container -->
-							</nav>
-						</div>
-					</div>
-					<div class="col-sm-2 hidden-xs">
-						<div class="cartArea"><!---<i class="flaticon-shopping-cart"></i>--->
-							<a href="" class="btn btn-link btn-sm btn-cart"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 20px;"></i></a>
-							<a href="" class="btn btn-primary btn-sm btn-UserLogin " >User Login <i class="fa fa-user-circle" aria-hidden="true"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+
 	<style>
-	* {
-	  box-sizing: border-box;
-	}
 
-	body {
-	  background-color: #f1f1f1;
-	}
-
-	#regForm {
-	  background-color: #ffffff;
-	  margin: 100px auto;
-	  font-family: Raleway;
-	  padding: 40px;
-	  width: 70%;
-	  min-width: 300px;
-	}
-
-
-	/* Mark input boxes that gets an error on validation: */
-	input.invalid {
-	  background-color: #ffdddd;
-	}
-
-	/* Hide all steps by default: */
-	.tab {
-	  display: none;
-	}
-
-	button {
-	  background-color: #4CAF50;
-	  color: #ffffff;
-	  border: none;
-	  padding: 10px 20px;
-	  font-size: 17px;
-	  font-family: Raleway;
-	  cursor: pointer;
-	}
-
-	button:hover {
-	  opacity: 0.8;
-	}
-
-	#prevBtn {
-	  background-color: #bbbbbb;
-	}
-
-	/* Make circles that indicate the steps of the form: */
-	.step {
-	  height: 15px;
-	  width: 15px;
-	  margin: 0 2px;
-	  background-color: #bbbbbb;
-	  border: none;  
-	  border-radius: 50%;
-	  display: inline-block;
-	  opacity: 0.5;
-	}
-
-	.step.active {
-	  opacity: 1;
-	}
-
-	/* Mark the steps that are finished and valid: */
-	.step.finish {
-	  background-color: #4CAF50;
-	}
 	</style>
 	<section>
-	<!-- Trigger the modal with a button -->
-	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#AdvanceSearchModal">Open Modal</button>
-
-	<!-- Modal -->
-	<div id="AdvanceSearchModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>>
-	      </div>
-	      <div class="modal-body">
-	       <div id="regForm" >
-	  <h1>Register:</h1>
-	  <!-- One "tab" for each step in the form: -->
-	  <div class="tab">
-	    <div class="AdvanceSearchArea">
-	        	<h2>Advance Search</h2>
-	        	<div class="formAdvanceSearch">
-	        		<div class="form-group">
-					  <input type="text" class="form-control" placeholder="Country, City. State. Zip" >
-					</div>
-					<div class="form-group">
-					  <select class="form-control" id="sel1">
-					    <option>Mandatory Training Type</option>
-					    <option>2</option>
-					    <option>3</option>
-					    <option>4</option>
-					  </select>
-					</div>
-					<div class="form-group">
-					  <select class="form-control" id="sel1">
-					    <option>Class Type</option>
-					    <option>Personal Class</option>
-					    <option>Group Class</option>
-					    <option>Both</option>
-					  </select>
-					</div>
-					<div class="form-group">
-					  <input type="text" class="form-control" placeholder="Trainer Name (optional)">
-					</div>
-					<div class="form-group">
-					  <select class="form-control" id="sel1">
-					    <option>Gender Type</option>
-					    <option>Male</option>
-					    <option>Female</option>
-					  </select>
-					</div>
-	        	</div>
-	        </div>
-	  </div>
-	  <div class="tab">
-	    <div class="trainerSelect">
-	    	  <ul class="nav nav-pills">
-			    <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
-			    <li><a data-toggle="pill" href="#menu1">Menu 1</a></li>
-			    <li><a data-toggle="pill" href="#menu2">Menu 2</a></li>
-			    <li><a data-toggle="pill" href="#menu3">Menu 3</a></li>
-			  </ul>
-			  
-			  <div class="tab-content">
-			    <div id="home" class="tab-pane fade in active">
-			      <h3>HOME</h3>
-			      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-			    </div>
-			    <div id="menu1" class="tab-pane fade">
-			      <h3>Menu 1</h3>
-			      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			    </div>
-			    <div id="menu2" class="tab-pane fade">
-			      <h3>Menu 2</h3>
-			      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-			    </div>
-			    <div id="menu3" class="tab-pane fade">
-			      <h3>Menu 3</h3>
-			      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-			    </div>
-			  </div>
-	    </div>
-	  </div>
-	  <div style="overflow:auto;">
-	    <div style="float:right;">
-	      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-	      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-	    </div>
-	  </div>
-	  <!-- Circles which indicates the steps of the form: -->
-	  <div style="text-align:center;margin-top:40px;">
-	    <span class="step"></span>
-	    <span class="step"></span>
-	  </div>
-	</div>
-	      </div>
-
-	    </div>
-
-	  </div>
-	</div>
-
-
-
-
-
-
+	<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-9">
+                <h2>Carousel Product Cart Slider</h2>
+            </div>
+            <div class="col-md-3">
+                <!-- Controls -->
+                <div class="controls pull-right hidden-xs">
+                    <a class="left fa fa-chevron-left btn btn-success" href="#carousel-example"
+                        data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-success" href="#carousel-example"
+                            data-slide="next"></a>
+                </div>
+            </div>
+        </div>
+        <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+						<div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="row">
+					<div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 	</section>
-	<footer>
-		<div class="footerArea">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="ftrLogo">
-							<img src="images/googleplay.png" class="img-responsive">
-						</div>
-						<div class="ftrLogo">
-							<img src="images/appstore.png" class="img-responsive">
-						</div>
-						<div class="ftrLogo">
-							<img src="images/webapp.png" class="img-responsive">
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="ftrLinks">
-							<h3>Resourses</h3>
-							<ul class="ftrList">
-								<li><a href="">My Info</a></li>
-								<li><a href="">My Questions</a></li>
-								<li><a href="">F.A.Q</a></li>
-								<li><a href="">Search Trainer</a></li>
-								<li><a href="">Latest Information</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="ftrContact">
-							<h3>Contact</h3>
-							<div>PO Box UN152468 , 1 Street North, New</div>
-							<div>Town, Califonia, USA</div>
-							<div>Phone: 123123123123</div>
-							<div>Fax: 123123123123</div>
-							<div>Email: test@test.com</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="copyRightArea">
-			<div class="container">
-				Copyrights © 2020. Khatm-e-Nabuwat All Rights Reserved. Designed By HatInco
-			</div>
-		</div>
-	</footer>
-	<script>
-	var currentTab = 0; // Current tab is set to be the first tab (0)
-	showTab(currentTab); // Display the current tab
+	<style>
+	@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+.col-item
+{
+    border: 1px solid #E1E1E1;
+    border-radius: 5px;
+    background: #FFF;
+}
+.col-item .photo img
+{
+    margin: 0 auto;
+    width: 100%;
+}
 
-	function showTab(n) {
-	  // This function will display the specified tab of the form...
-	  var x = document.getElementsByClassName("tab");
-	  x[n].style.display = "block";
-	  //... and fix the Previous/Next buttons:
-	  if (n == 0) {
-	    document.getElementById("prevBtn").style.display = "none";
-	  } else {
-	    document.getElementById("prevBtn").style.display = "inline";
-	  }
-	  if (n == (x.length - 1)) {
-	    document.getElementById("nextBtn").innerHTML = "Submit";
-	  } else {
-	    document.getElementById("nextBtn").innerHTML = "Next";
-	  }
-	  //... and run a function that will display the correct step indicator:
-	  fixStepIndicator(n)
-	}
+.col-item .info
+{
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    margin-top: 1px;
+}
 
-	function nextPrev(n) {
-	  // This function will figure out which tab to display
-	  var x = document.getElementsByClassName("tab");
-	  // Exit the function if any field in the current tab is invalid:
-	  if (n == 1 && !validateForm()) return false;
-	  // Hide the current tab:
-	  x[currentTab].style.display = "none";
-	  // Increase or decrease the current tab by 1:
-	  currentTab = currentTab + n;
-	  // if you have reached the end of the form...
-	  if (currentTab >= x.length) {
-	    // ... the form gets submitted:
-	    document.getElementById("regForm").submit();
-	    return false;
-	  }
-	  // Otherwise, display the correct tab:
-	  showTab(currentTab);
-	}
+.col-item:hover .info {
+    background-color: #F5F5DC;
+}
+.col-item .price
+{
+    /*width: 50%;*/
+    float: left;
+    margin-top: 5px;
+}
 
-	function validateForm() {
-	  // This function deals with validation of the form fields
-	  var x, y, i, valid = true;
-	  x = document.getElementsByClassName("tab");
-	  y = x[currentTab].getElementsByTagName("input");
-	  // A loop that checks every input field in the current tab:
-	  for (i = 0; i < y.length; i++) {
-	    // If a field is empty...
-	    if (y[i].value == "") {
-	      // add an "invalid" class to the field:
-	      y[i].className += " invalid";
-	      // and set the current valid status to false
-	      valid = false;
-	    }
-	  }
-	  // If the valid status is true, mark the step as finished and valid:
-	  if (valid) {
-	    document.getElementsByClassName("step")[currentTab].className += " finish";
-	  }
-	  return valid; // return the valid status
-	}
+.col-item .price h5
+{
+    line-height: 20px;
+    margin: 0;
+}
 
-	function fixStepIndicator(n) {
-	  // This function removes the "active" class of all steps...
-	  var i, x = document.getElementsByClassName("step");
-	  for (i = 0; i < x.length; i++) {
-	    x[i].className = x[i].className.replace(" active", "");
-	  }
-	  //... and adds the "active" class on the current step:
-	  x[n].className += " active";
-	}
-	</script>
+.price-text-color
+{
+    color: #219FD1;
+}
+
+.col-item .info .rating
+{
+    color: #777;
+}
+
+.col-item .rating
+{
+    /*width: 50%;*/
+    float: left;
+    font-size: 17px;
+    text-align: right;
+    line-height: 52px;
+    margin-bottom: 10px;
+    height: 52px;
+}
+
+.col-item .separator
+{
+    border-top: 1px solid #E1E1E1;
+}
+
+.clear-left
+{
+    clear: left;
+}
+
+.col-item .separator p
+{
+    line-height: 20px;
+    margin-bottom: 0;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.col-item .separator p i
+{
+    margin-right: 5px;
+}
+.col-item .btn-add
+{
+    width: 50%;
+    float: left;
+}
+
+.col-item .btn-add
+{
+    border-right: 1px solid #E1E1E1;
+}
+
+.col-item .btn-details
+{
+    width: 50%;
+    float: left;
+    padding-left: 10px;
+}
+.controls
+{
+    margin-top: 20px;
+}
+[data-slide="prev"]
+{
+    margin-right: 10px;
+}
+
+	</style>
 	</body>
 	</html>

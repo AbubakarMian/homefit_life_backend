@@ -18,28 +18,28 @@ include 'header.php'
 						</div>
 						<br/>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-					      	<input id="password" type="password" class="form-control" name="password" placeholder="Password">
+							<span class="input-group-addon"><i class="fa fa-user-o"></i></span>
+					      	<input id="text" type="text" class="form-control" name="password" placeholder="Password">
+					    </div>
+					    <br/> 
+						<div class="input-group">
+							<span class="input-group-addon"><i class="flaticon-email"></i></span>
+					      	<input id="text" type="email" class="form-control" name="password" placeholder="email">
+					    </div>
+					    <br/>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="flaticon-telephone"></i></span>
+					      	<input id="text" type="text" class="form-control" name="password" placeholder="Password">
 					    </div>
 					    <br/>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-					      	<input id="password" type="password" class="form-control" name="password" placeholder="Password">
+					      	<input id="text" type="text" class="form-control" name="password" placeholder="Password">
 					    </div>
 					    <br/>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-					      	<input id="password" type="password" class="form-control" name="password" placeholder="Password">
-					    </div>
-					    <br/>
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-					      	<input id="password" type="password" class="form-control" name="password" placeholder="Password">
-					    </div>
-					    <br/>
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-					      	<input id="password" type="password" class="form-control" name="password" placeholder="Password">
+					      	<input id="text" type="text" class="form-control" name="password" placeholder="Password">
 					    </div>
 					    <div class="btnLogIn">
 					    	<a href=""  class="btn btn-primary btnAcc">SignUp</a>

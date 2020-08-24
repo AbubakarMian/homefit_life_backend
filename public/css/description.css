@@ -1,0 +1,78 @@
+.descriptionClasses h2 {
+    font-size: 20px;
+    border-bottom: 1px solid;
+    color: #0c94ea;
+    text-transform: uppercase;
+}
+.InnerContent {
+    padding: 30px 0px;
+}
+.headArea h1 {
+    background: #0c94ea;
+    color: #fff;
+    width: max-content;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+.headArea h2 {
+    font-size: 30px;
+    border-bottom: 0px solid;
+    color: #fff;
+    text-transform: uppercase;
+    background: #333333;
+    width: max-content;
+    padding: 5px 10px;
+    margin: 0px;
+}
+.headArea h3 {
+    background: #84bc3f;
+    color: #fff;
+    width: max-content;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+.featuredTrainerArea li {
+    width: 12%;
+}
+.featuredTrainerBoxImg {
+    position: relative;
+}
+.featuredTrainerBoxImg img {
+    border-radius: 104%;
+    border: 5px solid #ccc;
+}
+.featuredTrainerActive {
+    background: #29eb78;
+    height: 20px;
+    width: 20px;
+    border-radius: 21px;
+    border: 2px solid #fff;
+    position: absolute;
+    bottom: 20px;
+    right: 6px;
+}
+.featuredTrainerName {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 0px;
+}
+.featuredTrainerDeactiveActive {
+    background: #ccc;
+    height: 20px;
+    width: 20px;
+    border-radius: 21px;
+    border: 2px solid #fff;
+    position: absolute;
+    bottom: 20px;
+    right: 6px;
+}
+.btnbook {
+    padding: 10px 33px;
+    font-size: 22px;
+}
+.bookNowBtn {
+    text-align: center;
+    margin: 15px 0px;
+}

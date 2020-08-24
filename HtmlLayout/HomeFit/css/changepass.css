@@ -1,0 +1,13 @@
+
+.innerPage {
+    position: relative;
+    min-height: 500px;
+    overflow: hidden;
+        background: #fff;
+}
+.btnLogIn {
+    margin-bottom: 30px;
+}
+.changePass {
+    margin-top: 20%;
+}

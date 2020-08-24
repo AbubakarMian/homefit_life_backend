@@ -1,0 +1,303 @@
+.pageName span {
+    font-weight: 400;
+}
+.profileImg img {
+    border-radius: 100%;
+}
+.profileEditBtn{
+  text-align: center;
+}
+.profileEditBtn {
+    margin-top: 15px;
+}
+.profileDetails {
+    background: #fff;
+    padding: 15px;
+}
+.searchTrainer input {
+    height: 43px;
+    border-radius: 0px;
+    background: #ccc;
+}
+.searchTrainer .btnSearch {
+    text-align: center;
+    height: 43px;
+    width: 100%;
+}
+.searchTrainer .flaticon-loupe:before {
+    content: "\f101";
+    font-size: 14px;
+    padding: 0px 8px;
+    margin: 0px;
+}
+.searchTrainer .form-group {
+    margin: 0px;
+}
+.btnAdvSearch {
+    border-radius: 0px;
+    padding: 10px 8px;
+}
+.searchTrainer {
+    padding: 15px 0px;
+}
+.searchTrainer .btnSearch {
+    width: 100%;
+    border-radius: 0px;
+}
+.freeLiveSessionBoxImg img, 
+.featuredTrainerBoxImg img {
+    border-radius: 104%;
+    border: 5px solid #ccc;
+}
+.freeLiveSessionBoxImg,
+.featuredTrainerBoxImg {
+    position: relative;
+}
+.freeLiveSessionActive,
+.featuredTrainerActive {
+    background: #29eb78;
+    height: 20px;
+    width: 20px;
+    border-radius: 21px;
+    border: 2px solid #fff;
+    position: absolute;
+    bottom: 20px;
+    right: 6px;
+}
+.freeLiveSessionDeactiveActive,
+.featuredTrainerDeactiveActive {
+    background: #ccc;
+    height: 20px;
+    width: 20px;
+    border-radius: 21px;
+    border: 2px solid #fff;
+    position: absolute;
+    bottom: 20px;
+    right: 6px;
+}
+.freeLiveSessionName,
+.featuredTrainerName {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 0px;
+}
+.freeLiveSessionBox,
+.featuredTrainerBox {
+    
+}
+.freeLiveSessionArea li,
+.featuredTrainerArea li {
+    width: 12%;
+}
+.catagoriesArea,
+.freeLiveSessionArea,
+.featuredTrainerArea {
+    background: #fff;
+    overflow: auto;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+.featuredTrainerArea h2 {
+    font-size: 20px;
+    background: #0c94ea;
+    margin-left: -15px;
+    padding-left: 22px;
+    width: 21%;
+    padding-top: 5px;
+    color: #fff;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+.freeLiveSessionArea h2 {
+    font-size: 20px;
+    background: #0c94ea;
+    margin-left: -15px;
+    padding-left: 22px;
+    width: 37%;
+    padding-top: 5px;
+    color: #fff;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+.catagoriesArea h2 {
+    font-size: 20px;
+    background: #0c94ea;
+    margin-left: -15px;
+    padding-left: 22px;
+    width: 16%;
+    padding-top: 5px;
+    color: #fff;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+..catagoriesArea li{
+    width: 12%;
+}
+.flaticon-yoga:before {
+    font-size: 60px;
+    text-align: center;
+    margin: 0px;
+    color: #0c94ea;
+}
+.flaticon-step:before {
+    font-size: 60px;
+    text-align: center;
+    margin: 0px;
+    color: #c75d61;
+}
+.flaticon-bycicle:before {
+    font-size: 60px;
+    text-align: center;
+    margin: 0px;
+    color: #f1a73c;
+}
+.flaticon-cardio:before {
+    font-size: 60px;
+    text-align: center;
+    margin: 0px;
+    color: #39ad4a;
+}
+.flaticon-sneakers:before {
+    font-size: 60px;
+    text-align: center;
+    margin: 0px;
+    color: #e31e78;
+}
+.flaticon-pilates:before {
+    font-size: 60px;
+    text-align: center;
+    margin: 0px;
+    color: red;
+}
+
+.flaticon-jump-rope:before {
+    font-size: 60px;
+    text-align: center;
+    margin: 0px;
+    color: #997f5a;
+}
+.flaticon-running:before {
+    font-size: 60px;
+    text-align: center;
+    margin: 0px;
+    color: #fe8aad;
+}
+.catagoryText {
+    text-align: center;
+}
+.catagoryIcon {
+    border: 1px solid #ccc;
+    padding: 5px 22px;
+    border-radius: 10px;
+}
+.catagoriesArea a {
+    color: #000;
+    text-decoration: none;
+}
+.catagoryIcon:hover {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(204,204,204,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(204,204,204,1);
+    box-shadow: 0px 0px 5px 0px rgba(204,204,204,1);
+}
+.ChartsArea {
+    overflow: auto;
+}
+.barChart h3 {
+    text-align: center;
+    font-size: 18px;
+    color: #0c94ea;
+}
+.calendar, .calendar_weekdays, .calendar_content {
+    max-width: 300px;
+}
+.calendar {
+    margin: auto;
+    font-family:'Muli', sans-serif;
+    font-weight: 400;
+    background: #fff;
+}
+.calendar_content, .calendar_weekdays, .calendar_header {
+    position: relative;
+    overflow: hidden;
+}
+.calendar_content {
+    padding: 30px 0px;
+}
+.calendar_weekdays div {
+    display:inline-block;
+    vertical-align:top;
+}
+.calendar_weekdays div, .calendar_content div {
+    width: 14.28571%;
+    overflow: hidden;
+    text-align: center;
+    background-color: transparent;
+    color: #6f6f6f;
+    font-size: 14px;
+}
+.calendar_content div {
+    border: 1px solid transparent;
+    float: left;
+}
+.calendar_content div:hover {
+    border: 1px solid #dcdcdc;
+    cursor: default;
+}
+.calendar_content div.blank:hover {
+    cursor: default;
+    border: 1px solid transparent;
+}
+.calendar_content div.past-date {
+    color: #000;
+}
+.calendar_content div.today {
+    font-weight: bold;
+    font-size: 14px;
+    color: #0e91e9;
+    border: 1px solid #dcdcdc;
+}
+.calendar_content div.selected {
+    background-color: #f0f0f0;
+}
+.calendar_header {
+    width: 100%;
+    text-align: center;
+    background: #0d93ea;
+    margin-bottom: 20px;
+}
+.calendar_header h2 {
+        padding: 10px 0px;
+    font-family: 'Muli', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: #fff;
+    float: left;
+    width: 70%;
+    margin: 0 0 0px;
+}
+button.switch-month {
+    background-color: transparent;
+    padding: 0;
+    outline: none;
+    border: none;
+    color: #dcdcdc;
+    float: left;
+    width:15%;
+    padding: 10px 0px;
+    transition: color .2s;
+}
+button.switch-month:hover {
+    color: #000;
+}
+.calanderHead {
+    text-align: center;
+    color: #0c94ea;
+    font-weight: lighter;
+    padding: 40px 0px;
+    margin: 0px;
+}
+.NutrationArea {
+    background: #0c94ea;
+    color: #fff;
+}

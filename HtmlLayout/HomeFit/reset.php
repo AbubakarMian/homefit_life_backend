@@ -1,9 +1,9 @@
 <?php 
-include 'header.php'
+include 'dashBordHead.php' 
 ?>
 <section>
 	<div class="innerPage">
-		<div class="container">
+		<div class="">
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="pageTitle">
@@ -35,5 +35,5 @@ include 'header.php'
 
 
 <?php 
-include 'footer.php'
+include 'dashBordFooter.php'
 ?>

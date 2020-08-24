@@ -447,14 +447,7 @@ include 'header.php'
 										<option>4</option>
 									</select>
 								</div>
-								<div class="form-group">
-									<select class="form-control" id="sel1">
-										<option>Class Type</option>
-										<option>Personal Class</option>
-										<option>Group Class</option>
-										<option>Both</option>
-									</select>
-								</div>
+								
 								<div class="form-group">
 									<input type="text" class="form-control" placeholder="Trainer Name (optional)">
 								</div>
@@ -473,8 +466,7 @@ include 'header.php'
 						<div class="trainerSelect">
 				    	  <ul class="nav nav-pills">
 						    <li><a data-toggle="pill" class="btn btn-primary btnTabs" href="#home">Rating</a></li>
-						    <li><a data-toggle="pill" class="btn btn-primary btnTabs" href="#menu1">Location</a></li>
-						    <li><a data-toggle="pill" class="btn btn-primary btnTabs" href="#menu2">Time</a></li> 
+						    
 						    <li><a data-toggle="pill" class="btn btn-primary btnTabs" href="#menu3">Upcomming Group Class</a></li>
 						  </ul>
 						  
@@ -508,64 +500,7 @@ include 'header.php'
 							    </li>
 						  	</ul>
 						    </div>
-						    <div id="menu1" class="tab-pane fade">
-						      <h3>Location</h3>
-						     <ul class="list-inline">
-							    <li>
-							    	<div class="ADSearchTrainerBox">
-										<div class="ADSearchTrainerBoxImg">
-											<img src="images/livesession-02.jpg" class="img-responsive">
-											<div class="ADSearchTrainerActive">
-											</div>
-										</div>
-										<div class="ADSearchTrainerName">
-											Michle Clark
-										</div>
-									</div>
-							    </li>
-							    <li>
-							    	<div class="ADSearchTrainerBox">
-										<div class="ADSearchTrainerBoxImg">
-											<img src="images/livesession-02.jpg" class="img-responsive">
-											<div class="ADSearchTrainerDeactiveActive">
-											</div>
-										</div>
-										<div class="ADSearchTrainerName">
-											Michle Clark
-										</div>
-									</div>
-							    </li>
-						  	</ul>
-						    </div>
-						    <div id="menu2" class="tab-pane fade">
-						      <h3>Time</h3>
-						      <ul class="list-inline">
-							    <li>
-							    	<div class="ADSearchTrainerBox">
-										<div class="ADSearchTrainerBoxImg">
-											<img src="images/livesession-02.jpg" class="img-responsive">
-											<div class="ADSearchTrainerActive">
-											</div>
-										</div>
-										<div class="ADSearchTrainerName">
-											Michle Clark
-										</div>
-									</div>
-							    </li>
-							    <li>
-							    	<div class="ADSearchTrainerBox">
-										<div class="ADSearchTrainerBoxImg">
-											<img src="images/livesession-02.jpg" class="img-responsive">
-											<div class="ADSearchTrainerDeactiveActive">
-											</div>
-										</div>
-										<div class="ADSearchTrainerName">
-											Michle Clark
-										</div>
-									</div>
-							    </li>
-						  	</ul>
-						    </div>
+						   
 						    <div id="menu3" class="tab-pane fade">
 						      <h3>Upcomming Group Class</h3>
 						     <ul class="list-inline">
