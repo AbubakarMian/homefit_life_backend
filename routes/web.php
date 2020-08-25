@@ -2,32 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 //=================================================
 //login
 
-Route::group(['prefix' => '/'], function(){
+Route::group(['prefix' => 'admin_secure'], function(){
     Route::get('/', 'Admin\AdminController@dashboard');
-
-    Route::group(['prefix' => 'product'], function() {
-        Route::get('/', 'Admin\UsersController@view');
-
-    });
-});
 //=================================================
 //login
 Route::get('/uploadfile', 'UploadfileController@index');
@@ -81,14 +60,8 @@ Route::post('training_type/delete/{id}','Admin\Training_TypeController@destroy_u
 // ================================================
 // Users
 
-
-Route::get('admin/user', 'Admin\UserController@index')->name('user.index');
-// Route::get('user/create', 'Admin\UserController@create')->name('user.create');
-// Route::post('user/save', 'Admin\UserController@save')->name('user.save');
-
-// Route::get('user/edit/{id}','Admin\UserController@edit')->name('user.edit');
-// Route::post('user/update/{id}','Admin\UserController@update')->name('user.update');
-Route::post('Admin/user/delete/{id}','Admin\UserController.@destroy_undestroy')->name('user.delete');
+Route::get('user', 'Admin\UserController@index')->name('user.index');
+Route::post('user/delete/{id}','Admin\UserController.@destroy_undestroy')->name('user.delete');
 
 // ================================================
 // Food
@@ -103,8 +76,6 @@ Route::get('food/edit/{id}','Admin\FoodController@edit')->name('food.edit');
 Route::post('food/update/{id}','Admin\FoodController@update')->name('food.update');
 Route::post('food/delete/{id}','Admin\FoodController@destroy_undestroy')->name('food.delete');
 
-
-
 // ================================================
 // Nutritions
 
@@ -117,7 +88,6 @@ Route::post('nutritions/save', 'Admin\NutritionsController@save')->name('nutriti
 Route::get('nutritions/edit/{id}','Admin\NutritionsController@edit')->name('nutritions.edit');
 Route::post('nutritions/update/{id}','Admin\NutritionsController@update')->name('nutritions.update');
 Route::post('nutritions/delete/{id}','Admin\NutritionsController@destroy_undestroy')->name('nutritions.delete');
-
 
 // ================================================
 // Trainer
@@ -132,60 +102,44 @@ Route::get('trainer/edit/{id}','Admin\TrainerController@edit')->name('trainer.ed
 Route::post('trainer/update/{id}','Admin\TrainerController@update')->name('trainer.update');
 Route::post('trainer/delete/{id}','Admin\TrainerController@destroy_undestroy')->name('trainer.delete');
 
-
-
-//=============================================================
-//Reports
-//=============================================================
-
-//=============================================================
-//lead
-
-
-Route::get('admin/reports/leads', 'Admin\Reports\LeadsController@index')->name('lead.index');
-Route::post('admin/reports/leads', 'Admin\Reports\LeadsController@index')->name('lead.index');
+Route::get('reports/leads', 'Admin\Reports\LeadsController@index')->name('lead.index');
+Route::post('reports/leads', 'Admin\Reports\LeadsController@index')->name('lead.index');
 Route::post('excel', 'Admin\Reports\LeadsController@index_excel')->name('leads.excel');
 Route::post('leads/status_update/{id}','Admin\Reports\LeadsController@status_update')->name('leads.status_update');
 
-
 //=============================================================
 //orders
-Route::get('admin/reports/orders', 'Admin\Reports\OrdersController@index')->name('orders.index');
-Route::post('admin/reports/orders', 'Admin\Reports\OrdersController@index')->name('orders.index');
+Route::get('reports/orders', 'Admin\Reports\OrdersController@index')->name('orders.index');
+Route::post('reports/orders', 'Admin\Reports\OrdersController@index')->name('orders.index');
 Route::post('orders/excel', 'Admin\Reports\OrdersController@index_excel')->name('orders.excel');
-Route::post('admin/reports/orders/status_update/{id}','Admin\Reports\OrdersController@status_update')->name('orders.status_update');
+Route::post('reports/orders/status_update/{id}','Admin\Reports\OrdersController@status_update')->name('orders.status_update');
 
 //=============================================================
 //Regisered students
 
-Route::get('admin/reports/registered_students', 'Admin\Reports\RegisterdStudentsController@index')->name('registered_students.index');
-Route::post('admin/reports/registered_students', 'Admin\Reports\RegisterdStudentsController@index')->name('registered_students.index');
+Route::get('reports/registered_students', 'Admin\Reports\RegisterdStudentsController@index')->name('registered_students.index');
+Route::post('reports/registered_students', 'Admin\Reports\RegisterdStudentsController@index')->name('registered_students.index');
 Route::post('registered_students/excel', 'Admin\Reports\RegisterdStudentsController@index_excel')->name('registered_students.excel');
-Route::post('admin/reports/registered_students/status_update/{id}','Admin\Reports\RegisterdStudentsController@status_update')->name('registered_students.status_update');
-
-
-
+Route::post('reports/registered_students/status_update/{id}','Admin\Reports\RegisterdStudentsController@status_update')->name('registered_students.status_update');
 
 //=============================================================
 //Group_Session_PaymentsController
 
-Route::get('admin/reports/group_session_payments', 'Admin\Reports\Group_Session_PaymentsController@index')->name('group_session_payments.index');
-Route::post('admin/reports/group_session_payments', 'Admin\Reports\Group_Session_PaymentsController@index')->name('group_session_payments.index');
+Route::get('reports/group_session_payments', 'Admin\Reports\Group_Session_PaymentsController@index')->name('group_session_payments.index');
+Route::post('reports/group_session_payments', 'Admin\Reports\Group_Session_PaymentsController@index')->name('group_session_payments.index');
 Route::post('group_session_payments/excel', 'Admin\Reports\Group_Session_PaymentsController@index_excel')->name('group_session_payments.excel');
-Route::post('admin/reports/group_session_payments/status_update/{id}','Admin\Reports\Group_Session_PaymentsController@status_update')->name('group_session_payments.status_update');
-
-
-
-
+Route::post('reports/group_session_payments/status_update/{id}','Admin\Reports\Group_Session_PaymentsController@status_update')->name('group_session_payments.status_update');
 
 //=============================================================
 //Personal_Session_PaymentsController
 
-Route::get('admin/reports/personal_session_payments', 'Admin\Reports\Personal_Session_PaymentsController@index')->name('personal_session_payments.index');
-Route::post('admin/reports/personal_session_payments', 'Admin\Reports\Personal_Session_PaymentsController@index')->name('personal_session_payments.index');
+Route::get('reports/personal_session_payments', 'Admin\Reports\Personal_Session_PaymentsController@index')->name('personal_session_payments.index');
+Route::post('reports/personal_session_payments', 'Admin\Reports\Personal_Session_PaymentsController@index')->name('personal_session_payments.index');
 Route::post('personal_session_payments/excel', 'Admin\Reports\Personal_Session_PaymentsController@index_excel')->name('personal_session_payments.excel');
-Route::post('admin/reports/personal_session_payments/status_update/{id}','Admin\Reports\Personal_Session_PaymentsController@status_update')->name('personal_session_payments.status_update');
+Route::post('reports/personal_session_payments/status_update/{id}','Admin\Reports\Personal_Session_PaymentsController@status_update')
+                                                                                                        ->name('personal_session_payments.status_update');
 
+});
 
 //=============================================================
 //user area

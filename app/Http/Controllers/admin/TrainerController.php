@@ -46,7 +46,7 @@ class TrainerController extends Controller
     public function update(Request $request , $id  ){
         $trainer = Trainer::withTrashed()->find($id);
         $this->add_or_update($request , $trainer );
-        return Redirect('trainer');
+        return Redirect('admin_secure/trainer');
     }
 
 

@@ -13,7 +13,7 @@
 {!!Form::hidden('status_excel',null,['id'=>'status_excel'])!!}
 {!!Form::submit('Export Excel',['class'=>'btn btn-success pull-right',
 'onclick'=>'return group_session_payments_excel(event);',
-'data-url'=>asset('index.php/admin/pending_group_session_payments/excel')
+'data-url'=>asset('index.php/admin_secure/pending_group_session_payments/excel')
 ])!!}
 {!!Form::close()!!}
 @stop

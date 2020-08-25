@@ -28,7 +28,7 @@ class PackageController extends Controller
         $package = new Package();
 
         $this->add_or_update($request , $package );
-        return redirect('package');
+        return redirect('admin_secure/package');
 
     }
     public function edit($id){

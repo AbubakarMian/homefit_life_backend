@@ -16,7 +16,7 @@ $admin_common = session()->get('admin_common');
  @section('content')  
  	           <ol class="breadcrumb">
                 <li>
-                  <a href="{{asset('index.php/admin/dashboard')}}"><i class="ti-home mr5"></i>Dashboard</a>
+                  <a href="{{asset('index.php/admin_secure/dashboard')}}"><i class="ti-home mr5"></i>Dashboard</a>
                 </li>
                 <li>
                   <a href=""><i class="ti-window mr5"></i>Reports</a>

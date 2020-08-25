@@ -42,7 +42,7 @@ class ProductController extends Controller
     public function update(Request $request , $id  ){
         $product = Product::find($id);
         $this->add_or_update($request , $product );
-        return Redirect('product');
+        return Redirect('admin_secure/product');
     }
 
 

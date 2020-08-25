@@ -41,7 +41,7 @@ class Admincontroller extends Controller
 
         if(Auth::attempt($user_data))
         {
-            return redirect('dashboard');
+            return redirect('admin_secure/dashboard');
         }
         else
         {
@@ -58,7 +58,7 @@ class Admincontroller extends Controller
     function logout()
     {
         Auth::logout();
-        return redirect('main');
+        return redirect('admin_secure/main');
     }
     function dashboard (){
 
@@ -86,7 +86,7 @@ class Admincontroller extends Controller
                         ->count('id');
 
         $modules[] = [
-            'url' => 'user',
+            'url' => 'admin_secure/user',
             'title' => 'User',
             'count' => $count
         ];
@@ -95,7 +95,7 @@ class Admincontroller extends Controller
         $count = Product::count('id');
 
         $modules[] = [
-            'url' => 'product',
+            'url' => 'admin_secure/product',
             'title' => 'Products',
             'count' => $count
         ];
@@ -110,7 +110,7 @@ class Admincontroller extends Controller
         $count = Training_Type::count('id');
 
         $modules[] = [
-            'url' => 'training_type',
+            'url' => 'admin_secure/training_type',
             'title' => 'Training Type',
             'count' => $count
         ];
@@ -124,54 +124,31 @@ class Admincontroller extends Controller
         // $count = Trainer::count('id');
 
         $modules[] = [
-            'url' => 'trainer',
+            'url' => 'admin_secure/trainer',
             'title' => 'Trainer',
             'count' => $count
         ];
-//        $count = Food::count('id');
-//
-//        $modules[] = [
-//            'url' => 'food',
-//            'title' => 'Food',
-//            'count' => $count
-//        ];
-//
-//        $count = Food_Nutritions::count('id');
-//
-//        $modules[] = [
-//            'url' => 'Food_Nutritions',
-//            'title' => 'Food Nutritions',
-//            'count' => $count
-//        ];
-//
-//        $count = Food_Parameters::count('id');
-//
-//        $modules[] = [
-//            'url' => 'food_parameters',
-//            'title' => 'Food Parameters',
-//            'count' => $count
-//        ];
 
         $reports[] = [
-            'url' => 'admin/reports/leads',
+            'url' => 'admin_secure/reports/leads',
             'title' => 'Leads',
         ];
 
         $reports[] = [
-            'url' => 'admin/reports/orders',
+            'url' => 'admin_secure/reports/orders',
             'title' => 'Orders',
         ];
 
         $reports[] = [
-            'url' => 'admin/reports/registered_students',
+            'url' => 'admin_secure/reports/registered_students',
             'title' => 'Registered Students',
         ];
 $reports[] = [
-            'url' => 'admin/reports/group_session_payments',
+            'url' => 'admin_secure/reports/group_session_payments',
             'title' => 'Group Session Payments',
         ];
 $reports[] = [
-            'url' => 'admin/reports/personal_session_payments',
+            'url' => 'admin_secure/reports/personal_session_payments',
             'title' => 'Personal Session Payments',
         ];
 
