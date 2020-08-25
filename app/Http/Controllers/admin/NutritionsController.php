@@ -28,7 +28,7 @@ class NutritionsController extends Controller
         $nutritions = new Nutritions();
 
         $this->add_or_update($request , $nutritions );
-        return redirect('nutritions');
+        return redirect('admin_secure/nutritions');
 
     }
     public function edit($id){

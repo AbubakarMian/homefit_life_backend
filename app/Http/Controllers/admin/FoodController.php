@@ -27,7 +27,7 @@ class FoodController extends Controller
         $food = new Food();
 
         $this->add_or_update($request , $food );
-        return redirect('food');
+        return redirect('admin_secure/food');
 
     }
     public function edit($id){

@@ -43,7 +43,7 @@ class Training_TypeController extends Controller
     public function update(Request $request , $id  ){
         $training_type = Training_Type::find($id);
         $this->add_or_update($request , $training_type );
-        return Redirect('training_type');
+        return Redirect('admin_secure/training_type');
     }
 
 
