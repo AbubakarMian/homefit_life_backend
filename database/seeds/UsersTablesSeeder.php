@@ -16,9 +16,9 @@ class UsersTablesSeeder extends Seeder
     {
         {
             User::create([
-                'name'      => 'ameer maavia',
-                'email'     => 'ameer.maavia@gmail.com',
-                'password'  =>  Hash::make('abc123'),
+                'name'      => 'Super admin',
+                'email'     => 'admin@mail.com',
+                'password'  =>  Hash::make('123456'),
                 'role_id'   => '1'
             ]);
         }

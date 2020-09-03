@@ -48,6 +48,6 @@ class User extends Authenticatable
         else{
             $role = 'User';
         }
-        return ucfirst('asdasdasdsa');
+        return ucfirst($role );
     }
 }

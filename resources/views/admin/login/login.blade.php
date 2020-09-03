@@ -32,7 +32,7 @@
 
 
 <div class="container box">
-    <h3 align="center">MUSLIM PLANNER LOG IN</h3><br />
+    <h3 align="center">HOME FIT LIFE LOG IN</h3><br />
 
 
     @if(isset(Auth::user()->email))
@@ -56,7 +56,7 @@
         </div>
     @endif
 
-    <form method="post" action="{{ url('/checklogin') }}">
+    <form method="post" action="{{ url('admin_secure/checklogin') }}">
         {{ csrf_field() }}
        
         {!!  Form::hidden('timezone_offset','',array('id' => 'timezone_offset') )  !!}

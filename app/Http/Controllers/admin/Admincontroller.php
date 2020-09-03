@@ -52,13 +52,13 @@ class Admincontroller extends Controller
 
     function successlogin()
     {
-        return view('dashboard');
+        return view('admin_secure/dashboard');
     }
 
     function logout()
     {
         Auth::logout();
-        return redirect('admin_secure/main');
+        return redirect('admin_secure/login');
     }
     function dashboard (){
 
