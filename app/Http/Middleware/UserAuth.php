@@ -18,7 +18,7 @@ class UserAuth
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        // dd($user->role_id);
+        
         if($user->role_id == 'User'){
             return $next($request);
         }

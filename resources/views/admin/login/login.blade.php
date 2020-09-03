@@ -32,7 +32,7 @@
 
 
 <div class="container box">
-    <h3 align="center">MUSLIM PLANNER LOG IN</h3><br />
+    <h3 align="center">HOME FIT LIFE LOG IN</h3><br />
 
 
     @if(isset(Auth::user()->email))
