@@ -22,9 +22,12 @@ Route::get('logout', 'Admin\AdminController@logout');
 
 //Route::get('user', 'Admin\productController@index');
 //Route::get('product/index', 'Admin\productController@index');
-Route::get('product', 'Admin\productController@index')->name('product.index');
-Route::get('product/create', 'Admin\productController@create')->name('product.create');
-Route::post('product/save', 'Admin\productController@save')->name('product.save');
+Route::group(['prefix' => 'product'], function(){
+    Route::get('/', 'Admin\productController@index')->name('product.index');
+    Route::get('/create', 'Admin\productController@create')->name('product.create');
+    Route::post('/save', 'Admin\productController@save')->name('product.save');
+});
+
 
 Route::get('product/edit/{id}','Admin\productController@edit')->name('product.edit');
 Route::post('product/update/{id}','Admin\productController@update')->name('product.update');
@@ -143,24 +146,36 @@ Route::post('reports/personal_session_payments/status_update/{id}','Admin\Report
 
 //=============================================================
 //user area
-Route::get('user','userController@user')->name('user');
-Route::get('userlogin','userController@userlogin')->name('userlogin');
+
+
+
+Route::get('user/login','userController@userlogin')->name('userlogin');
+Route::get('user/create','userController@usercreate')->name('usercreate');
 Route::get('userreset','userController@userreset')->name('userreset');
-Route::get('usercreate','userController@usercreate')->name('usercreate');
-Route::get('userdashboard','userController@userdashboard')->name('userdashboard');
-Route::get('profileedit','userController@profileedit')->name('profileedit');
-Route::get('changepass','userController@changepass')->name('changepass');
-Route::get('paymentinfo','userController@paymentinfo')->name('paymentinfo');
-Route::get('payment','userController@payment')->name('payment');
-Route::get('trainerrequest','userController@trainerrequest')->name('trainerrequest');
-Route::get('trainer','userController@trainer')->name('trainer');
-Route::get('profile','userController@profile')->name('profile');
-Route::get('groupclass','userController@groupclass')->name('groupclass');
-Route::get('categories','userController@categories')->name('categories');
-Route::get('description','userController@description')->name('description');
-Route::get('livesession','userController@livesession')->name('livesession');
-Route::get('productcart','userController@productcart')->name('productcart');
-Route::get('shippingform','userController@shippingform')->name('shippingform');
-Route::get('paymentcard','userController@paymentcard')->name('paymentcard');
-Route::get('freelivesession','userController@freelivesession')->name('freelivesession');
-Route::get('productdetail','userController@productdetail')->name('productdetail');
+
+Route::get('user/logout','userController@logout')->name('logout');
+
+
+
+Route::group(['middleware'=>'userAuth','prefix'=>'user'],function(){
+
+    Route::get('user','userController@user')->name('user');
+    Route::get('dashboard','userController@userdashboard')->name('userdashboard');
+    Route::get('profileedit','userController@profileedit')->name('profileedit');
+    Route::get('changepass','userController@changepass')->name('changepass');
+    Route::get('paymentinfo','userController@paymentinfo')->name('paymentinfo');
+    Route::get('payment','userController@payment')->name('payment');
+    Route::get('trainerrequest','userController@trainerrequest')->name('trainerrequest');
+    Route::get('trainer','userController@trainer')->name('trainer');
+    Route::get('profile','userController@profile')->name('profile');
+    Route::get('groupclass','userController@groupclass')->name('groupclass');
+    Route::get('categories','userController@categories')->name('categories');
+    Route::get('description','userController@description')->name('description');
+    Route::get('livesession','userController@livesession')->name('livesession');
+    Route::get('productcart','userController@productcart')->name('productcart');
+    Route::get('shippingform','userController@shippingform')->name('shippingform');
+    Route::get('paymentcard','userController@paymentcard')->name('paymentcard');
+    Route::get('freelivesession','userController@freelivesession')->name('freelivesession');
+    Route::get('productdetail','userController@productdetail')->name('productdetail');
+    
+});

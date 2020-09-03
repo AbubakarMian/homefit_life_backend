@@ -3,15 +3,40 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
 {
     public function user(){
         return \View('user.home.index');
     }
-    public function userlogin(){
+
+    public function userlogin(Request $request){
+       
+        $user_data = array(
+            'email'  => 'user1@gmail.com',// $request->get('email'),
+            'password' => 'abc123',//$request->get('password')
+        );
+
+        if(Auth::attempt($user_data))
+        {
+            return redirect('user/dashboard');
+        }
+        else
+        {
+            return back()->with('error', 'Wrong Login Details');
+        }
+        $user = User::find('email','user1@gmail.com');
         return \View('user.login.index');
     }
+    
+    public function logout(){
+        $user = Auth::logout();
+        return 'logout sucessfully';
+    }
+
+
+
     public function userreset(){
         return \View('user.reset.index');
 

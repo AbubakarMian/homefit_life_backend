@@ -88,7 +88,7 @@ $admin_common = session()->get('admin_common');
                 </li>
 
                 <li class="off-right">
-                    <form action="{{asset('index.php/logout')}}">
+                    <form action="{{asset('admin_secure/logout')}}">
                         <input type="submit" class="btn btn-danger btn-rounded margin-top" value="LogOut">
                     </form>
                     <!--           <button type="button" class="btn btn-danger btn-rounded margin-top">LogOut</button> -->

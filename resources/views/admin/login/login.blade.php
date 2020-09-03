@@ -56,7 +56,7 @@
         </div>
     @endif
 
-    <form method="post" action="{{ url('/checklogin') }}">
+    <form method="post" action="{{ url('admin_secure/checklogin') }}">
         {{ csrf_field() }}
        
         {!!  Form::hidden('timezone_offset','',array('id' => 'timezone_offset') )  !!}
