@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Training_Type;
+use Response;
+use Config;
 
 class Training_TypeController extends Controller
 {
@@ -28,7 +30,7 @@ class Training_TypeController extends Controller
         $training_type = new training_type();
 
         $this->add_or_update($request , $training_type );
-        return redirect('training_type');
+        return redirect('admin_secure/training_type');
 
     }
     public function edit($id){
