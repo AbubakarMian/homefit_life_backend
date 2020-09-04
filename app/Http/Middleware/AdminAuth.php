@@ -27,11 +27,11 @@ class AdminAuth
                 return redirect('admin_secure/login');
             }
             else{
-                return redirect('admin_secure/login');
+                return redirect('admin_secure/login')->with('error', 'Wrong Login Details');
             }    
         }
         else{
-            return redirect('admin_secure/login');
+            return redirect('admin_secure/login')->with('error', 'Wrong Login Details');
         }   
           
     }

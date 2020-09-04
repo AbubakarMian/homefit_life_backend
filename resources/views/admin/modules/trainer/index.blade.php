@@ -30,20 +30,17 @@
 		<th>Rating</th>
 		<th>Specialities</th>
 		<th>Featured</th>
-		<th>Training Type</th>
 
 	</tr>
 	</thead>
 	<tbody>
 
 	@foreach($trainer as $c)
-
 		<td>{!! $c->name !!}</td>
 		<td>{!! $c->gender  == 1?'male':'Female'!!}</td>
 		<td>{!! $c->rating !!}</td>
 		<td>{!! $c->specialities !!}</td>
 		<td>{!! $c->is_featured == 1?'True':'False'!!}</td>
-		<td>{!! $c->training_type->name !!}</td>
 		<td>
 			{!!link_to_action('Admin\TrainerController@edit',
 			'Edit', array($c['id']), array('class' => 'badge bg-info'))!!}

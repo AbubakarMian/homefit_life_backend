@@ -2,6 +2,7 @@
 @extends('user.layouts.index')
 
 @section('default')
+
     <section>
         <div class="innerPage">
             <div class="container">

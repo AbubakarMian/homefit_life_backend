@@ -56,6 +56,23 @@
     </div>
 </div>
 
+// strating from here 
+<span id="err" class="error-product"></span>
+<div class="form-group">
+        
+                 &nbsp;{!! Form::select('training_type_id',$all_training_type,null,
+                ['id'=>'training_type_id']) !!}
+                 <button type="button" data-toggle="modal"
+                         data-target=".cities"
+                         onclick="get_training_type();"
+                         class="btn btn-primary btn-outline btn-rounded">
+                     Training Type
+                 </button>
+                 @include('admin.modules.trainer.partial.training_type')
+</div>
+
+// end here 
+
 
 @include('admin.modules.product.partial.image_modal')
 

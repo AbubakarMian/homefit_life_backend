@@ -71,4 +71,21 @@ class Training_TypeController extends Controller
         ]);
         return $response;
     }
+
+    public function get_training_type(){
+
+        $training_type_arr = Training_Type::get();
+
+        $response = Response::json(["status"=>true,
+        'action'=>'Sucess',
+        'data'=>$training_type_arr
+    ]);
+    return $response;
+    }
+
+    public function update_trainer_training_type(Request $request){
+
+        dd($request->all());
+
+    }
 }

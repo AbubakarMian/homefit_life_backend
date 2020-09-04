@@ -54,6 +54,8 @@ Route::group(['middleware'=>'adminAuth','prefix' => 'admin_secure'], function(){
 
             //Route::get('user', 'Admin\UserController@index');
             //Route::get('country', 'Admin\CountryController@index');
+            Route::get('get_training_type', 'Admin\Training_TypeController@get_training_type')->name('get_training_type.index');
+            Route::post('update_trainer_training_type', 'Admin\Training_TypeController@update_trainer_training_type')->name('update_trainer_training_type.index');
             Route::get('training_type', 'Admin\Training_TypeController@index')->name('training_type.index');
             Route::get('training_type/create', 'Admin\Training_TypeController@create')->name('training_type.create');
             Route::post('training_type/save', 'Admin\Training_TypeController@save')->name('training_type.save');
@@ -182,5 +184,6 @@ Route::group(['middleware'=>'userAuth','prefix'=>'user'],function(){
     Route::get('paymentcard','User\UserController@paymentcard')->name('paymentcard');
     Route::get('freelivesession','User\UserController@freelivesession')->name('freelivesession');
     Route::get('productdetail','User\UserController@productdetail')->name('productdetail');
+    Route::post('trainer_permission','User\UserController@trainer_permission')->name('trainer_permission');
     
 });
