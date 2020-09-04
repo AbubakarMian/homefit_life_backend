@@ -19,32 +19,32 @@
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user-o"></i></span>
                                     {{ csrf_field() }}
-                                    <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+                                    <input id="name" type="text" class="form-control" name="name" placeholder="Name">
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user-o"></i></span>
-                                    <input id="text" type="text" class="form-control" name="password" placeholder="Password">
+                                    <input id="email" type="email" class="form-control" name="email" placeholder="Email">
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="flaticon-email"></i></span>
-                                    <input id="text" type="email" class="form-control" name="password" placeholder="email">
+                                    <input id="text" type="password" class="form-control" name="password" placeholder="Password">
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="flaticon-telephone"></i></span>
-                                    <input id="text" type="text" class="form-control" name="password" placeholder="Password">
+                                    <input id="text" type="text" class="form-control" name="password1" placeholder="Password">
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                    <input id="text" type="text" class="form-control" name="password" placeholder="Password">
+                                    <input id="text" type="text" class="form-control" name="password2" placeholder="Password">
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                    <input id="text" type="text" class="form-control" name="password" placeholder="Password">
+                                    <input id="text" type="text" class="form-control" name="password3" placeholder="Password">
                                 </div>
                                 <div class="btnLogIn">
                                     <input type="submit" class="btn btn-primary " value="SignUp"/> 

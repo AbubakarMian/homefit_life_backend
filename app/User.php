@@ -50,4 +50,9 @@ class User extends Authenticatable
         }
         return ucfirst($role );
     }
+    public static $rules = [
+        'name' => 'required|max:255',
+        'email' => 'required|email|unique:users',
+        'password' => 'required'
+    ];
 }

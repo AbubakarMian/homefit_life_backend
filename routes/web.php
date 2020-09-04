@@ -160,15 +160,15 @@ Route::get('user/register','User\userController@usercreate')->name('usercreate')
 Route::get('userreset','User\userController@userreset')->name('userreset');
 Route::post('user/checklogin','User\userController@checklogin')->name('checklogin');
 
-Route::get('user/logout','User\userController@logout')->name('logout');
-Route::post('user/save','User\userController@save')->name('save');
+Route::get('user/logout','User\UssserController@logout')->name('logout');
+Route::post('user/save','User\UserController@save')->name('save');
 
 
 
 Route::group(['middleware'=>'userAuth','prefix'=>'user'],function(){
 
     Route::get('user','User/userController@index')->name('user');
-    Route::get('dashboard','User/userController@userdashboard')->name('userdashboard');
+    Route::get('dashboard','User\UserController@userdashboard')->name('userdashboard');
     Route::get('profileedit','User/userController@profileedit')->name('profileedit');
     Route::get('changepass','User/userController@changepass')->name('changepass');
     Route::get('paymentinfo','User/userController@paymentinfo')->name('paymentinfo');
