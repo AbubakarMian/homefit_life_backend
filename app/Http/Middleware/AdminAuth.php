@@ -16,7 +16,6 @@ class AdminAuth
     public function handle($request, Closure $next)
     {
         $user =Auth::user();
-
         if(Auth::Check()){
             if($user->role_id == 'Super Admin'){
                 $response = $next($request);
@@ -25,6 +24,9 @@ class AdminAuth
                     ->header('Expires','Sat, 26 Jul 1997 05:00:00 GMT');
             }
             else if($user->role_id == 'Trainer'){
+                return redirect('admin_secure/login');
+            }
+            else{
                 return redirect('admin_secure/login');
             }    
         }

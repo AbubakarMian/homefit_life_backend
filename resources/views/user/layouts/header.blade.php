@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <title>Home Fit Live</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,9 +8,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="font/flaticon.css">
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/login.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('font/flaticon.css') }}">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -23,7 +22,7 @@
             <div class="row">
                 <div class="col-sm-3 col-xs-12">
                     <div class="logoArea">
-                        <a href="/homefit/home.php"><img src="images/logo.png" class="img-responsive"></a>
+                        <a href="{{ asset('/homefit/home.php')}}"><img src="{{ asset('images/logo.png')}}" class="img-responsive"></a>
                     </div>
                 </div>
                 <div class="col-sm-6 col-xs-12">
@@ -46,7 +45,7 @@
                                     <!-- responsive nav -->
                                     <ul class="nav navbar-nav">
                                         <li id="" class="inMenu">
-                                            <a href="/homefit/home.php"><span>Home</span> </a>
+                                            <a href="{{ asset('/homefit/home.php')}}"><span>Home</span> </a>
                                         </li>
                                         <li id="">
                                             <a href=""><span>Classes</span> </a>
@@ -121,7 +120,7 @@
                             <center><a href="" class="btn btn-primary btn-xs">Checkout</a></center>
 
                         </div>
-                        <a href="/homefit/login.php" class="btn btn-primary btn-sm btn-UserLogin " >User Login <i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                        <a href="{{ asset('/homefit/login.php')}}" class="btn btn-primary btn-sm btn-UserLogin " >User Login <i class="fa fa-user-circle" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>

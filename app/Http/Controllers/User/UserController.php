@@ -24,10 +24,6 @@ class UserController extends Controller
 
     public function userlogin(Request $request){
        
-        // $user_data = array(
-        //     'email'  => 'user1@gmail.com',// $request->get('email'),
-        //     'password' => 'abc123',//$request->get('password')
-        // );
             $user_data =$request->all();
         if(Auth::attempt($user_data))
         {

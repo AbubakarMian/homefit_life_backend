@@ -60,7 +60,7 @@
                                     <div class="col-sm-3">
                                         <div class="FProductsiconbox">
                                             <div class="FProductsiconImage">
-                                                <img src="images/product-02.jpg" class="img-responsive">
+                                                <img src="{{ asset('images/product-02.jpg')}}" class="img-responsive">
                                             </div>
                                             <div class="FProductsimagecontent">
                                                 Gym Product 1
@@ -80,7 +80,7 @@
                                     <div class="col-sm-3">
                                         <div class="FProductsiconbox">
                                             <div class="FProductsiconImage">
-                                                <img src="images/product-03.jpg" class="img-responsive">
+                                                <img src="{{ asset('images/product-03.jpg')}}" class="img-responsive">
                                             </div>
                                             <div class="FProductsimagecontent">
                                                 Gym Product 2
@@ -100,7 +100,7 @@
                                     <div class="col-sm-3">
                                         <div class="FProductsiconbox">
                                             <div class="FProductsiconImage">
-                                                <img src="images/product-04.jpg" class="img-responsive">
+                                                <img src="{{ asset('images/product-04.jpg')}}" class="img-responsive">
                                             </div>
                                             <div class="FProductsimagecontent">
                                                 Gym Product 3
@@ -120,7 +120,7 @@
                                     <div class="col-sm-3">
                                         <div class="FProductsiconbox">
                                             <div class="FProductsiconImage">
-                                                <img src="images/product-05.jpg" class="img-responsive">
+                                                <img src="{{ asset('images/product-05.jpg')}}" class="img-responsive">
                                             </div>
                                             <div class="FProductsimagecontent">
                                                 Gym Product 4

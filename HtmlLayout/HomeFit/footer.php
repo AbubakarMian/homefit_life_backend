@@ -40,7 +40,7 @@
 	</div>
 	<div class="copyRightArea">
 		<div class="container">
-			Copyrights © 2020. Khatm-e-Nabuwat All Rights Reserved. Designed By HatInco
+			Copyrights © 2020. HomeFitLive All Rights Reserved. Designed By HatInco
 		</div>
 	</div>
 </footer>
