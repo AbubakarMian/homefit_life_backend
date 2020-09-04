@@ -4,6 +4,11 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Config;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -37,7 +42,6 @@ class UserController extends Controller
     }
 
     public function checklogin(Request $request){
-        dd($request);
         try {
             $this->validate($request, [
                 'email' => 'required|email',
@@ -53,7 +57,7 @@ class UserController extends Controller
 
         if(Auth::attempt($user_data))
         {
-            return redirect('admin_secure/dashboard');
+            return redirect('user/dashboard');
         }
         else
         {
@@ -67,8 +71,24 @@ class UserController extends Controller
     }
 
     public function save (Request $request){
-        dd($request);
-        return;
+
+        $validator = Validator::make($request->all(),User::$rules);
+        $role_id = Config::get('constants.roles_id.user');
+        if(!$validator->fails()){
+        $users = new User();
+        $users->name	   = $request->name;
+        $users->email       = $request->email;
+        $users->role_id       = $role_id;
+        $users->password    = Hash::make($request->password);
+        $users->save();
+      
+        return redirect('user/dashboard');
+        }
+        else
+        {
+           
+            return back()->with('error', 'Wrong Login Details');
+        }
     }
 
 
