@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Leads;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Validator;
@@ -118,6 +119,16 @@ class UserController extends Controller
     }
     public function trainerrequest(){
         return \View('user.trainerrequest.index');
+
+    }
+    public function trainer_permission(Request $request){
+       
+        $user =Auth::user();
+        $lead = new Leads ();
+        $lead->user_id = $user->id;
+        $lead->message = $request->message;
+        $lead->save();
+        return back()->with('error', 'Request send successfully');
 
     }
     public function trainer(){

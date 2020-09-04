@@ -42,7 +42,7 @@ class LeadsController extends Controller
 
         $leads = $this->query($search_text, $date, $status)->paginate(10);
         // dd($leads);
-        // $leads = Leads::paginate(5, ['id', 'user_id', 'status', 'message']);
+        $leads = Leads::paginate(5, ['id', 'user_id', 'status', 'message']);
 
         return \View::make('admin.reports.leads.index', compact(
             'leads',
@@ -65,6 +65,7 @@ class LeadsController extends Controller
             $trainer->user_id = $lead->user->id;
             $trainer->name = $lead->user->name;
             $trainer->save();
+
         }
 
         $response = Response::json([
