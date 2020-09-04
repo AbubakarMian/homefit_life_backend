@@ -17,15 +17,6 @@ class UserAuth
      */
     public function handle($request, Closure $next)
     {
-        // $user = Auth::user();
-        
-        // if($user->role_id == 'User'){
-        //     return $next($request);
-        // }
-        // else{
-        //     return redirect('user/create');
-        // }  
-        
         $user =Auth::user();    
 
         if(Auth::Check()){
@@ -35,6 +26,9 @@ class UserAuth
                     ->header('Pragma','no-cache')
                     ->header('Expires','Sat, 26 Jul 1997 05:00:00 GMT');
             }    
+            else{
+                return redirect('user/login');
+            }
         }
         else{
             return redirect('user/login');

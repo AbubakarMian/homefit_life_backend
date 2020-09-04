@@ -1,15 +1,15 @@
 
 @extends('user\layouts\dasboard')
 
-<link href="css/user.css" rel="stylesheet">
-<link href="css/advancesearch.css" rel="stylesheet">
+<link href="{{ asset('css/user.css')}}" rel="stylesheet">
+<link href="{{ asset('css/advancesearch.css')}}" rel="stylesheet">
 
 @section('dashboard')
     <div class="profileDetails">
         <div class="row">
             <div class="col-sm-2">
                 <div class="profileImg">
-                    <img src="images/livesession-02.jpg" class="img-responsive">
+                    <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                 </div>
                 <div class="profileEditBtn">
                     <a href="" class="btn btn-primary">Edit Profile</a>
@@ -47,7 +47,7 @@
                 <li>
                     <div class="featuredTrainerBox">
                         <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                             <div class="featuredTrainerActive">
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                 <li>
                     <div class="featuredTrainerBox">
                         <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                             <div class="featuredTrainerDeactiveActive">
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                 <li>
                     <div class="featuredTrainerBox">
                         <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                             <div class="featuredTrainerActive">
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                 <li>
                     <div class="featuredTrainerBox">
                         <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                             <div class="featuredTrainerDeactiveActive">
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                 <li>
                     <div class="featuredTrainerBox">
                         <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                             <div class="featuredTrainerActive">
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                 <li>
                     <div class="featuredTrainerBox">
                         <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                             <div class="featuredTrainerDeactiveActive">
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                 <li>
                     <div class="featuredTrainerBox">
                         <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                             <div class="featuredTrainerActive">
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                 <li>
                     <div class="featuredTrainerBox">
                         <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                             <div class="featuredTrainerDeactiveActive">
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                 <li>
                     <div class="freeLiveSessionBox">
                         <div class="freeLiveSessionBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                             <div class="freeLiveSessionDeactiveActive">
                             </div>
                         </div>
@@ -164,7 +164,7 @@
                 <li>
                     <div class="freeLiveSessionBox">
                         <div class="freeLiveSessionBoxImg">
-                            <img src="images/livesession-03.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-03.jpg')}}" class="img-responsive">
                             <div class="freeLiveSessionActive">
                             </div>
                         </div>
@@ -176,7 +176,7 @@
                 <li>
                     <div class="freeLiveSessionBox">
                         <div class="freeLiveSessionBoxImg">
-                            <img src="images/livesession-04.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-04.jpg')}}" class="img-responsive">
                             <div class="freeLiveSessionDeactiveActive">
                             </div>
                         </div>
@@ -188,7 +188,7 @@
                 <li>
                     <div class="freeLiveSessionBox">
                         <div class="freeLiveSessionBoxImg">
-                            <img src="images/livesession-05.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-05.jpg')}}" class="img-responsive">
                             <div class="freeLiveSessionActive">
                             </div>
                         </div>

@@ -5,9 +5,6 @@ use Illuminate\Support\Facades\Route;
 //=================================================
 //login
 
-// Route::get('/',function(){
-//     dd('working');
-// });
 Route::get('admin_secure/login', 'Admin\AdminController@index')->name('login');
 Route::post('admin_secure/checklogin', 'Admin\AdminController@checklogin');
 
@@ -160,30 +157,30 @@ Route::get('user/register','User\userController@usercreate')->name('usercreate')
 Route::get('userreset','User\userController@userreset')->name('userreset');
 Route::post('user/checklogin','User\userController@checklogin')->name('checklogin');
 
-Route::get('user/logout','User\UssserController@logout')->name('logout');
+Route::get('user/logout','User\UserController@logout')->name('logout');
 Route::post('user/save','User\UserController@save')->name('save');
 
 
 
 Route::group(['middleware'=>'userAuth','prefix'=>'user'],function(){
 
-    Route::get('user','User/userController@index')->name('user');
+    Route::get('user','User\UserController@index')->name('user');
     Route::get('dashboard','User\UserController@userdashboard')->name('userdashboard');
-    Route::get('profileedit','User/userController@profileedit')->name('profileedit');
-    Route::get('changepass','User/userController@changepass')->name('changepass');
-    Route::get('paymentinfo','User/userController@paymentinfo')->name('paymentinfo');
-    Route::get('payment','User/userController@payment')->name('payment');
-    Route::get('trainerrequest','User/userController@trainerrequest')->name('trainerrequest');
-    Route::get('trainer','User/userController@trainer')->name('trainer');
-    Route::get('profile','User/userController@profile')->name('profile');
-    Route::get('groupclass','User/userController@groupclass')->name('groupclass');
-    Route::get('categories','User/userController@categories')->name('categories');
-    Route::get('description','User/userController@description')->name('description');
-    Route::get('livesession','User/userController@livesession')->name('livesession');
-    Route::get('productcart','User/userController@productcart')->name('productcart');
-    Route::get('shippingform','User/userController@shippingform')->name('shippingform');
-    Route::get('paymentcard','User/userController@paymentcard')->name('paymentcard');
-    Route::get('freelivesession','User/userController@freelivesession')->name('freelivesession');
-    Route::get('productdetail','User/userController@productdetail')->name('productdetail');
+    Route::get('profileedit','User\UserController@profileedit')->name('profileedit');
+    Route::get('changepass','User\UserController@changepass')->name('changepass');
+    Route::get('paymentinfo','User\UserController@paymentinfo')->name('paymentinfo');
+    Route::get('payment','User\UserController@payment')->name('payment');
+    Route::get('trainerrequest','User\UserController@trainerrequest')->name('trainerrequest');
+    Route::get('trainer','User\UserController@trainer')->name('trainer');
+    Route::get('profile','User\UserController@profile')->name('profile');
+    Route::get('groupclass','User\UserController@groupclass')->name('groupclass');
+    Route::get('categories','User\UserController@categories')->name('categories');
+    Route::get('description','User\UserController@description')->name('description');
+    Route::get('livesession','User\UserController@livesession')->name('livesession');
+    Route::get('productcart','User\UserController@productcart')->name('productcart');
+    Route::get('shippingform','User\UserController@shippingform')->name('shippingform');
+    Route::get('paymentcard','User\UserController@paymentcard')->name('paymentcard');
+    Route::get('freelivesession','User\UserController@freelivesession')->name('freelivesession');
+    Route::get('productdetail','User\UserController@productdetail')->name('productdetail');
     
 });

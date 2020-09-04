@@ -13,38 +13,39 @@
                     </div>
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="createAcc" >
-                         <form method="post" action="{{ url('user/save') }}">
-       
+                         <form method="post" action="{{ url('user/save') }}"
+
+                         oninput='confirmPassword.setCustomValidity(confirmPassword.value != password.value ? "Passwords do not match." : "")'>
                         
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user-o"></i></span>
                                     {{ csrf_field() }}
-                                    <input id="name" type="text" class="form-control" name="name" placeholder="Name">
-                                </div>
-                                <br/>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user-o"></i></span>
-                                    <input id="email" type="email" class="form-control" name="email" placeholder="Email">
+                                    <input id="name" type="text" class="form-control" name="name" placeholder="Name" required>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="flaticon-email"></i></span>
+                                    <input id="email" type="email" class="form-control" name="email" placeholder="Email" required>
+                                </div>
+                                <br/>
+                                <!-- <div class="input-group">
+                                    <span class="input-group-addon"><i class="flaticon-email"></i></span>
                                     <input id="text" type="password" class="form-control" name="password" placeholder="Password">
                                 </div>
-                                <br/>
+                                <br/> -->
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="flaticon-telephone"></i></span>
-                                    <input id="text" type="text" class="form-control" name="password1" placeholder="Password">
+                                    <input id="phoneNo" type="text" class="form-control" name="phoneNo" placeholder="Phone Number">
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                    <input id="text" type="text" class="form-control" name="password2" placeholder="Password">
+                                    <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
                                 </div>
                                 <br/>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                    <input id="text" type="text" class="form-control" name="password3" placeholder="Password">
+                                    <input id="confirmPassword" type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password" required>
                                 </div>
                                 <div class="btnLogIn">
                                     <input type="submit" class="btn btn-primary " value="SignUp"/> 
@@ -56,7 +57,7 @@
                             by signing up you agree to our terms of service and privacy policy
                         </div>
                         <div class="HaveAcc col-sm-6 col-sm-offset-3">
-                            already have an account <a href="/homefit/login.php">sign in here</a>
+                            already have an account <a href="{{ asset('/user/login')}}">sign in here</a>
                         </div>
                     </div>
                 </div>

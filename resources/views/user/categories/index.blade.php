@@ -1,7 +1,7 @@
 
 @extends('user\layouts\dasboard')
 
-<link href="css/categories.css" rel="stylesheet">
+<link href="{{ asset('css/categories.css')}}" rel="stylesheet">
 
 @section('dashboard')
     <section>
