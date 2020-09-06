@@ -19,6 +19,7 @@ class Training_TypeController extends Controller
 
     public function create(){
         $control = 'create';
+        
 //        $all_types = Type::pluck('name_en','id');
 
         return \View::make('admin.modules.training_type.create',
@@ -86,6 +87,9 @@ class Training_TypeController extends Controller
     public function update_trainer_training_type(Request $request){
 
         dd($request->all());
+        $trainer_training_type = new Training_Type;
+        $trainer_training_type_arr->trainer = $request->trainer_id;
+        $trainer_training_type_arr->training_type = $request->trainer_id;
 
     }
 }

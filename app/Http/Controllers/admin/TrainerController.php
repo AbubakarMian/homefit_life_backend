@@ -4,10 +4,12 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Trainer;
+use App\Models\Trainer_Training_Type;
 use App\Models\Training_Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -37,9 +39,12 @@ class TrainerController extends Controller
     // }
     public function edit($id){
         $all_training_type = Training_Type::pluck('name','id');
+        $training_type_arr =DB::table('training_type')->get(['name as unchecked','id'])
+        ->split(2)
+        ->toArray();
         $control = 'edit';
         $trainer = Trainer::withTrashed()->find($id);
-        return \View::make('admin.modules.trainer.create',compact('control','all_training_type','trainer'
+        return \View::make('admin.modules.trainer.create',compact('control','all_training_type','trainer','training_type_arr'
 
         ));
     }
@@ -56,9 +61,22 @@ class TrainerController extends Controller
         $trainer->rating= $request->rating;
         $trainer->specialities= $request->specialities;
         $trainer->is_featured =$request->is_featured =='on' ?1:0;
-        $trainer->training_type_id = $request->training_type_id;
 
         $trainer->save();
+        
+        Trainer_Training_Type::where('trainer',$trainer->id)->delete();
+
+        foreach ($request->all() as $key => $input){
+
+            if(strpos($key,'training_type_')!==false){
+
+                $trainer_training_type = new Trainer_Training_Type();
+                $trainer_training_type->trainer = $trainer->id;
+                $trainer_training_type->training_type = $input;
+                $trainer_training_type->save();
+            }
+        }
+        return true;
     }
     public function destroy_undestroy($id){
 
