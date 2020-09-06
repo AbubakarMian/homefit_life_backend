@@ -100,7 +100,7 @@ $all_trainig_list =Training_Type::all();
                                             <label>
                                                 <input class="city_class"
                                                        type="checkbox" `+checked+`
-                                                       value="`+training_type.id+`">
+                                                       name="`+training_type.name+`">
                                                             `+training_type.name+`
                                     </label>
                                 </div>`;
