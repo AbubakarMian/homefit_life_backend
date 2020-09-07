@@ -3,7 +3,7 @@
     <section>
         <div class="innerPage">
             <div class="container">     
-    @if ($message = Session::get('error'))
+    <!-- @if ($message = Session::get('error'))
         <div class="alert alert-danger alert-block">
             <button type="button" class="close" data-dismiss="alert">×</button>
             <strong>{{ $message }}</strong>
@@ -18,7 +18,7 @@
                 @endforeach
             </ul>
         </div>
-    @endif
+    @endif -->
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="pageTitle">

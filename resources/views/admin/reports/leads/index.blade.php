@@ -35,17 +35,18 @@
         <th>User</th>
         <!-- <th>Status</th> -->
         <th>Message</th>
+        <th>Request Date </th>
         <th>Status</th>
 
     </tr>
     </thead>
     <tbody>
-
     @foreach($leads as $c)
 
         <td>{!! $c->user->name !!}</td>
          <!-- <td>{!! $c->status !!}</td>  -->
         <td>{!! $c->message !!}</td>
+        <td>{!! $c->created_at !!}</td>
         <td id="td_{!! $c->id !!}">
             @if($c->status == 'pending')
 

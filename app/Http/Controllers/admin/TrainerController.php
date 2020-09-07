@@ -22,31 +22,28 @@ class TrainerController extends Controller
         return \View::make('admin.modules.trainer.index',compact('trainer'));
     }
 
-    // public function create(){
-    //     $control = 'create';
-
-    //     return \View::make('admin.modules.trainer.create',
-    //         compact('control'));
-    // }
-
-    // public function save(Request $request){
-
-    //     $trainer = new Trainer();
-
-    //     $this->add_or_update($request , $trainer );
-    //     return redirect('trainer');
-
-    // }
     public function edit($id){
         $all_training_type = Training_Type::pluck('name','id');
-        $training_type_arr =DB::table('training_type')->get(['name as unchecked','id'])
-        ->split(2)
-        ->toArray();
+        
+        $training_type_arr = Training_Type::
+                                            leftjoin('trainer_training_types',function($q) use($id){
+                                                $q->whereRaw('training_type.id = trainer_training_types.training_type  and trainer_training_types.trainer ='. $id)
+                                                ->whereNull('trainer_training_types.deleted_at');
+                                            })
+                                            
+                                            ->get([
+                                                'training_type.name','training_type.id',
+                                                DB::Raw('case when trainer_training_types.id is null 
+                                                    then "unchecked"
+                                                    else "checked"
+                                                end as training_types')
+                                            ])->split(2)
+                                            ->toArray();
+
+
         $control = 'edit';
         $trainer = Trainer::withTrashed()->find($id);
-        return \View::make('admin.modules.trainer.create',compact('control','all_training_type','trainer','training_type_arr'
-
-        ));
+        return \View::make('admin.modules.trainer.create',compact('control','all_training_type','trainer','training_type_arr'));
     }
     public function update(Request $request , $id  ){
         $trainer = Trainer::withTrashed()->find($id);

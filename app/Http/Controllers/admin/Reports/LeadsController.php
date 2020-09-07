@@ -42,8 +42,8 @@ class LeadsController extends Controller
 
         $leads = $this->query($search_text, $date, $status)->paginate(10);
         // dd($leads);
-        $leads = Leads::paginate(5, ['id', 'user_id', 'status', 'message']);
-
+        // $leads = $leads->paginate(5, ['id', 'user_id', 'status', 'message','created_at']);
+        
         return \View::make('admin.reports.leads.index', compact(
             'leads',
             'search_text',
@@ -78,10 +78,12 @@ class LeadsController extends Controller
 
     public function query($search_text, $date, $status)
     {
+       
+        // dd($search_text);
         $datearr = explode(' - ', $date);
         $fromdate = date("m/d/Y H:i:s", strtotime(str_replace('-', '/', $datearr[0])));
         $todate = date("m/d/Y H:i:s", strtotime(str_replace('-', '/', $datearr[1])));
-
+       
         $report = Leads::whereRaw(
             '(date(created_at))>= ?',
             [date('Y-m-d H:i:s', strtotime($fromdate))]
@@ -90,20 +92,19 @@ class LeadsController extends Controller
                 '(date(created_at))<= ?',
                 [date('Y-m-d H:i:s', strtotime($todate))]
             );
-
-        $report = $report->whereHas('user', function ($q) use ($search_text) {
-            $q->where('name', 'like', '%' . $search_text . '%');
-        });
-
+            $report = $report->whereHas('user', function ($q) use ($search_text) {
+                $q->where('name', 'like', '%' . $search_text . '%');
+            });
         if (strtolower($status) != 'all') {
             $report = $report->where('status', $status);
         }
         $report = $report->orderBy('created_at');
-
+        // dd($report->get());
         return $report->select(
             'id',
             'user_id',
             'status',
+            'created_at',
             'message'
         );
     }

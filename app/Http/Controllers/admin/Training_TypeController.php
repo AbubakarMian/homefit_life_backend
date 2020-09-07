@@ -12,7 +12,7 @@ class Training_TypeController extends Controller
 {
     public function index(){
 
-        $training_type = Training_Type::paginate(5,['id','name']);
+        $training_type = Training_Type::paginate(5,['id','name','avatar']);
 
         return \View::make('admin.modules.training_type.index',compact('training_type'));
     }
@@ -51,8 +51,17 @@ class Training_TypeController extends Controller
 
 
     public function add_or_update(Request $request , $training_type  ){
-//        dd($request->name_en);
+    //    dd($request->all());
         $training_type->name = $request->name;
+        if($request->hasFile('avatar')) {
+            $avatar = $request->avatar;
+            $root = $request->root();
+
+            $training_type->avatar =$this->move_img_get_path($avatar, $root, 'training_type');
+        }
+        else if($request->image_visible){
+            $training_type->avatar = $request->image_visible;
+        }
         $training_type->save();
     }
     public function destroy_undestroy($id){
