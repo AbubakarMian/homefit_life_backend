@@ -18,7 +18,37 @@
 {{--</div>--}} -->
 <span id="err" class="error-product"></span>
 
+<?php
 
+$avatar =  asset('avatar/default_img.jpg');
+
+if(isset($training_type)){
+    if($training_type->avatar){
+        $avatar = $training_type->avatar;
+    }
+}
+?>
+
+
+<div class="form-group">
+
+    <div class="form-group pull-right">
+        <img src="{!! $avatar !!}"  class="show-product-img" data-toggle="modal" data-target=".imagemodal">
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('avatar','Training Type Image') !!}
+        {!! Form::file('avatar', ['class' => 'choose-image', 'id'=>'avatar'] ) !!}
+        <p class="help-block" id="error">Limit 2MB</p>
+    </div>
+    <div class="form-group">
+        {!! Form::textarea('image_visible',null,['class'=>'form-control' ,
+         'rows'=>'3','placeholder'=>'enter image URL',
+             								'maxlength'=>"225"]) !!}
+        {!!Form::hidden('image')!!}
+
+    </div>
+</div>
 
 {{--start change side      --}}
 {{--</div>--}}

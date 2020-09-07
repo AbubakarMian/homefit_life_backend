@@ -26,7 +26,7 @@ class RegisterdStudentsController extends Controller
             'search_text'));
     }
 
-    public function query($search_text  )
+    public function query($search_text)
     {
         $report = Training_Class::with('trainer');
 
@@ -61,11 +61,13 @@ class RegisterdStudentsController extends Controller
 
     public function index_excel(Request $request)
     {
+        dd("request");
+        dd($request);
         $all = Config::get('constants.request_status.all');
 
         $search_text = $request->user;
         $date = $request->date;
-//        $status = $request->status ?? $all;
+//      $status = $request->status ?? $all;
         $data = $this->query($search_text ,$date )->get()->toArray();
         $headings = ['Id', 'Status','Message'];
 

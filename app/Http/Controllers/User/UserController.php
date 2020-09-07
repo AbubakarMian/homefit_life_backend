@@ -4,6 +4,8 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Leads;
+use App\Models\Trainer;
+use App\Models\Training_Type;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +30,8 @@ class UserController extends Controller
             $user_data =$request->all();
         if(Auth::attempt($user_data))
         {
-            return redirect('user/dashboard');
+            // return redirect('user/dashboard');
+            return $this->userdashboard();
         }
         else
         {
@@ -98,7 +101,11 @@ class UserController extends Controller
 
     }
     public function userdashboard(){
-        return \View('user.dashboard.index');
+
+        $training_categories = Training_Type::get();
+        $featured_trainer = Trainer::with('user')->where('is_featured','1')->get();
+        // dd($featured_trainer);
+        return \View('user.dashboard.index',compact('training_categories','featured_trainer'));
 
     }
     public function profileedit(){
@@ -128,7 +135,7 @@ class UserController extends Controller
         $lead->user_id = $user->id;
         $lead->message = $request->message;
         $lead->save();
-        return back()->with('error', 'Request send successfully');
+        return back()->with('success', 'Request send successfully');
 
     }
     public function trainer(){

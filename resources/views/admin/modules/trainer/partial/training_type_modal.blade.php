@@ -19,14 +19,15 @@
                                     @foreach($training_types as $tt)
 
                                         <?php
-                                        // dd($tt);
-                                        if($tt->unchecked){
-                                            $checked = '';
-                                            $name = $tt->unchecked;
+                                        
+                                        if($tt['training_types'] == "checked"){
+                                            $checked = 'checked';
+                                            $name = $tt['name'];
                                         }
                                         else{
-                                            $checked = 'checked';
-                                            $name = $tt->checked;
+                                            // dd('in else cond');
+                                            $checked = '';
+                                            $name = $tt['name'];
                                         }
 
                                         ?>
@@ -35,8 +36,8 @@
                                             <label>
                                                 <input class="training_checkbox"
                                                        type="checkbox" {!! $checked !!}
-                                                       name="training_type_{!! $tt->id !!}"
-                                                       value="{!! $tt->id !!}"
+                                                       name="training_type_{!! $tt['id']  !!}"
+                                                       value="{!! $tt['id'] !!}"
                                                 >
                                                 {!! $name !!}
                                             </label>
