@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin\Reports;
 
+use App\Exports\TrainingClassExport;
 use App\Http\Controllers\Controller;
 use App\Models\Request as ModelsRequest;
 use App\Models\Trainer;
@@ -63,7 +64,7 @@ class RegisterdStudentsController extends Controller
 
     public function index_excel(Request $request)
     {
-        dd("request");
+        
         dd($request);
         $all = Config::get('constants.request_status.all');
 
@@ -79,22 +80,28 @@ class RegisterdStudentsController extends Controller
 
     public function excel()
             {
-            $customer_data = DB::table('training_class')->get()->toArray();
-            $customer_array[] = array('Name', 'Details');
-            foreach($customer_data as $customer)
-            {
-            $customer_array[] = array(
-            'Name'  => $customer->name,
-            'Details'   => $customer->detail,
-            );
-            }
-            dd($customer_data);
-            Excel::create('Customer Data', function($excel) use ($customer_array){
-            $excel->setTitle('Customer Data');
-            $excel->sheet('Customer Data', function($sheet) use ($customer_array){
-            $sheet->fromArray($customer_array, null, 'A1', false, false);
-            });
-            })->download('xlsx');
+            // $customer_data = DB::table('training_class')->get()->toArray();
+            // $customer_array[] = array('Name', 'Details');
+            // foreach($customer_data as $customer)
+            // {
+            // $customer_array[] = array(
+            // 'Name'  => $customer->name,
+            // 'Details'   => $customer->details,
+            // );
+            // }
+            
+            // Excel::create('Customer Data', function($excel) use ($customer_array){
+            // $excel->setTitle('Customer Data');
+            // $excel->sheet('Customer Data', function($sheet) use ($customer_array){
+            // $sheet->fromArray($customer_array, null, 'A1', false, false);
+            // });
+            // })->download('xlsx');
+
+
+            
+            $headings = ['Id', 'Status','Message'];
+            $excel =Excel::download(new TrainingClassExport($headings), 'training_class.xlsx');
+            return $excel;
             }
 
 }
