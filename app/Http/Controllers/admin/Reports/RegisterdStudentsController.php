@@ -10,7 +10,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Libraries\ExcelExport;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
+use Maatwebsite\Excel\Excel as ExcelExcel;
 use Maatwebsite\Excel\Facades\Excel;
 
 class RegisterdStudentsController extends Controller
@@ -74,4 +76,25 @@ class RegisterdStudentsController extends Controller
         $excel = Excel::download(new ExcelExport($data, $headings), 'leads.xlsx');
         return $excel;
     }
+
+    public function excel()
+            {
+            $customer_data = DB::table('training_class')->get()->toArray();
+            $customer_array[] = array('Name', 'Details');
+            foreach($customer_data as $customer)
+            {
+            $customer_array[] = array(
+            'Name'  => $customer->name,
+            'Details'   => $customer->detail,
+            );
+            }
+            dd($customer_data);
+            Excel::create('Customer Data', function($excel) use ($customer_array){
+            $excel->setTitle('Customer Data');
+            $excel->sheet('Customer Data', function($sheet) use ($customer_array){
+            $sheet->fromArray($customer_array, null, 'A1', false, false);
+            });
+            })->download('xlsx');
+            }
+
 }
