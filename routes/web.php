@@ -128,8 +128,10 @@ Route::group(['middleware'=>'adminAuth','prefix' => 'admin_secure'], function(){
             Route::get('reports/registered_students', 'Admin\Reports\RegisterdStudentsController@index')->name('registered_students.index');
             Route::post('reports/registered_students', 'Admin\Reports\RegisterdStudentsController@index')->name('registered_students.index');
             Route::post('registered_students/excel', 'Admin\Reports\RegisterdStudentsController@index_excel')->name('registered_students.excel');
-            Route::post('registered_students/export_excel', 'Admin\Reports\RegisterdStudentsController@excel')->name('registered_students.export_excel');
             Route::post('reports/registered_students/status_update/{id}','Admin\Reports\RegisterdStudentsController@status_update')->name('registered_students.status_update');
+
+
+            Route::get('registered_students/export_excel', 'Admin\Reports\RegisterdStudentsController@excel')->name('registered_students.export_excel');
 
             //=============================================================
             //Group_Session_PaymentsController
