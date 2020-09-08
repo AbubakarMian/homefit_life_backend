@@ -119,7 +119,7 @@ Route::group(['middleware'=>'adminAuth','prefix' => 'admin_secure'], function(){
             //orders
             Route::get('reports/orders', 'Admin\Reports\OrdersController@index')->name('orders.index');
             Route::post('reports/orders', 'Admin\Reports\OrdersController@index')->name('orders.index');
-            Route::post('orders/excel', 'Admin\Reports\OrdersController@index_excel')->name('orders.excel');
+            Route::get('orders/excel', 'Admin\Reports\OrdersController@index_excel')->name('orders.excel');
             Route::post('reports/orders/status_update/{id}','Admin\Reports\OrdersController@status_update')->name('orders.status_update');
 
             //=============================================================
@@ -127,7 +127,7 @@ Route::group(['middleware'=>'adminAuth','prefix' => 'admin_secure'], function(){
 
             Route::get('reports/registered_students', 'Admin\Reports\RegisterdStudentsController@index')->name('registered_students.index');
             Route::post('reports/registered_students', 'Admin\Reports\RegisterdStudentsController@index')->name('registered_students.index');
-            Route::post('registered_students/excel', 'Admin\Reports\RegisterdStudentsController@index_excel')->name('registered_students.excel');
+            Route::get('registered_students/excel', 'Admin\Reports\RegisterdStudentsController@index_excel')->name('registered_students.excel');
             Route::post('reports/registered_students/status_update/{id}','Admin\Reports\RegisterdStudentsController@status_update')->name('registered_students.status_update');
 
 
@@ -138,7 +138,7 @@ Route::group(['middleware'=>'adminAuth','prefix' => 'admin_secure'], function(){
 
             Route::get('reports/group_session_payments', 'Admin\Reports\Group_Session_PaymentsController@index')->name('group_session_payments.index');
             Route::post('reports/group_session_payments', 'Admin\Reports\Group_Session_PaymentsController@index')->name('group_session_payments.index');
-            Route::post('group_session_payments/excel', 'Admin\Reports\Group_Session_PaymentsController@index_excel')->name('group_session_payments.excel');
+            Route::get('group_session_payments/excel', 'Admin\Reports\Group_Session_PaymentsController@index_excel')->name('group_session_payments.excel');
             Route::post('reports/group_session_payments/status_update/{id}','Admin\Reports\Group_Session_PaymentsController@status_update')->name('group_session_payments.status_update');
 
             //=============================================================
@@ -146,7 +146,7 @@ Route::group(['middleware'=>'adminAuth','prefix' => 'admin_secure'], function(){
 
             Route::get('reports/personal_session_payments', 'Admin\Reports\Personal_Session_PaymentsController@index')->name('personal_session_payments.index');
             Route::post('reports/personal_session_payments', 'Admin\Reports\Personal_Session_PaymentsController@index')->name('personal_session_payments.index');
-            Route::post('personal_session_payments/excel', 'Admin\Reports\Personal_Session_PaymentsController@index_excel')->name('personal_session_payments.excel');
+            Route::get('personal_session_payments/excel', 'Admin\Reports\Personal_Session_PaymentsController@index_excel')->name('personal_session_payments.excel');
             Route::post('reports/personal_session_payments/status_update/{id}','Admin\Reports\Personal_Session_PaymentsController@status_update')
                                                                                                                     ->name('personal_session_payments.status_update');
 

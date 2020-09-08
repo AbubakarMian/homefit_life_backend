@@ -7,15 +7,16 @@ Personal Session Payments
 @stop
 
 @section('excel')
-{!!Form::open(['method'=>'get','route' =>array('personal_session_payments.index')])!!}
+{!!Form::open(['method'=>'get','route' =>array('personal_session_payments.excel')])!!}
 {!!Form::hidden('user_excel',null,['id'=>'user_excel'])!!}
 {!!Form::hidden('date_excel',null,['id'=>'date_excel'])!!}
 {!!Form::hidden('status_excel',null,['id'=>'status_excel'])!!}
 {!!Form::submit('Export Excel',['class'=>'btn btn-success pull-right',
-'onclick'=>'return personal_session_payments_excel(event);',
-'data-url'=>asset('index.php/admin_secure/pending_personal_session_payments/excel')
+'onclick'=>'return export_excel(event);',
+'data-url'=>asset('index.php/admin_secure/personal_session_payments/excel')
 ])!!}
 {!!Form::close()!!}
+
 @stop
 @section('form')
 {!!Form::open(array('id'=>'search_form', 'method'=>'post','route' =>array('personal_session_payments.index'),'class'=>'form-horizontal'))
@@ -100,12 +101,16 @@ Personal Session Payments
             }
             )}
 
-        function order_excel(event){
+        function personal_session_payments_excel(event){
             $('#user_excel').val( $('#user').val());
             $('#req_num_excel').val( $('#req_num').val());
             $('#date_excel').val( $('#reservationtime').val());
             $('#status_excel').val( $('#status').val());
         }
+
+		function export_excel(){
+			$('#user_excel').val( $('#user').val());
+		}
 
         // function set_lat_long(lat , long , location){
 		// 	alert('st');

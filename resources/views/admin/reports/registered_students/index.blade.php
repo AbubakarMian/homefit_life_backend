@@ -7,13 +7,13 @@
 @stop
 
 @section('excel')
-{!!Form::open(['method'=>'get','route' =>array('registered_students.index')])!!}
+{!!Form::open(['method'=>'get','route' =>array('registered_students.excel')])!!}
 {!!Form::hidden('user_excel',null,['id'=>'user_excel'])!!}
 {!!Form::hidden('date_excel',null,['id'=>'date_excel'])!!}
 {!!Form::hidden('status_excel',null,['id'=>'status_excel'])!!}
 {!!Form::submit('Export Excel',['class'=>'btn btn-success pull-right',
-'onclick'=>'return registered_students_excel(event);',
-'data-url'=>asset('index.php/admin_secure/registered_students/export_excel')
+'onclick'=>'return export_excel(event);',
+'data-url'=>asset('index.php/admin_secure/registered_students/excel')
 ])!!}
 {!!Form::close()!!}
 @stop
@@ -108,12 +108,15 @@
             }
             )}
 
-        function order_excel(event){
-            $('#user_excel').val( $('#user').val());
-            $('#req_num_excel').val( $('#req_num').val());
-            $('#date_excel').val( $('#reservationtime').val());
-            $('#status_excel').val( $('#status').val());
-        }
+        // function registered_students_excel(event){
+        //     $('#user_excel').val( $('#user').val());
+        //     $('#req_num_excel').val( $('#req_num').val());
+        //     $('#date_excel').val( $('#reservationtime').val());
+        //     $('#status_excel').val( $('#status').val());
+        // }
+		function export_excel(){
+			$('#user_excel').val( $('#user').val());
+		}
 
         // function set_lat_long(lat , long , location){
 		// 	alert('st');
