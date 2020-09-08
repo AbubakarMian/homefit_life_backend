@@ -65,16 +65,16 @@ class RegisterdStudentsController extends Controller
     public function index_excel(Request $request)
     {
         
-        dd($request);
+        
         $all = Config::get('constants.request_status.all');
 
-        $search_text = $request->user;
+        $search_text = $request->user_excel;
         $date = $request->date;
-//      $status = $request->status ?? $all;
-        $data = $this->query($search_text ,$date )->get()->toArray();
-        $headings = ['Id', 'Status','Message'];
-
-        $excel = Excel::download(new ExcelExport($data, $headings), 'leads.xlsx');
+        $data = $this->query($search_text ,$date )->select('id','name','details')->get()->toArray();
+        $headings = ['Id', 'Name','Details'];
+        
+        $excel = Excel::download(new ExcelExport($data, $headings), 'training_class.xlsx');
+       
         return $excel;
     }
 
