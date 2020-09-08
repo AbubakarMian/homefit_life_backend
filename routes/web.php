@@ -188,5 +188,13 @@ Route::group(['middleware'=>'userAuth','prefix'=>'user'],function(){
     Route::get('freelivesession','User\UserController@freelivesession')->name('freelivesession');
     Route::get('productdetail','User\UserController@productdetail')->name('productdetail');
     Route::post('trainer_permission','User\UserController@trainer_permission')->name('trainer_permission');
+
+
+
+    //=============================================================
+    //user trainer module route
+
+    Route::match(['get', 'post'], 'trainer/index','User\TrainerController@index')->name('index');
+    
     
 });

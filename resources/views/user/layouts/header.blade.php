@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-sm-3 col-xs-12">
                     <div class="logoArea">
-                        <a href="{{ asset('/homefit/home.php')}}"><img src="{{ asset('images/logo.png')}}" class="img-responsive"></a>
+                        <a href="{{ asset('/user/dashboard')}}"><img src="{{ asset('images/logo.png')}}" class="img-responsive"></a>
                     </div>
                 </div>
                 <div class="col-sm-6 col-xs-12">

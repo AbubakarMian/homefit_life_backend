@@ -1,7 +1,7 @@
 
 @extends('user\layouts\dasboard')
 
-<link href="css/profile.css" rel="stylesheet">
+<link href="{{ asset('css/profile.css')}}" rel="stylesheet">
 
 @section('dashboard')
     <section>
@@ -15,7 +15,7 @@
                         <div class="InnerContent">
                             <div class="profileImgArea">
                                 <div class="profileBoxImg">
-                                    <img src="images/livesession-02.jpg" class="img-responsive">
+                                    <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                                     <div class="profileTrainerActive">
                                     </div>
                                 </div>
@@ -54,12 +54,12 @@
                             <div class="profileVideosArea bgProfile">
                                 <h2>Photos and Videos</h2>
                                 <ul class="list-inline">
-                                    <li><img src="images/gallery-17.jpg" class="img-responsive"></li>
-                                    <li><img src="images/gallery-17.jpg" class="img-responsive"></li>
-                                    <li><img src="images/gallery-17.jpg" class="img-responsive"></li>
-                                    <li><img src="images/gallery-17.jpg" class="img-responsive"></li>
-                                    <li><img src="images/gallery-17.jpg" class="img-responsive"></li>
-                                    <li><img src="images/gallery-17.jpg" class="img-responsive"></li>
+                                    <li><img src="{{ asset('images/gallery-17.jpg')}}" class="img-responsive"></li>
+                                    <li><img src="{{ asset('images/gallery-17.jpg')}}" class="img-responsive"></li>
+                                    <li><img src="{{ asset('images/gallery-17.jpg')}}" class="img-responsive"></li>
+                                    <li><img src="{{ asset('images/gallery-17.jpg')}}" class="img-responsive"></li>
+                                    <li><img src="{{ asset('images/gallery-17.jpg')}}" class="img-responsive"></li>
+                                    <li><img src="{{ asset('images/gallery-17.jpg')}}" class="img-responsive"></li>
                                 </ul>
                             </div>
                             <div class="ProfileTrainCatArea bgProfile">
@@ -93,7 +93,7 @@
                                                     <div class="col-sm-3">
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>
@@ -105,7 +105,7 @@
                                                     <div class="col-sm-3">
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>
@@ -117,7 +117,7 @@
                                                     <div class="col-sm-3">
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>
@@ -129,7 +129,7 @@
                                                     <div class="col-sm-3">
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>
@@ -145,7 +145,7 @@
                                                     <div class="col-sm-3">
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>
@@ -157,7 +157,7 @@
                                                     <div class="col-sm-3">
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>
@@ -169,7 +169,7 @@
                                                     <div class="col-sm-3">
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>
@@ -181,7 +181,7 @@
                                                     <div class="col-sm-3">
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>

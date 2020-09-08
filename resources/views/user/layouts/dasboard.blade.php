@@ -14,7 +14,7 @@
         <a href="#"><i class="flaticon-team"></i> Group Classes</a>
         <a href="#"><i class="flaticon-calculator"></i> Nutration Calculator</a>
         <a href="#"><i class="flaticon-calendar"></i> My Schedule</a>
-        <a href="#"><i class="flaticon-logout"></i> Logout</a>
+        <a href="logout"><i class="flaticon-logout"></i> Logout</a>
     </div>
 
     <div class="content">

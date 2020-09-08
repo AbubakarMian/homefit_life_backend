@@ -1,8 +1,8 @@
 
 @extends('user\layouts\dasboard')
 
-<link href="css/trainer.css" rel="stylesheet">
-<link href="css/advancesearch.css" rel="stylesheet">
+<link href="{{ asset('css/trainer.css')}}" rel="stylesheet">
+<link href="{{ asset('css/advancesearch.css')}}" rel="stylesheet">
 
 @section('dashboard')
     <section>
@@ -15,17 +15,20 @@
                         </div>
                         <div class="InnerContent">
                             <div class=" row searchTrainer">
+                            <form method="post" action="{{ url('user/trainer/index') }}">
+                                    {{ csrf_field() }}
                                 <div class="col-sm-8">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="usr" placeholder="Search Trainers">
+                                        <input type="text" class="form-control" id="trainer" name="trainer" placeholder="Search Trainers">
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-primary btnSearch"><i class="flaticon-loupe"></i>Search</button>
+                                    <button type="submit" class="btn btn-primary btnSearch"><i class="flaticon-loupe"></i>Search</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" data-toggle="modal" data-target="#AdvanceSearchModal" class="btn btn-primary btnAdvSearch"><i class="fa fa-server" aria-hidden="true"></i> Advance Search</button>
                                 </div>
+                            </form>
                             </div>
                         </div>
                     </div>
@@ -39,103 +42,20 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <ul class="list-inline">
+                                @foreach($featured_trainers as $ft)
                                 <li>
                                     <div class="featuredTrainerBox">
                                         <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
+                                            <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                                             <div class="featuredTrainerActive">
                                             </div>
                                         </div>
                                         <div class="featuredTrainerName">
-                                            Michle Clark
+                                            {{$ft->name}}
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerDeactiveActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerDeactiveActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerDeactiveActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerDeactiveActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-
+                             @endforeach
                             </ul>
                         </div>
                     </div>
@@ -146,198 +66,21 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <ul class="list-inline">
+                            @foreach($all_trainers as $at)
                                 <li>
                                     <div class="featuredTrainerBox">
                                         <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
+                                            <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                                             <div class="featuredTrainerActive">
                                             </div>
                                         </div>
                                         <div class="featuredTrainerName">
-                                            Michle Clark
+                                            {{$at->name}}
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerDeactiveActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerDeactiveActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerDeactiveActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerDeactiveActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerDeactiveActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerDeactiveActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerDeactiveActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="featuredTrainerBox">
-                                        <div class="featuredTrainerBoxImg">
-                                            <img src="images/livesession-02.jpg" class="img-responsive">
-                                            <div class="featuredTrainerDeactiveActive">
-                                            </div>
-                                        </div>
-                                        <div class="featuredTrainerName">
-                                            Michle Clark
-                                        </div>
-                                    </div>
-                                </li>
+                                
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -539,5 +282,5 @@
         </div>
     </div>
     <!-- Modal Advance Search -->
-    <script type="text/javascript" src="js/advancesearch.js"></script>
+    <script type="text/javascript" src="{{ asset('js/advancesearch.js')}}"></script>
 @endsection

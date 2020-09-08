@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Leads;
 use App\Models\Trainer;
+use App\Models\Training_Session;
 use App\Models\Training_Type;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -67,7 +68,7 @@ class UserController extends Controller
     
     public function logout(){
         $user = Auth::logout();
-        return 'logout sucessfully';
+        return redirect('user/login')->with('success','logout sucessfully');
     }
 
     public function save (Request $request){
@@ -104,8 +105,12 @@ class UserController extends Controller
 
         $training_categories = Training_Type::get();
         $featured_trainer = Trainer::with('user')->where('is_featured','1')->get();
-        // dd($featured_trainer);
-        return \View('user.dashboard.index',compact('training_categories','featured_trainer'));
+        $sessions= Training_Session::with('training_class')->get();
+        return \View('user.dashboard.index',compact(
+            'training_categories',
+            'featured_trainer',
+            'sessions'
+        ));
 
     }
     public function profileedit(){

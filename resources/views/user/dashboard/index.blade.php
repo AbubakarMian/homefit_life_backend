@@ -48,7 +48,7 @@
                 <li>
                     <div class="featuredTrainerBox">
                         <div class="featuredTrainerBoxImg">
-                            <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
+                            <img src="{{$ft->avatar}}" class="img-responsive">
                             <div class="featuredTrainerActive">
                             </div>
                         </div>
@@ -68,6 +68,8 @@
         <h2>Live Sessions / Free Live Sessions</h2>
         <div class="col-sm-12">
             <ul class="list-inline">
+                @foreach($sessions as $s)
+                
                 <li>
                     <div class="freeLiveSessionBox">
                         <div class="freeLiveSessionBoxImg">
@@ -76,46 +78,12 @@
                             </div>
                         </div>
                         <div class="freeLiveSessionName">
-                            Yoga Session
+                        {{($s->training_class->name)}}
                         </div>
                     </div>
                 </li>
-                <li>
-                    <div class="freeLiveSessionBox">
-                        <div class="freeLiveSessionBoxImg">
-                            <img src="{{ asset('images/livesession-03.jpg')}}" class="img-responsive">
-                            <div class="freeLiveSessionActive">
-                            </div>
-                        </div>
-                        <div class="freeLiveSessionName">
-                            Aerobic Session
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="freeLiveSessionBox">
-                        <div class="freeLiveSessionBoxImg">
-                            <img src="{{ asset('images/livesession-04.jpg')}}" class="img-responsive">
-                            <div class="freeLiveSessionDeactiveActive">
-                            </div>
-                        </div>
-                        <div class="freeLiveSessionName">
-                            Cardio Session
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="freeLiveSessionBox">
-                        <div class="freeLiveSessionBoxImg">
-                            <img src="{{ asset('images/livesession-05.jpg')}}" class="img-responsive">
-                            <div class="freeLiveSessionActive">
-                            </div>
-                        </div>
-                        <div class="freeLiveSessionName">
-                            Running Session
-                        </div>
-                    </div>
-                </li>
+                @endforeach
+             
             </ul>
         </div>
     </div>
