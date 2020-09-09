@@ -101,20 +101,49 @@ class UserController extends Controller
         return \View('user.create.index');
 
     }
-    public function userdashboard(){
+    public function userdashboard(Request $request){
 
+        $search_text = $request->trainer??'';
+        $user =Auth::user();
         $training_categories = Training_Type::get();
-        $featured_trainer = Trainer::with('user')->where('is_featured','1')->get();
+        $featured_trainer = $this->trainer_query($search_text,'featured');
         $sessions= Training_Session::with('training_class')->get();
+        $trainer_by_raiting = $this->trainer_query($search_text,'rating');
         return \View('user.dashboard.index',compact(
             'training_categories',
             'featured_trainer',
-            'sessions'
+            'sessions',
+            'user',
+            'trainer_by_raiting'
         ));
 
     }
+
+    public function trainer_query($search_text, $type){
+        
+            if($type == 'rating'){
+                $report = Trainer::where('name','like','%'.$search_text.'%')->orderBy('rating');
+                return $report->get();
+            }
+            else{
+            $report = Trainer::where('name','like','%'.$search_text.'%')->where('is_featured',1);
+            return $report->get();
+        }
+    }
+
+    public function update_profile(Request $request){
+
+        $user_profile = new User;
+        $user_profile->name=$request->name;
+        $user_profile->email=$request->email;
+        $user_profile->description=$request->description;
+        $user_profile->save();
+
+       return back()->with('success', 'Profile Update Successfully');
+    }
     public function profileedit(){
-        return \View('user.profileedit.index');
+        $user =Auth::user();
+        return \View('user.profileedit.index',compact('user'));
 
     }
     public function changepass(){
@@ -184,6 +213,7 @@ class UserController extends Controller
 
     }
     public function productdetail(){
+       
         return \View('user.productdetail.index');
 
     }

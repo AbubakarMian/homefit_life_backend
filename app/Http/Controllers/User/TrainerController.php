@@ -33,4 +33,24 @@ class TrainerController extends Controller
       }
     }
 
+    public function advanceSearch(Request $request){
+
+      $trainer = $this->advance_query($request);
+      return $trainer ;
+
+
+    }
+
+    public function advance_query($request){
+
+      $report = Trainer::
+      where('name','like','%'.$request->trainer_name.'%')
+      ->orWhere('gender',$request->gender)
+      ->where('country','like','%'.$request->location.'%');
+
+      return $report->get();
+
+    }
+
+
 }
