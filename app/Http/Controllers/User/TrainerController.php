@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Trainer;
+use App\Models\Training_Class;
 use Illuminate\Http\Request;
 
 class TrainerController extends Controller
@@ -49,6 +50,17 @@ class TrainerController extends Controller
       ->where('country','like','%'.$request->location.'%');
 
       return $report->get();
+
+    }
+
+    public function sortByGroupClass(Request $request){
+
+      $group_class =Training_Class::with(['trainer'=> function ($t) use ($request) {
+            $t->where('trainer.name','like','%'.$request->trainer_name.'%');
+            $t->orWhere('trainer.gender',$request->gender);
+            $t->where('trainer.country','like','%'.$request->location.'%');
+            }])->get();
+             return $group_class;
 
     }
 

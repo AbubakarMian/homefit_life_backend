@@ -48,6 +48,7 @@ class ProductController extends Controller
 
     public function add_or_update(Request $request , $product  ){
 
+        dd($request->all());
         $product->name = $request->name;
         $product->price=$request->price;
         $product->details =$request->details;

@@ -5,21 +5,30 @@
 
 @section('dashboard')
     <div class="innerPage">
-             <form method="post" action="{{ url('user/update_profile') }}">
+             <form method="post" action="{{ url('user/update_profile') }}"  enctype="multipart/form-data">
                {{ csrf_field() }}
+               {{ Form::hidden('user_id', $user->id) }}
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="proFileImgArea">
-                        <img src="{{ $user->avatar}}" class="img-responsive">
-                        <a href="" class="btn btn-primary btnEditImg">Edit Image</a>
+                        @if($user->avatar)
+                            <img src="{{$user->avatar}}" class="img-responsive">
+                            @else
+                            <img src="{{asset('images/default-trainer.jpg')}}" class="img-responsive">
+                            @endif
+                        <div class="form-group">
+                            {!! Form::label('avatar','Product Image') !!}
+                            {!! Form::file('avatar', ['class' => 'btn btn-primary btnEditImg', 'id'=>'avatar'] ) !!}
+                        </div>
                     </div>
                     <div class="editProfile">
+                    
                         <div class="form-group">
                             <input id="email" type="text" class="form-control" name="name" value="{{ $user->name}}" placeholder="First name">
                         </div>
 
                         <div class="form-group">
                             <!-- <textarea class="form-control" rows="5" id="comment" placeholder="Bio Information"></textarea> -->
-                            <textarea class="ckeditor form-control" placeholder="Bio Information" value="{{ $user->description}}" name="description"></textarea>
+                            <textarea class="ckeditor form-control" placeholder="Bio Information"  name="description">{{ $user->description}}</textarea>
                         </div>
                         <div class="form-group">
                             <input id="email" type="text" class="form-control" name="email" value="{{ $user->email}}" placeholder="Email">

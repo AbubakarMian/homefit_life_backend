@@ -198,6 +198,7 @@ Route::group(['middleware'=>'userAuth','prefix'=>'user'],function(){
 
     Route::match(['get', 'post'], 'trainer/index','User\TrainerController@index')->name('index');
     Route::post('trainer/advanceSearch','User\TrainerController@advanceSearch')->name('trainer.advanceSearch');
+    Route::post('trainer/sortByGroupClass','User\TrainerController@sortByGroupClass')->name('trainer.sortByGroupClass');
     Route::post('update_profile','User\UserController@update_profile')->name('update_profile');
     
     

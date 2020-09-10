@@ -10,7 +10,12 @@
             
             <div class="col-sm-2">
                 <div class="profileImg">
-                    <img src="{{ $user->avatar}}" class="img-responsive">
+                    
+                    @if($user->avatar)
+                            <img src="{{$user->avatar}}" class="img-responsive">
+                            @else
+                            <img src="{{asset('images/default-trainer.jpg')}}" class="img-responsive">
+                            @endif
                 </div>
                 <div class="profileEditBtn">
                     <a href="profileedit" class="btn btn-primary">Edit Profile</a>
@@ -19,7 +24,7 @@
             <div class="col-sm-10">
                 <div class="profileContent">
                     <h2>{{$user->name}}</h2>
-                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                    <p>{!!$user->description!!}</p>
                 </div>
             </div>
         </div>
@@ -48,16 +53,23 @@
         <h2>Featured Trainers</h2>
         <div class="col-sm-12">
             <ul class="list-inline">
+                
                 @foreach($featured_trainer as $ft)
                 <li>
                     <div class="featuredTrainerBox">
                         <div class="featuredTrainerBoxImg">
+                            
+                            @if($ft->avatar)
                             <img src="{{$ft->avatar}}" class="img-responsive">
+                            @else
+                            <img src="{{asset('images/default-trainer.jpg')}}" class="img-responsive">
+                            @endif
+
                             <div class="featuredTrainerActive">
                             </div>
                         </div>
                         <div class="featuredTrainerName">
-                           {{$ft['user']['name']}}
+                           {{$ft->name}}
                         </div>
                     </div>
                 </li>
@@ -72,6 +84,7 @@
         <h2>Live Sessions / Free Live Sessions</h2>
         <div class="col-sm-12">
             <ul class="list-inline">
+               
                 @foreach($sessions as $s)
                 
                 <li>
@@ -265,69 +278,23 @@
                             <h3>Sort By</h3>
                             <div class="trainerSelect">
                                 <ul class="nav nav-pills">
-                                    <li><a data-toggle="pill" class="btn btn-primary btnTabs" href="#home">Rating</a></li>
+                                    <li><a data-toggle="pill" class="btn btn-primary btnTabs" onclick="show_trainer_list();" href="#home">Rating</a></li>
 
-                                    <li><a data-toggle="pill" class="btn btn-primary btnTabs" href="#menu3">Upcomming Group Class</a></li>
+                                    <li><a data-toggle="pill" class="btn btn-primary btnTabs" onclick="show_trainer_class_list();" href="#menu3">Upcomming Group Class</a></li>
                                 </ul>
 
                                 <div class="tab-content">
                                     <div class="tab-pane fade in active">
                                         <h3>Rating</h3>
                                         <ul id="search_list" class="list-inline">
-                                            <!-- <li>
-                                                <div class="ADSearchTrainerBox">
-                                                    <div class="ADSearchTrainerBoxImg">
-                                                        <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
-                                                        <div class="ADSearchTrainerActive">
-                                                        </div>
-                                                    </div>
-                                                    <div class="ADSearchTrainerName">
-                                                        Michle Clark
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="ADSearchTrainerBox">
-                                                    <div class="ADSearchTrainerBoxImg">
-                                                        <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
-                                                        <div class="ADSearchTrainerDeactiveActive">
-                                                        </div>
-                                                    </div>
-                                                    <div class="ADSearchTrainerName">
-                                                        Michle Clark
-                                                    </div>
-                                                </div>
-                                            </li> -->
+                                            
                                         </ul>
                                     </div>
 
                                     <div id="menu3" class="tab-pane fade">
                                         <h3>Upcomming Group Class</h3>
-                                        <ul class="list-inline">
-                                            <li>
-                                                <div class="ADSearchTrainerBox">
-                                                    <div class="ADSearchTrainerBoxImg">
-                                                        <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
-                                                        <div class="ADSearchTrainerActive">
-                                                        </div>
-                                                    </div>
-                                                    <div class="ADSearchTrainerName">
-                                                        Michle Clark
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="ADSearchTrainerBox">
-                                                    <div class="ADSearchTrainerBoxImg">
-                                                        <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
-                                                        <div class="ADSearchTrainerDeactiveActive">
-                                                        </div>
-                                                    </div>
-                                                    <div class="ADSearchTrainerName">
-                                                        Michle Clark
-                                                    </div>
-                                                </div>
-                                            </li>
+                                        <ul id="group_list" class="list-inline">
+                                           
                                         </ul>
                                     </div>
                                 </div>
@@ -336,7 +303,7 @@
                         <div style="overflow:auto;">
                             <div style="float:right;">
                                 <button type="button" class="btn btn-primary" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                                <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                                <button type="button" class="btn btn-primary" id="nextBtn" onclick="show_trainer_list();nextPrev(1)">Next</button>
                             </div>
                         </div>
                         <!-- Circles which indicates the steps of the form: -->
@@ -355,7 +322,29 @@
 
 
     <script type="text/javascript">
-        jQuery(function ($) {
+        // jQuery(function ($) {
+        //     var data1 = [12, 3, 4, 2, 12];
+        //     var data2 = [3, 9, 12, 14, 22];
+        //     var data3 = [23, 19, 11, 34, 42];
+
+        //     $("#chart1").shieldChart({
+        //         exportOptions: {
+        //             image: false,
+        //             print: false
+        //         },
+        //         axisY: {
+        //             title: {
+        //                 text: "Break-Down for selected quarter"
+        //             }
+        //         },
+        //         dataSeries: [{
+        //             seriesType: "bar",
+        //             data: data1
+        //         }]
+        //     });
+
+        // });
+        $(document).ready(function () {
             var data1 = [12, 3, 4, 2, 12];
             var data2 = [3, 9, 12, 14, 22];
             var data3 = [23, 19, 11, 34, 42];
@@ -371,13 +360,11 @@
                     }
                 },
                 dataSeries: [{
-                    seriesType: "bar",
+                    seriesType: "bar", 
                     data: data1
                 }]
             });
 
-        });
-        $(document).ready(function () {
             function c(passed_month, passed_year, calNum) {
                 var calendar = calNum == 0 ? calendars.cal1 : calendars.cal2;
                 makeWeek(calendar.weekline);
@@ -784,17 +771,13 @@
             //... and fix the Previous/Next buttons:
             
             if (n == 0) {
-                console.log('hi 1')
                 document.getElementById("prevBtn").style.display = "none";
             } else {
-                console.log('hi 2')
                 document.getElementById("prevBtn").style.display = "inline";
             }
             if (n == (x.length - 1)) {
-                console.log('hi 3')
-                document.getElementById("nextBtn").innerHTML = "Submit";
+                document.getElementById("nextBtn").style.display = "none";
             } else {
-                console.log('hi 4')
                 document.getElementById("nextBtn").innerHTML = "Next";
             }
             //... and run a function that will display the correct step indicator:
@@ -859,12 +842,14 @@
             // Exit the function if any field in the current tab is invalid:
             if (n == 1 && !validateForm()) return false;
             // Hide the current tab:
+            console.log('in upcoming group class 0')
             x[currentTab].style.display = "none";
             // Increase or decrease the current tab by 1:
             currentTab = currentTab + n;
             // if you have reached the end of the form...
             if (currentTab >= x.length) {
                 // ... the form gets submitted:
+                console.log('in upcoming group class 1')
                 document.getElementById("regForm").submit();
                 return false;
             }
@@ -896,8 +881,6 @@
 
         function fixStepIndicator(n) {
             // This function removes the "active" class of all steps...
-            console.log('123456789')
-            this.show_trainer_list()
             var i, x = document.getElementsByClassName("step");
             for (i = 0; i < x.length; i++) {
                 x[i].className = x[i].className.replace(" active", "");
@@ -905,5 +888,40 @@
             //... and adds the "active" class on the current step:
             x[n].className += " active";
         }
+        function upcommingClass(){
+            alert('working');
+        }
+
+
+        function show_trainer_class_list(){
+
+                var gender = $("#gender").val();
+                var training_type = $("#training_type").val();
+                var location = $("#location").val();
+                var trainer_name = $("#trainer_name").val();
+                console.log('gender value :',gender)
+                console.log('training type value :',training_type)
+                console.log('location value :',location)
+                console.log('trainer name value :',trainer_name)
+
+
+                    url="{{ asset('user/trainer/sortByGroupClass')}}",
+                    console.log(url)
+                    data={trainer_name:trainer_name, gender:gender, training_type:training_type,location:location,_token:"{{ csrf_token() }}"},
+
+
+                        $.post( url, data)
+                        .done(function( data ) {
+                            console.log( "Data Loaded: " + data );
+                    
+                                for (let i = 0; i < data.length; i++) {
+                                        console.log('data !!!!!!!!',data[i].name);
+                                        var trainer_html =search_trainer_html(data[i].name)
+
+                                        $('#group_list').html($('#group_list').html()+trainer_html);
+                                    }
+                            });
+
+}
     </script>
 @endsection

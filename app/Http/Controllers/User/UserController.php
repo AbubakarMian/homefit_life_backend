@@ -109,6 +109,7 @@ class UserController extends Controller
         $featured_trainer = $this->trainer_query($search_text,'featured');
         $sessions= Training_Session::with('training_class')->get();
         $trainer_by_raiting = $this->trainer_query($search_text,'rating');
+        // dd($training_categories);
         return \View('user.dashboard.index',compact(
             'training_categories',
             'featured_trainer',
@@ -132,11 +133,18 @@ class UserController extends Controller
     }
 
     public function update_profile(Request $request){
-
-        $user_profile = new User;
+       
+        // dd($request->all());
+        $user_profile = User::find($request->user_id);
         $user_profile->name=$request->name;
         $user_profile->email=$request->email;
         $user_profile->description=$request->description;
+            if($request->hasFile('avatar')) {
+                $avatar = $request->avatar;
+                $root = $request->root();
+                $user_profile->avatar =$this->move_img_get_path($avatar, $root, 'product');
+            }
+
         $user_profile->save();
 
        return back()->with('success', 'Profile Update Successfully');
