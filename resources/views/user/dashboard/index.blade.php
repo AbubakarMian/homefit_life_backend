@@ -60,11 +60,15 @@
                         <div class="featuredTrainerBoxImg">
                             
                             @if($ft->avatar)
+                            <a href="trainer/profile/{{$ft->id}}">
                             <img src="{{$ft->avatar}}" class="img-responsive">
+                            </a>
                             @else
+                            <button>
                             <img src="{{asset('images/default-trainer.jpg')}}" class="img-responsive">
+                            </button>
                             @endif
-
+                            
                             <div class="featuredTrainerActive">
                             </div>
                         </div>

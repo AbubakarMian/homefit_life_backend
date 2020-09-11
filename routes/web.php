@@ -179,7 +179,7 @@ Route::group(['middleware'=>'userAuth','prefix'=>'user'],function(){
     Route::get('payment','User\UserController@payment')->name('payment');
     Route::get('trainerrequest','User\UserController@trainerrequest')->name('trainerrequest');
     Route::get('trainer','User\UserController@trainer')->name('trainer');
-    Route::get('profile','User\UserController@profile')->name('profile');
+   
     Route::get('groupclass','User\UserController@groupclass')->name('groupclass');
     Route::get('categories','User\UserController@categories')->name('categories');
     Route::get('description','User\UserController@description')->name('description');
@@ -201,5 +201,6 @@ Route::group(['middleware'=>'userAuth','prefix'=>'user'],function(){
     Route::post('trainer/sortByGroupClass','User\TrainerController@sortByGroupClass')->name('trainer.sortByGroupClass');
     Route::post('update_profile','User\UserController@update_profile')->name('update_profile');
     
+    Route::get('trainer/profile/{id}','User\UserController@trainerprofile')->name('trainer.profile');
     
 });

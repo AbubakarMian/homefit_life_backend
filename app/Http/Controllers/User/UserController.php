@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Leads;
 use App\Models\Trainer;
+use App\Models\Training_Class;
 use App\Models\Training_Session;
 use App\Models\Training_Type;
 use Illuminate\Http\Request;
@@ -184,8 +185,13 @@ class UserController extends Controller
         return \View('user.trainer.index');
 
     }
-    public function profile(){
-        return \View('user.profile.index');
+    public function trainerprofile($id){
+
+        // dd($id);
+        $trainer =Trainer::with('training_type')->find($id);
+
+        $group_class = Training_Class::where('trainer_id',$id )->get();
+        return \View('user.profile.index',compact('trainer','group_class'));
 
     }
     public function groupclass(){

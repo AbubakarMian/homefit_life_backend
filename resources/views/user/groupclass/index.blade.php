@@ -1,6 +1,6 @@
 
 @extends('user\layouts\dasboard')
-<link href="css/groupclass.css" rel="stylesheet">
+<link href="{{ asset('css/groupclass.css')}}" rel="stylesheet">
 
 @section('dashboard')
     <section>
@@ -38,7 +38,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -52,7 +52,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -66,7 +66,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -80,7 +80,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -94,7 +94,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -108,7 +108,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -122,7 +122,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -136,7 +136,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -154,7 +154,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -168,7 +168,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -182,7 +182,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -196,7 +196,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -210,7 +210,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -224,7 +224,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -238,7 +238,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
@@ -252,7 +252,7 @@
                                                         <a href="" data-toggle="modal" data-target="#descriptionPop">
                                                             <div class="col-item">
                                                                 <div class="photo">
-                                                                    <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class" />
+                                                                    <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
                                                                 </div>
                                                                 <div class="Details">
                                                                     <h5>Yoga Group Class 1</h5>
