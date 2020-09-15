@@ -32,6 +32,10 @@
 
 
 <div class="container box">
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-6">
+
+
     <h3 align="center">HOME FIT LIFE LOG IN</h3><br />
 
 
@@ -69,12 +73,14 @@
             <input type="password" name="password" class="form-control" />
         </div>
         <div class="form-group">
-            <input type="submit" name="login" class="btn btn-primary" value="Login" />
+            <input type="submit" name="login" class="btn btn-default" value="Login" />
         </div>
 
 
 
     </form>
+            </div>
+        </div>
 </div>
 <script type="text/javascript">
     var el = document.getElementById("year"),
