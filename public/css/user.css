@@ -4,6 +4,9 @@
 .profileImg img {
     border-radius: 100%;
 }
+.btnAdvSearch {
+    padding: 10px 10px;
+}
 .profileEditBtn{
   text-align: center;
 }
