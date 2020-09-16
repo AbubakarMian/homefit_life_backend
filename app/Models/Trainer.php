@@ -11,7 +11,7 @@ class Trainer extends Model
 
     public function training_type()
     {
-        return $this->hasOne('App\models\Training_Type', 'id', 'training_type_id');
+        return $this->hasOne('App\Models\Training_Type', 'id', 'training_type_id');
     }
 
     public function user()
