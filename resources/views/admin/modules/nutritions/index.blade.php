@@ -42,7 +42,7 @@
 				{!! Form::close() !!}
 			</td>
 			<td>
-				{!!link_to_action('Admin\NutritionsController@edit',
+				{!!link_to_action('admin\NutritionsController@edit',
 				'Edit', array($c['id']), array('class' => 'badge bg-info'))!!}
 
 			</td>
