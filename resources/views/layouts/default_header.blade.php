@@ -56,9 +56,9 @@ $admin_common = session()->get('admin_common');
                 <!-- /toggle offscreen menu -->
 
                 <!-- logo -->
-                <a href="{{asset('index.php/home')}}" class="navbar-brand">
+                <a href="{{asset('admin_secure/dashboard')}}" class="navbar-brand">
                     <img src="{{ asset('theme/images/logo.png') }}" alt="">
-                    <span class="heading-font">HOME FIT LIFE</span>
+                    <span class="heading-font"></span>
                 </a>
                 <!-- /logo -->
             </div>
