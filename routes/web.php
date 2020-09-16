@@ -5,19 +5,19 @@ use Illuminate\Support\Facades\Route;
 //=================================================
 //login
 
-Route::get('admin_secure/login', 'admin\AdminController@index')->name('login');
-Route::post('admin_secure/checklogin', 'admin\AdminController@checklogin');
+Route::get('admin_secure/login', 'admin\Admincontroller@index')->name('login');
+Route::post('admin_secure/checklogin', 'admin\Admincontroller@checklogin');
 
 Route::group(['middleware'=>'adminAuth','prefix' => 'admin_secure'], function(){
-                Route::get('/', 'admin\AdminController@dashboard');
+                Route::get('/', 'admin\Admincontroller@dashboard');
             //=================================================
             //login
             Route::get('/uploadfile', 'UploadfileController@index');
             Route::post('/uploadfile', 'UploadfileController@upload');
            
            
-            Route::get('dashboard', 'admin\AdminController@dashboard')->name('dashboard');
-            Route::get('logout', 'admin\AdminController@logout');
+            Route::get('dashboard', 'admin\Admincontroller@dashboard')->name('dashboard');
+            Route::get('logout', 'admin\Admincontroller@logout');
 
 
             // ================================================
