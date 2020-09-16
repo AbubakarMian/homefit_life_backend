@@ -12,17 +12,17 @@ class Training_Class extends Model
 
     public function trainer()
     {
-        return $this->hasOne('App\models\Trainer', 'id', 'trainer_id');
+        return $this->hasOne('App\Models\Trainer', 'id', 'trainer_id');
     }
 
     public function trainer_type()
     {
-        return $this->hasOne('App\models\Training_Type', 'id', 'trainer_id');
+        return $this->hasOne('App\Models\Training_Type', 'id', 'trainer_id');
     }
 
     public function students()
     {
-        return $this->hasMany('App\models\Training_Class_Users', 'training_class_id', 'id');
+        return $this->hasMany('App\Models\Training_Class_Users', 'training_class_id', 'id');
     }
     public function user()
     {
