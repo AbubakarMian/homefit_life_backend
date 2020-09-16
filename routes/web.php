@@ -23,18 +23,18 @@ Route::group(['middleware'=>'adminAuth','prefix' => 'admin_secure'], function(){
             // ================================================
             // product
 
-            //Route::get('user', 'admin\productController@index');
-            //Route::get('product/index', 'admin\productController@index');
+            //Route::get('user', 'admin\ProductController@index');
+            //Route::get('product/index', 'admin\ProductController@index');
             Route::group(['prefix' => 'product'], function(){
-                Route::get('/', 'admin\productController@index')->name('product.index');
-                Route::get('/create', 'admin\productController@create')->name('product.create');
-                Route::post('/save', 'admin\productController@save')->name('product.save');
+                Route::get('/', 'admin\ProductController@index')->name('product.index');
+                Route::get('/create', 'admin\ProductController@create')->name('product.create');
+                Route::post('/save', 'admin\ProductController@save')->name('product.save');
             });
 
 
-            Route::get('product/edit/{id}','admin\productController@edit')->name('product.edit');
-            Route::post('product/update/{id}','admin\productController@update')->name('product.update');
-            Route::post('product/delete/{id}','admin\productController@destroy_undestroy')->name('product.delete');
+            Route::get('product/edit/{id}','admin\ProductController@edit')->name('product.edit');
+            Route::post('product/update/{id}','admin\ProductController@update')->name('product.update');
+            Route::post('product/delete/{id}','admin\ProductController@destroy_undestroy')->name('product.delete');
 
             // ================================================
             // Package
