@@ -14,12 +14,16 @@
                     </div>
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="trainerrequestArea">
+                        <form method="post" action="{{ url('user/trainer_permission') }}">
+                        {{ csrf_field() }}
                             <div class="form-group">
-                                <textarea class="form-control" rows="10" id="comment" placeholder="Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."></textarea>
+                                <textarea class="form-control" rows="10" id="message" placeholder="Type your message here." name="message" ></textarea>
                             </div>
                             <div class="btnLogIn">
-                                <a href=""  class="btn btn-primary btnAcc">Submit Request</a>
+                                <input type="submit" class="btn btn-primary btnAcc" value="Submit Request"/> 
                             </div>
+
+                            </form>
                         </div>
 
                     </div>

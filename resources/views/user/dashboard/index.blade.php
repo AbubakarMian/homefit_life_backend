@@ -1,15 +1,15 @@
 
 @extends('user\layouts\dasboard')
 
-<link href="css/user.css" rel="stylesheet">
-<link href="css/advancesearch.css" rel="stylesheet">
+<link href="{{ asset('css/user.css')}}" rel="stylesheet">
+<link href="{{ asset('css/advancesearch.css')}}" rel="stylesheet">
 
 @section('dashboard')
     <div class="profileDetails">
         <div class="row">
             <div class="col-sm-2">
                 <div class="profileImg">
-                    <img src="images/livesession-02.jpg" class="img-responsive">
+                    <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                 </div>
                 <div class="profileEditBtn">
                     <a href="" class="btn btn-primary">Edit Profile</a>
@@ -44,102 +44,21 @@
         <h2>Featured Trainers</h2>
         <div class="col-sm-12">
             <ul class="list-inline">
+                @foreach( $featured_trainer as $ft)
                 <li>
                     <div class="featuredTrainerBox">
                         <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                             <div class="featuredTrainerActive">
                             </div>
                         </div>
                         <div class="featuredTrainerName">
-                            Michle Clark
+                           {{$ft['user']['name']}}
                         </div>
                     </div>
                 </li>
-                <li>
-                    <div class="featuredTrainerBox">
-                        <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
-                            <div class="featuredTrainerDeactiveActive">
-                            </div>
-                        </div>
-                        <div class="featuredTrainerName">
-                            Michle Clark
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="featuredTrainerBox">
-                        <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
-                            <div class="featuredTrainerActive">
-                            </div>
-                        </div>
-                        <div class="featuredTrainerName">
-                            Michle Clark
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="featuredTrainerBox">
-                        <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
-                            <div class="featuredTrainerDeactiveActive">
-                            </div>
-                        </div>
-                        <div class="featuredTrainerName">
-                            Michle Clark
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="featuredTrainerBox">
-                        <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
-                            <div class="featuredTrainerActive">
-                            </div>
-                        </div>
-                        <div class="featuredTrainerName">
-                            Michle Clark
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="featuredTrainerBox">
-                        <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
-                            <div class="featuredTrainerDeactiveActive">
-                            </div>
-                        </div>
-                        <div class="featuredTrainerName">
-                            Michle Clark
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="featuredTrainerBox">
-                        <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
-                            <div class="featuredTrainerActive">
-                            </div>
-                        </div>
-                        <div class="featuredTrainerName">
-                            Michle Clark
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="featuredTrainerBox">
-                        <div class="featuredTrainerBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
-                            <div class="featuredTrainerDeactiveActive">
-                            </div>
-                        </div>
-                        <div class="featuredTrainerName">
-                            Michle Clark
-                        </div>
-                    </div>
-                </li>
+                @endforeach
+                
             </ul>
         </div>
     </div>
@@ -152,7 +71,7 @@
                 <li>
                     <div class="freeLiveSessionBox">
                         <div class="freeLiveSessionBoxImg">
-                            <img src="images/livesession-02.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                             <div class="freeLiveSessionDeactiveActive">
                             </div>
                         </div>
@@ -164,7 +83,7 @@
                 <li>
                     <div class="freeLiveSessionBox">
                         <div class="freeLiveSessionBoxImg">
-                            <img src="images/livesession-03.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-03.jpg')}}" class="img-responsive">
                             <div class="freeLiveSessionActive">
                             </div>
                         </div>
@@ -176,7 +95,7 @@
                 <li>
                     <div class="freeLiveSessionBox">
                         <div class="freeLiveSessionBoxImg">
-                            <img src="images/livesession-04.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-04.jpg')}}" class="img-responsive">
                             <div class="freeLiveSessionDeactiveActive">
                             </div>
                         </div>
@@ -188,7 +107,7 @@
                 <li>
                     <div class="freeLiveSessionBox">
                         <div class="freeLiveSessionBoxImg">
-                            <img src="images/livesession-05.jpg" class="img-responsive">
+                            <img src="{{ asset('images/livesession-05.jpg')}}" class="img-responsive">
                             <div class="freeLiveSessionActive">
                             </div>
                         </div>
@@ -202,106 +121,32 @@
     </div>
     <!-- freeLiveSessionArea -->
     <!-- catagoriesArea -->
+    <style>
+    
+    img.img-responsive.training {
+    height: 20px;
+        }
+    </style>
     <div class="catagoriesArea">
         <h2>Catagories</h2>
         <div class="col-sm-12">
             <ul class="list-inline">
+            @foreach($training_categories as $tc)
                 <li>
                     <a href="">
                         <div class="catagoresBox">
                             <div class="catagoryIcon">
-                                <i class="flaticon-yoga"></i>
+                                <img src="{{ $tc->avatar }}" class="img-responsive training" >
+                                
                             </div>
                             <div class="catagoryText">
-                                Yoga
+                               {{$tc->name}}
                             </div>
                         </div>
                     </a>
                 </li>
-                <li>
-                    <a href="">
-                        <div class="catagoresBox">
-                            <div class="catagoryIcon">
-                                <i class="flaticon-step"></i>
-                            </div>
-                            <div class="catagoryText">
-                                Aerobic
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <div class="catagoresBox">
-                            <div class="catagoryIcon">
-                                <i class="flaticon-bycicle"></i>
-                            </div>
-                            <div class="catagoryText">
-                                Cycling
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <div class="catagoresBox">
-                            <div class="catagoryIcon">
-                                <i class="flaticon-cardio"></i>
-                            </div>
-                            <div class="catagoryText">
-                                Cardio
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <div class="catagoresBox">
-                            <div class="catagoryIcon">
-                                <i class="flaticon-sneakers"></i>
-                            </div>
-                            <div class="catagoryText">
-                                Running
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <div class="catagoresBox">
-                            <div class="catagoryIcon">
-                                <i class="flaticon-pilates"></i>
-                            </div>
-                            <div class="catagoryText">
-                                Pilates
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <div class="catagoresBox">
-                            <div class="catagoryIcon">
-                                <i class="flaticon-running"></i>
-                            </div>
-                            <div class="catagoryText">
-                                Zumba
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <div class="catagoresBox">
-                            <div class="catagoryIcon">
-                                <i class="flaticon-jump-rope"></i>
-                            </div>
-                            <div class="catagoryText">
-                                Jumping
-                            </div>
-                        </div>
-                    </a>
-                </li>
+                @endforeach
+               
             </ul>
         </div>
     </div>

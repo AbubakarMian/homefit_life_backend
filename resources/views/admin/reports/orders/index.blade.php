@@ -7,13 +7,13 @@ Product Sales
 @stop
 
 @section('excel')
-{!!Form::open(['method'=>'get','route' =>array('orders.index')])!!}
+{!!Form::open(['method'=>'get','route' =>array('orders.excel')])!!}
 {!!Form::hidden('user_excel',null,['id'=>'user_excel'])!!}
 {!!Form::hidden('date_excel',null,['id'=>'date_excel'])!!}
 {!!Form::hidden('status_excel',null,['id'=>'status_excel'])!!}
 {!!Form::submit('Export Excel',['class'=>'btn btn-success pull-right',
 'onclick'=>'return order_excel(event);',
-'data-url'=>asset('index.php/admin_secure/pending_orders/excel')
+'data-url'=>asset('index.php/admin_secure/orders.excel')
 ])!!}
 {!!Form::close()!!}
 @stop

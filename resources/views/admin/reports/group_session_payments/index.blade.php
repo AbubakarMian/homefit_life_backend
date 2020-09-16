@@ -7,12 +7,12 @@
 @stop
 
 @section('excel')
-{!!Form::open(['method'=>'get','route' =>array('group_session_payments.index')])!!}
+{!!Form::open(['method'=>'get','route' =>array('group_session_payments.excel')])!!}
 {!!Form::hidden('user_excel',null,['id'=>'user_excel'])!!}
 {!!Form::hidden('date_excel',null,['id'=>'date_excel'])!!}
 {!!Form::hidden('status_excel',null,['id'=>'status_excel'])!!}
 {!!Form::submit('Export Excel',['class'=>'btn btn-success pull-right',
-'onclick'=>'return group_session_payments_excel(event);',
+'onclick'=>'return export_excel(event);',
 'data-url'=>asset('index.php/admin_secure/pending_group_session_payments/excel')
 ])!!}
 {!!Form::close()!!}
@@ -99,12 +99,15 @@
             }
             )}
 
-        function order_excel(event){
-            $('#user_excel').val( $('#user').val());
-            $('#req_num_excel').val( $('#req_num').val());
-            $('#date_excel').val( $('#reservationtime').val());
-            $('#status_excel').val( $('#status').val());
-        }
+        // function order_excel(event){
+        //     $('#user_excel').val( $('#user').val());
+        //     $('#req_num_excel').val( $('#req_num').val());
+        //     $('#date_excel').val( $('#reservationtime').val());
+        //     $('#status_excel').val( $('#status').val());
+        // }
+		function export_excel(){
+			$('#user_excel').val( $('#user').val());
+		}
 
         // function set_lat_long(lat , long , location){
 		// 	alert('st');

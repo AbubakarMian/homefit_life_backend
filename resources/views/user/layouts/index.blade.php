@@ -12,13 +12,13 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="ftrLogo">
-                        <img src="images/googleplay.png" class="img-responsive">
+                        <img src="{{ asset('images/googleplay.png')}}" class="img-responsive">
                     </div>
                     <div class="ftrLogo">
-                        <img src="images/appstore.png" class="img-responsive">
+                        <img src="{{ asset('images/appstore.png')}}" class="img-responsive">
                     </div>
                     <div class="ftrLogo">
-                        <img src="images/webapp.png" class="img-responsive">
+                        <img src="{{ asset('images/webapp.png')}}" class="img-responsive">
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -48,7 +48,7 @@
     </div>
     <div class="copyRightArea">
         <div class="container">
-            Copyrights © 2020. Khatm-e-Nabuwat All Rights Reserved. Designed By HatInco
+            Copyrights © 2020. HomeFitLive All Rights Reserved. Designed By HatInco
         </div>
     </div>
 </footer>

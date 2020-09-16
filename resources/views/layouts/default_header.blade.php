@@ -88,7 +88,7 @@ $admin_common = session()->get('admin_common');
                 </li>
 
                 <li class="off-right">
-                    <form action="{{asset('index.php/logout')}}">
+                    <form action="{{asset('admin_secure/logout')}}">
                         <input type="submit" class="btn btn-danger btn-rounded margin-top" value="LogOut">
                     </form>
                     <!--           <button type="button" class="btn btn-danger btn-rounded margin-top">LogOut</button> -->
@@ -108,7 +108,7 @@ $admin_common = session()->get('admin_common');
                     <ul class="nav">
                         <!-- dashboard -->
                         <li>
-                            <a href="{{asset('dashboard')}}">
+                            <a href="{{asset('admin_secure/dashboard')}}">
                                 <i class="ti-home"></i>
                                 <span>Dashboard</span>
                             </a>

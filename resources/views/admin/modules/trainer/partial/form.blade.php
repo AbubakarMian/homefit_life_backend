@@ -45,14 +45,13 @@
     </div>
 </div>
 
+
+<span id="error_companies" class="error"></span>
 <div class="form-group">
-    {!! Form::label('training_type_id','Training Type') !!}
-    <div>
-        {!! Form::select('training_type_id',$all_training_type,null, ['class' => 'form-control',
-                                'data-parsley-required'=>'true',
-                                'data-parsley-trigger'=>'change',
-                                'placeholder'=>'Training type','required',
-             								'maxlength'=>"50"]) !!}
+    <div class="alert alert-info">
+        &nbsp;<a href="" data-toggle="modal" style="padding-left: 25%;" data-target=".company">
+            Click here to Add Training Types</a>
+        @include('admin.modules.trainer.partial.training_type_modal')
     </div>
 </div>
 

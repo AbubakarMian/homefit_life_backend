@@ -32,7 +32,11 @@
 
 
 <div class="container box">
-    <h3 align="center">MUSLIM PLANNER LOG IN</h3><br />
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-6">
+
+
+    <h3 align="center">HOME FIT LIFE LOG IN</h3><br />
 
 
     @if(isset(Auth::user()->email))
@@ -56,7 +60,7 @@
         </div>
     @endif
 
-    <form method="post" action="{{ url('/checklogin') }}">
+    <form method="post" action="{{ url('admin_secure/checklogin') }}">
         {{ csrf_field() }}
        
         {!!  Form::hidden('timezone_offset','',array('id' => 'timezone_offset') )  !!}
@@ -69,12 +73,14 @@
             <input type="password" name="password" class="form-control" />
         </div>
         <div class="form-group">
-            <input type="submit" name="login" class="btn btn-primary" value="Login" />
+            <input type="submit" name="login" class="btn btn-default" value="Login" />
         </div>
 
 
 
     </form>
+            </div>
+        </div>
 </div>
 <script type="text/javascript">
     var el = document.getElementById("year"),

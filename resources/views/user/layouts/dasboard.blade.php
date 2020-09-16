@@ -1,6 +1,6 @@
 @include('user.layouts.header')
 
-<link href="css/globaldashboard.css" rel="stylesheet">
+<link href="{{ asset('css/globaldashboard.css')}}" rel="stylesheet">
 <section>
     <div class="sidebar">
         <div class="pageName">

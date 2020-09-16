@@ -15,13 +15,14 @@ class OrdersController extends Controller
 {
     public function index(Request $request)
     {
+        
         $all = Config::get('constants.order_status.all');
         $pending = Config::get('constants.order_status.pending');
         $inprogress = Config::get('constants.order_status.inprogress');
         $completed = Config::get('constants.order_status.completed');
         $rejected = Config::get('constants.order_status.rejected');
 
-        $search_text = $request->user;
+        $search_text = $request->user ?? '';
         $date = $request->date;
         $status = $request->status ?? $all;
 
@@ -38,11 +39,9 @@ class OrdersController extends Controller
             $todate = Carbon::now()->format('m/d/Y');
             $date = $fromdate.' - '.$todate;
         }
-        
         $orders = $this->query($search_text ,$date  ,$status)->paginate(10);
 
-        // $leads = Leads::paginate(5, ['id', 'user_id', 'status', 'message']);
-
+        // $orders = ModelsRequest::paginate(5);
         return \View::make('admin.reports.orders.index', compact(
         'orders',
         'search_text',
@@ -98,14 +97,13 @@ class OrdersController extends Controller
     public function index_excel(Request $request)
     {        
         $all = Config::get('constants.request_status.all');
-
-        $search_text = $request->user;
-        $date = $request->date;
-        $status = $request->status ?? $all;
-        $data = $this->query($search_text ,$date  ,$status)->get()->toArray();
-        $headings = ['Id', 'Status','Message']; 
-
-        $excel = Excel::download(new ExcelExport($data, $headings), 'leads.xlsx');
+        
+        $search_text = $request->user_excel;
+        $date = $request->date_excel;
+        $status = $request->status_excel ?? $all;
+        $data = $this->query($search_text ,$date  ,$status)->select('id','address','total_price','status')->get()->toArray();
+        $headings = ['Id', 'Address','Total Price','Status']; 
+        $excel = Excel::download(new ExcelExport($data, $headings), 'order.xlsx');
         return $excel;
     }
 }

@@ -4,6 +4,9 @@
 .profileImg img {
     border-radius: 100%;
 }
+.btnAdvSearch {
+    padding: 10px 10px;
+}
 .profileEditBtn{
   text-align: center;
 }
@@ -131,7 +134,7 @@
     padding-bottom: 5px;
     margin-bottom: 15px;
 }
-..catagoriesArea li{
+.catagoriesArea li{
     width: 12%;
 }
 .flaticon-yoga:before {

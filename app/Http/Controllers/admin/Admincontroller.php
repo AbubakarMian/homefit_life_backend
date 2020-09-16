@@ -52,13 +52,13 @@ class Admincontroller extends Controller
 
     function successlogin()
     {
-        return view('dashboard');
+        return view('admin_secure/dashboard');
     }
 
     function logout()
     {
         Auth::logout();
-        return redirect('admin_secure/main');
+        return redirect('admin_secure/login');
     }
     function dashboard (){
 
@@ -114,7 +114,7 @@ class Admincontroller extends Controller
             'title' => 'Training Type',
             'count' => $count
         ];
-        $count = Nutritions::count('id');
+        $count = Trainer::count('id');
 
         // $modules[] = [
         //     'url' => 'nutritions',
@@ -143,11 +143,11 @@ class Admincontroller extends Controller
             'url' => 'admin_secure/reports/registered_students',
             'title' => 'Registered Students',
         ];
-$reports[] = [
+        $reports[] = [
             'url' => 'admin_secure/reports/group_session_payments',
             'title' => 'Group Session Payments',
         ];
-$reports[] = [
+        $reports[] = [
             'url' => 'admin_secure/reports/personal_session_payments',
             'title' => 'Personal Session Payments',
         ];

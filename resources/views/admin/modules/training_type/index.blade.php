@@ -14,6 +14,7 @@ Training Type
     <tr>
 
         <th>Name</th>
+        <th>Image</th>
         
 
 
@@ -22,8 +23,9 @@ Training Type
     <tbody>
 
     @foreach($training_type as $c)
-
+    
             <td>{!! $c->name !!}</td>
+            <td><img src="{!! $c->avatar !!}"  class="show-product-img"></td>
             <td>
                 {!!link_to_action('Admin\Training_TypeController@edit',
                 'Edit', array($c->id), array('class' => 'badge bg-info'))!!}

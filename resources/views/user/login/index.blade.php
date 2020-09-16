@@ -1,20 +1,38 @@
-
 @extends('user.layouts.index')
-
 @section('default')
     <section>
         <div class="innerPage">
-            <div class="container">
+            <div class="container">     
+    <!-- @if ($message = Session::get('error'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif -->
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="pageTitle">
                             <h1>LogIn To Your Account</h1>
                         </div>
                     </div>
+                    
                     <div class="col-sm-6 col-sm-offset-3">
+                    <form method="post" action="{{ url('user/checklogin') }}">
+                            
                         <div class="LoginForm">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user-o"></i></span>
+                                {{ csrf_field() }}
                                 <input id="email" type="text" class="form-control" name="email" placeholder="Email">
                             </div>
                             <br/>
@@ -26,10 +44,12 @@
                                 <a href="" data-toggle="modal" data-target="#LoginModal">Forgot My Password?</a>
                             </div>
                             <div class="btnLogIn">
-                                <a href=""  class="btn btn-primary btnLogin">Login</a>
+                                <input type="submit" class="btn btn-primary " value="Login"/> 
                             </div>
                         </div>
+                        </form>
                     </div>
+                   
                 </div>
             </div>
         </div>

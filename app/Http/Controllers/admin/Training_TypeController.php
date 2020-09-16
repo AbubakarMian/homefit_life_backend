@@ -5,18 +5,21 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Training_Type;
+use Response;
+use Config;
 
 class Training_TypeController extends Controller
 {
     public function index(){
 
-        $training_type = Training_Type::paginate(5,['id','name']);
+        $training_type = Training_Type::paginate(5,['id','name','avatar']);
 
         return \View::make('admin.modules.training_type.index',compact('training_type'));
     }
 
     public function create(){
         $control = 'create';
+        
 //        $all_types = Type::pluck('name_en','id');
 
         return \View::make('admin.modules.training_type.create',
@@ -28,7 +31,7 @@ class Training_TypeController extends Controller
         $training_type = new training_type();
 
         $this->add_or_update($request , $training_type );
-        return redirect('training_type');
+        return redirect('admin_secure/training_type');
 
     }
     public function edit($id){
@@ -48,8 +51,17 @@ class Training_TypeController extends Controller
 
 
     public function add_or_update(Request $request , $training_type  ){
-//        dd($request->name_en);
+    //    dd($request->all());
         $training_type->name = $request->name;
+        if($request->hasFile('avatar')) {
+            $avatar = $request->avatar;
+            $root = $request->root();
+
+            $training_type->avatar =$this->move_img_get_path($avatar, $root, 'training_type');
+        }
+        else if($request->image_visible){
+            $training_type->avatar = $request->image_visible;
+        }
         $training_type->save();
     }
     public function destroy_undestroy($id){
@@ -68,5 +80,25 @@ class Training_TypeController extends Controller
             'new_value'=>$new_value
         ]);
         return $response;
+    }
+
+    public function get_training_type(){
+
+        $training_type_arr = Training_Type::get();
+
+        $response = Response::json(["status"=>true,
+        'action'=>'Sucess',
+        'data'=>$training_type_arr
+    ]);
+    return $response;
+    }
+
+    public function update_trainer_training_type(Request $request){
+
+        dd($request->all());
+        $trainer_training_type = new Training_Type;
+        $trainer_training_type_arr->trainer = $request->trainer_id;
+        $trainer_training_type_arr->training_type = $request->trainer_id;
+
     }
 }

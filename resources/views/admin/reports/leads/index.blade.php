@@ -33,19 +33,20 @@
     <thead>
     <tr>
         <th>User</th>
-        {{-- <th>Status</th> --}}
+        <!-- <th>Status</th> -->
         <th>Message</th>
+        <th>Request Date </th>
         <th>Status</th>
 
     </tr>
     </thead>
     <tbody>
-
     @foreach($leads as $c)
 
         <td>{!! $c->user->name !!}</td>
-        {{-- <td>{!! $c->status !!}</td> --}}
+         <!-- <td>{!! $c->status !!}</td>  -->
         <td>{!! $c->message !!}</td>
+        <td>{!! $c->created_at !!}</td>
         <td id="td_{!! $c->id !!}">
             @if($c->status == 'pending')
 
@@ -56,7 +57,7 @@
                     [
                     'cell_id'=>'td_'.$c->id,
                     'req_status'=>'accept_request_'.$c->id,
-                    'url'=>asset('leads/status_update/'.$c->id),
+                    'url'=>asset('admin_secure/leads/status_update/'.$c->id),
                     'status'=>'accept'
                     ])
 
@@ -67,7 +68,7 @@
                      [
                     'cell_id'=>'td_'.$c->id,
                     'req_status'=>'reject_request_'.$c->id,
-                     'url'=>asset('leads/status_update/'.$c->id),
+                     'url'=>asset('admin_secure/leads/status_update/'.$c->id),
                      'status'=>'reject' ])
             @else
                 {!! ucwords($c->status) !!}
