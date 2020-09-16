@@ -42,7 +42,7 @@
 		<td>{!! $c->specialities !!}</td>
 		<td>{!! $c->is_featured == 1?'True':'False'!!}</td>
 		<td>
-			{!!link_to_action('Admin\TrainerController@edit',
+			{!!link_to_action('admin\TrainerController@edit',
 			'Edit', array($c['id']), array('class' => 'badge bg-info'))!!}
 
 		</td>

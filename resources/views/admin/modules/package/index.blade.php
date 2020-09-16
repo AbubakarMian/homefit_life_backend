@@ -45,7 +45,7 @@
 				{!! Form::close() !!}
 			</td>
 			<td>
-				{!!link_to_action('Admin\PackageController@edit',
+				{!!link_to_action('admin\PackageController@edit',
 				'Edit', array($c['id']), array('class' => 'badge bg-info'))!!}
 
 			</td>

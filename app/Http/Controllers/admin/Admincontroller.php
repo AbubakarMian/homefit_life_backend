@@ -141,15 +141,15 @@ class Admincontroller extends Controller
 
         $reports[] = [
             'url' => 'admin_secure/reports/registered_students',
-            'title' => 'Registered Students',
+            'title' => 'Students',
         ];
         $reports[] = [
             'url' => 'admin_secure/reports/group_session_payments',
-            'title' => 'Group Session Payments',
+            'title' => 'Group Payments',
         ];
         $reports[] = [
             'url' => 'admin_secure/reports/personal_session_payments',
-            'title' => 'Personal Session Payments',
+            'title' => 'Personal Payments',
         ];
 
         $myvar = [];
