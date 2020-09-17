@@ -85,7 +85,7 @@ $reports = $admin_common->reports;
                     <h1 class="mt0">
                         Chart
                     </h1>
-                    <h3>Top Ten Vendors By Rating</h3>
+                    <h3>Top Ten Trainers</h3>
                     <!-- Chart here -->
 {{--                    <div id="dashboard_chart">--}}
 {{--                        <script>--}}

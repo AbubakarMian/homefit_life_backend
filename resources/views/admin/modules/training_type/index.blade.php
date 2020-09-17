@@ -27,7 +27,7 @@ Training Type
             <td>{!! $c->name !!}</td>
             <td><img src="{!! $c->avatar !!}"  class="show-product-img"></td>
             <td>
-                {!!link_to_action('Admin\Training_TypeController@edit',
+                {!!link_to_action('admin\Training_TypeController@edit',
                 'Edit', array($c->id), array('class' => 'badge bg-info'))!!}
 
             </td>

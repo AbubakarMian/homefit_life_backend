@@ -22,7 +22,7 @@ class Training_Class_Users extends Model
 
     public function trainingclass()
     {
-       return $this->hasOne('App\Models\Training_class', 'id', 'training_class_id');
+       return $this->hasOne('App\Models\Training_Class', 'id', 'training_class_id');
     }
 
     public function package()

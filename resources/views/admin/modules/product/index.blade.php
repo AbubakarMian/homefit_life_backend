@@ -52,7 +52,7 @@
 
 
 		<td>
-				{!!link_to_action('Admin\productController@edit',
+				{!!link_to_action('admin\ProductController@edit',
 				'Edit', array($p['id']), array('class' => 'badge bg-info'))!!}
 
 			</td>

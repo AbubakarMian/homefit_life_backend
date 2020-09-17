@@ -6,6 +6,9 @@
     width: 250px;
     height: 250px;
 }
+.btnAdvSearch {
+    padding: 10px 10px;
+}
 .profileEditBtn{
   text-align: center;
 }
