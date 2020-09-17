@@ -104,7 +104,6 @@ class UserController extends Controller
 
         $training_categories = Training_Type::get();
         $featured_trainer = Trainer::with('user')->where('is_featured','1')->get();
-        // dd($featured_trainer);
         return \View('user.dashboard.index',compact('training_categories','featured_trainer'));
 
     }
