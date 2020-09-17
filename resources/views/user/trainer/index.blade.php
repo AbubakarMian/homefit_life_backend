@@ -1,5 +1,4 @@
-
-@extends('user\layouts\dasboard')
+@extends('user.layouts.dasboard')
 
 <link href="css/trainer.css" rel="stylesheet">
 <link href="css/advancesearch.css" rel="stylesheet">
