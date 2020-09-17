@@ -25,14 +25,13 @@ class Personal_Session_PaymentsController extends Controller
 
     public function query($search_text)
     {
-       
-        $report = Training_Session_Personal::whereHas('trainer',function($q)use($search_text){
-            $q->where('name','like','%'.$search_text.'%');
-        });
-        $report = $report->whereHas('user',function($q)use($search_text){
-            $q->where('name','like','%'.$search_text.'%');
-        });
+        $report = Training_Session_Personal::with('user');
 
+         $report = $report->whereHas('user',function($q)use($search_text){
+             $q->where('name','like','%'.$search_text.'%');
+         });
+
+        
         $report = $report->orderBy('created_at');
 
         return $report->select(
