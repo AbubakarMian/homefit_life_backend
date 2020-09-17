@@ -1,5 +1,5 @@
 
-@extends('user\layouts\dasboard')
+@extends('user.layouts.dasboard')
 <link href="css/livesession.css" rel="stylesheet">
 @section('dashboard')
     <section>

@@ -156,9 +156,9 @@ Route::group(['middleware'=>'adminAuth','prefix' => 'admin_secure'], function(){
 //user area
 
 Route::get('user/login','User\UserController@login')->name('userlogin');
-Route::get('user/register','User\userController@usercreate')->name('usercreate');
-Route::get('userreset','User\userController@userreset')->name('userreset');
-Route::post('user/checklogin','User\userController@checklogin')->name('checklogin');
+Route::get('user/register','User\UserController@usercreate')->name('usercreate');
+Route::get('userreset','User\UserController@userreset')->name('userreset');
+Route::post('user/checklogin','User\UserController@checklogin')->name('checklogin');
 
 Route::get('user/logout','User\UserController@logout')->name('logout');
 Route::post('user/save','User\UserController@save')->name('save');

@@ -1,5 +1,4 @@
-
-@extends('user\layouts\dasboard')
+@extends('user.layouts.dasboard')
 
 <link href="{{ asset('css/trainer.css')}}" rel="stylesheet">
 <link href="{{ asset('css/advancesearch.css')}}" rel="stylesheet">

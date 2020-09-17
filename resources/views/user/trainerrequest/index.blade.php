@@ -1,5 +1,5 @@
 
-@extends('user\layouts\dasboard')
+@extends('user.layouts.dasboard')
 <link href="css/trainerrequest.css" rel="stylesheet">
 
 @section('dashboard')

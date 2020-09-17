@@ -1,6 +1,6 @@
-
-@extends('user\layouts\dasboard')
+@extends('user.layouts.dasboard')
 <link href="{{ asset('css/groupclass.css')}}" rel="stylesheet">
+
 
 @section('dashboard')
     <section>
