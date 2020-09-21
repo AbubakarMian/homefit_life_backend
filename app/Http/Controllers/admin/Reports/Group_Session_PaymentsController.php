@@ -18,7 +18,7 @@ class Group_Session_PaymentsController extends Controller
         $search_text = $request->user??'';
 
         $group_session_payments= $this->query($search_text )->paginate(10);
-// dd($group_session_payments);
+        // dd($group_session_payments);
         return \View::make('admin.reports.group_session_payments.index', compact(
             'group_session_payments',
             'search_text'));

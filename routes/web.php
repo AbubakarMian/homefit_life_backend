@@ -168,14 +168,16 @@ Route::post('user/save','User\UserController@save')->name('save');
 Route::group(['middleware'=>'userAuth','prefix'=>'user'],function(){
 
     Route::get('user','User\UserController@index')->name('user');
-    Route::get('dashboard','User\UserController@userdashboard')->name('userdashboard');
+
+    Route::match(['get', 'post'],'dashboard','User\UserController@userdashboard')->name('userdashboard');
+
     Route::get('profileedit','User\UserController@profileedit')->name('profileedit');
     Route::get('changepass','User\UserController@changepass')->name('changepass');
     Route::get('paymentinfo','User\UserController@paymentinfo')->name('paymentinfo');
     Route::get('payment','User\UserController@payment')->name('payment');
     Route::get('trainerrequest','User\UserController@trainerrequest')->name('trainerrequest');
     Route::get('trainer','User\UserController@trainer')->name('trainer');
-    Route::get('profile','User\UserController@profile')->name('profile');
+   
     Route::get('groupclass','User\UserController@groupclass')->name('groupclass');
     Route::get('categories','User\UserController@categories')->name('categories');
     Route::get('description','User\UserController@description')->name('description');
@@ -186,5 +188,17 @@ Route::group(['middleware'=>'userAuth','prefix'=>'user'],function(){
     Route::get('freelivesession','User\UserController@freelivesession')->name('freelivesession');
     Route::get('productdetail','User\UserController@productdetail')->name('productdetail');
     Route::post('trainer_permission','User\UserController@trainer_permission')->name('trainer_permission');
+
+
+
+    //=============================================================
+    //user trainer module route
+
+    Route::match(['get', 'post'], 'trainer/index','User\TrainerController@index')->name('index');
+    Route::post('trainer/advanceSearch','User\TrainerController@advanceSearch')->name('trainer.advanceSearch');
+    Route::post('trainer/sortByGroupClass','User\TrainerController@sortByGroupClass')->name('trainer.sortByGroupClass');
+    Route::post('update_profile','User\UserController@update_profile')->name('update_profile');
+    
+    Route::get('trainer/profile/{id}','User\UserController@trainerprofile')->name('trainer.profile');
     
 });

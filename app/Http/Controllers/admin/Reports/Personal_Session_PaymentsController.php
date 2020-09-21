@@ -15,8 +15,9 @@ class Personal_Session_PaymentsController extends Controller
     {
         $search_text = $request->user ??'';
         // dd($search_text);
-        // $personal_session_payments= $this->query($search_text )->paginate(10);
-        $personal_session_payments= Training_Session_Personal::paginate(10);
+        $personal_session_payments= $this->query($search_text )->paginate(10);
+        // $personal_session_payments= Training_Session_Personal::paginate(10);
+        // dd($personal_session_payments);
         return \View::make('admin.reports.personal_session_payments.index', compact(
             'personal_session_payments',
             'search_text'));
@@ -24,15 +25,13 @@ class Personal_Session_PaymentsController extends Controller
 
     public function query($search_text)
     {
-       
-        $report = Training_Session_Personal::whereHas('trainer',function($q)use($search_text){
-            $q->where('name','like','%'.$search_text.'%');
-        });;
+        $report = Training_Session_Personal::with('user');
 
-        $report = $report->whereHas('user',function($q)use($search_text){
-            $q->where('name','like','%'.$search_text.'%');
-        });
+         $report = $report->whereHas('user',function($q)use($search_text){
+             $q->where('name','like','%'.$search_text.'%');
+         });
 
+        
         $report = $report->orderBy('created_at');
 
         return $report->select(
@@ -40,6 +39,9 @@ class Personal_Session_PaymentsController extends Controller
             'price',
             'class_date',
             'class_time',
+            'user_id',
+            'payment_id',
+            'trainer_id',
         );
     }
 

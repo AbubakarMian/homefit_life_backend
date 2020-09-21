@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Leads;
 use App\Models\Trainer;
+use App\Models\Training_Class;
+use App\Models\Training_Session;
 use App\Models\Training_Type;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -67,7 +69,7 @@ class UserController extends Controller
     
     public function logout(){
         $user = Auth::logout();
-        return 'logout sucessfully';
+        return redirect('user/login')->with('success','logout sucessfully');
     }
 
     public function save (Request $request){
@@ -100,15 +102,57 @@ class UserController extends Controller
         return \View('user.create.index');
 
     }
-    public function userdashboard(){
+    public function userdashboard(Request $request){
 
+        $search_text = $request->trainer??'';
+        $user =Auth::user();
         $training_categories = Training_Type::get();
-        $featured_trainer = Trainer::with('user')->where('is_featured','1')->get();
-        return \View('user.dashboard.index',compact('training_categories','featured_trainer'));
+        $featured_trainer = $this->trainer_query($search_text,'featured');
+        $sessions= Training_Session::with('training_class')->get();
+        $trainer_by_raiting = $this->trainer_query($search_text,'rating');
+        // dd($training_categories);
+        return \View('user.dashboard.index',compact(
+            'training_categories',
+            'featured_trainer',
+            'sessions',
+            'user',
+            'trainer_by_raiting'
+        ));
 
     }
+
+    public function trainer_query($search_text, $type){
+        
+            if($type == 'rating'){
+                $report = Trainer::where('name','like','%'.$search_text.'%')->orderBy('rating');
+                return $report->get();
+            }
+            else{
+            $report = Trainer::where('name','like','%'.$search_text.'%')->where('is_featured',1);
+            return $report->get();
+        }
+    }
+
+    public function update_profile(Request $request){
+       
+        // dd($request->all());
+        $user_profile = User::find($request->user_id);
+        $user_profile->name=$request->name;
+        $user_profile->email=$request->email;
+        $user_profile->description=$request->description;
+            if($request->hasFile('avatar')) {
+                $avatar = $request->avatar;
+                $root = $request->root();
+                $user_profile->avatar =$this->move_img_get_path($avatar, $root, 'product');
+            }
+
+        $user_profile->save();
+
+       return back()->with('success', 'Profile Update Successfully');
+    }
     public function profileedit(){
-        return \View('user.profileedit.index');
+        $user =Auth::user();
+        return \View('user.profileedit.index',compact('user'));
 
     }
     public function changepass(){
@@ -141,8 +185,13 @@ class UserController extends Controller
         return \View('user.trainer.index');
 
     }
-    public function profile(){
-        return \View('user.profile.index');
+    public function trainerprofile($id){
+
+        // dd($id);
+        $trainer =Trainer::with('training_type')->find($id);
+
+        $group_class = Training_Class::where('trainer_id',$id )->get();
+        return \View('user.profile.index',compact('trainer','group_class'));
 
     }
     public function groupclass(){
@@ -178,6 +227,7 @@ class UserController extends Controller
 
     }
     public function productdetail(){
+       
         return \View('user.productdetail.index');
 
     }

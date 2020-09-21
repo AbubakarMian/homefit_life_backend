@@ -230,6 +230,8 @@ return [
 
 //      custom libraries
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+// //      CK editor
+//         Unisharp\Ckeditor\ServiceProvider::class,
     ],
 
 ];

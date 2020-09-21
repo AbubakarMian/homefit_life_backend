@@ -1,6 +1,6 @@
 @extends('user.layouts.dasboard')
 
-<link href="css/profile.css" rel="stylesheet">
+<link href="{{ asset('css/profile.css')}}" rel="stylesheet">
 
 @section('dashboard')
     <section>
@@ -14,21 +14,23 @@
                         <div class="InnerContent">
                             <div class="profileImgArea">
                                 <div class="profileBoxImg">
-                                    <img src="images/livesession-02.jpg" class="img-responsive">
+                                    <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                                     <div class="profileTrainerActive">
                                     </div>
                                 </div>
                                 <div class="profileTrainerName">
-                                    Michle Clark
+                                   <!-- {{ $trainer->name}} -->
+                                   {{ ucfirst(trans($trainer->name)) }}
                                 </div>
                                 <div class="profileTrainerRating">
-                                    Rating 5.0
+                                {{ $trainer->rating }}
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
+                                
                             </div>
                             <div class="profileExpertiesArea">
                                 <ul class="list-inline">
@@ -44,27 +46,28 @@
                                 </ul>
                             </div>
                             <div class="profileGoalsArea">
-                                "Hi my name is Joul and im a fitness trainer and i enjoy ever moment when im at gym my goal is to make the world healthy"
+                            {{ ucfirst(trans($trainer->details)) }}
                             </div>
                             <div class="profileTraingSpeciality bgProfile">
                                 <h2>Training Speciality</h2>
-                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee.</p>
+                                <p>{{ ucfirst(trans($trainer->specialities)) }}</p>
                             </div>
+                            
                             <div class="profileVideosArea bgProfile">
                                 <h2>Photos and Videos</h2>
                                 <ul class="list-inline">
-                                    <li><img src="images/gallery-17.jpg" class="img-responsive"></li>
-                                    <li><img src="images/gallery-17.jpg" class="img-responsive"></li>
-                                    <li><img src="images/gallery-17.jpg" class="img-responsive"></li>
-                                    <li><img src="images/gallery-17.jpg" class="img-responsive"></li>
-                                    <li><img src="images/gallery-17.jpg" class="img-responsive"></li>
-                                    <li><img src="images/gallery-17.jpg" class="img-responsive"></li>
+                                    <li><img src="{{ asset('images/gallery-17.jpg')}}" class="img-responsive"></li>
+                                    <li><img src="{{ asset('images/gallery-17.jpg')}}" class="img-responsive"></li>
+                                    <li><img src="{{ asset('images/gallery-17.jpg')}}" class="img-responsive"></li>
+                                    <li><img src="{{ asset('images/gallery-17.jpg')}}" class="img-responsive"></li>
+                                    <li><img src="{{ asset('images/gallery-17.jpg')}}" class="img-responsive"></li>
+                                    <li><img src="{{ asset('images/gallery-17.jpg')}}" class="img-responsive"></li>
                                 </ul>
                             </div>
                             <div class="ProfileTrainCatArea bgProfile">
                                 <h2>Training Catagories</h2>
                                 <ul class="list-inline">
-                                    <li><h3> <span class="label label-primary">Fitness</span></h3></li>
+                                    <li><h3> <span class="label label-primary">{{$trainer->training_type->name}}</span></h3></li>
                                     <li><h3> <span class="label label-primary">Aerobics</span></h3></li>
                                     <li><h3> <span class="label label-primary">Yoga</span></h3></li>
                                 </ul>
@@ -74,7 +77,7 @@
                                     <div class=" headSlider">
                                         <div class="row">
                                             <div class="col-md-9">
-                                                <h2>Yoga Group Classes</h2>
+                                                <h2>Group Classes</h2>
                                             </div>
                                             <div class="col-md-3">
                                                 <!-- Controls -->
@@ -90,9 +93,23 @@
                                             <div class="item">
                                                 <div class="row">
                                                     <div class="col-sm-3">
+                                                        @foreach($group_class as $gc)
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
+                                                            </div>
+                                                            <div class="Details">
+                                                                <h5>{{$gc->name}}</h5>
+                                                                <p>{{$gc->details}} </p>
+                                                                <span>20 Members</span>
+                                                            </div>
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="col-item">
+                                                            <div class="photo">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>
@@ -104,7 +121,7 @@
                                                     <div class="col-sm-3">
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>
@@ -116,19 +133,7 @@
                                                     <div class="col-sm-3">
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
-                                                            </div>
-                                                            <div class="Details">
-                                                                <h5>Yoga Group Class 1</h5>
-                                                                <p>Anim pariatur cliche reprehenderit, </p>
-                                                                <span>20 Members</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <div class="col-item">
-                                                            <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>
@@ -144,7 +149,7 @@
                                                     <div class="col-sm-3">
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>
@@ -156,7 +161,7 @@
                                                     <div class="col-sm-3">
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>
@@ -168,7 +173,7 @@
                                                     <div class="col-sm-3">
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>
@@ -180,7 +185,7 @@
                                                     <div class="col-sm-3">
                                                         <div class="col-item">
                                                             <div class="photo">
-                                                                <img src="images/gallery-18.jpg" class="img-responsive" alt="Home Fit Group Class">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class">
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>Yoga Group Class 1</h5>
@@ -225,6 +230,101 @@
             </div>
         </div>
     </section>
+
+     <!-- Date Modal  -->
+     <div id="personalTrainingModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="regForm" >
+                        <!-- One "tab" for each step in the form: -->
+                        <div class="tab">
+                            <div class="AdvanceSearchArea">
+                                <h2>Advance Search</h2>
+                                <div class="formAdvanceSearch">
+                                    <div class="form-group">
+                                        <input type="text" id="location" class="form-control" placeholder="Country, City. State. Zip" >
+                                    </div>
+                                   
+
+                                    <div class="form-group">
+                                        <input type="text" id="trainer_name" class="form-control valid" placeholder="Trainer Name (optional)">
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control" id="gender">
+                                            <option>Gender Type</option>
+                                            <option value="1">Male</option>
+                                            <option value="0">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab">
+                            <h3>Sort By</h3>
+                            <div class="trainerSelect">
+                                <ul class="nav nav-pills">
+                                    <li><a data-toggle="pill" class="btn btn-primary btnTabs" onclick="show_trainer_list();" href="#home">Rating</a></li>
+
+                                    <li><a data-toggle="pill" class="btn btn-primary btnTabs" onclick="show_trainer_class_list();" href="#menu3">Upcomming Group Class</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active">
+                                        <h3>Rating</h3>
+                                        <ul id="search_list" class="list-inline">
+                                            
+                                        </ul>
+                                    </div>
+
+                                    <div id="menu3" class="tab-pane fade">
+                                        <h3>Upcomming Group Class</h3>
+                                        <ul id="group_list" class="list-inline">
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="overflow:auto;">
+                            <div style="float:right;">
+                                <button type="button" class="btn btn-primary" id="prevBtn" >Previous</button>
+                                <button type="button" class="btn btn-primary" id="nextBtn" >Next</button>
+                            </div>
+                        </div>
+                        <!-- Circles which indicates the steps of the form: -->
+                        <div style="text-align:center;margin-top:40px;">
+                            <span class="step"></span>
+                            <span class="step"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="MyPopup" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;</button>
+                <h4 class="modal-title">
+                </h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Close</button>
+            </div>
+        </div>
+    </div>
+</div>
     <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
     <script type="text/javascript">
         jQuery(function ($) {
@@ -374,6 +474,7 @@
             }
 
             function selectDates(selected) {
+                
                 if (!$.isEmptyObject(selected)) {
                     var dateElements1 = datesBody1.find('div');
                     var dateElements2 = datesBody2.find('div');
@@ -391,7 +492,12 @@
 
                         }
                     }
-
+                    console.log('year',year)
+                    console.log('month',month)
+                    console.log('selected',selected)
+                    
+                  
+                    
                     highlightDates(year, month, dateElements1);
                     highlightDates(nextYear, nextMonth, dateElements2);
                 }
@@ -562,6 +668,9 @@
                     "month": clickedMonth,
                     "year": clickedYear
                 }
+                // console.log('clickedInfo',clickedInfo)
+                // $('#personalTrainingModal').modal('show');
+
                 return clickedInfo;
             }
 
