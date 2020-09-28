@@ -48,7 +48,6 @@ class ProductController extends Controller
 
     public function add_or_update(Request $request , $product  ){
 
-        dd($request->all());
         $product->name = $request->name;
         $product->price=$request->price;
         $product->details =$request->details;
@@ -56,14 +55,12 @@ class ProductController extends Controller
         if($request->hasFile('avatar')) {
             $avatar = $request->avatar;
             $root = $request->root();
-
+            
             $product->avatar =$this->move_img_get_path($avatar, $root, 'product');
         }
         else if($request->image_visible){
             $product->avatar = $request->image_visible;
         }
-        // dd($request->avatar_visible);
-        // dd($request->image_visible);
         $product->save();
     }
     public function destroy_undestroy($id){

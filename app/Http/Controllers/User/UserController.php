@@ -84,7 +84,7 @@ class UserController extends Controller
         $users->password    = Hash::make($request->password);
         $users->save();
       
-        return redirect('user/dashboard');
+        return redirect('user/home');
         }
         else
         {
