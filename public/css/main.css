@@ -676,6 +676,7 @@ ul.ftrList a {
 }
 .innerPageBlank{
     min-height: 500px;
+    margin-top: 2%;
 }
 .innerPage{
     position: relative;

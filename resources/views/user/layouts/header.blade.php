@@ -67,17 +67,16 @@
                                     <!-- responsive nav -->
                                     <ul class="nav navbar-nav">
                                         <li id="" class="inMenu">
-                                            <a href="{{ asset('/homefit/home.php')}}"><span>Home</span> </a>
+                                            <a href="{{ asset('user/dashboard')}}"><span>Home</span> </a>
                                         </li>
                                         <li id="">
-                                            <a href=""><span>Classes</span> </a>
+                                            <a href="{!! asset('user/categories') !!}"><span>Categories</span> </a>
                                         </li>
                                         <li id="">
-
-                                            <a href="trainer.php"><span>Trainers</span> </a>
+                                            <a href="{!! asset('user/trainer/index') !!}"><span>Trainers</span> </a>
                                         </li>
                                         <li id="">
-                                            <a href=""><span>Store</span> </a>
+                                            <a href="{!! asset('user/store') !!}"><span>Store</span> </a>
                                         </li>
                                         <li id="">
                                             <a href=""><span>Live Sessions</span> </a>
@@ -142,7 +141,11 @@
                             <center><a href="" class="btn btn-primary btn-xs">Checkout</a></center>
 
                         </div>
+                        @if(Auth::check())
+                        <a href="{{ asset('user/logout')}}" class="btn btn-primary btn-sm btn-UserLogin " >User Logout <i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                        @else
                         <a href="{{ asset('/homefit/login.php')}}" class="btn btn-primary btn-sm btn-UserLogin " >User Login <i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                        @endif
                     </div>
                 </div>
             </div>

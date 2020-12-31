@@ -20,8 +20,8 @@
                                     </div>
                                     <div class="col-sm-9">
                                         <div class="headArea">
-                                            <h1>{!! $class_detail['name'] !!}</h1>
-                                            <h2>Trainer: {!! $class_detail->trainer->name !!}</h2>
+                                            <h1>{!! $class_detail->name !!}</h1>
+                                            <h2>Trainer: {!! $class_detail->trainer->name ?? '' !!}</h2>
                                             <h3>Start Time: 10:30 am</h3>
                                         </div>
                                     </div>
@@ -42,7 +42,7 @@
                                                 <li>
                                                     <div class="featuredTrainerBox">
                                                         <div class="featuredTrainerBoxImg">
-                                                            <img src="{{ $gm->user->avatar}}" class="img-responsive">
+                                                            <img src="{{ $gm->user->avatar }}" class="img-responsive">
                                                             <div class="featuredTrainerActive">
                                                             </div>
                                                         </div>

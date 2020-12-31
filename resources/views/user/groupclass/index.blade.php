@@ -17,7 +17,7 @@
                                     <div class=" headSlider">
                                         <div class="row">
                                             <div class="col-md-9">
-                                                <h2>{!! $category[0]['name'] !!} Group Classes</h2>
+                                                <h2>{!! $category[0]['name']?? "" !!}  Group Classes</h2>
                                             </div>
                                             <div class="col-md-3">
                                                 <!-- Controls -->
