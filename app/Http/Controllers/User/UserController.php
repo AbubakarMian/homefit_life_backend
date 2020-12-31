@@ -83,7 +83,7 @@ class UserController extends Controller
         $users->role_id       = $role_id;
         $users->password    = Hash::make($request->password);
         $users->save();
-      
+        Auth::login($users);
         return redirect('user/home');
         }
         else
@@ -110,7 +110,6 @@ class UserController extends Controller
         $featured_trainer = $this->trainer_query($search_text,'featured');
         $sessions= Training_Session::with('training_class')->get();
         $trainer_by_raiting = $this->trainer_query($search_text,'rating');
-        // dd($training_categories);
         return \View('user.dashboard.index',compact(
             'training_categories',
             'featured_trainer',
@@ -135,7 +134,6 @@ class UserController extends Controller
 
     public function update_profile(Request $request){
        
-        // dd($request->all());
         $user_profile = User::find($request->user_id);
         $user_profile->name=$request->name;
         $user_profile->email=$request->email;

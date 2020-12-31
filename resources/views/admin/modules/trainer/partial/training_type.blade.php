@@ -56,7 +56,7 @@ $all_trainig_list =Training_Type::all();
 
         // var country = $('#selected_country option:selected').val();
 
-        var my_url = "{!! asset('index.php/admin_secure/get_training_type') !!}";
+        var my_url = "{!! asset('index.php/admin/get_training_type') !!}";
 
         $.ajax({
             url: my_url,
@@ -122,7 +122,7 @@ $all_trainig_list =Training_Type::all();
     function update_training_type() {
 
 
-        var my_url = '{!! asset("index.php/admin_secure/update_trainer_training_type") !!}';
+        var my_url = '{!! asset("index.php/admin/update_trainer_training_type") !!}';
         console.log(my_url)
         var formData = new FormData();
         formData.append("_token", '{!! csrf_token()!!}');

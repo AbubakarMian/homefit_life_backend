@@ -28,4 +28,9 @@ class Training_Class extends Model
     {
         return $this->hasMany('App\user', 'user_id', 'id');
     }
+
+    public function training_session()
+    {
+        return $this->hasOne('App\models\Training_Session', 'training_class_id', 'id');
+    }
 }

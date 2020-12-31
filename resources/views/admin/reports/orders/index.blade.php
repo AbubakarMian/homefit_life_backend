@@ -13,7 +13,7 @@ Product Sales
 {!!Form::hidden('status_excel',null,['id'=>'status_excel'])!!}
 {!!Form::submit('Export Excel',['class'=>'btn btn-success pull-right',
 'onclick'=>'return order_excel(event);',
-'data-url'=>asset('index.php/admin_secure/orders.excel')
+'data-url'=>asset('index.php/admin/orders.excel')
 ])!!}
 {!!Form::close()!!}
 @stop
@@ -82,7 +82,7 @@ Product Sales
 				'order_id'=>$order->id,
 				'cell_id'=>'td_'.$order->id,
 				'req_status'=>'inprogress_request_'.$order->id,
-				'url'=>asset('admin_secure/reports/orders/status_update/'.$order->id),
+				'url'=>asset('admin/reports/orders/status_update/'.$order->id),
 				'status'=>'inprogress',
 				'btn_class'=>'btn-primary'
 				])
@@ -96,7 +96,7 @@ Product Sales
 				'order_id'=>$order->id,
 				'cell_id'=>'td_'.$order->id,
 				'req_status'=>'reject_request_'.$order->id,
-				'url'=>asset('admin_secure/reports/orders/status_update/'.$order->id),
+				'url'=>asset('admin/reports/orders/status_update/'.$order->id),
 				'status'=>'rejected',
 				'btn_class'=>'btn-danger' ])
 			</div>
@@ -109,7 +109,7 @@ Product Sales
 				'order_id'=>$order->id,
 				'cell_id'=>'td_'.$order->id,
 				'req_status'=>'completed_request_'.$order->id,
-				'url'=>asset('admin_secure/reports/orders/status_update/'.$order->id),
+				'url'=>asset('admin/reports/orders/status_update/'.$order->id),
 				'status'=>'completed',
 				'btn_class'=>'btn-success'
 				])

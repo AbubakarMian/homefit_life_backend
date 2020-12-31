@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Route;
 //=================================================
 //login
 
-Route::get('admin_secure/login', 'admin\Admincontroller@index')->name('login');
-Route::post('admin_secure/checklogin', 'admin\Admincontroller@checklogin');
+Route::get('admin/login', 'admin\Admincontroller@index')->name('login');
+Route::post('admin/checklogin', 'admin\Admincontroller@checklogin');
 
-Route::group(['middleware'=>'adminAuth','prefix' => 'admin_secure'], function(){
+Route::group(['middleware'=>'adminAuth','prefix' => 'admin'], function(){
                 Route::get('/', 'admin\Admincontroller@dashboard');
             //=================================================
             //login
@@ -167,38 +167,49 @@ Route::post('user/save','User\UserController@save')->name('save');
 
 Route::group(['middleware'=>'userAuth','prefix'=>'user'],function(){
 
-    Route::get('user','User\UserController@index')->name('user');
+            Route::get('user','User\UserController@index')->name('user');
 
-    Route::match(['get', 'post'],'dashboard','User\UserController@userdashboard')->name('userdashboard');
+            Route::match(['get', 'post'],'dashboard','User\UserController@userdashboard')->name('userdashboard');
 
-    Route::get('profileedit','User\UserController@profileedit')->name('profileedit');
-    Route::get('changepass','User\UserController@changepass')->name('changepass');
-    Route::get('paymentinfo','User\UserController@paymentinfo')->name('paymentinfo');
-    Route::get('payment','User\UserController@payment')->name('payment');
-    Route::get('trainerrequest','User\UserController@trainerrequest')->name('trainerrequest');
-    Route::get('trainer','User\UserController@trainer')->name('trainer');
-   
-    Route::get('groupclass','User\UserController@groupclass')->name('groupclass');
-    Route::get('categories','User\UserController@categories')->name('categories');
-    Route::get('description','User\UserController@description')->name('description');
-    Route::get('livesession','User\UserController@livesession')->name('livesession');
-    Route::get('productcart','User\UserController@productcart')->name('productcart');
-    Route::get('shippingform','User\UserController@shippingform')->name('shippingform');
-    Route::get('paymentcard','User\UserController@paymentcard')->name('paymentcard');
-    Route::get('freelivesession','User\UserController@freelivesession')->name('freelivesession');
-    Route::get('productdetail','User\UserController@productdetail')->name('productdetail');
-    Route::post('trainer_permission','User\UserController@trainer_permission')->name('trainer_permission');
-
+            Route::get('profileedit','User\UserController@profileedit')->name('profileedit');
+            Route::get('changepass','User\UserController@changepass')->name('changepass');
+            Route::get('paymentinfo','User\UserController@paymentinfo')->name('paymentinfo');
+            Route::get('payment','User\UserController@payment')->name('payment');
+            Route::get('trainerrequest','User\UserController@trainerrequest')->name('trainerrequest');
+            Route::get('trainer','User\UserController@trainer')->name('trainer');
+        
+        
+            Route::get('description','User\UserController@description')->name('description');
+            Route::get('livesession','User\UserController@livesession')->name('livesession');
+            Route::get('productcart','User\UserController@productcart')->name('productcart');
+            Route::get('shippingform','User\UserController@shippingform')->name('shippingform');
+            Route::get('paymentcard','User\UserController@paymentcard')->name('paymentcard');
+            Route::get('freelivesession','User\UserController@freelivesession')->name('freelivesession');
+            Route::get('productdetail','User\UserController@productdetail')->name('productdetail');
+            Route::post('trainer_permission','User\UserController@trainer_permission')->name('trainer_permission');
 
 
-    //=============================================================
-    //user trainer module route
 
-    Route::match(['get', 'post'], 'trainer/index','User\TrainerController@index')->name('index');
-    Route::post('trainer/advanceSearch','User\TrainerController@advanceSearch')->name('trainer.advanceSearch');
-    Route::post('trainer/sortByGroupClass','User\TrainerController@sortByGroupClass')->name('trainer.sortByGroupClass');
-    Route::post('update_profile','User\UserController@update_profile')->name('update_profile');
-    
-    Route::get('trainer/profile/{id}','User\UserController@trainerprofile')->name('trainer.profile');
-    
+            //=============================================================
+            //user trainer module route
+
+            Route::match(['get', 'post'], 'trainer/index','User\TrainerController@index')->name('index');
+            Route::post('trainer/advanceSearch','User\TrainerController@advanceSearch')->name('trainer.advanceSearch');
+            Route::post('trainer/sortByGroupClass','User\TrainerController@sortByGroupClass')->name('trainer.sortByGroupClass');
+            Route::post('update_profile','User\UserController@update_profile')->name('update_profile');
+            
+            Route::get('trainer/profile/{id}','User\UserController@trainerprofile')->name('trainer.profile');
+            
+            //=============================================================
+            // training category 
+
+            
+            Route::get('categories','User\CategoryController@index')->name('categories');
+
+            // ============================================================
+        // Group classes
+
+            Route::get('groupclass','User\GroupClassController@index')->name('groupclass');
+            Route::get('groupclass/group_desc','User\GroupClassController@group_desc')->name('groupclass.full_desc');
+
 });

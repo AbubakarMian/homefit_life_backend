@@ -29,7 +29,7 @@ class ProductController extends Controller
 
         $this->add_or_update($request , $package );
 
-        return redirect('admin_secure/product');
+        return redirect('admin/product');
 
     }
     public function edit($id){
@@ -42,7 +42,7 @@ class ProductController extends Controller
     public function update(Request $request , $id  ){
         $product = Product::find($id);
         $this->add_or_update($request , $product );
-        return Redirect('admin_secure/product');
+        return Redirect('admin/product');
     }
 
 
