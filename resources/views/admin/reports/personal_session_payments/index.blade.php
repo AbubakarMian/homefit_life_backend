@@ -13,7 +13,7 @@ Personal Session Payments
 {!!Form::hidden('status_excel',null,['id'=>'status_excel'])!!}
 {!!Form::submit('Export Excel',['class'=>'btn btn-success pull-right',
 'onclick'=>'return export_excel(event);',
-'data-url'=>asset('index.php/admin_secure/personal_session_payments/excel')
+'data-url'=>asset('index.php/admin/personal_session_payments/excel')
 ])!!}
 {!!Form::close()!!}
 

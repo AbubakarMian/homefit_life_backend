@@ -14,7 +14,7 @@
 	{!!Form::hidden('status_excel',null,['id'=>'status_excel'])!!}
 	{!!Form::submit('Export Excel',['class'=>'btn btn-success pull-right',
         'onclick'=>'return order_excel(event);',
-         'data-url'=>asset('index.php/admin_secure/pending_orders/excel')
+         'data-url'=>asset('index.php/admin/pending_orders/excel')
          ])!!}
 	{!!Form::close()!!}
 @stop
@@ -50,7 +50,7 @@
 			<td>
 				<a href="">
 				<span class="badge bg-info" name="details"
-					  data-url="{!! asset('index.php/admin_secure/pending_orders/orders/details/').'/'.$pending_order->Id !!}">
+					  data-url="{!! asset('index.php/admin/pending_orders/orders/details/').'/'.$pending_order->Id !!}">
 				Details</span>
 				</a>
 			</td>

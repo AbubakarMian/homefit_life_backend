@@ -24,6 +24,9 @@
     text-transform: uppercase;
     padding-top: 5%;
 }
+span.firstbold {
+    font-weight: 800;
+}
 .headSlider {
     border-bottom: 1px solid #0c94ea;
     margin-bottom: 15px;

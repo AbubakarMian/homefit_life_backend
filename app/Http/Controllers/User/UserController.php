@@ -19,31 +19,32 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return \View('user.home.index');
     }
 
-    public function login(){
+    public function login()
+    {
         return \View('user.login.index');
     }
 
-    public function userlogin(Request $request){
-       
-            $user_data =$request->all();
-        if(Auth::attempt($user_data))
-        {
+    public function userlogin(Request $request)
+    {
+
+        $user_data = $request->all();
+        if (Auth::attempt($user_data)) {
             // return redirect('user/dashboard');
             return $this->userdashboard();
-        }
-        else
-        {
+        } else {
             return back()->with('error', 'Wrong Login Details');
         }
-        $user = User::find('email','user1@gmail.com');
+        $user = User::find('email', 'user1@gmail.com');
         return \View('user.login.index');
     }
 
-    public function checklogin(Request $request){
+    public function checklogin(Request $request)
+    {
         try {
             $this->validate($request, [
                 'email' => 'required|email',
@@ -57,178 +58,172 @@ class UserController extends Controller
             'password' => $request->get('password')
         );
 
-        if(Auth::attempt($user_data))
-        {
+        if (Auth::attempt($user_data)) {
             return redirect('user/dashboard');
-        }
-        else
-        {
+        } else {
             return back()->with('error', 'Wrong Login Details');
         }
     }
-    
-    public function logout(){
+
+    public function logout()
+    {
         $user = Auth::logout();
-        return redirect('user/login')->with('success','logout sucessfully');
+        return redirect('user/login')->with('success', 'logout sucessfully');
     }
 
-    public function save (Request $request){
+    public function save(Request $request)
+    {
 
-        $validator = Validator::make($request->all(),User::$rules);
+        $validator = Validator::make($request->all(), User::$rules);
         $role_id = Config::get('constants.roles_id.user');
-        if(!$validator->fails()){
-        $users = new User();
-        $users->name	   = $request->name;
-        $users->email       = $request->email;
-        $users->role_id       = $role_id;
-        $users->password    = Hash::make($request->password);
-        $users->save();
-      
-        return redirect('user/home');
-        }
-        else
-        {
-           
+        if (!$validator->fails()) {
+            $users = new User();
+            $users->name       = $request->name;
+            $users->email       = $request->email;
+            $users->role_id       = $role_id;
+            $users->password    = Hash::make($request->password);
+            $users->save();
+            Auth::login($users);
+            return redirect('user/home');
+        } else {
+
             return back()->with('error', 'Wrong Login Details');
         }
     }
 
 
-    public function userreset(){
+    public function userreset()
+    {
         return \View('user.reset.index');
-
     }
-    public function usercreate(){
+    public function usercreate()
+    {
         return \View('user.create.index');
-
     }
-    public function userdashboard(Request $request){
+    public function userdashboard(Request $request)
+    {
 
-        $search_text = $request->trainer??'';
-        $user =Auth::user();
+        $search_text = $request->trainer ?? '';
+        $user = Auth::user();
         $training_categories = Training_Type::get();
-        $featured_trainer = $this->trainer_query($search_text,'featured');
-        $sessions= Training_Session::with('training_class')->get();
-        $trainer_by_raiting = $this->trainer_query($search_text,'rating');
-        // dd($training_categories);
-        return \View('user.dashboard.index',compact(
+        $featured_trainer = $this->trainer_query($search_text, 'featured');
+        $sessions = Training_Session::with('training_class')->get();
+        $trainer_by_raiting = $this->trainer_query($search_text, 'rating');
+        return \View('user.dashboard.index', compact(
             'training_categories',
             'featured_trainer',
             'sessions',
             'user',
             'trainer_by_raiting'
         ));
-
     }
 
-    public function trainer_query($search_text, $type){
-        
-            if($type == 'rating'){
-                $report = Trainer::where('name','like','%'.$search_text.'%')->orderBy('rating');
-                return $report->get();
-            }
-            else{
-            $report = Trainer::where('name','like','%'.$search_text.'%')->where('is_featured',1);
+    public function trainer_query($search_text, $type)
+    {
+
+        if ($type == 'rating') {
+            $report = Trainer::where('name', 'like', '%' . $search_text . '%')->orderBy('rating');
+            return $report->get();
+        } else {
+            $report = Trainer::where('name', 'like', '%' . $search_text . '%')->where('is_featured', 1);
             return $report->get();
         }
     }
 
-    public function update_profile(Request $request){
-       
-        // dd($request->all());
+    public function update_profile(Request $request)
+    {
+
         $user_profile = User::find($request->user_id);
-        $user_profile->name=$request->name;
-        $user_profile->email=$request->email;
-        $user_profile->description=$request->description;
-            if($request->hasFile('avatar')) {
-                $avatar = $request->avatar;
-                $root = $request->root();
-                $user_profile->avatar =$this->move_img_get_path($avatar, $root, 'product');
-            }
+        $user_profile->name = $request->name;
+        $user_profile->email = $request->email;
+        $user_profile->description = $request->description;
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->avatar;
+            $root = $request->root();
+            $user_profile->avatar = $this->move_img_get_path($avatar, $root, 'product');
+        }
 
         $user_profile->save();
 
-       return back()->with('success', 'Profile Update Successfully');
+        return back()->with('success', 'Profile Update Successfully');
     }
-    public function profileedit(){
-        $user =Auth::user();
-        return \View('user.profileedit.index',compact('user'));
-
+    public function profileedit()
+    {
+        $user = Auth::user();
+        return \View('user.profileedit.index', compact('user'));
     }
-    public function changepass(){
+    public function changepass()
+    {
         return \View('user.changepass.index');
-
     }
-    public function paymentinfo(){
+    public function paymentinfo()
+    {
         return \View('user.paymentinfo.index');
-
     }
-    public function payment(){
+    public function payment()
+    {
         return \View('user.payment.index');
-
     }
-    public function trainerrequest(){
+    public function trainerrequest()
+    {
         return \View('user.trainerrequest.index');
-
     }
-    public function trainer_permission(Request $request){
-       
-        $user =Auth::user();
-        $lead = new Leads ();
+    public function trainer_permission(Request $request)
+    {
+
+        $user = Auth::user();
+        $lead = new Leads();
         $lead->user_id = $user->id;
         $lead->message = $request->message;
         $lead->save();
         return back()->with('success', 'Request send successfully');
-
     }
-    public function trainer(){
+    public function trainer()
+    {
         return \View('user.trainer.index');
-
     }
-    public function trainerprofile($id){
+    public function trainerprofile($id)
+    {
 
-        // dd($id);
-        $trainer =Trainer::with('training_type')->find($id);
-
-        $group_class = Training_Class::where('trainer_id',$id )->get();
-        return \View('user.profile.index',compact('trainer','group_class'));
-
+        $trainer = Trainer::with('training_type')->find($id);
+        $group_class = Training_Class::where('trainer_id', $id)->get();
+        return \View('user.profile.index', compact('trainer', 'group_class'));
     }
-    public function groupclass(){
+    public function groupclass()
+    {
         return \View('user.groupclass.index');
-
     }
-    public function categories(){
+    public function categories()
+    {
         return \View('user.categories.index');
-
     }
-    public function description(){
+    public function description()
+    {
         return \View('user.description.index');
-
     }
-    public function livesession(){
+    public function livesession()
+    {
         return \View('user.livesession.index');
-
     }
-    public function productcart(){
+    public function productcart()
+    {
         return \View('user.productcart.index');
-
     }
-    public function shippingform(){
+    public function shippingform()
+    {
         return \View('user.shippingform.index');
-
     }
-    public function paymentcard(){
+    public function paymentcard()
+    {
         return \View('user.paymentcard.index');
-
     }
-    public function freelivesession(){
+    public function freelivesession()
+    {
         return \View('user.freelivesession.index');
-
     }
-    public function productdetail(){
-       
-        return \View('user.productdetail.index');
 
+    public function trainerprof(){
+
+        
     }
 }

@@ -1,7 +1,7 @@
 
 @extends('user.layouts.dasboard')
 
-<link href="css/freelivesession.css" rel="stylesheet">
+<link href="{{ asset('css/freelivesession.css')}}" rel="stylesheet">
 
 @section('dashboard')
     <section>
@@ -123,7 +123,7 @@
                                     <li>
                                         <div class="liveSessionBox">
                                             <div class="liveSessionsImg">
-                                                <img src="images/livesession-02.jpg" class="img-responsive">
+                                                <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                                             </div>
                                             <div class="liveSessionsText">
                                                 <h6>Yoga Group Class 1</h6>
@@ -134,7 +134,7 @@
                                     <li>
                                         <div class="liveSessionBox">
                                             <div class="liveSessionsImg">
-                                                <img src="images/livesession-02.jpg" class="img-responsive">
+                                                <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                                             </div>
                                             <div class="liveSessionsText">
                                                 <h6>Yoga Group Class 1</h6>
@@ -145,7 +145,7 @@
                                     <li>
                                         <div class="liveSessionBox">
                                             <div class="liveSessionsImg">
-                                                <img src="images/livesession-02.jpg" class="img-responsive">
+                                                <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                                             </div>
                                             <div class="liveSessionsText">
                                                 <h6>Yoga Group Class 1</h6>
@@ -156,7 +156,7 @@
                                     <li>
                                         <div class="liveSessionBox">
                                             <div class="liveSessionsImg">
-                                                <img src="images/livesession-02.jpg" class="img-responsive">
+                                                <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                                             </div>
                                             <div class="liveSessionsText">
                                                 <h6>Yoga Group Class 1</h6>
@@ -167,7 +167,7 @@
                                     <li>
                                         <div class="liveSessionBox">
                                             <div class="liveSessionsImg">
-                                                <img src="images/livesession-02.jpg" class="img-responsive">
+                                                <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                                             </div>
                                             <div class="liveSessionsText">
                                                 <h6>Yoga Group Class 1</h6>
@@ -178,7 +178,7 @@
                                     <li>
                                         <div class="liveSessionBox">
                                             <div class="liveSessionsImg">
-                                                <img src="images/livesession-02.jpg" class="img-responsive">
+                                                <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                                             </div>
                                             <div class="liveSessionsText">
                                                 <h6>Yoga Group Class 1</h6>
@@ -189,7 +189,7 @@
                                     <li>
                                         <div class="liveSessionBox">
                                             <div class="liveSessionsImg">
-                                                <img src="images/livesession-02.jpg" class="img-responsive">
+                                                <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                                             </div>
                                             <div class="liveSessionsText">
                                                 <h6>Yoga Group Class 1</h6>
@@ -200,7 +200,7 @@
                                     <li>
                                         <div class="liveSessionBox">
                                             <div class="liveSessionsImg">
-                                                <img src="images/livesession-02.jpg" class="img-responsive">
+                                                <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                                             </div>
                                             <div class="liveSessionsText">
                                                 <h6>Yoga Group Class 1</h6>

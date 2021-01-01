@@ -13,7 +13,7 @@
 {!!Form::hidden('status_excel',null,['id'=>'status_excel'])!!}
 {!!Form::submit('Export Excel',['class'=>'btn btn-success pull-right',
 'onclick'=>'return export_excel(event);',
-'data-url'=>asset('index.php/admin_secure/registered_students/excel')
+'data-url'=>asset('index.php/admin/registered_students/excel')
 ])!!}
 {!!Form::close()!!}
 @stop

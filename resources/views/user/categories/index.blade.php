@@ -15,102 +15,22 @@
                             <div class="catagoriesArea bgProfile">
                                 <h2>Categories</h2>
                                 <ul class="list-inline">
+                                   @foreach($training_category as $tc)
                                     <li>
-                                        <a href="">
+                                        <a href="{!!asset('user/groupclass?cat_id=').$tc->id!!}">
                                             <div class="catagoresBox">
                                                 <div class="catagoryIcon">
-                                                    <i class="flaticon-yoga"></i>
+                                                    <!-- <i class="flaticon-yoga"></i> -->
+                                                    <img src="{{asset($tc->avatar)}}" class="img-responsive"> </img>
                                                 </div>
                                                 <div class="catagoryText">
-                                                    Yoga
+                                                   {{$tc->name}}
                                                 </div>
                                             </div>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="">
-                                            <div class="catagoresBox">
-                                                <div class="catagoryIcon">
-                                                    <i class="flaticon-step"></i>
-                                                </div>
-                                                <div class="catagoryText">
-                                                    Aerobic
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <div class="catagoresBox">
-                                                <div class="catagoryIcon">
-                                                    <i class="flaticon-bycicle"></i>
-                                                </div>
-                                                <div class="catagoryText">
-                                                    Cycling
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <div class="catagoresBox">
-                                                <div class="catagoryIcon">
-                                                    <i class="flaticon-cardio"></i>
-                                                </div>
-                                                <div class="catagoryText">
-                                                    Cardio
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <div class="catagoresBox">
-                                                <div class="catagoryIcon">
-                                                    <i class="flaticon-sneakers"></i>
-                                                </div>
-                                                <div class="catagoryText">
-                                                    Running
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <div class="catagoresBox">
-                                                <div class="catagoryIcon">
-                                                    <i class="flaticon-pilates"></i>
-                                                </div>
-                                                <div class="catagoryText">
-                                                    Pilates
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <div class="catagoresBox">
-                                                <div class="catagoryIcon">
-                                                    <i class="flaticon-running"></i>
-                                                </div>
-                                                <div class="catagoryText">
-                                                    Zumba
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <div class="catagoresBox">
-                                                <div class="catagoryIcon">
-                                                    <i class="flaticon-jump-rope"></i>
-                                                </div>
-                                                <div class="catagoryText">
-                                                    Jumping
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
+                                    @endforeach
+                                  
                                 </ul>
                             </div>
                         </div>

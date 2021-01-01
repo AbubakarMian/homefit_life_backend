@@ -41,7 +41,7 @@ class Admincontroller extends Controller
 
         if(Auth::attempt($user_data))
         {
-            return redirect('admin_secure/dashboard');
+            return redirect('admin/dashboard');
         }
         else
         {
@@ -52,13 +52,13 @@ class Admincontroller extends Controller
 
     function successlogin()
     {
-        return view('admin_secure/dashboard');
+        return view('admin/dashboard');
     }
 
     function logout()
     {
         Auth::logout();
-        return redirect('admin_secure/login');
+        return redirect('admin/login');
     }
     function dashboard (){
 
@@ -86,7 +86,7 @@ class Admincontroller extends Controller
                         ->count('id');
 
         $modules[] = [
-            'url' => 'admin_secure/user',
+            'url' => 'admin/user',
             'title' => 'User',
             'count' => $count
         ];
@@ -95,7 +95,7 @@ class Admincontroller extends Controller
         $count = Product::count('id');
 
         $modules[] = [
-            'url' => 'admin_secure/product',
+            'url' => 'admin/product',
             'title' => 'Products',
             'count' => $count
         ];
@@ -110,7 +110,7 @@ class Admincontroller extends Controller
         $count = Training_Type::count('id');
 
         $modules[] = [
-            'url' => 'admin_secure/training_type',
+            'url' => 'admin/training_type',
             'title' => 'Training Type',
             'count' => $count
         ];
@@ -124,31 +124,31 @@ class Admincontroller extends Controller
         // $count = Trainer::count('id');
 
         $modules[] = [
-            'url' => 'admin_secure/trainer',
+            'url' => 'admin/trainer',
             'title' => 'Trainer',
             'count' => $count
         ];
 
         $reports[] = [
-            'url' => 'admin_secure/reports/leads',
+            'url' => 'admin/reports/leads',
             'title' => 'Leads',
         ];
 
         $reports[] = [
-            'url' => 'admin_secure/reports/orders',
+            'url' => 'admin/reports/orders',
             'title' => 'Orders',
         ];
 
         $reports[] = [
-            'url' => 'admin_secure/reports/registered_students',
+            'url' => 'admin/reports/registered_students',
             'title' => 'Students',
         ];
         $reports[] = [
-            'url' => 'admin_secure/reports/group_session_payments',
+            'url' => 'admin/reports/group_session_payments',
             'title' => 'Group Payments',
         ];
         $reports[] = [
-            'url' => 'admin_secure/reports/personal_session_payments',
+            'url' => 'admin/reports/personal_session_payments',
             'title' => 'Personal Payments',
         ];
 

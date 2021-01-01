@@ -19,6 +19,11 @@
 .catagoriesArea li {
     width: 24%;
 }
+
+.catagoryIcon img {
+    MAX-WIDTH: 181px;
+    margin: 0 auto;
+}
 .catagoresBox {
     margin: 15px 15px;
 }
