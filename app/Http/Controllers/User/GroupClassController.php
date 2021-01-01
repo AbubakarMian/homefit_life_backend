@@ -48,6 +48,8 @@ class GroupClassController extends Controller
         $group_member = Training_Class_Users::with(['user', 'trainingclass' => function ($g) use ($request) {
             $g->where('id', $request->class_id);
         }])->get();
+
+
         return \View('user.description.index', compact('class_detail', 'group_member'));
     }
 }

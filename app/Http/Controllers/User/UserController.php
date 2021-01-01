@@ -221,4 +221,9 @@ class UserController extends Controller
     {
         return \View('user.freelivesession.index');
     }
+
+    public function trainerprof(){
+
+        
+    }
 }

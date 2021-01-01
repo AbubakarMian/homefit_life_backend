@@ -2,7 +2,6 @@
 @extends('user.layouts.dasboard')
 
 <link href="{{ asset('css/description.css')}}" rel="stylesheet">
-
 @section('dashboard')
     <section>
         <div class="innerPageBlank">
@@ -55,7 +54,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-sm-12 bookNowBtn">
-                                        <a href="" class="btn btn-primary btnbook">Book Now</a>
+                                        <a href="{{asset('user/trainerclassprofile?trainer='.$class_detail->trainer_id)}}" class="btn btn-primary btnbook">Book Now</a>
                                     </div>
                                 </div>
                             </div>

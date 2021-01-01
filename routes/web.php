@@ -195,6 +195,9 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     Route::match(['get', 'post'], 'trainer/index', 'User\TrainerController@index')->name('index');
     Route::post('trainer/advanceSearch', 'User\TrainerController@advanceSearch')->name('trainer.advanceSearch');
     Route::post('trainer/sortByGroupClass', 'User\TrainerController@sortByGroupClass')->name('trainer.sortByGroupClass');
+
+    Route::get('trainerclassprofile', 'User\TrainerController@trainerclassprofile')->name('trainerclassprofile'); //trainer class detail  
+
     Route::post('update_profile', 'User\UserController@update_profile')->name('update_profile');
 
     Route::get('trainer/profile/{id}', 'User\UserController@trainerprofile')->name('trainer.profile');
@@ -204,6 +207,7 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
 
 
     Route::get('categories', 'User\CategoryController@index')->name('categories');
+    
     //=============================================================
     // Store route  
 
