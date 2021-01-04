@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Package;
 use App\Models\Trainer;
 use App\Models\Trainer_Gallery;
+use App\Models\Trainer_slot;
 use App\Models\Trainer_Training_Type;
 use App\Models\Training_Class;
 use App\Models\Training_Class_Users;
 use App\Models\Training_Type;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 
 class TrainerController extends Controller
@@ -77,11 +79,10 @@ class TrainerController extends Controller
     $items_list = Training_Class_Users::where('user_id', $trainer->user->id)->with('user', 'trainingclass', 'package')->get();
     $per_page = 4;
     $trainig_class = $this->get_items_per_page($items_list, $per_page);
-    $packages= Package::where('trainer_id',$request->trainer)->get();
-    $trainer_gallery= Trainer_Gallery::where('trainer_id',$request->trainer)->get();
-
-
-    return \View('user.trainerprofile.index', compact('trainer', 'trainer_categories', 'trainig_class','packages','trainer_gallery'));
+    $packages = Package::where('trainer_id', $request->trainer)->get();
+    $trainer_gallery = Trainer_Gallery::where('trainer_id', $request->trainer)->get();
+    $trainer_slot = Trainer_slot::where('trainer_id', $request->trainer)->get();
+    return \View('user.trainerprofile.index', compact('trainer', 'trainer_categories', 'trainig_class', 'packages', 'trainer_gallery', 'trainer_slot'));
   }
 
   public function get_items_per_page($items_list, $per_page)
@@ -92,4 +93,15 @@ class TrainerController extends Controller
     $items_list = $items_list->split($items_split_count);
     return $items_list;
   }
+
+  //   public function trainer_packages(Request $request){
+
+  //     dd($request->all());
+  //     $package = Package::find($request->id);
+  //     $response = Response::json([
+  //         "status"=>true,
+  //         "msg"=>$contact->message
+  //     ]);
+  //     return $response;
+  // }
 }

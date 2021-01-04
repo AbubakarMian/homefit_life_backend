@@ -172,8 +172,9 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
 
     Route::get('profileedit', 'User\UserController@profileedit')->name('profileedit');
     Route::get('changepass', 'User\UserController@changepass')->name('changepass');
+
     Route::get('paymentinfo', 'User\UserController@paymentinfo')->name('paymentinfo');
-    Route::get('payment', 'User\UserController@payment')->name('payment');
+    // Route::get('payment', 'User\UserController@payment')->name('payment');
     Route::get('trainerrequest', 'User\UserController@trainerrequest')->name('trainerrequest');
     // Route::get('trainer', 'User\TrainerController@trainer')->name('trainer');
 
@@ -184,7 +185,7 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     Route::get('shippingform', 'User\UserController@shippingform')->name('shippingform');
     Route::get('paymentcard', 'User\UserController@paymentcard')->name('paymentcard');
     Route::get('freelivesession', 'User\UserController@freelivesession')->name('freelivesession');
-    
+
     Route::post('trainer_permission', 'User\UserController@trainer_permission')->name('trainer_permission');
 
 
@@ -207,7 +208,7 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
 
 
     Route::get('categories', 'User\CategoryController@index')->name('categories');
-    
+
     //=============================================================
     // Store route  
 
@@ -220,4 +221,9 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
 
     Route::get('groupclass', 'User\GroupClassController@index')->name('groupclass');
     Route::get('groupclass/group_desc', 'User\GroupClassController@group_desc')->name('groupclass.full_desc');
+
+    // ============================================================
+    // payment route 
+
+    Route::get('payment', 'User\PaymentController@index')->name('payment');
 });
