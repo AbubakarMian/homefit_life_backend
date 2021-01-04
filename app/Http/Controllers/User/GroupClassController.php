@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\trainer_slot;
+use App\Models\Trainer_slot;
 use App\Models\Training_Class;
 use App\Models\Training_Class_Users;
 use App\Models\Training_Session;
