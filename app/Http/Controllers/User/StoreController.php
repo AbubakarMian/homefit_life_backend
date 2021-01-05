@@ -43,4 +43,6 @@ class StoreController extends Controller
 
         return \View('user.productdetail.index', compact('product'));
     }
+
+    
 }

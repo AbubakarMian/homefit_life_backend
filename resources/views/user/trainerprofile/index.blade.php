@@ -182,9 +182,9 @@
                                 <h3>Friday 17 July</h3>
                                 <div class="timeMOdalArea">
                                     @foreach($trainer_slot as $ts)
-                                    <div class="timeModal">09:20:20 AM TO 09:20:20 PM</div>
+                                    <div class="timeModal">{{ date("d.m.Y", strtotime($ts->slot_start)) }} TO {{ date("d.m.Y", strtotime($ts->slot_end)) }}</div>
                                     @endforeach
-                                    
+
                                 </div>
                             </div>
 

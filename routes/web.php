@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 //=================================================
 //login
 
+
+
+
 Route::get('admin/login', 'admin\Admincontroller@index')->name('login');
 Route::post('admin/checklogin', 'admin\Admincontroller@checklogin');
 
@@ -165,6 +168,12 @@ Route::post('user/save', 'User\UserController@save')->name('save');
 
 
 Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
+
+    //=============================================================
+    // payment route 
+    Route::get('stripe', 'User\PaymentController@stripe');
+    Route::post('stripe', 'User\PaymentController@stripePost')->name('stripe.post');
+
 
     Route::get('user', 'User\UserController@index')->name('user');
 
