@@ -75,7 +75,7 @@ class TrainerController extends Controller
   {
 
     $trainer = Trainer::with('user')->find($request->trainer);
-    $trainer_categories = Trainer_Training_Type::with('training_type')->where('trainer', $request->trainer)->get();
+    $trainer_categories = Trainer_Training_Type::with('type')->where('trainer', $request->trainer)->get();
     $items_list = Training_Class_Users::where('user_id', $trainer->user->id)->with('user', 'trainingclass', 'package')->get();
     $per_page = 4;
     $trainig_class = $this->get_items_per_page($items_list, $per_page);

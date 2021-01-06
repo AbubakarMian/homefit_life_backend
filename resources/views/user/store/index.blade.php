@@ -61,7 +61,7 @@
                                             </div>
                                         </a>
                                         <div class="addtoCart">
-                                            <a href="" class="btn btn-primary btnCart">Add To Cart</a>
+                                            <a href="{{asset('user/productdetail?prod_id='.$sp->id)}}" class="btn btn-primary btnCart">Add To Cart</a>
                                         </div>
                                     </div>
                                 </div>

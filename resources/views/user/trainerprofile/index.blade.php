@@ -22,7 +22,7 @@
                                 {!! $trainer->name!!}
                             </div>
                             <div class="profileTrainerRating">
-                                Rating 5.0
+                                Rating {!! $trainer->raiting!!}
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -32,7 +32,10 @@
                         </div>
                         <div class="profileExpertiesArea">
                             <ul class="list-inline">
-                                <li><i class="flaticon-running"></i> Aerobics, Fitness</li>
+                                <li><i class="flaticon-running">
+                                        @foreach($trainer_categories as $tc)
+                                    </i> {!! $tc->type->name!!}</li>
+                                @endforeach
                                 <li><i class="flaticon-history"></i> 10 Years Exp</li>
                             </ul>
                         </div>
@@ -73,15 +76,12 @@
                         <div class="ProfileTrainCatArea bgProfile">
                             <h2>Training Catagories</h2>
                             <ul class="list-inline">
+                                @foreach($trainer_categories as $tc)
                                 <li>
-                                    <h3> <span class="label label-primary">Fitness</span></h3>
+                                    <h3> <span class="label label-primary">{!! $tc->type->name!!}</span></h3>
                                 </li>
-                                <li>
-                                    <h3> <span class="label label-primary">Aerobics</span></h3>
-                                </li>
-                                <li>
-                                    <h3> <span class="label label-primary">Yoga</span></h3>
-                                </li>
+                                @endforeach
+
                             </ul>
                         </div>
                         <div class="GroupClasses bgProfile">
@@ -174,12 +174,13 @@
                     <div class="modalArea bgProfile">
                         <div class="row">
                             <div class="col-md-6">
-                                <h3>Friday 17 July <span><a href=""><i class="fa fa-chevron-left" aria-hidden="true"></i></a><a href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></span></h3>
+                                <h3 id="date_modal"><span>
+                                <a href=""><i class="fa fa-chevron-left" aria-hidden="true"></i></a><a href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></span></h3>
 
                                 <div><a href="" class="btn btn-primary customBtn"> 1 - 1 SESSION</a></div>
                             </div>
                             <div class="col-md-6">
-                                <h3>Friday 17 July</h3>
+                                <h3 id="date_modal_2"></h3>
                                 <div class="timeMOdalArea">
                                     @foreach($trainer_slot as $ts)
                                     <div class="timeModal">{{ date("d.m.Y", strtotime($ts->slot_start)) }} TO {{ date("d.m.Y", strtotime($ts->slot_end)) }}</div>
@@ -190,7 +191,7 @@
 
                         </div>
                         <div class="btnAreaSubmit">
-                            <a href="" class="btn btn-primary">SUBMIT</a>
+                            <a href="{{asset('')}}" class="btn btn-primary">SUBMIT</a>
                         </div>
                     </div>
                 </div>
@@ -565,6 +566,14 @@
             "month": clickedMonth,
             "year": clickedYear
         }
+
+        console.log('click info !!!!!!!!!! ', clickedInfo.month)
+        $('#date_modal').html(clickedInfo.date);
+        $('#date_modal').append(clickedInfo.month);
+        $('#date_modal').append(clickedInfo.year);
+        $('#date_modal_2').html(clickedInfo.date);
+        $('#date_modal_2').append(clickedInfo.month);
+        $('#date_modal_2').append(clickedInfo.year);
         return clickedInfo;
     }
 

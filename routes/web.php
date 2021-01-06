@@ -190,7 +190,7 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
 
     Route::get('description', 'User\UserController@description')->name('description');
     Route::get('livesession', 'User\UserController@livesession')->name('livesession');
-    Route::get('productcart', 'User\UserController@productcart')->name('productcart');
+   
     Route::get('shippingform', 'User\UserController@shippingform')->name('shippingform');
     Route::get('paymentcard', 'User\UserController@paymentcard')->name('paymentcard');
     Route::get('freelivesession', 'User\UserController@freelivesession')->name('freelivesession');
@@ -224,6 +224,11 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     Route::get('store', 'User\StoreController@index')->name('store');
     Route::post('searchProduct', 'User\StoreController@searchProduct')->name('searchProduct');
     Route::get('productdetail', 'User\StoreController@productdetail')->name('productdetail');
+    Route::post('addCart', 'User\StoreController@addCart')->name('addCart');
+    Route::get('remove_cart_product', 'User\StoreController@remove_cart_product')->name('remove_cart_product');
+    Route::get('productcart', 'User\StoreController@productcart')->name('productcart');
+    Route::post('saveshippingInfo', 'User\StoreController@saveshippingInfo')->name('saveshippingInfo');
+    Route::get('shippingInfo', 'User\StoreController@shippingInfo')->name('shoppingInfo');
 
     // ============================================================
     // Group classes
@@ -235,4 +240,5 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     // payment route 
 
     Route::get('payment', 'User\PaymentController@index')->name('payment');
+
 });
