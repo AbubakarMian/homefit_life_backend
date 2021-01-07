@@ -75,9 +75,9 @@
                                             </div>
                                             <div class="orderDetails">
                                                 <h2>Order Details</h2>
-                                                @foreach($product_cart as $pc)
                                                 <p><strong>Product</strong></p>
-                                                <br />
+                                                <br/>
+                                                @foreach($product_cart as $pc)
                                                 <p>{{$pc->product->name}} x {{$pc->quantity}} <span>{{$pc->product->price}}$</span></p>
                                                 @endforeach
                                                 <br />

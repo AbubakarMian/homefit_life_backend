@@ -31,7 +31,7 @@
                                     <th>Price</th>
                                     <th>Qty</th>
                                     <th>Total</th>
-                                    <th></th>
+                                    <th>X</th>
                                 </tr>
                                 </thead>
                                 <tbody>

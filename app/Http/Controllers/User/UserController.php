@@ -223,8 +223,40 @@ class UserController extends Controller
         return \View('user.freelivesession.index');
     }
 
-    public function trainerprof(){
+    public function user_header()
+    {
 
+        $modules[] = [
+            'url' => 'user/dashboard',
+            'title' => 'Home'
+        ];
+
+
+
+        $modules[] = [
+            'url' => 'user/categories',
+            'title' => 'Categories',
+        ];
+
+        $modules[] = [
+            'url' => 'user/categories',
+            'title' => 'Trainers',
+        ];
+        $modules[] = [
+            'url' => 'user/store',
+            'title' => 'Store',
+        ];
+        $modules[] = [
+            'url' => 'user/store',
+            'title' => 'Store',
+        ];
+
+       
         
+
+        $myvar = [];
+        $myvar['modules'] = $modules;
+
+        return $myvar;
     }
 }

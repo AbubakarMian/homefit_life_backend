@@ -39,6 +39,7 @@
                         </div>
                         <div class="panel-body">
 
+
                             @if (Session::has('success'))
                             <div class="alert alert-success text-center">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
@@ -53,7 +54,16 @@
                             <!-- {{ env('STRIPE_KEY') }} -->
                             <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
                                 @csrf
-                                <input name="ammount"  value="{{$package->price }}" hidden/>
+
+                                @if(isset($package))
+                                <input name="ammount" value="{{$package->price ?? '' }}" hidden />
+                               
+                                @else
+                                <input name="ammount" value="{!!$user_request->total_price !!}" hidden />
+                                <input name="user_request_id" value="{{$user_request->id }}" hidden />
+                                @endif
+
+
                                 <div class='form-row row'>
                                     <div class='col-xs-12 form-group required'>
                                         <label class='control-label'>Name on Card</label> <input class='form-control' size='4' type='text'>
@@ -100,22 +110,24 @@
             <div class="col-sm-6">
                 <div class="membershipBoxArea">
                     <h2 id="subscription"></h2>
+                    @if(isset($package))
                     <div class="freeTrialBox">
-                        <p id="subscription_detail"><strong>Monthly Subscription Plan</strong><span>${{$package->price }}</span></p>
+                        <p id="subscription_detail"><strong>Monthly Subscription Plan</strong><span>${{$package->price  }}</span></p>
 
                         <p>Duration 06/08/2020 - 06/09/2020<span>1 Month</span></p>
                     </div>
+                    @endif
                     <div class="discountBox">
                         <p><u><a data-target="#PromoCodeModal" data-toggle="modal" href="#PromoCodeModal">Have a Promo Code?</a></u><strong><span id="promocode_code"></span></strong></p>
                         <div class="spacerArea" id="promo_code_setion">
                         </div>
                         <div class="spacerArea">
-                            <p>Subtotal<span id="Subtotal">19.99</span></p>
+                            <p>Subtotal<span id="Subtotal">{{$user_request->total_price ?? $package->price}}</span></p>
                             <p>Fees<span>$0.5</span></p>
                         </div>
                         <hr>
                         <div class="totalArea">
-                            <h2>Total (USD)<span id="final_price">$ 20.49</span></h2>
+                            <h2>Total (USD)<span id="final_price">$ {{$user_request->total_price ??$package->price }}</span></h2>
                         </div>
                     </div>
 
@@ -123,7 +135,7 @@
             </div>
         </div>
 
-        
+
 
     </div>
 </section>

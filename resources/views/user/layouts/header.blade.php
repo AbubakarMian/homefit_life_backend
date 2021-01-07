@@ -3,8 +3,11 @@
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 
-$user = Auth::user();
-$cart = Cart::with('product')->where('user_id', $user->id)->get();
+if (Auth::user()) {
+    $user = Auth::user();
+    $cart = Cart::with('product')->where('user_id', $user->id)->get();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -84,7 +87,7 @@ $cart = Cart::with('product')->where('user_id', $user->id)->get();
                                                 <a href="{!! asset('user/categories') !!}"><span>Categories</span> </a>
                                             </li>
                                             <li id="">
-                                                <a href="{!! asset('user/trainer/index') !!}"><span>Trainers</span> </a>
+                                                <a href="{!! asset('user/trainer') !!}"><span>Trainers</span> </a>
                                             </li>
                                             <li id="">
                                                 <a href="{!! asset('user/store') !!}"><span>Store</span> </a>
@@ -110,6 +113,8 @@ $cart = Cart::with('product')->where('user_id', $user->id)->get();
                                 </ul>
                             </div>
                             <button id="cartItems" class="btn btn-link btn-sm btn-cart"><i class="flaticon-cart" aria-hidden="true"></i></button>
+
+                            @if(Auth::check())
                             <div class="cartItemArea" style="display: none;">
                                 <table class="table">
                                     <thead>
@@ -130,14 +135,15 @@ $cart = Cart::with('product')->where('user_id', $user->id)->get();
                                             <td>{!! $c->product->price !!}</td>
                                             <td>{!! $c->quantity !!}</td>
                                             <td>{!! $c->quantity * $c->product->price !!}</td>
-                                            <td ><a href="{!! asset('user/remove_cart_product?cart_id=').$c->id !!}">X</a></td>
+                                            <td><a href="{!! asset('user/remove_cart_product?cart_id=').$c->id !!}">X</a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <center><a href="" class="btn btn-primary btn-xs">Checkout</a></center>
+                                <center><a href="{{asset('user/shippingInfo')}}" class="btn btn-primary btn-xs">Checkout</a></center>
 
                             </div>
+                            @endif
                             @if(Auth::check())
                             <a href="{{ asset('user/logout')}}" class="btn btn-primary btn-sm btn-UserLogin ">User Logout <i class="fa fa-user-circle" aria-hidden="true"></i></a>
                             @else

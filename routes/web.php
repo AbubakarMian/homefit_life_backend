@@ -190,7 +190,7 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
 
     Route::get('description', 'User\UserController@description')->name('description');
     Route::get('livesession', 'User\UserController@livesession')->name('livesession');
-   
+
     Route::get('shippingform', 'User\UserController@shippingform')->name('shippingform');
     Route::get('paymentcard', 'User\UserController@paymentcard')->name('paymentcard');
     Route::get('freelivesession', 'User\UserController@freelivesession')->name('freelivesession');
@@ -202,7 +202,7 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     //=============================================================
     //user trainer module route
 
-    Route::match(['get', 'post'], 'trainer/index', 'User\TrainerController@index')->name('index');
+    Route::match(['get', 'post'], 'trainer', 'User\TrainerController@index')->name('index');
     Route::post('trainer/advanceSearch', 'User\TrainerController@advanceSearch')->name('trainer.advanceSearch');
     Route::post('trainer/sortByGroupClass', 'User\TrainerController@sortByGroupClass')->name('trainer.sortByGroupClass');
 
@@ -240,5 +240,4 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     // payment route 
 
     Route::get('payment', 'User\PaymentController@index')->name('payment');
-
 });

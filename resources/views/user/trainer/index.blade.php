@@ -14,7 +14,7 @@
                     </div>
                     <div class="InnerContent">
                         <div class=" row searchTrainer">
-                            <form method="post" action="{{ url('user/trainer/index') }}">
+                            <form method="post" action="{{ url('user/trainer') }}">
                                 {{ csrf_field() }}
                                 <div class="col-sm-8">
                                     <div class="form-group">

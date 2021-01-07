@@ -59,7 +59,7 @@
                                         <div class="btnsArea">
                                             <div class="form-inline">
                                                 <button type="submit" class="btn btn-danger">Add to cart</button>
-                                                <input class="form-control" id="qty" name="qty" type="number" min="1" placeholder="Enter quantity" />
+                                                <input class="form-control" id="qty" name="qty" type="number" min="1" placeholder="Enter quantity" required/>
 
                                             </div>
                                         </div>
