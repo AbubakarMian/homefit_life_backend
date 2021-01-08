@@ -8,7 +8,12 @@ if (Auth::user()) {
     $cart = Cart::with('product')->where('user_id', $user->id)->get();
 }
 
+
+$user_common = session()->get('user_common');
+$header = $user_common['header'];
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -80,21 +85,12 @@ if (Auth::user()) {
                                     <div class="navbar-collapse nav-collapse collapse" aria-expanded="false" style="height: 1px;">
                                         <!-- responsive nav -->
                                         <ul class="nav navbar-nav">
+                                            @foreach($header as $key => $hd)
                                             <li id="" class="inMenu">
-                                                <a href="{{ asset('user/dashboard')}}"><span>Home</span> </a>
+                                                <a href="{{ asset($hd['url'])}}"><span>{{$hd['title']}}</span> </a>
                                             </li>
-                                            <li id="">
-                                                <a href="{!! asset('user/categories') !!}"><span>Categories</span> </a>
-                                            </li>
-                                            <li id="">
-                                                <a href="{!! asset('user/trainer') !!}"><span>Trainers</span> </a>
-                                            </li>
-                                            <li id="">
-                                                <a href="{!! asset('user/store') !!}"><span>Store</span> </a>
-                                            </li>
-                                            <li id="">
-                                                <a href=""><span>Live Sessions</span> </a>
-                                            </li>
+                                            @endforeach
+                                           
                                         </ul>
                                     </div> <!-- .nav-collapse -->
                                 </div> <!-- .container -->

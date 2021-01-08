@@ -32,7 +32,7 @@
                                     <div id="GroupClassSlider" class="carousel slide hidden-xs" data-ride="carousel">
                                         <!-- Wrapper for slides -->
                                         <div class="carousel-inner">
-                                        @foreach($training_class as $key=>$tc)
+                                        <!-- @foreach($training_class as $key=>$tc)
                                 
                                             <div class="item {!!$key === 0 ? 'active':'' !!}">
                                                 <div class="row">
@@ -58,7 +58,7 @@
                                                    
                                                  </div>
                                             </div>
-                                            @endforeach   
+                                            @endforeach    -->
                                             
                                         </div>
                                     </div>

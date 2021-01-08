@@ -17,14 +17,19 @@ class GroupClassController extends Controller
 
     public function index(Request $request)
     {
-
+        
         $category = Training_Type::where('id', $request->cat_id)->get();
+        
         $items_list = Training_Class::where('type_id', $request->cat_id)->get();
-        $items_list_free = Training_Class::where('type_id', $request->cat_id)
-            ->whereHas('training_session', function ($t) {
-                $t->where('training_session.is_free', 1);
-            })
-            ->with('training_session')->get();
+        // $items_list_free = Training_Class::where('type_id', $request->cat_id)
+        //     ->whereHas('training_session', function ($t) {
+        //         $t->where('training_session.is_free', 1);
+        //     })
+        //     ->with('training_session')->get();
+
+        $items_list_free = Training_Class::where('type_id', $request->cat_id)->get();
+            
+        dd($items_list_free);
         $per_page = 6;
         $training_class = $this->get_items_per_page($items_list, $per_page);
         $free_live_session = $this->get_items_per_page($items_list_free, $per_page);

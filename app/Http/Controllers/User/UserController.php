@@ -21,7 +21,7 @@ class UserController extends Controller
 {
     public function index()
     {
-      
+       
         return \View('user.home.index');
     }
 
@@ -110,6 +110,9 @@ class UserController extends Controller
         $featured_trainer = $this->trainer_query($search_text, 'featured');
         $sessions = Training_Session::with('training_class')->get();
         $trainer_by_raiting = $this->trainer_query($search_text, 'rating');
+
+        $user_header = $this->user_header();
+        session(['user_common' => $user_header]);
         return \View('user.dashboard.index', compact(
             'training_categories',
             'featured_trainer',
@@ -231,32 +234,30 @@ class UserController extends Controller
             'title' => 'Home'
         ];
 
-
-
         $modules[] = [
             'url' => 'user/categories',
             'title' => 'Categories',
         ];
 
         $modules[] = [
-            'url' => 'user/categories',
+            'url' => 'user/trainer',
             'title' => 'Trainers',
         ];
         $modules[] = [
             'url' => 'user/store',
             'title' => 'Store',
         ];
-        $modules[] = [
-            'url' => 'user/store',
-            'title' => 'Store',
-        ];
+        // $modules[] = [
+        //     'url' => 'user/liveSession',
+        //     'title' => 'Live Session',
+        // ];
 
-       
-        
 
         $myvar = [];
-        $myvar['modules'] = $modules;
+        $myvar['header'] = $modules;
 
         return $myvar;
     }
+
+    
 }
