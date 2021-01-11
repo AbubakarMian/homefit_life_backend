@@ -10,7 +10,7 @@ if (Auth::user()) {
 
 
 $user_common = session()->get('user_common');
-$header = $user_common['header'];
+$header = $user_common['header'] ?? '';
 
 ?>
 
@@ -85,12 +85,13 @@ $header = $user_common['header'];
                                     <div class="navbar-collapse nav-collapse collapse" aria-expanded="false" style="height: 1px;">
                                         <!-- responsive nav -->
                                         <ul class="nav navbar-nav">
+                                            @if($header)
                                             @foreach($header as $key => $hd)
                                             <li id="" class="inMenu">
                                                 <a href="{{ asset($hd['url'])}}"><span>{{$hd['title']}}</span> </a>
                                             </li>
                                             @endforeach
-                                           
+                                            @endif
                                         </ul>
                                     </div> <!-- .nav-collapse -->
                                 </div> <!-- .container -->

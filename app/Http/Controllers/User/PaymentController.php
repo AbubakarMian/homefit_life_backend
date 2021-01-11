@@ -20,8 +20,12 @@ class PaymentController extends Controller
     public function index(Request $request)
     {
         if ($request->package_id) {
-            $package = Package::find($request->package_id);
+            $package = Package::find($request->package_id)->toArray();
         } else {
+            $package = collect([
+                'price' => $request->price,
+                'name' => 'Personal training'
+            ]);
         }
 
         return \View('user.payment.index', compact('package'));
@@ -56,10 +60,10 @@ class PaymentController extends Controller
                 $user_request->save();
             }
             Session::flash('success', 'Payment successful!');
-            return \View('user.payment.index',compact('user_request'));
+            return \View('user.payment.index', compact('user_request'));
         } catch (\Exception $e) {
             Session::flash('error', "Error! Please Try again.");
-            return \View('user.payment.index',compact('user_request'));
+            return \View('user.payment.index', compact('user_request'));
         }
     }
 }

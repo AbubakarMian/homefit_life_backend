@@ -175,7 +175,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h3 id="date_modal"><span>
-                                <a href=""><i class="fa fa-chevron-left" aria-hidden="true"></i></a><a href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></span></h3>
+                                        <a href=""><i class="fa fa-chevron-left" aria-hidden="true"></i></a><a href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></span></h3>
 
                                 <div><a href="" class="btn btn-primary customBtn"> 1 - 1 SESSION</a></div>
                             </div>
@@ -191,7 +191,7 @@
 
                         </div>
                         <div class="btnAreaSubmit">
-                            <a href="{{asset('')}}" class="btn btn-primary">SUBMIT</a>
+                            <a href="{{asset('user/payment?ammount='.$trainer->personal_session_price)}}" class="btn btn-primary">SUBMIT</a>
                         </div>
                     </div>
                 </div>
@@ -568,11 +568,11 @@
         }
 
         console.log('click info !!!!!!!!!! ', clickedInfo.month)
-        $('#date_modal').html(clickedInfo.date);
-        $('#date_modal').append(clickedInfo.month);
+        $('#date_modal').html(clickedInfo.date + '-');
+        $('#date_modal').append(clickedInfo.month + '-');
         $('#date_modal').append(clickedInfo.year);
-        $('#date_modal_2').html(clickedInfo.date);
-        $('#date_modal_2').append(clickedInfo.month);
+        $('#date_modal_2').html(clickedInfo.date + '-');
+        $('#date_modal_2').append(clickedInfo.month + '-');
         $('#date_modal_2').append(clickedInfo.year);
         return clickedInfo;
     }

@@ -2,7 +2,6 @@
 
 <link href="{{asset('css/payment.css')}}" rel="stylesheet">
 
-
 @section('dashboard')
 <section>
     <div class="innerPageBlank">
@@ -56,8 +55,8 @@
                                 @csrf
 
                                 @if(isset($package))
-                                <input name="ammount" value="{{$package->price ?? '' }}" hidden />
-                               
+                                <input name="ammount" value="{{$package['price'] ?? '' }}" hidden />
+
                                 @else
                                 <input name="ammount" value="{!!$user_request->total_price !!}" hidden />
                                 <input name="user_request_id" value="{{$user_request->id }}" hidden />
@@ -108,11 +107,12 @@
                 </div>
             </div>
             <div class="col-sm-6">
+
                 <div class="membershipBoxArea">
                     <h2 id="subscription"></h2>
                     @if(isset($package))
                     <div class="freeTrialBox">
-                        <p id="subscription_detail"><strong>Monthly Subscription Plan</strong><span>${{$package->price  }}</span></p>
+                        <p id="subscription_detail"><strong>Monthly Subscription Plan</strong><span>${{$package['price'] }}</span></p>
 
                         <p>Duration 06/08/2020 - 06/09/2020<span>1 Month</span></p>
                     </div>
@@ -122,12 +122,12 @@
                         <div class="spacerArea" id="promo_code_setion">
                         </div>
                         <div class="spacerArea">
-                            <p>Subtotal<span id="Subtotal">{{$user_request->total_price ?? $package->price}}</span></p>
+                            <p>Subtotal<span id="Subtotal">{{$user_request->total_price ?? $package['price']}}</span></p>
                             <p>Fees<span>$0.5</span></p>
                         </div>
                         <hr>
                         <div class="totalArea">
-                            <h2>Total (USD)<span id="final_price">$ {{$user_request->total_price ??$package->price }}</span></h2>
+                            <h2>Total (USD)<span id="final_price">$ {{$user_request->total_price ?? $package['price'] }}</span></h2>
                         </div>
                     </div>
 
