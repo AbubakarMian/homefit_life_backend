@@ -226,4 +226,8 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     // payment route 
 
     Route::get('payment', 'User\PaymentController@index')->name('payment');
+    // ============================================================
+    // nutrition calculator route 
+
+    Route::get('nutrition', 'User\NutritionController@index')->name('nutrition');
 });
