@@ -1,0 +1,191 @@
+.calareadata h2 {
+    font-size: 35px;
+    font-weight: 600;
+    color: #0c94ea;
+}
+.row.goalback {
+    background: white;
+    padding: 15px 5px;
+    margin-top: 15px;
+}
+.goalhead h3 {
+    font-size: 30px;
+    color: #0c94ea;
+    margin-bottom: 30px;
+}
+.goalhead ul li:before {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'FontAwesome';
+    padding-right: 10px;
+    left: 0;
+}
+.goalhead li {
+    color: black;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 35px;
+    text-align: left;
+}
+.goalhead ul {
+    list-style: none;
+    padding: 0px;
+}
+li.eightykg {
+    margin-top: 110px;
+}
+.aaddgoal {
+    margin-top: 20px;
+    float: right;
+    font-size: 17px;
+}
+.row.caloriesfind {
+    background: white;
+    padding: 5px 5px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.exercise {
+    font-size: 19px;
+    color: black;
+    font-weight: 500;
+    margin-top: 14px;
+}
+.calformdata {
+    width: 98%;
+    border-color: black;
+    margin-top: 12px;
+}
+.save {
+    font-size: 16px;
+    margin-top: 10px;
+}
+.nutritionarea {
+    background: white;
+    padding: 15px 5px;
+    margin-bottom: 25px;
+}
+.nutritionhead h3 {
+    font-size: 30px;
+    color: #0c94ea;
+    margin-bottom: 25px;
+}
+.nutritiondata h4 {
+    color: #0c94ea;
+    font-weight: 600;
+    font-size: 23px;
+    text-align: center;
+}
+.nutritiondata p {
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+}
+.nutritiondatasign p {
+    font-size: 50px;
+}
+.todayarea {
+    background: white;
+    padding: 15px 5px;
+    margin-bottom: 25px;
+}
+.todayhead h3 {
+    font-size: 30px;
+    color: #0c94ea;
+    margin-bottom: 25px;
+}
+tr.tabborder th {
+    text-align: center;
+}
+tr.tabborder td {
+    text-align: center;
+}
+.mytable {
+    border: 2px solid;
+    border-color: #dddddd;
+}
+.addmeal {
+    float: right;
+    width: 100px;
+}
+.mealhead h3 {
+    font-size: 30px;
+    color: #0c94ea;
+    margin-bottom: 25px;
+}
+.mealarea {
+    background: white;
+    padding: 15px 5px;
+    margin-bottom: 25px;
+}
+.modalheaddata h4 {
+    text-align: center;
+    font-size: 25px;
+    color: white;
+}
+.row.modalhead {
+    background: #0c94ea;
+    margin-top: -15px;
+    padding: 5px 0px;
+}
+.modalright p {
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+}
+.modalright {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+p.macro {
+    font-weight: 600;
+    margin-top: 30px;
+}
+p.blue {
+    color: #0f96e7;
+}
+p.red {
+    color:#b33a3a;
+}
+p.green {
+    color: #3cbd58;
+}
+.modalleft {
+    margin: 22px 10px;
+}
+.kilo {
+    margin-bottom: 5px;
+}
+.modalmyclick {
+    text-align: center;
+}
+.row.mealhead {
+    background: #0c94ea;
+    color: white;
+    text-align: center;
+    margin-top: -15px;
+    padding: 7px 0px;
+}
+.mealheaddata h4 {
+    font-size: 22px;
+}
+.productboxdata h4 {
+    font-size: 12px;
+    text-align: center;
+    font-weight: 600;
+    color: black;
+}
+.productboximg img {
+    margin: 0 auto;
+}
+input.sercharea {
+    width: 100%;
+    margin-top: 14px;
+    height: 39px;
+    border: 1px solid;
+}
+
+
+
