@@ -244,4 +244,5 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     // nutrition calculator route 
 
     Route::get('nutrition', 'User\NutritionController@index')->name('nutrition');
+    Route::post('addgoal', 'User\NutritionController@addgoal')->name('addgoal');
 });
