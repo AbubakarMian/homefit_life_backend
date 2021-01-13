@@ -11,4 +11,9 @@ class NutritionController extends Controller
 
         return \View('user.nutritioncalculator.index');
     }
+
+    public function addgoal(){
+
+        
+    }
 }

@@ -46,24 +46,24 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="goalclick">
-                        <button type="button" class="btn btn-primary aaddgoal" data-toggle="modal" href='#modal-id'>Add Goals</button>
+                        <button type="button" class="btn btn-primary aaddgoal" data-toggle="modal" href='#goal_modal'>Add Goals</button>
                     </div>
                 </div>
             </div>
 
             <div class="row caloriesfind">
                 <div class="calform">
-                <form>
-                    <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-1 col-form-label exercise">Exercise</label>
-                        <div class="col-sm-10">
-                        <input class="form-control calformdata" type="text" placeholder="1500 Calories">
+                    <form>
+                        <div class="form-group row">
+                            <label for="inputPassword" class="col-sm-1 col-form-label exercise">Exercise</label>
+                            <div class="col-sm-10">
+                                <input class="form-control calformdata" type="text" placeholder="1500 Calories">
+                            </div>
+                            <div class="col-sm-1">
+                                <button type="button" class="btn btn-primary save">Save</button>
+                            </div>
                         </div>
-                        <div class="col-sm-1">
-                            <button type="button" class="btn btn-primary save">Save</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
                 </div>
             </div>
         </div>
@@ -194,168 +194,168 @@
                         </li>
                         <li role="presentation">
                             <a href="#tab" aria-controls="Dinner" role="tab" data-toggle="tab">Dinner</a>
-                        </li>  
-                        <button type="button" class="btn btn-primary addmeal" data-toggle="modal" href='#modal-ids'>Add Meal</button>      
+                        </li>
+                        <button type="button" class="btn btn-primary addmeal" data-toggle="modal" href='#meal_modal'>Add Meal</button>
                     </ul>
-                    
+
                 </div>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="Breakfast">
 
-                    <table class="table mytable">
-                                <thead>
-                                    <tr class="tabborder">
-                                        <th scope="col">Food / Ingredients</th>
-                                        <th scope="col">Carbohydrates</th>
-                                        <th scope="col">Fats</th>
-                                        <th scope="col">Proteins</th>
-                                        <th scope="col">Calories</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <table class="table mytable">
+                            <thead>
+                                <tr class="tabborder">
+                                    <th scope="col">Food / Ingredients</th>
+                                    <th scope="col">Carbohydrates</th>
+                                    <th scope="col">Fats</th>
+                                    <th scope="col">Proteins</th>
+                                    <th scope="col">Calories</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 Calories</td>
+                                </tr>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 Calories</td>
+                                </tr>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 Calories</td>
+                                </tr>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 Calories</td>
+                                </tr>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 Calories</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="Lunch">
-                    
-                    <table class="table mytable">
-                                <thead>
-                                    <tr class="tabborder">
-                                        <th scope="col">Food / Ingredients</th>
-                                        <th scope="col">Carbohydrates</th>
-                                        <th scope="col">Fats</th>
-                                        <th scope="col">Proteins</th>
-                                        <th scope="col">Calories</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                    
+
+                        <table class="table mytable">
+                            <thead>
+                                <tr class="tabborder">
+                                    <th scope="col">Food / Ingredients</th>
+                                    <th scope="col">Carbohydrates</th>
+                                    <th scope="col">Fats</th>
+                                    <th scope="col">Proteins</th>
+                                    <th scope="col">Calories</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 Calories</td>
+                                </tr>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 Calories</td>
+                                </tr>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 Calories</td>
+                                </tr>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 Calories</td>
+                                </tr>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 Calories</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="Dinner">
-                    
-                    <table class="table mytable">
-                                <thead>
-                                    <tr class="tabborder">
-                                        <th scope="col">Food / Ingredients</th>
-                                        <th scope="col">Carbohydrates</th>
-                                        <th scope="col">Fats</th>
-                                        <th scope="col">Proteins</th>
-                                        <th scope="col">Calories</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                    <tr class="tabborder">
-                                        <td>Chicken Soup</td>
-                                        <td>0g</td>
-                                        <td>7g</td>
-                                        <td>6g</td>
-                                        <td>94 Calories</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                    
+
+                        <table class="table mytable">
+                            <thead>
+                                <tr class="tabborder">
+                                    <th scope="col">Food / Ingredients</th>
+                                    <th scope="col">Carbohydrates</th>
+                                    <th scope="col">Fats</th>
+                                    <th scope="col">Proteins</th>
+                                    <th scope="col">Calories</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 Calories</td>
+                                </tr>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 Calories</td>
+                                </tr>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 Calories</td>
+                                </tr>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 3232323Calories</td>
+                                </tr>
+                                <tr class="tabborder">
+                                    <td>Chicken Soup</td>
+                                    <td>0g</td>
+                                    <td>7g</td>
+                                    <td>6g</td>
+                                    <td>94 Calories</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                     </div>
                 </div>
             </div>
@@ -365,68 +365,68 @@
 </section>
 
 
-<div class="modal fade" id="modal-id">
+<div class="modal fade" id="goal_modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
-                        <div class="row modalhead">
-                            <div class="col-sm-12">
-                                <div class="modalheaddata">
-                                    <h4>Add Goals</h4>
-                                </div>
+                <div class="row modalhead">
+                    <div class="col-sm-12">
+                        <div class="modalheaddata">
+                            <h4>Add Goals</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row modalsecond">
+                    <div class="col-sm-6">
+                        <div class="modalright">
+                            <p>Current Weight</p>
+                            <p>Goal Weight</p>
+                            <p>Weekly Goal</p>
+                            <p>Activity Level</p>
+                            <p>Calories Goal</p>
+                            <p class="macro">Macro-Nutrients Goals</p>
+                            <p class="blue">Carbohydrates</p>
+                            <p class="red">Fats</p>
+                            <p class="green">Proteins</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="modalleft">
+                            <div class="form-group">
+                                <input id="my-input" class="form-control kilo" type="text" name="" placeholder="Enter...">
+                                <input id="my-input" class="form-control kilo" type="text" name="">
+                                <select class="form-control kilo" id="exampleFormControlSelect1">
+                                    <option>Choose</option>
+                                    <option>Lose 1 kg per week</option>
+                                    <option>Lose 0.75 kg per week</option>
+                                    <option>Lose 0.5 kg per week</option>
+                                    <option>Lose 0.25 kg per week</option>
+                                    <option>Maintain my current weight</option>
+                                    <option>Gain 0.25 kg per week</option>
+                                    <option>Gain 0.5 kg per week</option>
+                                </select>
+                                <select class="form-control kilo" id="exampleFormControlSelect1">
+                                    <option>Choose</option>
+                                    <option>Not very Active</option>
+                                    <option>Lightly Active</option>
+                                    <option>Active</option>
+                                    <option>Very Active</option>
+                                </select>
+                                <input id="my-input" class="form-control kilo" type="text" name="" placeholder="Enter..."><br>
+                                <input id="my-input" class="form-control kilo" type="text" name="" placeholder="Enter...">
+                                <input id="my-input" class="form-control kilo" type="text" name="" placeholder="Enter...">
+                                <input id="my-input" class="form-control kilo" type="text" name="" placeholder="Enter...">
                             </div>
                         </div>
-                        <div class="row modalsecond">
-                            <div class="col-sm-6">
-                               <div class="modalright">
-                                    <p>Current Weight</p>
-                                    <p>Goal Weight</p>
-                                    <p>Weekly Goal</p>
-                                    <p>Activity Level</p>
-                                    <p>Calories Goal</p>
-                                    <p class="macro">Macro-Nutrients Goals</p>
-                                    <p class="blue">Carbohydrates</p>
-                                    <p class="red">Fats</p>
-                                    <p class="green">Proteins</p> 
-                               </div>
-                            </div>
-                            <div class="col-sm-6">
-                               <div class="modalleft">
-                                    <div class="form-group">                                        
-                                        <input id="my-input" class="form-control kilo" type="text" name="" placeholder="Enter...">
-                                        <input id="my-input" class="form-control kilo" type="text" name="">
-                                        <select class="form-control kilo" id="exampleFormControlSelect1"> 
-                                            <option>Choose</option>
-                                            <option>Lose 1 kg per week</option>
-                                            <option>Lose 0.75 kg per week</option>
-                                            <option>Lose 0.5 kg per week</option>
-                                            <option>Lose 0.25 kg per week</option>
-                                            <option>Maintain my current weight</option>
-                                            <option>Gain 0.25 kg per week</option>
-                                            <option>Gain 0.5 kg per week</option>
-                                        </select>
-                                        <select class="form-control kilo" id="exampleFormControlSelect1">
-                                            <option>Choose</option>
-                                            <option>Not very Active</option>
-                                            <option>Lightly Active</option>
-                                            <option>Active</option>
-                                            <option>Very Active</option>
-                                        </select>
-                                        <input id="my-input" class="form-control kilo" type="text" name="" placeholder="Enter..."><br>
-                                        <input id="my-input" class="form-control kilo" type="text" name="" placeholder="Enter...">
-                                        <input id="my-input" class="form-control kilo" type="text" name="" placeholder="Enter...">
-                                        <input id="my-input" class="form-control kilo" type="text" name="" placeholder="Enter...">                                        
-                                    </div>
-                               </div>
-                            </div>
+                    </div>
+                </div>
+                <div class="row modalunclick">
+                    <div class="col-sm-12">
+                        <div class="modalmyclick">
+                            <button type="button" class="btn btn-primary modalsave" id="save_meal">Save</button>
                         </div>
-                        <div class="row modalunclick">
-                            <div class="col-sm-12">
-                               <div class="modalmyclick">
-                                    <button type="button" class="btn btn-primary modalsave">Save</button>
-                               </div>
-                            </div>
-                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -434,9 +434,9 @@
 
 
 
-<div class="modal fade" id="modal-ids">
+<div class="modal fade" id="meal_modal">
     <div class="modal-dialog">
-        <div class="modal-content">           
+        <div class="modal-content">
             <div class="modal-body productbody">
                 <div class="row mealhead">
                     <div class="col-sm-12">
@@ -448,9 +448,9 @@
                 <div class="row sercharea">
                     <div class="col-sm-12">
                         <div class="myserch">
-                        <form action="/action_page.php">
-                          <input type="text" placeholder="Search.." name="search" class="sercharea">                
-                        </form>
+                            <form action="/action_page.php">
+                                <input type="text" placeholder="Search.." name="search" class="sercharea">
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -538,7 +538,7 @@
                         </div>
                     </div>
                 </div>
-            </div>           
+            </div>
         </div>
     </div>
 </div>
@@ -549,6 +549,36 @@
 
 
 
+<script>
+    $("#save_meal").click(function(event) {
+        event.preventDefault();
+
+        let name = $("input[name=name]").val();
+        let email = $("input[name=email]").val();
+        let mobile_number = $("input[name=mobile_number]").val();
+        let message = $("input[name=message]").val();
+        let _token = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: "/ajax-request",
+            type: "POST",
+            data: {
+                name: name,
+                email: email,
+                mobile_number: mobile_number,
+                message: message,
+                _token: _token
+            },
+            success: function(response) {
+                console.log(response);
+                if (response) {
+                    $('.success').text(response.success);
+                    $("#ajaxform")[0].reset();
+                }
+            },
+        });
+    });
+</script>
 
 
 
