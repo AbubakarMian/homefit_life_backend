@@ -8,11 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Trainer_slot extends Model
 {
     use SoftDeletes;
-    protected $table='trainer_slots';
+    protected $table = 'trainer_slots';
 
 
     public function training_session()
     {
         return $this->hasOne('App\models\Training_Session', 'training_slot_id', 'id');
+    }
+    public function training_class()
+    {
+        return $this->hasOne('App\models\Training_Class', 'training_class_id', 'id');
     }
 }

@@ -22,7 +22,9 @@ class GroupClassController extends Controller
 
         $items_list = Training_Class::where('type_id', $request->cat_id)->get();
 
-        $items_list_free = Training_Class::where('type_id', $request->cat_id)->with('training_slot.training_session')->whereHas('training_slot', function ($t) {
+        $items_list_free = Training_Class::where('type_id', $request->cat_id)
+        ->with('training_slot.training_session')
+        ->whereHas('training_slot', function ($t) {
                 $t->whereHas('training_session', function ($ts) {
                     $ts->where('is_free', 1);
                 });

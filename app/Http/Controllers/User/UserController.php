@@ -21,7 +21,7 @@ class UserController extends Controller
 {
     public function index()
     {
-       
+
         return \View('user.home.index');
     }
 
@@ -108,9 +108,13 @@ class UserController extends Controller
         $user = Auth::user();
         $training_categories = Training_Type::get();
         $featured_trainer = $this->trainer_query($search_text, 'featured');
-        $sessions = Training_Session::with('training_class')->get();
+        $sessions = Training_Class::with('training_slot.training_session')
+            ->whereHas('training_slot', function ($t) {
+                $t->whereHas('training_session', function ($ts) {
+                    $ts->where('is_free', 1);
+                });
+            })->get();
         $trainer_by_raiting = $this->trainer_query($search_text, 'rating');
-
         $user_header = $this->user_header();
         session(['user_common' => $user_header]);
         return \View('user.dashboard.index', compact(
@@ -258,6 +262,4 @@ class UserController extends Controller
 
         return $myvar;
     }
-
-    
 }
