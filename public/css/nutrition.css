@@ -133,15 +133,16 @@ tr.tabborder td {
     font-size: 16px;
     font-weight: 400;
     color: black;
+    line-height: 27px;
 }
 .modalright {
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 20px;
     margin-left: 10px;
 }
 p.macro {
     font-weight: 600;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 p.blue {
     color: #0f96e7;
@@ -186,6 +187,34 @@ input.sercharea {
     height: 39px;
     border: 1px solid;
 }
-
+.modalimg img {
+    margin: 0 auto;
+    border: 2px solid;
+    border-color: #c5c5c5;
+}
+.modaltext p {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 45px;
+}
+.numbox {
+    display: flex;
+}
+.numboxdata p {
+    margin: 20px 10px;
+}
+.modaldrop {
+    margin: 11px 2px;
+    background: #cecece;
+    border-color: #d4d4d4;
+}
+.modaltwocklick {
+    text-align: center;
+}
+.prime {
+    width: 90px;
+    height: 35px;
+    margin-top: 44px;
+}
 
 
