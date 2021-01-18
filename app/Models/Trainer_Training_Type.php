@@ -10,7 +10,7 @@ class Trainer_Training_Type extends Model
     use SoftDeletes;
     protected $table='trainer_training_types';
 
-        public function training_type(){
+        public function type(){
             return $this->hasOne('App\Models\Training_Type','id','training_type');
         }
 }

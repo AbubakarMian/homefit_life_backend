@@ -21,6 +21,7 @@ class UserController extends Controller
 {
     public function index()
     {
+
         return \View('user.home.index');
     }
 
@@ -107,8 +108,15 @@ class UserController extends Controller
         $user = Auth::user();
         $training_categories = Training_Type::get();
         $featured_trainer = $this->trainer_query($search_text, 'featured');
-        $sessions = Training_Session::with('training_class')->get();
+        $sessions = Training_Class::with('training_slot.training_session')
+            ->whereHas('training_slot', function ($t) {
+                $t->whereHas('training_session', function ($ts) {
+                    $ts->where('is_free', 1);
+                });
+            })->get();
         $trainer_by_raiting = $this->trainer_query($search_text, 'rating');
+        $user_header = $this->user_header();
+        session(['user_common' => $user_header]);
         return \View('user.dashboard.index', compact(
             'training_categories',
             'featured_trainer',
@@ -222,8 +230,36 @@ class UserController extends Controller
         return \View('user.freelivesession.index');
     }
 
-    public function trainerprof(){
+    public function user_header()
+    {
 
-        
+        $modules[] = [
+            'url' => 'user/dashboard',
+            'title' => 'Home'
+        ];
+
+        $modules[] = [
+            'url' => 'user/categories',
+            'title' => 'Categories',
+        ];
+
+        $modules[] = [
+            'url' => 'user/trainer',
+            'title' => 'Trainers',
+        ];
+        $modules[] = [
+            'url' => 'user/store',
+            'title' => 'Store',
+        ];
+        // $modules[] = [
+        //     'url' => 'user/liveSession',
+        //     'title' => 'Live Session',
+        // ];
+
+
+        $myvar = [];
+        $myvar['header'] = $modules;
+
+        return $myvar;
     }
 }

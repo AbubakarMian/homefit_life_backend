@@ -15,6 +15,7 @@
                 </div>
             </div>
         </div>
+     
         <div class="">
             <div class="row">
                 <div class="col-sm-12">
@@ -30,40 +31,26 @@
                                     <th>Price</th>
                                     <th>Qty</th>
                                     <th>Total</th>
-                                    <th></th>
+                                    <th>X</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($product_cart as $pc)
                                 <tr>
-                                    <td class="cartImg"><img src="images/product-02.jpg" class="img-responsive"></td>
-                                    <td>Gym Product 1</td>
-                                    <td>22.22 $</td>
-                                    <td>02</td>
-                                    <td>44.44$</td>
-                                    <td><i class="fa fa-times-circle" aria-hidden="true"></i></td>
+                                    <td class="cartImg"><img src="{!! $pc->product->avatar!!}" class="img-responsive"></td>
+                                    <td>{!! $pc->product->name!!}</td>
+                                    <td>{!! $pc->product->price!!} $</td>
+                                    <td>{!! $pc->quantity!!}</td>
+                                    <td>{!! $pc->quantity * $pc->product->price!!}$</td>
+                                    <td><a href="{!! asset('user/remove_cart_product?cart_id=').$pc->id !!}"><i style="color: #c10530;" class="fa fa-times-circle" aria-hidden="true"></i></a></td>
                                 </tr>
-                                <tr>
-                                    <td class="cartImg"><img src="images/product-02.jpg" class="img-responsive"></td>
-                                    <td>Gym Product 1</td>
-                                    <td>22.22 $</td>
-                                    <td>02</td>
-                                    <td>44.44$</td>
-                                    <td><i class="fa fa-times-circle" aria-hidden="true"></i></td>
-                                </tr>
-                                </tr>
-                                <tr>
-                                    <td class="cartImg"><img src="images/product-02.jpg" class="img-responsive"></td>
-                                    <td>Gym Product 1</td>
-                                    <td>22.22 $</td>
-                                    <td>02</td>
-                                    <td>44.44$</td>
-                                    <td><i class="fa fa-times-circle" aria-hidden="true"></i></td>
-                                </tr>
+                                @endforeach
+                              
                                 </tbody>
                             </table>
                             <div class="btnShop">
-                                <a href="" class="btn btn-primary">Check Out</a>
-                                <a href="" class="btn btn-primary">Continue Shopping</a>
+                                <a href="{!! asset('user/shippingInfo')!!}" class="btn btn-primary">Check Out</a>
+                                <a href="{!! asset('user/store')!!}" class="btn btn-primary">Continue Shopping</a>
                             </div>
                         </div>
                     </div>

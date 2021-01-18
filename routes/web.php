@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 //=================================================
 //login
 
+
+
+
 Route::get('admin/login', 'admin\Admincontroller@index')->name('login');
 Route::post('admin/checklogin', 'admin\Admincontroller@checklogin');
 
@@ -166,6 +169,12 @@ Route::post('user/save', 'User\UserController@save')->name('save');
 
 Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
 
+    //=============================================================
+    // payment route 
+    Route::get('stripe', 'User\PaymentController@stripe');
+    Route::post('stripe', 'User\PaymentController@stripePost')->name('stripe.post');
+
+
     Route::get('user', 'User\UserController@index')->name('user');
 
     Route::match(['get', 'post'], 'dashboard', 'User\UserController@userdashboard')->name('userdashboard');
@@ -181,7 +190,7 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
 
     Route::get('description', 'User\UserController@description')->name('description');
     Route::get('livesession', 'User\UserController@livesession')->name('livesession');
-    Route::get('productcart', 'User\UserController@productcart')->name('productcart');
+
     Route::get('shippingform', 'User\UserController@shippingform')->name('shippingform');
     Route::get('paymentcard', 'User\UserController@paymentcard')->name('paymentcard');
     Route::get('freelivesession', 'User\UserController@freelivesession')->name('freelivesession');
@@ -193,7 +202,7 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     //=============================================================
     //user trainer module route
 
-    Route::match(['get', 'post'], 'trainer/index', 'User\TrainerController@index')->name('index');
+    Route::match(['get', 'post'], 'trainer', 'User\TrainerController@index')->name('index');
     Route::post('trainer/advanceSearch', 'User\TrainerController@advanceSearch')->name('trainer.advanceSearch');
     Route::post('trainer/sortByGroupClass', 'User\TrainerController@sortByGroupClass')->name('trainer.sortByGroupClass');
 
@@ -215,6 +224,11 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     Route::get('store', 'User\StoreController@index')->name('store');
     Route::post('searchProduct', 'User\StoreController@searchProduct')->name('searchProduct');
     Route::get('productdetail', 'User\StoreController@productdetail')->name('productdetail');
+    Route::post('addCart', 'User\StoreController@addCart')->name('addCart');
+    Route::get('remove_cart_product', 'User\StoreController@remove_cart_product')->name('remove_cart_product');
+    Route::get('productcart', 'User\StoreController@productcart')->name('productcart');
+    Route::post('saveshippingInfo', 'User\StoreController@saveshippingInfo')->name('saveshippingInfo');
+    Route::get('shippingInfo', 'User\StoreController@shippingInfo')->name('shoppingInfo');
 
     // ============================================================
     // Group classes
@@ -230,4 +244,5 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     // nutrition calculator route 
 
     Route::get('nutrition', 'User\NutritionController@index')->name('nutrition');
+    Route::post('addgoal', 'User\NutritionController@addgoal')->name('addgoal');
 });
