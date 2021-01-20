@@ -201,7 +201,8 @@ input.sercharea {
     display: flex;
 }
 .numboxdata p {
-    margin: 20px 10px;
+    margin-top: 32px;
+    margin-right: 8px;
 }
 .modaldrop {
     margin: 11px 2px;
@@ -215,6 +216,12 @@ input.sercharea {
     width: 90px;
     height: 35px;
     margin-top: 44px;
+}
+.serving {
+    margin-top: -17px;
+}
+.modaldrop {
+    margin-top: 28px;
 }
 
 

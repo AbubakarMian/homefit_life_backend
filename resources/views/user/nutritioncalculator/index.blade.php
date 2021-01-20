@@ -185,32 +185,31 @@ $dt = new DateTime();
             <div role="tabpanel">
                 <!-- Nav tabs -->
                 <div class="mytabs">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active">
-                            <a href="#home" aria-controls="Breakfast" role="tab" data-toggle="tab">Breakfast</a>
+                    <ul class="nav nav-tabs" role="tablist" id="nav_tab">
+                        <li role="presentation" id="breakfast_tab" class="tabs active">
+                            <a href="#breakfast" aria-controls="Breakfast" role="tab" data-toggle="tab">Breakfast</a>
                         </li>
-                        <li role="presentation">
-                            <a href="#tab" aria-controls="Lunch" role="tab" data-toggle="tab">Lunch</a>
+                        <li role="presentation" id="lunch" class="tabs">
+                            <a href="#lunch" aria-controls="Lunch" role="tab" data-toggle="tab">Lunch</a>
                         </li>
-                        <li role="presentation">
-                            <a href="#tab" aria-controls="Dinner" role="tab" data-toggle="tab">Dinner</a>
+                        <li role="presentation" id="dinner" class="tabs">
+                            <a href="#dinner" aria-controls="Dinner" role="tab" data-toggle="tab">Dinner</a>
                         </li>
                         <button type="button" class="btn btn-primary addmeal" data-toggle="modal" href='#meal_modal'>Add Meal</button>
-                        <button type="button" class="btn btn-primary addmeal" data-toggle="modal" href='#product_detail'>Add Meal 23</button>
                     </ul>
 
                 </div>
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="Breakfast">
+                    <div role="tabpanel" class="tab-pane active" id="breakfast">
 
                         <table class="table mytable table-bordered">
                             <thead>
                                 <tr class="tabborder">
                                     <th scope="col">Food / Ingredients</th>
                                     <th scope="col">Carbohydrates</th>
-                                    <th scope="col">Fats</th>
-                                    <th scope="col">Proteins</th>
-                                    <th scope="col">Calories</th>
+                                    <th scope="col">Fats Breakfast</th>
+                                    <th scope="col">Proteins Breakfast</th>
+                                    <th scope="col">Calories Breakfast</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -253,7 +252,7 @@ $dt = new DateTime();
                         </table>
 
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="Lunch">
+                    <div role="tabpanel" class="tab-pane" id="lunch">
 
                         <table class="table mytable">
                             <thead>
@@ -306,7 +305,7 @@ $dt = new DateTime();
 
                     </div>
 
-                    <div role="tabpanel" class="tab-pane" id="Dinner">
+                    <div role="tabpanel" class="tab-pane" id="dinner">
 
                         <table class="table mytable">
                             <thead>
@@ -451,7 +450,7 @@ $dt = new DateTime();
                     <div class="col-sm-12">
                         <div class="myserch">
                             <form action="/action_page.php">
-                                <input type="text" placeholder="Search.." name="search" class="sercharea" id="search_food">
+                                <input type="text" placeholder="2 Large pizza Search.." name="search" class="sercharea" id="search_food">
                             </form>
                         </div>
                     </div>
@@ -507,69 +506,79 @@ $dt = new DateTime();
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body productbody">
-               
-               <div class="row">
-               <div class="col-sm-3">
-               <div class="modalimg">
-               <img src="{{ asset('images/product-02.jpg')}}" class="img-responsive"></div>
-                </div>
-                <div class="col-sm-9">
-               <div class="modaltext">
-               <p>
-                Cake
-                </p>
-                </div>
-                </div>
-               </div>
+                <form id="addmeal" method="post" action="{{ url('user/addmeal') }}">
+                    {{ csrf_field() }}
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="modalimg">
+                                <img src="{{ asset('images/product-02.jpg')}}" class="img-responsive" id="food_image">
+                            </div>
+                        </div>
+                        <input id="meal_type" name="meal_type" value="" type="hidden" />
+                        <input id="meal_name" name="meal_name" value="" type="hidden" />
+                        <input id="meal_protein" name="meal_protein" value="" type="hidden" />
+                        <input id="meal_fats" name="meal_fats" value="" type="hidden" />
+                        <input id="meal_cal" name="meal_cal" value="" type="hidden" />
+                        <div class="col-sm-9">
+                            <div class="modaltext">
+                                <p id="food_lable">
+                                    Cake
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
-               <div class="row">
-               <div class="col-sm-6">
-                <div class="numbox">
-                <div class="numboxdata">
-                <p>
-                Cake
-                </p>
-                </div>
-                <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle modaldrop" type="button" data-toggle="dropdown">Dropdown Example
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">HTML</a></li>
-      <li><a href="#">CSS</a></li>
-      <li><a href="#">JavaScript</a></li>
-    </ul>
-  </div>
-                </div>
-                </div>
-                <div class="col-sm-6">
-                <div class="numbox">
-                <div class="numboxdata">
-                <p>
-                Cake
-                </p>
-                </div>
-                <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle modaldrop" type="button" data-toggle="dropdown">Dropdown Example
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">HTML</a></li>
-      <li><a href="#">CSS</a></li>
-      <li><a href="#">JavaScript</a></li>
-    </ul>
-  </div>
-                </div>
-                </div>
-               </div>
-               
-               <div class="row">
-               <div class="col-sm-12">
-               <div class="modaltwocklick">
-                <button type="button" class="btn btn-primary prime">Primary</button>
-               </div>
-               </div>
-               
-               </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="numbox">
+                                <div class="numboxdata">
+                                    <p>
+                                        Serving Size
+                                    </p>
+                                </div>
+                                <div class="dropdown">
+                                    <Input id="serving_size" name="serving_size" />
+                                    <!-- <button class="btn btn-primary dropdown-toggle modaldrop" type="button" data-toggle="dropdown">Select
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu serving">
 
+                                    </ul> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="numbox">
+                                <div class="numboxdata">
+                                    <p>
+                                        No. of Serving
+                                    </p>
+                                </div>
+                                <div class="dropdown">
+                                    <Input id="no_of_serving" name="no_of_serving" />
+                                    <!-- <button class="btn btn-primary dropdown-toggle modaldrop" type="button" data-toggle="dropdown">Select
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu serving">
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#">6</a></li>
+                                    </ul> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="modaltwocklick">
+                                <button type="submit" class="btn btn-primary prime">Add Meal</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -583,7 +592,7 @@ $dt = new DateTime();
 
 <script>
     $(document).ready(function() {
-        search_text= 'a';
+        search_text = 'a';
         populate_food_list(search_text)
 
     });
@@ -592,17 +601,51 @@ $dt = new DateTime();
     $('.sercharea').keypress(function(e) {
         if (e.which == 13) {
             var food_search = $("input[id=search_food]").val();
-            populate_food_list(food_search)
+            // populate_food_list(food_search)
+            search_food_list(food_search)
             return false; //<---- Add this line
         }
     });
 
+    function search_food_list(item) {
+        let nutrition_url = `https://trackapi.nutritionix.com/v2/natural/nutrients`
+
+        $.ajax({
+            url: nutrition_url,
+            type: "post",
+            headers: {
+                'Accept': 'application/json',
+                'x-app-key': '1853d79233f466e3380ff9a0c7d19647',
+                'x-app-id': '220c66d7'
+            },
+            data: {
+                query: item
+            },
+
+            success: function(response) {
+                var list = '';
+                var list_html = ''
+
+                list_html = list_html + food_list_html(response.foods)
+                $('#myfoodlist').html(list_html);
+                // for (var i = 0; i < response.hints.length; i++) {
+                //     list_html = list_html + get_food_item_html(response.hints[i]);
+
+                // }
+                // $('#myfoodlist').html(list_html);
+            },
+        });
+
+    }
+
     function populate_food_list(item) {
-        let prduct_url = `https://api.edamam.com/api/food-database/v2/parser?ingr=`+item+`&app_id=4819c10f&app_key=6012e6f0e31b18f6f4b5fcce140b7f73`
-        
+
+        let prduct_url = `https://api.edamam.com/api/food-database/v2/parser?ingr=` + item + `&app_id=4819c10f&app_key=6012e6f0e31b18f6f4b5fcce140b7f73`
+
         $.ajax({
             url: prduct_url,
             type: "get",
+
             success: function(response) {
                 var list = '';
                 var list_html = ''
@@ -615,23 +658,70 @@ $dt = new DateTime();
         });
     }
 
+
     function get_food_item_html(item) {
+
 
         return `
         <div class="col-sm-3">
                         <div class="productbox">
+                            <a onclick='search_food_list(` + JSON.stringify(item.food.label) + `);'>
                             <div class="productboximg">
                                 <img src="` + item.food.image + `" class="img-responsive">
                             </div>
                             <div class="productboxdata">
                                 <h4>` + item.food.label + `</h4>
                             </div>
+                            </a>
                         </div>
                     </div>
                     `;
     }
 
+    function food_list_html(item) {
 
+        return `
+        <div class="col-sm-3">
+                        <div class="productbox">
+                            <a onclick='open_detail_modal(` + JSON.stringify(item[0]) + `);'>
+                            <div class="productboximg">
+                                <img src="` + item[0].photo.highres + `" class="img-responsive">
+                            </div>
+                            <div class="productboxdata">
+                                <h4>` + item[0].food_name + `</h4>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                    `;
+    }
+
+    function open_detail_modal(item) {
+        console.log('item 25376523765423764', item)
+        let food_image = item.photo.highres;
+        let food_lable = item.food_name;
+        let food_fat = item.nf_total_fat;
+        let food_protein = item.nf_protein;
+        let food_cal = item.nf_calories;
+        let serve_unit = item.serving_unit;
+        let serve_qty = item.serving_qty;
+
+        console.log('lable !!!!!!!!!!!', food_lable);
+        console.log('image !!!!!!!!!!!', food_image);
+        var active_tab = $('ul#nav_tab').find('li.active').attr('id')
+        console.log('interest interest interest', active_tab);
+
+        $('#meal_name').val(food_lable);
+        $('#meal_protein').val(food_protein);
+        $('#meal_fats').val(food_fat);
+        $('#meal_cal').val(food_cal);
+        $('#no_of_serving').val(serve_qty);
+        $('#serving_size').val(serve_unit);
+        $('#food_image').attr("src", food_image);
+        $('#food_lable').html(food_lable);
+        $('#meal_modal').modal('toggle');
+        $('#product_detail').modal('toggle');
+    }
 
 
 
@@ -691,6 +781,24 @@ $dt = new DateTime();
         console.log('current_ex_cal', current_ex_cal)
 
         $("#exercise_cal").html(current_ex_cal);
+    });
+
+    $("#formoid").submit(function(e) {
+    // $('form').on('submit', function(e) {
+
+        e.preventDefault();
+
+        console.log(' e e e e e e e e e e')
+        return ;
+        $.ajax({
+            type: 'post',
+            url: 'post.php',
+            data: $('form').serialize(),
+            success: function() {
+                alert('form was submitted');
+            }
+        });
+
     });
 </script>
 

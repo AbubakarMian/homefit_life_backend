@@ -245,4 +245,5 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
 
     Route::get('nutrition', 'User\NutritionController@index')->name('nutrition');
     Route::post('addgoal', 'User\NutritionController@addgoal')->name('addgoal');
+    Route::post('addmeal', 'User\NutritionController@addmeal')->name('addmeal');
 });
