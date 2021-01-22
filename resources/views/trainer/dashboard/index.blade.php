@@ -6,7 +6,7 @@
 @section('dashboard')
 
 
-<h2>sdifushfdjhskjfhskjfh k ghsdgfhs fdhsgfd jhsgfdjh</h2>
+<h2>Dashboard</h2>
 
 
-@section
+@endsection

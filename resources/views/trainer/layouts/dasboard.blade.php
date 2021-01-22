@@ -4,7 +4,7 @@
 <section>
     <div class="sidebar">
         <div class="pageName">
-            <span>USER</span> DASHBOARD
+            <span>Trainer</span> DASHBOARD
         </div>
         <!-- class="active" -->
         <a  href="{{asset('user/dashboard')}}"><i class="flaticon-user"></i> My Profile</a>

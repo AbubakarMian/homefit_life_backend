@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterNutritionsTable extends Migration
+class AlterTrainingclasaddUrl extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class AlterNutritionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('user_nutrition_goal', function (Blueprint $table) {
-            $table->bigInteger('user_id')->nullable()->default(0);
-        });
-        Schema::dropIfExists('user_nutritions_consumed');
-        Schema::dropIfExists('nutrition');
-    
+        Schema::table('training_class', function (Blueprint $table) {
+            $table->string('live_url')->nullable()->default(null);
+        }); 
     }
 
     /**
