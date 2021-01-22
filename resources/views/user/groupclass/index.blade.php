@@ -35,7 +35,7 @@
                                             <div class="item {!!$key === 0 ? 'active':'' !!}">
                                                 <div class="row">
                                                     @foreach($tc as $stc)
-                                                        <div class="col-sm-3">
+                                                        <div class="col-sm-3 nygym">
                                                             <a href="{!!asset('user/groupclass/group_desc?class_id=').$stc->id!!}">
                                                                 <div class="col-item">
                                                                 
@@ -48,9 +48,11 @@
                                                                         <span>20 Members</span>
                                                                     </div>
                                                                 </div>
-                                                            </a>
+                                                            </a>    
+                                                            <button type="button" class="btn btn-primary join">JOIN CLASS</button>                                                              
                                                         </div>
                                                     
+
                                                     @endforeach 
                                                  
                                                    
@@ -99,6 +101,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <button>JOIN CLASS</button>
                                                 @endforeach
                                             </div>
                                         </div>

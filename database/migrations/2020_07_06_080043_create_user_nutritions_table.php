@@ -21,7 +21,6 @@ class CreateUserNutritionsTable extends Migration
             $table->float('goal')->default(0);
             $table->date('date');
             $table->float('total_consumed');
-            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

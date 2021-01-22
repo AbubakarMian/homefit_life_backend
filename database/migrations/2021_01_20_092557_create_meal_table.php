@@ -21,6 +21,7 @@ class CreateMealTable extends Migration
             $table->double('protein')->nullable()->default(0);
             $table->double('fats')->nullable()->default(0);
             $table->double('calories')->nullable()->default(0);
+            $table->double('carbohydrates')->nullable()->default(0);
             $table->bigInteger('date');
             $table->timestamps();
             $table->softDeletes();

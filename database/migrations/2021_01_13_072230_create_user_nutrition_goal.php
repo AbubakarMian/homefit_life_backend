@@ -14,7 +14,7 @@ class CreateUserNutritionGoal extends Migration
     public function up()
     {
         Schema::create('user_nutrition_goal', function (Blueprint $table) {
-            $table->bigInteger('id');
+            $table->bigIncrements('id');
             $table->string('goal_weight');
             $table->string('current_weight');
             $table->string('weekly_weight');

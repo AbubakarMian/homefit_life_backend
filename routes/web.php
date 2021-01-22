@@ -246,4 +246,18 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     Route::get('nutrition', 'User\NutritionController@index')->name('nutrition');
     Route::post('addgoal', 'User\NutritionController@addgoal')->name('addgoal');
     Route::post('addmeal', 'User\NutritionController@addmeal')->name('addmeal');
+    Route::post('nutritionCal', 'User\NutritionController@nutritionCalculator')->name('nutritionCal');
+    
+    Route::get('nutritiondailygoalmonthly/{month_id}', 'User\UserController@nutritionDailyGoalMonthly')->name('nutritionDailyGoalMonthly');
+    Route::get('gettotalconsumenutritions', 'User\UserController@getTotalConsumeNutritions')->name('gettotalconsumenutritions');
 });
+
+
+Route::get('trainer/login', 'User\UserController@login')->name('userlogin');
+Route::get('trainer/register', 'User\UserController@usercreate')->name('usercreate');
+Route::get('trainerreset', 'User\UserController@userreset')->name('userreset');
+Route::post('trainer/checklogin', 'User\UserController@checklogin')->name('checklogin');
+
+Route::get('trainer/logout', 'User\UserController@logout')->name('logout');
+Route::post('trainer/save', 'User\UserController@save')->name('save');
+
