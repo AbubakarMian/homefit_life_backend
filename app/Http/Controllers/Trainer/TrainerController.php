@@ -4,105 +4,104 @@ namespace App\Http\Controllers\Trainer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Training_Class;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class TrainerController extends Controller
 {
-    
-    // public function login()
-    // {
-    //     return \View('user.login.index');
-    // }
 
-    // public function trainerlogin(Request $request)
-    // {
+    public function login()
+    {
+        return \View('trainer.login.index');
+    }
 
-    //     $user_data = $request->all();
-    //     if (Auth::attempt($user_data)) {
-    //         // return redirect('user/dashboard');
-    //         return $this->userdashboard();
-    //     } else {
-    //         return back()->with('error', 'Wrong Login Details');
-    //     }
-    //     $user = User::find('email', 'user1@gmail.com');
-    //     return \View('user.login.index');
-    // }
+    public function trainerlogin(Request $request)
+    {
 
-    // public function checklogin(Request $request)
-    // {
-    //     try {
-    //         $this->validate($request, [
-    //             'email' => 'required|email',
-    //             'password ' => 'required|alphaNum|min:3'
-    //         ]);
-    //     } catch (ValidationException $e) {
-    //     }
+        dd($request->all());
+        $user_data = $request->all();
+        if (Auth::attempt($user_data)) {
+            // return redirect('user/dashboard');
+            return $this->userdashboard();
+        } else {
+            return back()->with('error', 'Wrong Login Details');
+        }
+        $user = User::find('email', 'user1@gmail.com');
+        return \View('user.login.index');
+    }
 
-    //     $user_data = array(
-    //         'email'  => $request->get('email'),
-    //         'password' => $request->get('password')
-    //     );
+    public function checklogin(Request $request)
+    {
 
-    //     if (Auth::attempt($user_data)) {
-    //         return redirect('user/dashboard');
-    //     } else {
-    //         return back()->with('error', 'Wrong Login Details');
-    //     }
-    // }
+        try {
+            $this->validate($request, [
+                'email' => 'required|email',
+                'password ' => 'required|alphaNum|min:3'
+            ]);
+        } catch (ValidationException $e) {
+        }
 
-    // public function logout()
-    // {
-    //     $user = Auth::logout();
-    //     return redirect('user/login')->with('success', 'logout sucessfully');
-    // }
+        $user_data = array(
+            'email'  => $request->get('email'),
+            'password' => $request->get('password'),
+            'role_id' => 3
+        );
+        if (Auth::attempt($user_data)) {
 
-    // public function save(Request $request)
-    // {
+            return redirect('trainer/dashboard');
+        } else {
+            return back()->with('error', 'Wrong Login Details');
+        }
+    }
 
-    //     $validator = Validator::make($request->all(), User::$rules);
-    //     $role_id = Config::get('constants.roles_id.user');
-    //     if (!$validator->fails()) {
-    //         $users = new User();
-    //         $users->name       = $request->name;
-    //         $users->email       = $request->email;
-    //         $users->role_id       = $role_id;
-    //         $users->password    = Hash::make($request->password);
-    //         $users->save();
-    //         Auth::login($users);
-    //         return redirect('user/dashboard');
-    //     } else {
+    public function logout()
+    {
+        $user = Auth::logout();
+        return redirect('trainer/login')->with('success', 'logout sucessfully');
+    }
 
-    //         return back()->with('error', 'Wrong Login Details');
-    //     }
-    // }
+    public function forgetpwd(Request $request)
+    {
 
+        $validation = Validator::make($request->all(), [
+            'email' => 'required|email'
+        ]);
+        if (!$validation->fails()) {
+            $email = $request->email;
+            $user = new User();
+            $responseArray = $user->resetPassword($email);
 
-    // public function userreset()
-    // {
-    //     return \View('user.reset.index');
-    // }
+            return back()->with('success', 'New password send to your Email .');
+        } else {
+            return back()->with('error', 'Wrong Email Details .');
+        }
+    }
+    public function userreset()
+    {
+        return \View('user.reset.index');
+    }
 
-     public function dashboard(Request $request)
+    public function dashboard(Request $request)
     {
         return \View('trainer.dashboard.index');
-
     }
-     public function myClass(Request $request)
+    public function myClass(Request $request)
     {
-        $trainer_id ='2';
+        $trainer_id = '2';
 
-        $class_list = Training_Class::where('trainer_id',$trainer_id)->get();
-        return \View('trainer.myclasses.index',compact('class_list'));
-
+        $class_list = Training_Class::where('trainer_id', $trainer_id)->get();
+        return \View('trainer.myclasses.index', compact('class_list'));
     }
-     public function liveSession(Request $request)
+    public function liveSession(Request $request)
     {
 
         $video_url = Training_Class::find($request->group_id);
 
-        return \View('trainer.livesessiongroup.index',compact('video_url'));
-
+        return \View('trainer.livesessiongroup.index', compact('video_url'));
     }
-
 }

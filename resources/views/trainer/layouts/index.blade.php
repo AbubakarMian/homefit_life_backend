@@ -1,6 +1,6 @@
 {{-----------------Home Page --------------}}
 
-@include('user.layouts.header')
+@include('trainer.layouts.header')
 {{-----------------Home Page --------------}}
 
 @yield('default')

@@ -1,0 +1,103 @@
+
+.main.box {
+    margin-top: 239px;
+    margin-left: 106px;
+    background-color: #e6e6e6;
+}
+
+.number {
+    margin-left: 70px;
+    color: #0c94ea;
+    margin-top: 8px;
+   
+
+}
+
+.group.classes {
+       margin-left: 0px;
+    /* margin-top: 48px; */
+    margin-bottom: 36px;
+    font-size: 26px;
+    /* color: darkblue; */
+    color: white;
+    background-color: #0c94ea;
+    margin-right: 0px;
+    /* padding-right: 40px; */
+    padding-left: 99px;
+    margin-bottom: 41px;
+    /* 5px: ; */
+    padding-bottom: 11px;
+    padding-right: 74px;
+    padding-top: 13px;
+}
+
+.main.box {
+   margin-top: 63px;
+    margin-left: 110px;
+    border: 0px solid blue;
+    padding-left: 2px;
+    /* padding-right: 17px; */
+    margin-left: 31px;
+    margin-right: 173px;
+    height: 264px;
+    margin-left: -43px;
+}
+    
+
+
+
+
+.col-sm-4{
+    margin-left: 40px;
+}
+
+
+  .modules{
+    background-color: #0c94ea;
+    margin-left: 0px;
+    /* margin-left: 20px; */
+    margin-right: 1416px;
+    color: white;
+    font-size: 32px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 11px;
+    margin-top: 18px;
+}
+
+
+
+.main.area{
+    background-color: white;
+    padding-bottom: 292px;
+    padding-top: 2px;
+    margin-top: 60px;
+    margin-left: 15px;
+    }
+
+
+    .bottom{
+
+    color:#e6e6e6;
+    }
+
+
+    .col-sm-4 {
+    padding-top: 1px;
+    padding-bottom: 12px;
+}
+
+.sight {
+  font-weight: bold;
+    margin-left: 25px;
+    font-size: 16px;
+   
+}
+
+
+
+
+
+.ruquest {
+    margin-top: 8px;
+}

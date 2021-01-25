@@ -61,7 +61,7 @@ $header = $user_common['header'] ?? '';
                 <div class="row">
                     <div class="col-sm-3 col-xs-12">
                         <div class="logoArea">
-                            <a href="{{ asset('/user/dashboard')}}"><img src="{{ asset('images/logo.png')}}" class="img-responsive"></a>
+                            <a href="{{ asset('/trainer/dashboard')}}"><img src="{{ asset('images/logo.png')}}" class="img-responsive"></a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-xs-12">
@@ -98,7 +98,7 @@ $header = $user_common['header'] ?? '';
                     </div>
                     <div class="col-sm-3 hidden-xs">
                         <div class="cartArea">
-                            <button id="notification" class="btn btn-link btn-sm btn-notification"><i class="flaticon-bell" aria-hidden="true"></i></button>
+                            <!-- <button id="notification" class="btn btn-link btn-sm btn-notification"><i class="flaticon-bell" aria-hidden="true"></i></button>
                             <div class="notificationArea" style="display: none;">
                                 <h3>Yoga Group Class</h3>
                                 <p>Starts in 15 Min</p>
@@ -107,9 +107,9 @@ $header = $user_common['header'] ?? '';
                                     <li><a href="" class="btn btn-primary btn-sm">HomePage</a></li>
                                 </ul>
                             </div>
-                            <button id="cartItems" class="btn btn-link btn-sm btn-cart"><i class="flaticon-cart" aria-hidden="true"></i></button>
+                            <button id="cartItems" class="btn btn-link btn-sm btn-cart"><i class="flaticon-cart" aria-hidden="true"></i></button> -->
 
-                            @if(Auth::check())
+                            <!-- @if(Auth::check())
                             <div class="cartItemArea" style="display: none;">
                                 <table class="table">
                                     <thead>
@@ -138,11 +138,11 @@ $header = $user_common['header'] ?? '';
                                 <center><a href="{{asset('user/shippingInfo')}}" class="btn btn-primary btn-xs">Checkout</a></center>
 
                             </div>
-                            @endif
+                            @endif -->
                             @if(Auth::check())
-                            <a href="{{ asset('user/logout')}}" class="btn btn-primary btn-sm btn-UserLogin ">User Logout <i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                            <a href="{{ asset('trainer/logout')}}" class="btn btn-primary btn-sm btn-UserLogin ">Trainer Logout <i class="fa fa-user-circle" aria-hidden="true"></i></a>
                             @else
-                            <a href="{{ asset('/homefit/login.php')}}" class="btn btn-primary btn-sm btn-UserLogin ">User Login <i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                            <a href="{{ asset('/homefit/login.php')}}" class="btn btn-primary btn-sm btn-UserLogin ">Trainer Login <i class="fa fa-user-circle" aria-hidden="true"></i></a>
                             @endif
                         </div>
                     </div>

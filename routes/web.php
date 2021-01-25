@@ -253,17 +253,22 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
 });
 
 
-// Route::get('trainer/login', 'User\TrainerController@login')->name('userlogin');
-// Route::get('trainer/register', 'User\TrainerController@usercreate')->name('usercreate');
-// Route::get('trainerreset', 'User\TrainerController@userreset')->name('userreset');
-// Route::post('trainer/checklogin', 'User\TrainerController@checklogin')->name('checklogin');
+// ------------Trainer Route start----------------- 
 
-// Route::get('trainer/logout', 'User\TrainerController@logout')->name('logout');
-// Route::post('trainer/save', 'User\TrainerController@save')->name('save');
+Route::get('trainer/login', 'Trainer\TrainerController@login')->name('trainerlogin');
+Route::get('trainerreset', 'Trainer\TrainerController@userreset')->name('userreset');
+Route::post('trainer/checklogin', 'Trainer\TrainerController@checklogin')->name('trainer.checklogin');
+Route::post('forgetpwd', 'Trainer\TrainerController@forgetpwd')->name('forgetpwd');
+
+Route::get('trainer/logout', 'Trainer\TrainerController@logout')->name('logout');
 
 
 
 Route::get('trainer/dashboard', 'Trainer\TrainerController@dashboard')->name('trainer.dashboard');
 Route::get('trainer/myclass', 'Trainer\TrainerController@myClass')->name('trainer.myclass');
 Route::get('trainer/livesession', 'Trainer\TrainerController@liveSession')->name('trainer.myclass');
+
+Route::get('trainer/groupclass', 'Trainer\GroupClassController@index')->name('trainer.groupclass');
+Route::get('trainer/createclass', 'Trainer\GroupClassController@createGroupClass')->name('trainer.createclass');
+Route::post('trainer/saveclass', 'Trainer\GroupClassController@SaveClass')->name('trainer.saveclass');
 
