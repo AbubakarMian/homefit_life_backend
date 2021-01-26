@@ -1,0 +1,137 @@
+
+.fox {
+    margin-left: 4px;
+    margin-right: 152px;
+    margin-bottom: -2px;
+}
+
+/*.livegroup{
+    background-color: white;
+    padding-bottom: 292px;
+    padding-top: 2px;
+    margin-top: 60px;
+    margin-left: 65px;
+
+  }
+*/
+
+
+.hilton{
+    background-color: white;
+    padding-top: 30px;
+    
+}
+    .modules{
+    background-color: #0c94ea;
+    margin-left: 0px;
+    margin-right: 987px;
+    color: white;
+    font-size: 32px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 11px;
+    margin-top: 18px;
+}
+
+ .modules1{
+    background-color: #0c94ea;
+    margin-left: 0px;
+    margin-right: 1197px;
+    color: white;
+    font-size: 32px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 11px;
+    margin-top: 18px;
+}
+
+
+p#demo {
+    
+    background: padding-box;
+    font-size: 53px;
+    /* margin-top: -3px; */
+    box-sizing: border-box;
+    box-sizing: content-box;
+    width: 218px;
+    height: 75px;
+    /* border: 8px solid blue; */
+    margin-top:48px;
+    border: 2px solid black;
+    border-radius: -14px;
+    margin-bottom: 31px;
+
+}
+.button {
+  background-color: #0c94ea;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+}
+
+.button1 {padding: 10px 24px;}
+.button1 { margin-top: 31px;}             
+
+
+table.bigger {
+    width: 99%;
+    /* margin-left: -9px; */
+    /* margin-top: 58px; */
+    /* height: 214px; */
+    margin-bottom: 3px;
+    padding-top: 39px;
+}
+
+th.user {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: left;
+        padding-left: 72px;
+        padding-top: 17px;
+}
+
+
+td.user {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: left;
+    padding-left: 71px;
+}
+h2.display-4 {
+    background: #0c94ea;
+    width: 269px;
+    /* height: 55px; */
+    padding: 12px 20px;
+    color: white;
+}
+.LiveSessionImg img {
+    margin: 0 auto;
+    margin-left: 37px;
+}
+
+.closer {
+    margin-right: 459px;
+}
+
+button#recommend {
+  
+    background-color: #0c94ea;
+    margin-left: 10px;
+    /* width: 29px; */
+    width: 19%;
+}
+
+button#view {
+    background-color: black;
+    margin-left: 173px;
+
+}
+

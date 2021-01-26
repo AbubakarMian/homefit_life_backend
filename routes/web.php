@@ -271,4 +271,7 @@ Route::get('trainer/livesession', 'Trainer\TrainerController@liveSession')->name
 Route::get('trainer/groupclass', 'Trainer\GroupClassController@index')->name('trainer.groupclass');
 Route::get('trainer/createclass', 'Trainer\GroupClassController@createGroupClass')->name('trainer.createclass');
 Route::post('trainer/saveclass', 'Trainer\GroupClassController@SaveClass')->name('trainer.saveclass');
+Route::post('trainer/searchgroupclass', 'Trainer\GroupClassController@index')->name('trainer.searchgroupclass');
+
+Route::get('trainer/liveSession', 'Trainer\GroupClassController@liveSession')->name('trainer.liveSession');
 

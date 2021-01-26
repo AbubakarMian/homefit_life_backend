@@ -1,7 +1,17 @@
 @extends('trainer.layouts.dasboard')
 
-<!-- <link href="{{ asset('css/user.css')}}" rel="stylesheet">
-<link href="{{ asset('css/advancesearch.css')}}" rel="stylesheet"> -->
+<style>
+    ul {
+        overflow-x: hidden;
+        white-space: nowrap;
+        /* height: 1em;
+width: 100%; */
+    }
+
+    li {
+        display: inline;
+    }
+</style>
 
 @section('dashboard')
 
@@ -33,96 +43,96 @@
                     Data Range Picker
                 </h2>
 
-
-
-                <form class="form-inline" action="/action_page.php">
-
-
-
-                    <div class="asian">
-
+                <div class="asian">
+                    <form method="post" action="{{ url('trainer/searchgroupclass') }}">
+                        {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="text">Select data range</label></br>
-                            <input type="text" class="form-control" id="email">
+                            <label for="text">Select day</label></br>
+                            <select class="form-control" id="day" name="day_id">
+                                @foreach($weekdays as $wd)
+                                <option value="" selected>Select day </option>
+                                <option value="{{$wd->id}}">{{ ucfirst($wd->name)}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
 
                         <div class="form-group">
                             <label for="pwd">Title</label></br>
-                            <input type="password" class="form-control" id="pwd">
+                            <input type="text" class="form-control" id="title" name="title">
                         </div>
 
 
                         <div class="form-group">
                             <label for="pwd">Category:</label></br>
-                            <input type="password" class="form-control" id="pw">
+                            <select class="form-control" id="day" name="type_id">
+                                @foreach($training_type as $tt)
+                                <option value="" selected>Select category </option>
+                                <option value="{{$tt->id}}">{{$tt->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
 
                         <div class="form-group">
-                            <label for="pwd">Status:</label></br>
-                            <input type="password" class="form-control" id="pwe">
-                        </div>
-
-
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search.." id="obiii">
-
+                            <button type="submit" class="form-control" placeholder="Search.."></button>
                         </div>
 
 
 
+                    </form>
+                </div>
 
-                    </div>
 
-
-                </form>
             </div>
 
 
             <table class="helix">
                 <tr class="first">
-                    <th class="martin">Date</th>
+                    <th class="martin">Days</th>
                     <th class="martin2">Category</th>
                     <th class="martin3">Title</th>
-                    <th class="martin4">Participants</th>
                     <th class="mart1">Action</th>
                     <th class="age">Inspect</th>
 
                 </tr>
+                @foreach($trainng_class as $tc)
+                <?php
+                $slots_weekdays = [];
+                if (isset($tc->training_slot)) {
+                    $slots_weekdays =  $tc->training_slot->pluck('week_days_id')->toArray();
+                }
+
+
+                ?>
                 <tr class="second">
-                    <th class="atoc1">Tuesday, 1st September 2020</th>
-                    <th class="atocrrr">Yoga</th>
-                    <th class="atocoo">Yoga Basic</th>
-                    <th class="atoc">10</th>
-                    <th class="martt"> <button class="button button1"> Start </button> <button class="button button2"> Reject </button> </th>
-                    <th class="agea">Detail</th>
-                </tr>
+                    <th class="atoc1">
+                        <ul>
+                            @foreach($weekdays as $wd)
+                            <?php $color = '';
+                            if (in_array($wd->id, $slots_weekdays)) {
+                                $color = '#00CED1';
+                            }
 
-                <tr class="third">
-                    <th class="atoccer">Wednesday, 3rd September 2020</th>
-                    <th class="atocu">Yoga</th>
-                    <th class="atocw">Yoga Basic</th>
-                    <th class="atocq">10</th>
-                    <th class="marti"> <button class="button button1"> Start </button><button class="button button2"> Reject </button></th>
-                    <th class="ager">Detail</th>
+                            ?>
+                            <li style="background-color:{!! $color!!}">{{ substr(ucfirst($wd->name),0,-4)}}</li>
+                            @endforeach
+                        </ul>
+                    </th>
+                    <th class="atocrrr">{!! $tc->trainer_type->name ?? 'no nmae' !!}</th>
+                    <th class="atocoo">{!! $tc->name!!}</th>
+                    <th class="martt">
+                        <button class="button btn-success"> Start </button>
+                    </th>
+                    <th class="agew">
+                        <button class="button btn-info"> Detail </button>
+                    </th>
                 </tr>
+                @endforeach
 
 
-                <tr class="fourth">
-                    <th class="atot">Thursday, 1st September 2020</th>
-                    <th class="atocs">Yoga</th>
-                    <th class="atocz">Yoga Basic</th>
-                    <th class="atocyu">10</th>
-                    <th class="mart"> <button class="button button1"> Start </button> <button class="button button2"> Reject </button></th>
-                    <th class="agew">Detail</th>
-                </tr>
+
             </table>
-
-
-
-
-
 
         </div>
     </div>

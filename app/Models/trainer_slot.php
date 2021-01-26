@@ -17,6 +17,6 @@ class Trainer_slot extends Model
     }
     public function training_class()
     {
-        return $this->hasOne('App\models\Training_Class', 'training_class_id', 'id');
+        return $this->hasOne('App\Models\Training_Class', 'id', 'training_class_id');
     }
 }

@@ -11,29 +11,31 @@ use Illuminate\Http\Request;
 use App\Models\Trainer;
 use Illuminate\Support\Facades\Config;
 use Maatwebsite\Excel\Facades\Excel;
+
 class Group_Session_PaymentsController extends Controller
 {
     public function index(Request $request)
     {
-        $search_text = $request->user??'';
+        $search_text = $request->user ?? '';
 
-        $group_session_payments= $this->query($search_text )->paginate(10);
+        $group_session_payments = $this->query($search_text)->paginate(10);
         // dd($group_session_payments);
         return \View::make('admin.reports.group_session_payments.index', compact(
             'group_session_payments',
-            'search_text'));
-        }
+            'search_text'
+        ));
+    }
 
     public function query($search_text)
     {
-        $report = Training_Class_Users::whereHas('trainingclass',function($q)use($search_text){
-            $q->whereHas('trainer',function($t) use($search_text){
-                $t->where('name','like','%'.$search_text.'%');
+        $report = Training_Class_Users::whereHas('trainingclass', function ($q) use ($search_text) {
+            $q->whereHas('trainer', function ($t) use ($search_text) {
+                $t->where('name', 'like', '%' . $search_text . '%');
             });
         });
 
-        $report = $report->whereHas('user',function($q)use($search_text){
-            $q->where('name','like','%'.$search_text.'%');
+        $report = $report->whereHas('user', function ($q) use ($search_text) {
+            $q->where('name', 'like', '%' . $search_text . '%');
         });
 
         $report = $report->orderBy('created_at');
@@ -41,7 +43,11 @@ class Group_Session_PaymentsController extends Controller
         return $report->select(
             'id',
             'total_purchased_session',
-            'session_left','user_id','training_class_id','package_id','payment_id'
+            'session_left',
+            'user_id',
+            'training_class_id',
+            'package_id',
+            'payment_id'
         );
     }
 
@@ -52,10 +58,10 @@ class Group_Session_PaymentsController extends Controller
         $all = Config::get('constants.request_status.all');
         $search_text = $request->user_excel;
         $date = $request->date;
-//        $status = $request->status ?? $all;
-        $data = $this->query($search_text ,$date )->select('id','total_purchased_session','session_left')->get()->toArray();
+        //        $status = $request->status ?? $all;
+        $data = $this->query($search_text, $date)->select('id', 'total_purchased_session', 'session_left')->get()->toArray();
         // dd($data);
-        $headings = ['Id', 'Total Purchased Session','Session left'];
+        $headings = ['Id', 'Total Purchased Session', 'Session left'];
 
         $excel = Excel::download(new ExcelExport($data, $headings), 'group_session.xlsx');
         return $excel;
