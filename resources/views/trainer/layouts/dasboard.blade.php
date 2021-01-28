@@ -30,5 +30,6 @@
     </div>
 </footer>
 </body>
+@yield('app_jquery')
 
 </html>

@@ -35,6 +35,10 @@ class Training_Class extends Model
     }
     public function training_slot()
     {
-        return $this->hasOne('App\models\Trainer_slot', 'training_class_id', 'id');
+        return $this->hasMany('App\models\Trainer_slot', 'training_class_id', 'id');
+    }
+    public function training_class_user()
+    {
+        return $this->hasMany('App\models\Training_Class_Users', 'training_class_id', 'id');
     }
 }

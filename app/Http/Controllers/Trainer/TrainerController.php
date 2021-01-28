@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Trainer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\Recommended_Product;
 use App\Models\Training_Class;
 use App\User;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -103,5 +106,20 @@ class TrainerController extends Controller
         $video_url = Training_Class::find($request->group_id);
 
         return \View('trainer.livesessiongroup.index', compact('video_url'));
+    }
+
+    public function recomendedProduct(Request $request)
+    {
+
+        $trainer_id = Auth::id();
+        $rec_product = new Recommended_Product();
+        $rec_product->product_id = $request->prod_id;
+        $rec_product->trainer_id = $trainer_id;
+
+        $response = Response::json([
+            "status" => true,
+            "msg" => $rec_product
+        ]);
+        return $response;
     }
 }

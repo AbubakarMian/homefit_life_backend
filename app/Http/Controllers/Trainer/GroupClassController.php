@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Trainer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\Trainer_slot;
 use App\Models\Training_Class;
 use App\Models\Training_Type;
 use App\Models\Weekday;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use DB;
 
 class GroupClassController extends Controller
 {
@@ -20,34 +23,21 @@ class GroupClassController extends Controller
         $category_id = $request->type_id ?? 0;
         $week_day_id = $request->day_id ?? 0;
 
-        // $training_slot = Trainer_slot::whereHas('training_class', function ($query) use ($title, $category_id) {
-        //     $query->with('trainer_type');
-        //     $query->where('name', 'like', '%' . $title . '%');
-        //     if ($category_id) {
-        //         $query = $query->where('type_id', $category_id);
-        //     }
-        // })->with('training_class.trainer_type');
-        // if ($week_day_id) {
-        //     $training_slot = $training_slot->where('week_days_id', $week_day_id);
-        // }
-        // $training_slot = $training_slot->get();
-
-        $trainng_classs = Training_Class::with(['training_slot'], function ($query) use ($week_day_id) {
-            // if ($week_day_id) {
-            //     $query->where('week_days_id', $week_day_id);
-            // }
+        $trainng_class = Training_Class::with(['training_slot'], function ($query) use ($week_day_id) {
+            if ($week_day_id) {
+                $query->where('week_days_id', $week_day_id);
+            }
         })->with('trainer_type');
-        $trainng_classs = $trainng_classs->where('name', 'like', '%' . $title . '%');
+        $trainng_class = $trainng_class->where('name', 'like', '%' . $title . '%');
         if ($category_id) {
-            $trainng_classs = $trainng_classs->where('type_id', $category_id);
+            $trainng_class = $trainng_class->where('type_id', $category_id);
         }
-        $trainng_class = $trainng_classs->get();
+        $trainng_class = $trainng_class->get();
         $weekdays = Weekday::get(['name','id']);
         
         $training_type = Training_Type::get();
         return \View('trainer.groupclass.index', compact('weekdays', 'training_type', 'trainng_class'));
     }
-
 
     public function createGroupClass()
     {
@@ -101,9 +91,21 @@ class GroupClassController extends Controller
         return \View('trainer.groupclass.index');
     }
 
-    public function liveSession()
-    {
+    public function liveSession(Request $request)
+    {   
+        $trainng_class = Training_Class::with(['training_class_user.user','trainer_type'])->find($request->class_id);
+        $produst_list = Product::with(['recomendedProduct'])->get();
+        return \View('trainer.livesessiongroup.index',compact('trainng_class','produst_list'));
+    }
 
-        return \View('trainer.livesessiongroup.index');
+    public function classDetail(Request $request){
+
+        $trainng_class = Training_Class::with(['training_slot.weekday'])->find($request->class_id);
+        $response = Response::json([
+            "status"=>true,
+            "msg"=>$trainng_class
+        ]);
+        return $response;
+
     }
 }

@@ -19,4 +19,8 @@ class Trainer_slot extends Model
     {
         return $this->hasOne('App\Models\Training_Class', 'id', 'training_class_id');
     }
+    public function weekday()
+    {
+        return $this->hasOne('App\Models\Weekday', 'id', 'week_days_id');
+    }
 }

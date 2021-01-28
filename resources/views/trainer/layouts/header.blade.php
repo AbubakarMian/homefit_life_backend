@@ -152,7 +152,7 @@ $header = $user_common['header'] ?? '';
     </header>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function() {            
             $("#notification").click(function() {
                 $(".notificationArea").toggle();
             });
@@ -164,3 +164,4 @@ $header = $user_common['header'] ?? '';
             });
         });
     </script>
+    

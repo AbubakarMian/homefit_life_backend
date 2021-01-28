@@ -22,7 +22,8 @@
                                         <div class="col-md-3">
                                             <!-- Controls -->
                                             <div class="controls pull-right hidden-xs">
-                                                <a class="left fa fa-chevron-left btn btn-primary btnSlider" href="#GroupClassSlider" data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-primary btnSlider" href="#GroupClassSlider" data-slide="next"></a>
+                                                <a class="left fa fa-chevron-left btn btn-primary btnSlider" href="#GroupClassSlider" data-slide="prev"></a>
+                                                <a class="right fa fa-chevron-right btn btn-primary btnSlider" href="#GroupClassSlider" data-slide="next"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -31,34 +32,34 @@
                                     <!-- Wrapper for slides -->
                                     <div class="carousel-inner">
                                         @foreach($training_class as $key=>$tc)
-                                
-                                            <div class="item {!!$key === 0 ? 'active':'' !!}">
-                                                <div class="row">
-                                                    @foreach($tc as $stc)
-                                                        <div class="col-sm-3 nygym">
-                                                            <a href="{!!asset('user/groupclass/group_desc?class_id=').$stc->id!!}">
-                                                                <div class="col-item">
-                                                                
-                                                                    <div class="photo">
-                                                                        <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
-                                                                    </div>
-                                                                    <div class="Details">
-                                                                        <h5>{!! $stc->name !!}</h5>
-                                                                        <p> {!!  $stc->details !!} </p>
-                                                                        <span>20 Members</span>
-                                                                    </div>
-                                                                </div>
-                                                            </a>    
-                                                            <button type="button" class="btn btn-primary join">JOIN CLASS</button>                                                              
-                                                        </div>
-                                                    
 
-                                                    @endforeach 
-                                                 
-                                                   
-                                                 </div>
+                                        <div class="item {!!$key === 0 ? 'active':'' !!}">
+                                            <div class="row">
+                                                @foreach($tc as $stc)
+                                                <div class="col-sm-3 nygym">
+                                                    <a href="{!!asset('user/groupclass/group_desc?class_id=').$stc->id!!}">
+                                                        <div class="col-item">
+
+                                                            <div class="photo">
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
+                                                            </div>
+                                                            <div class="Details">
+                                                                <h5>{!! $stc->name !!}</h5>
+                                                                <p> {!! $stc->details !!} </p>
+                                                                <span>20 Members</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                    <button type="button" class="btn btn-primary join">JOIN CLASS</button>
+                                                </div>
+
+
+                                                @endforeach
+
+
                                             </div>
-                                            @endforeach   
+                                        </div>
+                                        @endforeach
 
                                     </div>
                                 </div>

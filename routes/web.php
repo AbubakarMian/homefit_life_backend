@@ -266,7 +266,7 @@ Route::get('trainer/logout', 'Trainer\TrainerController@logout')->name('logout')
 
 Route::get('trainer/dashboard', 'Trainer\TrainerController@dashboard')->name('trainer.dashboard');
 Route::get('trainer/myclass', 'Trainer\TrainerController@myClass')->name('trainer.myclass');
-Route::get('trainer/livesession', 'Trainer\TrainerController@liveSession')->name('trainer.myclass');
+// Route::get('trainer/livesession', 'Trainer\TrainerController@liveSession')->name('trainer.myclass');
 
 Route::get('trainer/groupclass', 'Trainer\GroupClassController@index')->name('trainer.groupclass');
 Route::get('trainer/createclass', 'Trainer\GroupClassController@createGroupClass')->name('trainer.createclass');
@@ -274,4 +274,6 @@ Route::post('trainer/saveclass', 'Trainer\GroupClassController@SaveClass')->name
 Route::post('trainer/searchgroupclass', 'Trainer\GroupClassController@index')->name('trainer.searchgroupclass');
 
 Route::get('trainer/liveSession', 'Trainer\GroupClassController@liveSession')->name('trainer.liveSession');
+Route::get('trainer/classdetail', 'Trainer\GroupClassController@classDetail')->name('trainer.classdetail');
+Route::get('trainer/recomproduct', 'Trainer\TrainerController@recomendedProduct')->name('trainer.recomproduct');
 

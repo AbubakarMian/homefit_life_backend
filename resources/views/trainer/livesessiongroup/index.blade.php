@@ -15,6 +15,7 @@
 
 
 
+
 <section>
 
     <div class="content">
@@ -34,7 +35,7 @@
                             <p id="demo">
                             </p>
                             <div class="LiveSessionImg">
-                                <iframe src="https://appr.tc/r/897987987" allow="camera ;microphone" height="100%" width="100%"></iframe>
+                                <iframe src="{!! $trainng_class->live_url !!}" allow="camera ;microphone" height="100%" width="100%"></iframe>
 
                             </div>
 
@@ -60,30 +61,17 @@
                                                         <th class="user"> Group Title</th>
                                                         <th class="user"> Category</th>
                                                     </tr>
+                                                    @foreach($trainng_class->training_class_user as $us)
                                                     <tr class="first">
                                                         <td class="user">
-                                                            <img src="images/image-24.png">
+                                                            <img src="{!! $us->user->avatar ?? '' !!}" class="img-responsive">
                                                         </td>
-                                                        <td class="user">John michel</td>
-                                                        <td class="user">Yoga basic</td>
-                                                        <td class="user">Aerobic</td>
+                                                        <td class="user"> {{$us->user->name ??''}}</td>
+                                                        <td class="user">{{$trainng_class->name}}</td>
+                                                        <td class="user">{!!$trainng_class->trainer_type->name !!}</td>
                                                     </tr>
-                                                    <tr class="first">
-                                                        <td class="user">
-                                                            <img src="images/image-25.png">
-                                                        </td>
-                                                        <td class="user">Edward buttler</td>
-                                                        <td class="user">Yoga basic</td>
-                                                        <td class="user">zumba</td>
-                                                    </tr>
-                                                    <tr class="first">
-                                                        <td class="user">
-                                                            <img src="images/image-26.png">
-                                                        </td>
-                                                        <td class="user">isreel</td>
-                                                        <td class="user">Yoga basic</td>
-                                                        <td class="user">gym</td>
-                                                    </tr>
+                                                    @endforeach
+
                                                 </table>
                                             </div>
                                         </div>
@@ -110,12 +98,13 @@
                                                 <div class="fitnees area">
                                                     <div class="col-sm-12">
                                                         <div class="row">
+                                                            @foreach($produst_list as $pl)
                                                             <div class="first box">
                                                                 <div class="col-sm-3">
                                                                     <div class="img1">
-                                                                        <img src="images/product-27.png">
+                                                                        <img src="{{$pl->avatar}}" class="img-responsive">
                                                                     </div>
-                                                                    <div class="text"> The Ultimate Wheel </div>
+                                                                    <div class="text"> {{$pl->name}}</div>
                                                                     <div class="stars">
                                                                         <span class="fa fa-star checked"></span>
                                                                         <span class="fa fa-star checked"></span>
@@ -123,69 +112,15 @@
                                                                         <span class="fa fa-star checked"></span>
                                                                         <span class="fa fa-star checked"></span>
                                                                     </div>
-                                                                    <div class="number"> $10.20 </div>
+                                                                    <div class="number"> ${{$pl->price}} </div>
                                                                     <div class="ob">
-                                                                        <button class="button button1">Recommend</button>
+                                                                        <button class="button button1" onclick="recomendedPro({{$pl->id}})">Recommend</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="second box">
-                                                                <div class="col-sm-3">
-                                                                    <div class="img2">
-                                                                        <img src="images/product-26.png">
-                                                                    </div>
-                                                                    <div class="text"> The Ultimate Wheel </div>
-                                                                    <div class="stars">
-                                                                        <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star checked"></span>
-                                                                    </div>
-                                                                    <div class="number"> $10.20 </div>
-                                                                    <div class="ob">
-                                                                        <button class="button button1">Recommend</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="third box">
-                                                                <div class="col-sm-3">
-                                                                    <div class="img3">
-                                                                        <img src="images/product-25.png">
-                                                                    </div>
-                                                                    <div class="text"> The Ultimate Wheel </div>
-                                                                    <div class="stars">
-                                                                        <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star checked"></span>
-                                                                    </div>
-                                                                    <div class="number"> $10.20 </div>
-                                                                    <div class="ob">
-                                                                        <button class="button button1">Recommend</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="fourth box">
-                                                                <div class="col-sm-3">
-                                                                    <div class="img4">
-                                                                        <img src="images/product-24.png">
-                                                                    </div>
-                                                                    <div class="text"> The Ultimate Wheel </div>
-                                                                    <div class="stars">
-                                                                        <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star checked"></span>
-                                                                        <span class="fa fa-star checked"></span>
-                                                                    </div>
-                                                                    <div class="number"> $10.20 </div>
-                                                                    <div class="ob">
-                                                                        <button class="button button1">Recommend</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            @endforeach
+
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -196,7 +131,7 @@
                                 </div>
                             </div>
 
-                            <button class="button button1" id="byer">Leave Group</button>
+                            <button class="button button1" id="byer">Leave Class</button>
 
 
 
@@ -246,4 +181,27 @@
         <iframe src="" title="W3Schools Free Online Web Tutorials" height="100%" width="100%"></iframe>
     </div>
 </section> -->
+
+
+<script>
+
+    function recomendedPro(prod_id){
+
+        console.log('product id !!!!!!!!',prod_id)
+        var my_url = "{!! asset('/trainer/recomproduct')!!}" + "?prod_id=" +prod_id ; 
+        $.ajax({
+        url: my_url,
+        method: 'get',
+        dataType: 'json',
+        success: function(data) {
+
+            if(data.status){
+
+            }
+        }   
+        });
+
+    }
+
+</script>
 @endsection

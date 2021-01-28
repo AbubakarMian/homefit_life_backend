@@ -20,7 +20,6 @@ width: 100%; */
 <link href="{{ asset('css/groupclasses.css')}}" rel="stylesheet">
 
 
-
 <div class="content">
 
     <div class="main area">
@@ -87,7 +86,7 @@ width: 100%; */
             </div>
 
 
-            <table class="helix">
+            <table class="helix table table-bordered">
                 <tr class="first">
                     <th class="martin">Days</th>
                     <th class="martin2">Category</th>
@@ -103,7 +102,6 @@ width: 100%; */
                     $slots_weekdays =  $tc->training_slot->pluck('week_days_id')->toArray();
                 }
 
-
                 ?>
                 <tr class="second">
                     <th class="atoc1">
@@ -115,17 +113,23 @@ width: 100%; */
                             }
 
                             ?>
-                            <li style="background-color:{!! $color!!}">{{ substr(ucfirst($wd->name),0,-4)}}</li>
+                            <li class="" style="color:{!! $color!!}">{{ substr(ucfirst($wd->name),0,1)}}</li>
                             @endforeach
                         </ul>
                     </th>
-                    <th class="atocrrr">{!! $tc->trainer_type->name ?? 'no nmae' !!}</th>
-                    <th class="atocoo">{!! $tc->name!!}</th>
+                    <th class="atocrrr">{!! $tc->trainer_type->name ?? 'not available' !!}</th>
+                    <th class="atocoo">{!! $tc->name ?? 'not available'!!}</th>
                     <th class="martt">
-                        <button class="button btn-success"> Start </button>
+                         <a class="button btn-success" href="{{ asset('trainer/liveSession?class_id=').$tc->id}}">
+                         <span class="badge badge-primary"> Start </span>
+                            </a>
+                           
                     </th>
-                    <th class="agew">
-                        <button class="button btn-info"> Detail </button>
+                    <th>
+                        <a class="badge bg-info" href="#">
+                            <span class="badge bg-info" name="detailmodal" data-url="{!! asset('trainer/classdetail?class_id=').$tc->id !!}">
+                                Detail</span>
+                        </a>
                     </th>
                 </tr>
                 @endforeach
@@ -139,5 +143,64 @@ width: 100%; */
 
 
 </div>
+
+
+@endsection
+
+@include('trainer.groupclass.partial.detail_modal')
+
+@section('app_jquery')
+
+<script>
+    $(function() {
+        console.log('hi');
+        console.log('my span', $('span[name="detailmodal"]'));
+        $('span[name="detailmodal"]').on('click', function(e) {
+            console.log('working !!!!');
+            // e.preventDefault();
+            var my_url = $(this).attr('data-url');
+            var mySpan = this;
+            console.log('Detail !!!!', my_url);
+            $.get(my_url, function(data) {
+                var trHTML = '';
+                $.ajax({
+                    type: 'GET',
+                    url: my_url,
+                    data: 'application/json',
+                    dataType: 'json',
+                    success: function(data) {
+
+                        console.log("sucess", data);
+                        res_data = data.msg;
+                        $('#title').html(res_data.name);
+
+                        console.log('res_data.training_slot.length', res_data.training_slot.length)
+                       
+                        var slot_html = '';
+                        for (var i = 0; i < res_data.training_slot.length; i++) {                            
+                            slot_html = slot_html+ slotTableHtml(res_data.training_slot[i])
+                        }
+                        $('#slot_detail').html(slot_html);
+                        $('#detailPop').modal('show');
+                    },
+                    error: function(data) {
+                        console.log('Error:', data);
+                    }
+                });
+            });
+        });
+    });
+
+    function slotTableHtml(slot) {
+      
+        return `
+        <tr>
+            <td>` + slot.weekday.name + `</td>
+            <td>` + new Date(slot.slot_start * 1000) + `</td>
+            <td>` + new Date(slot.slot_end * 1000) + `</td>
+        </tr>`
+    }
+</script>
+
 
 @endsection

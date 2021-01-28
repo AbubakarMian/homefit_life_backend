@@ -322,10 +322,10 @@
                     if (graph_value.protein) {
                         pro_graph_y.push(graph_value.protein)
                     }
-                     if (graph_value.carbs) {
+                    if (graph_value.carbs) {
                         carb_graph_y.push(graph_value.carbs)
                     }
-                     if(graph_value.fats) {
+                    if (graph_value.fats) {
                         fats_graph_y.push(graph_value.fats)
                     }
 
@@ -781,7 +781,7 @@
             dataType: 'json',
             success: function(data) {
                 if (data.status) {
-                  
+
                     for (var i = 0; i < data.response.length; i++) {
                         var html = '';
                         var left_carbo = data.response[0]['total_carbohydrates'] - data.response[0]['avg_carbohydrates'];
