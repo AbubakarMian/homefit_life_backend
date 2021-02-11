@@ -122,4 +122,8 @@ class TrainerController extends Controller
         ]);
         return $response;
     }
+    public function profile(){
+
+        return \View('trainer.profile.index');   
+    }
 }

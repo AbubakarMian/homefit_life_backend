@@ -32,9 +32,8 @@ class GroupClassController extends Controller
         if ($category_id) {
             $trainng_class = $trainng_class->where('type_id', $category_id);
         }
-        $trainng_class = $trainng_class->get();
+        $trainng_class = $trainng_class->paginate(10);
         $weekdays = Weekday::get(['name','id']);
-        
         $training_type = Training_Type::get();
         return \View('trainer.groupclass.index', compact('weekdays', 'training_type', 'trainng_class'));
     }
@@ -48,19 +47,14 @@ class GroupClassController extends Controller
     }
     public function SaveClass(Request $request)
     {
-        // dd($request->all());
         $randomString = Str::random(10);
-        // $start_time = strtotime($request->start_time);
-        // $end_time = strtotime($request->end_time);
-        // $slot_duration = $end_time - $start_time;
-        // $hours = floor($slot_duration / 60 / 60);
-        // $minutes = floor($slot_duration / 60) - ($hours * 60);
-        // $second = floor($slot_duration % 60);
         $class_url = 'https://appr.tc/r/' . $randomString;
-        // $slot_duration = $hours . ":" . $minutes . ":" . $second;
 
         $user_id = Auth::id();
         $trainng_class = new Training_Class();
+        if($request->is_paid){
+            $trainng_class->is_paid = $request->is_paid; 
+        }
         $trainng_class->trainer_id = $user_id;
         $trainng_class->name = $request->class_name;
         $trainng_class->details = $request->class_desc;
@@ -87,8 +81,7 @@ class GroupClassController extends Controller
             $training_slot->slot_duration = $slot_duration;
             $training_slot->save();
         }
-
-        return \View('trainer.groupclass.index');
+        return redirect('trainer/groupclass');
     }
 
     public function liveSession(Request $request)
@@ -108,4 +101,5 @@ class GroupClassController extends Controller
         return $response;
 
     }
+
 }

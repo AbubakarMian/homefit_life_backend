@@ -23,8 +23,8 @@ class GroupClassController extends Controller
         $items_list = Training_Class::where('type_id', $request->cat_id)->get();
 
         $items_list_free = Training_Class::where('type_id', $request->cat_id)
-        ->with('training_slot.training_session')
-        ->whereHas('training_slot', function ($t) {
+            ->with('training_slot.training_session')
+            ->whereHas('training_slot', function ($t) {
                 $t->whereHas('training_session', function ($ts) {
                     $ts->where('is_free', 1);
                 });
@@ -33,6 +33,7 @@ class GroupClassController extends Controller
         $per_page = 6;
         $training_class = $this->get_items_per_page($items_list, $per_page);
         $free_live_session = $this->get_items_per_page($items_list_free, $per_page);
+        // dd($free_live_session);
         return \View('user.groupclass.index', compact('training_class', 'free_live_session', 'category'));
     }
 
@@ -56,5 +57,13 @@ class GroupClassController extends Controller
 
 
         return \View('user.description.index', compact('class_detail', 'group_member'));
+    }
+
+    public function groupClassLiveSession(Request $request)
+    {
+
+        dd($request->groupclass_id);
+
+        return \View('user.livesession.index');
     }
 }

@@ -48,8 +48,8 @@ width: 100%; */
                         <div class="form-group">
                             <label for="text">Select day</label></br>
                             <select class="form-control" id="day" name="day_id">
-                                @foreach($weekdays as $wd)
                                 <option value="" selected>Select day </option>
+                                @foreach($weekdays as $wd)
                                 <option value="{{$wd->id}}">{{ ucfirst($wd->name)}}</option>
                                 @endforeach
                             </select>
@@ -65,8 +65,8 @@ width: 100%; */
                         <div class="form-group">
                             <label for="pwd">Category:</label></br>
                             <select class="form-control" id="day" name="type_id">
-                                @foreach($training_type as $tt)
                                 <option value="" selected>Select category </option>
+                                @foreach($training_type as $tt)
                                 <option value="{{$tt->id}}">{{$tt->name}}</option>
                                 @endforeach
                             </select>
@@ -120,10 +120,10 @@ width: 100%; */
                     <th class="atocrrr">{!! $tc->trainer_type->name ?? 'not available' !!}</th>
                     <th class="atocoo">{!! $tc->name ?? 'not available'!!}</th>
                     <th class="martt">
-                         <a class="button btn-success" href="{{ asset('trainer/liveSession?class_id=').$tc->id}}">
-                         <span class="badge badge-primary"> Start </span>
-                            </a>
-                           
+                        <a class="button btn-success" href="{{ asset('trainer/liveSession?class_id=').$tc->id}}">
+                            <span class="badge badge-primary"> Start </span>
+                        </a>
+
                     </th>
                     <th>
                         <a class="badge bg-info" href="#">
@@ -137,6 +137,8 @@ width: 100%; */
 
 
             </table>
+            <span class="pagination pagination-md pull-right">{!! $trainng_class->render() !!}</span>
+           
 
         </div>
     </div>
@@ -175,10 +177,10 @@ width: 100%; */
                         $('#title').html(res_data.name);
 
                         console.log('res_data.training_slot.length', res_data.training_slot.length)
-                       
+
                         var slot_html = '';
-                        for (var i = 0; i < res_data.training_slot.length; i++) {                            
-                            slot_html = slot_html+ slotTableHtml(res_data.training_slot[i])
+                        for (var i = 0; i < res_data.training_slot.length; i++) {
+                            slot_html = slot_html + slotTableHtml(res_data.training_slot[i])
                         }
                         $('#slot_detail').html(slot_html);
                         $('#detailPop').modal('show');
@@ -192,7 +194,7 @@ width: 100%; */
     });
 
     function slotTableHtml(slot) {
-      
+
         return `
         <tr>
             <td>` + slot.weekday.name + `</td>

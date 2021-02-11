@@ -22,8 +22,10 @@
                                         <div class="col-md-3">
                                             <!-- Controls -->
                                             <div class="controls pull-right hidden-xs">
-                                                <a class="left fa fa-chevron-left btn btn-primary btnSlider" href="#GroupClassSlider" data-slide="prev"></a>
-                                                <a class="right fa fa-chevron-right btn btn-primary btnSlider" href="#GroupClassSlider" data-slide="next"></a>
+                                                <a class="left fa fa-chevron-left btn btn-primary btnSlider"
+                                                    href="#GroupClassSlider" data-slide="prev"></a>
+                                                <a class="right fa fa-chevron-right btn btn-primary btnSlider"
+                                                    href="#GroupClassSlider" data-slide="next"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -37,11 +39,13 @@
                                             <div class="row">
                                                 @foreach($tc as $stc)
                                                 <div class="col-sm-3 nygym">
-                                                    <a href="{!!asset('user/groupclass/group_desc?class_id=').$stc->id!!}">
+                                                    <a
+                                                        href="{!!asset('user/groupclass/group_desc?class_id=').$stc->id!!}">
                                                         <div class="col-item">
 
                                                             <div class="photo">
-                                                                <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
+                                                                <img src="{{ asset('images/gallery-18.jpg')}}"
+                                                                    class="img-responsive" alt="Home Fit Group Class" />
                                                             </div>
                                                             <div class="Details">
                                                                 <h5>{!! $stc->name !!}</h5>
@@ -50,7 +54,8 @@
                                                             </div>
                                                         </div>
                                                     </a>
-                                                    <button type="button" class="btn btn-primary join">JOIN CLASS</button>
+                                                    <a href="{{asset('user/grouplivesession?groupclass_id=')}}"
+                                                        class="btn btn-primary join">JOIN CLASS</a>
                                                 </div>
 
 
@@ -76,7 +81,10 @@
                                         <div class="col-md-3">
                                             <!-- Controls -->
                                             <div class="controls pull-right hidden-xs">
-                                                <a class="left fa fa-chevron-left btn btn-primary btnSlider" href="#liveSessionsSlider" data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-primary btnSlider" href="#liveSessionsSlider" data-slide="next"></a>
+                                                <a class="left fa fa-chevron-left btn btn-primary btnSlider"
+                                                    href="#liveSessionsSlider" data-slide="prev"></a><a
+                                                    class="right fa fa-chevron-right btn btn-primary btnSlider"
+                                                    href="#liveSessionsSlider" data-slide="next"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -89,11 +97,14 @@
 
                                         <div class="item {!!$key === 0 ? 'active':'' !!}">
                                             <div class="row">
+
                                                 @foreach($ls as $fls)
+
                                                 <div class="col-sm-3">
                                                     <div class="col-item">
                                                         <div class="photo">
-                                                            <img src="{{ asset('images/gallery-18.jpg')}}" class="img-responsive" alt="Home Fit Group Class" />
+                                                            <img src="{{ asset('images/gallery-18.jpg')}}"
+                                                                class="img-responsive" alt="Home Fit Group Class" />
                                                         </div>
                                                         <div class="Details">
                                                             <h5>{!! $fls->name !!}</h5>
@@ -101,8 +112,10 @@
                                                             <span>20 Members</span>
                                                         </div>
                                                     </div>
+                                                    <a href="{!! asset('user/grouplivesession?session_id=').$fls->id !!}"
+                                                        class="btn btn-primary join">JOIN CLASS</a>
                                                 </div>
-                                                <button>JOIN CLASS</button>
+
                                                 @endforeach
                                             </div>
                                         </div>

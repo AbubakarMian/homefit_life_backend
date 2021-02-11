@@ -89,11 +89,11 @@
     <div class="col-sm-12">
         <ul class="list-inline">
 
-            @foreach($sessions as $s)
-
+            @foreach($sessions as $key => $s)
             <li>
                 <div class="freeLiveSessionBox">
-                    <a href="{{$s->training_slot->training_session->live_url}}" target="_blank">
+                    {{-- href="{{$s->training_slot[$key]->training_session->live_url}}" --}}
+                    <a href="{{$s->training_slot[$key]->training_session->live_url}}" target="_blank">
                         <div class="freeLiveSessionBoxImg">
                             <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                             <div class="freeLiveSessionDeactiveActive">

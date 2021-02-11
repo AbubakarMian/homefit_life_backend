@@ -112,6 +112,7 @@ class UserController extends Controller
         $user = Auth::user();
         $training_categories = Training_Type::get();
         $featured_trainer = $this->trainer_query($search_text, 'featured');
+       
         $sessions = Training_Class::with('training_slot.training_session')
             ->whereHas('training_slot', function ($t) {
                 $t->whereHas('training_session', function ($ts) {
@@ -121,8 +122,6 @@ class UserController extends Controller
         $trainer_by_raiting = $this->trainer_query($search_text, 'rating');
         $user_header = $this->user_header();
 
-        // $user_nutritions=NutritionDailyGoal::where('user_id',$user->id)->get();
-        // dd($user_nutritions);
         session(['user_common' => $user_header]);
         return \View('user.dashboard.index', compact(
             'training_categories',

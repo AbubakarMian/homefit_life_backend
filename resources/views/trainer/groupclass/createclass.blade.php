@@ -50,6 +50,10 @@
                             <div class="form-group">
                                 <textarea class="form-control" placeholder="Description......." rows="8" id="comment" name="class_desc"></textarea>
                             </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="is_paid" value="1">
+                                <label for="vehicle1"> Is Paid</label>
+                            </div>
 
                             <div class="form-group">
                                 <div>
@@ -60,33 +64,31 @@
 
                             <div class="row allslots">
 
-                                <!-- <div class="slot_file"> -->
-                                <div class="col-sm-6 date">
-                                    <div class="form-group">
-                                        <label for="email">Select Day</label>
-                                        <select class="form-control" id="day" name="day[]">
-                                            @foreach($weekdays as $wd)
-                                            <option value="{{$wd->id}}">{{$wd->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-sm-6">
-                                    <div class="time counter">
-                                        <label for="email">Select Time</label>
-                                        <div class="">
-                                            <input type="time" id="start_time" name="start_time[]">
-
-                                            <input type="time" id="end_time" name="end_time[]">
+                                <div class="row slot">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="email">Select Day</label>
+                                            <select class="form-control" id="day" name="day[]">
+                                                @foreach($weekdays as $wd)
+                                                <option value="{{$wd->id}}">{{$wd->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
+
+
+                                    <div class="col-sm-6">
+                                        <div class="time counter">
+                                            <label for="email">Select Time</label>
+                                            <div class="">
+                                                <input type="time" id="start_time" name="start_time[]">
+
+                                                <input type="time" id="end_time" name="end_time[]">
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <!-- </div> -->
-
-
-
                             </div>
 
 
@@ -137,25 +139,22 @@
 
 
     function addSlot() {
-        console.log('sfsdfsdfsfdsdf');
         var nextdivnum = $('.allslots').length + 1;
         $('.allslots').append(slotHtml(nextdivnum));
     }
 
     function removeSlot() {
-        console.log('length !!!!!!!!', $('.allslots').length);
-        if ($('.allslots').length < 2) {
+        if ($('.slot').length < 2) {
             return;
         }
-        $('.allslots')[$('.allslots').length - 1].remove();
+        $('.slot')[$('.slot').length - 1].remove();
     }
 
     function slotHtml(num) {
         return `
-        <div class="row allslots">
 
-<!-- <div class="slot_file"> -->
-    <div class="col-sm-6 date">
+ <div class="row slot"> 
+    <div class="col-sm-6">
         <div class="form-group">
             <label for="email">Select Day</label>
             <select class="form-control" id="day" name="day[]">
@@ -177,11 +176,10 @@
             </div>
         </div>
     </div>
-<!-- </div> -->
+ </div> 
 
 
-
-</div>`
+`
     }
 </script>
 

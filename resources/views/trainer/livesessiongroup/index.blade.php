@@ -114,12 +114,11 @@
                                                                     </div>
                                                                     <div class="number"> ${{$pl->price}} </div>
                                                                     <div class="ob">
-                                                                        <button class="button button1" onclick="recomendedPro({{$pl->id}})">Recommend</button>
+                                                                        <button class="button button1" id="rec_btn_{{$pl->id}}" onclick="recomendedPro({{$pl->id}})">Recommend</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             @endforeach
-
 
                                                         </div>
                                                     </div>
@@ -131,16 +130,13 @@
                                 </div>
                             </div>
 
-                            <button class="button button1" id="byer">Leave Class</button>
-
-
-
+                            <a class="button button1" id="byer" href="{!! asset('trainer/groupclass') !!}">Leave Class</a>
 
 
 
                             <script>
                                 // Set the date we're counting down to
-                                var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+                                var countDownDate = new Date("Jan 29, 2021 15:37:25").getTime();
 
                                 // Update the count down every 1 second
                                 var x = setInterval(function() {
@@ -184,24 +180,23 @@
 
 
 <script>
+    function recomendedPro(prod_id) {
 
-    function recomendedPro(prod_id){
-
-        console.log('product id !!!!!!!!',prod_id)
-        var my_url = "{!! asset('/trainer/recomproduct')!!}" + "?prod_id=" +prod_id ; 
+        console.log('product id !!!!!!!!', prod_id)
+        var my_url = "{!! asset('/trainer/recomproduct')!!}" + "?prod_id=" + prod_id;
         $.ajax({
-        url: my_url,
-        method: 'get',
-        dataType: 'json',
-        success: function(data) {
+            url: my_url,
+            method: 'get',
+            dataType: 'json',
+            success: function(data) {
 
-            if(data.status){
-
+                if (data.status) {
+                    $('#rec_btn_' + prod_id).css('background-color', '#808080');
+                    $('#rec_btn_' + prod_id).attr('disabled', 'disabled');;
+                }
             }
-        }   
         });
 
     }
-
 </script>
 @endsection
