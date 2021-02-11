@@ -165,7 +165,7 @@ Route::post('user/checklogin', 'User\UserController@checklogin')->name('checklog
 Route::get('user/logout', 'User\UserController@logout')->name('logout');
 Route::post('user/save', 'User\UserController@save')->name('save');
 
-
+// ------------User Route start----------------- 
 
 Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
 
@@ -233,6 +233,7 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     // ============================================================
     // Group classes
 
+    Route::get('grouplivesession', 'User\GroupClassController@groupClassLiveSession')->name('grouplivesession');
     Route::get('groupclass', 'User\GroupClassController@index')->name('groupclass');
     Route::get('groupclass/group_desc', 'User\GroupClassController@group_desc')->name('groupclass.full_desc');
 
@@ -246,4 +247,41 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     Route::get('nutrition', 'User\NutritionController@index')->name('nutrition');
     Route::post('addgoal', 'User\NutritionController@addgoal')->name('addgoal');
     Route::post('addmeal', 'User\NutritionController@addmeal')->name('addmeal');
+    Route::post('nutritionCal', 'User\NutritionController@nutritionCalculator')->name('nutritionCal');
+
+    Route::get('nutritiondailygoalmonthly/{month_id}', 'User\UserController@nutritionDailyGoalMonthly')->name('nutritionDailyGoalMonthly');
+    Route::get('gettotalconsumenutritions', 'User\UserController@getTotalConsumeNutritions')->name('gettotalconsumenutritions');
 });
+
+// add session route
+Route::get('user/addsession', 'User\GroupClassController@addSessions')->name('user.addsession');
+
+
+// ------------Trainer Route start----------------- 
+
+Route::get('trainer/login', 'Trainer\TrainerController@login')->name('trainerlogin');
+Route::get('trainerreset', 'Trainer\TrainerController@userreset')->name('userreset');
+Route::post('trainer/checklogin', 'Trainer\TrainerController@checklogin')->name('trainer.checklogin');
+Route::post('forgetpwd', 'Trainer\TrainerController@forgetpwd')->name('forgetpwd');
+Route::get('trainer/logout', 'Trainer\TrainerController@logout')->name('logout');
+
+
+// trainer profile route
+Route::get('trainer/profile', 'Trainer\TrainerController@profile')->name('trainer.profile');
+
+Route::get('trainer/dashboard', 'Trainer\TrainerController@dashboard')->name('trainer.dashboard');
+Route::get('trainer/myclass', 'Trainer\TrainerController@myClass')->name('trainer.myclass');
+// Route::get('trainer/livesession', 'Trainer\TrainerController@liveSession')->name('trainer.myclass');
+
+Route::get('trainer/groupclass', 'Trainer\GroupClassController@index')->name('trainer.groupclass');
+Route::get('trainer/createclass', 'Trainer\GroupClassController@createGroupClass')->name('trainer.createclass');
+Route::post('trainer/saveclass', 'Trainer\GroupClassController@SaveClass')->name('trainer.saveclass');
+Route::post('trainer/searchgroupclass', 'Trainer\GroupClassController@index')->name('trainer.searchgroupclass');
+
+Route::get('trainer/liveSession', 'Trainer\GroupClassController@liveSession')->name('trainer.liveSession');
+Route::get('trainer/classdetail', 'Trainer\GroupClassController@classDetail')->name('trainer.classdetail');
+Route::get('trainer/recomproduct', 'Trainer\TrainerController@recomendedProduct')->name('trainer.recomproduct');
+
+
+Route::get('trainer/createpersonalclass', 'Trainer\PersonalGroupClassController@createClass')->name('trainer.createpersonalclass');
+Route::post('trainer/savepersonalclass', 'Trainer\PersonalGroupClassController@saveClass')->name('trainer.savepersonalclass');

@@ -47,6 +47,7 @@
     </form>
 </div>
 <!-- searchTrainer -->
+
 <!-- featuredTrainerArea -->
 <div class="featuredTrainerArea">
     <h2>Featured Trainers</h2>
@@ -88,11 +89,11 @@
     <div class="col-sm-12">
         <ul class="list-inline">
 
-            @foreach($sessions as $s)
-            
+            @foreach($sessions as $key => $s)
             <li>
                 <div class="freeLiveSessionBox">
-                    <a href="{{$s->training_slot->training_session->live_url}}" target="_blank">
+                    {{-- href="{{$s->training_slot[$key]->training_session->live_url}}" --}}
+                    <a href="{{$s->training_slot[$key]->training_session->live_url}}" target="_blank">
                         <div class="freeLiveSessionBoxImg">
                             <img src="{{ asset('images/livesession-02.jpg')}}" class="img-responsive">
                             <div class="freeLiveSessionDeactiveActive">
@@ -143,70 +144,35 @@
 <div class="row ChartsArea">
     <div class="col-sm-4">
         <div class="NutrationArea">
+
+            <select class="form-control" name="months" id="months" onchange="nutritient_monthly(this.value);" <option value="">--Select Month--</option>
+                <option selected value='1'>Janaury</option>
+                <option value='2'>February</option>
+                <option value='3'>March</option>
+                <option value='4'>April</option>
+                <option value='5'>May</option>
+                <option value='6'>June</option>
+                <option value='7'>July</option>
+                <option value='8'>August</option>
+                <option value='9'>September</option>
+                <option value='10'>October</option>
+                <option value='11'>November</option>
+                <option value='12'>December</option>
+            </select>
+
             <table class="table">
+
                 <thead>
                     <tr>
                         <th>View Calculation</th>
-                        <th>Total</th>
+                        <th>Consumed</th>
                         <th>Goal</th>
                         <th>Left</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Protien</td>
-                        <td>000</td>
-                        <td>70</td>
-                        <td>70g</td>
-                    </tr>
-                    <tr>
-                        <td>Carbohydrates</td>
-                        <td>000</td>
-                        <td>70</td>
-                        <td>70g</td>
-                    </tr>
-                    <tr>
-                        <td>Fiber</td>
-                        <td>000</td>
-                        <td>70</td>
-                        <td>70g</td>
-                    </tr>
-                    <tr>
-                        <td>Sugars</td>
-                        <td>000</td>
-                        <td>70</td>
-                        <td>70g</td>
-                    </tr>
-                    <tr>
-                        <td>Fat</td>
-                        <td>000</td>
-                        <td>70</td>
-                        <td>70g</td>
-                    </tr>
-                    <tr>
-                        <td>Saturated</td>
-                        <td>000</td>
-                        <td>70</td>
-                        <td>70g</td>
-                    </tr>
-                    <tr>
-                        <td>polyunsaturated</td>
-                        <td>000</td>
-                        <td>70</td>
-                        <td>70g</td>
-                    </tr>
-                    <tr>
-                        <td>Monounsaturated </td>
-                        <td>000</td>
-                        <td>70</td>
-                        <td>70g</td>
-                    </tr>
-                    <tr>
-                        <td>Trans</td>
-                        <td>000</td>
-                        <td>70</td>
-                        <td>70g</td>
-                    </tr>
+                <tbody id="nutritient_monthly">
+
+
                 </tbody>
             </table>
         </div>
@@ -214,9 +180,10 @@
     <div class="col-sm-4">
         <div class="barChart">
             <div class="panel panel-default">
-                <h3>Nutrational Calculator</h3>
+
                 <div class="panel-body">
-                    <div id="chart1"></div>
+                    <h3>Nutrational Calculator</h3>
+                    <div id="chart1" class="multicolor"></div>
                 </div>
             </div>
         </div>
@@ -320,54 +287,103 @@
         </div>
     </div>
 </div>
+<!-- Chart -->
+
+<!-- Chart here -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+    var total_nutri_url = "{!! asset('/user/gettotalconsumenutritions')!!}" + "?user_id=" + "{!!$user->id!!}";
+    console.log('myurl', total_nutri_url);
+    $.ajax({
+        url: total_nutri_url,
+        method: 'get',
+        dataType: 'json',
+        success: function(data) {
+            console.log('data gettotalconsumenutritions', data.status);
+            if (data.status) {
+                console.log('dfsdfsfdsdf', data.response.length)
+                var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                ]
+                var graph_x = months;
+                var carb_graph_x = months;
+                var pro_graph_x = months;
+                var fats_graph_x = months;
+                var carb_graph_y = [];
+                var pro_graph_y = [];
+                var fats_graph_y = [];
+                var graph = [];
+
+                for (var i = 0; i < data.response.length; i++) {
+
+
+
+                    var graph_value = data.response[i];
+                    if (graph_value.protein) {
+                        pro_graph_y.push(graph_value.protein)
+                    }
+                    if (graph_value.carbs) {
+                        carb_graph_y.push(graph_value.carbs)
+                    }
+                    if (graph_value.fats) {
+                        fats_graph_y.push(graph_value.fats)
+                    }
+
+
+                };
+
+
+
+                graph = {
+                    x: graph_x,
+                    y: carb_graph_y,
+                    name: 'Carbohydrates',
+                    type: 'bar',
+                };
+                graph_2 = {
+                    x: graph_x,
+                    y: pro_graph_y,
+                    name: 'Protiens',
+                    type: 'bar',
+                };
+                graph_3 = {
+                    x: graph_x,
+                    y: fats_graph_y,
+                    name: 'Fats',
+                    type: 'bar',
+                };
+
+                var data = [graph, graph_2, graph_3];
+                var layout = {
+                    barmode: 'group',
+                    width: 500,
+                    height: 600,
+                    color: '#fff'
+                };
+
+                Plotly.newPlot('chart1', data, layout);
+            }
+
+        },
+
+        error: function(e) {
+            console.log('error', e);
+        },
+    })
+</script>
+
+<!-- // chart end -->
 <!-- Modal Advance Search -->
 <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
 <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
 
-
 <script type="text/javascript">
-    // jQuery(function ($) {
-    //     var data1 = [12, 3, 4, 2, 12];
-    //     var data2 = [3, 9, 12, 14, 22];
-    //     var data3 = [23, 19, 11, 34, 42];
-
-    //     $("#chart1").shieldChart({
-    //         exportOptions: {
-    //             image: false,
-    //             print: false
-    //         },
-    //         axisY: {
-    //             title: {
-    //                 text: "Break-Down for selected quarter"
-    //             }
-    //         },
-    //         dataSeries: [{
-    //             seriesType: "bar",
-    //             data: data1
-    //         }]
-    //     });
-
-    // });
     $(document).ready(function() {
         var data1 = [12, 3, 4, 2, 12];
         var data2 = [3, 9, 12, 14, 22];
         var data3 = [23, 19, 11, 34, 42];
 
-        $("#chart1").shieldChart({
-            exportOptions: {
-                image: false,
-                print: false
-            },
-            axisY: {
-                title: {
-                    text: "Break-Down for selected quarter"
-                }
-            },
-            dataSeries: [{
-                seriesType: "bar",
-                data: data1
-            }]
-        });
+
 
         function c(passed_month, passed_year, calNum) {
             var calendar = calNum == 0 ? calendars.cal1 : calendars.cal2;
@@ -667,7 +683,6 @@
             clickedElement = bothCals.find(".calendar_content").find("div");
         });
 
-
         //  Click picking stuff
         function getClickedInfo(element, calendar) {
             var clickedInfo = {};
@@ -685,7 +700,6 @@
             }
             return clickedInfo;
         }
-
 
         // Finding between dates MADNESS. Needs refactoring and smartening up :)
         function addChosenDates(firstClicked, secondClicked, selected) {
@@ -753,7 +767,59 @@
             }
             return selected;
         }
+        nutritient_monthly();
     });
+
+    function nutritient_monthly(month) {
+        console.log('here in month !!!!')
+        var currentMonth = month ?? (new Date).getMonth() + 1;
+
+        var myurl = "{!! asset('/user/nutritiondailygoalmonthly')!!}/" + currentMonth + "?user_id=" + "{!!$user->id!!}";
+        $.ajax({
+            url: myurl,
+            method: 'get',
+            dataType: 'json',
+            success: function(data) {
+                if (data.status) {
+
+                    for (var i = 0; i < data.response.length; i++) {
+                        var html = '';
+                        var left_carbo = data.response[0]['total_carbohydrates'] - data.response[0]['avg_carbohydrates'];
+                        var left_fat = data.response[0]['total_fats'] - data.response[0]['avg_fats'];
+                        var left_protien = data.response[0]['total_proteins'] - data.response[0]['avg_proteins'];
+                        html = `
+                        <tr>
+                        <td>Carbohydrates</td>
+                        <td>` + data.response[0]['total_carbohydrates'] + `</td>
+                        <td>` + data.response[0]['avg_carbohydrates'] + `</td>
+                        <td>` + left_carbo + `</td>                        
+                        </tr>
+                        
+                        <tr>
+                        <td>Protiens</td>
+                        <td>` + data.response[0]['total_proteins'] + `</td>
+                        <td>` + data.response[0]['avg_proteins'] + `</td>
+                        <td>` + left_protien + `</td>                        
+                        </tr>
+                        <tr>
+                        <td>Fats</td>
+                        <td>` + data.response[0]['total_fats'] + `</td>
+                        <td>` + data.response[0]['avg_fats'] + `</td>
+                        <td>` + left_fat + `</td>                        
+                        </tr>
+                        
+                        `;
+                        $('#nutritient_monthly').append(html);
+                    }
+                }
+
+            },
+
+            error: function(e) {
+                console.log('error', e);
+            },
+        })
+    }
 </script>
 <!-- Bar Chart - END -->
 <script>

@@ -1,0 +1,90 @@
+
+
+.modal-content {
+    width: 157%;
+    margin-left: -114px;
+}
+
+.modal-header {
+    padding: 14px;
+     border-bottom: 0px solid #e5e5e5; 
+}
+
+
+ h4.mymodal-title {
+    margin-top: 35px;
+    background-color: #0c94ea;
+    color: white;
+    padding-top: 17px;
+    padding-bottom: 16px;
+    margin-left: 0px;
+    margin-right: 491px;
+    padding-right: 46px;
+    padding-left: 16px;
+    font-size: 27px;
+    margin-bottom: 26px;
+}
+.themodal-content {
+    margin-top: 208px;
+    padding-bottom: 40p;
+    padding-bottom: 39px;
+}
+
+
+h4.themodal-title {
+    margin-top: 35px;
+    background-color: #0c94ea;
+    color: white;
+    padding-top: 17px;
+    padding-bottom: 16px;
+    /* margin-left: 2px; */
+    margin-right: 725px;
+    padding-right: 82px;
+    padding-left: 16px;
+    font-size: 29px;
+    margin-bottom: 25px;
+    /*color: #0c94ea; */
+    /* font-weight: 700;*/
+
+
+}
+
+.text {
+    font-weight: 600;
+    margin-left: 39px;
+    margin-top: 11px;
+}
+.stars {
+    color: gold;
+    margin-left: 63px;
+}
+.number {
+    margin-left: 76px;
+    color: #0c94ea;
+    font-size: 22px;
+    margin-top: 8px;
+}
+
+button#byer{
+    margin-left: 49px;
+    /* background-color: #0c94ea; */
+    width: 206px;
+    /* margin-right: 53px; */
+    /* padding-left: 15px; */
+    margin-left: 11px;
+    background-color:red ;
+    border-radius: 7px;
+    width: 15%;
+}
+
+.themodal-content{
+
+
+    width: 174%;
+}
+
+.body{
+
+
+    position: fixed;
+}

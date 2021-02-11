@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <div class="liveSessionClassImg">
-                                <img src=" {{asset('images/livesession.jpg')}}" class="img-responsive">
+                                <iframe src="{!! $session->live_url !!}" allow="camera ;microphone" height="100%" width="100%"></iframe>
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -131,14 +131,16 @@
                                 </ul>
                             </div>
                             <div class="recomendedItemsArea">
+                               
                                 <h2>Recommmended Items</h2>
-                                <div class="recomendedItem">
+                                @foreach($recomended_product as $key=>$rp)
+                                <div class="recomendedItem"> 
                                     <div class="productImg">
                                    
-                                        <img src="{{asset('images/product-03.jpg')}}" class="img-responsive">
+                                        <img src="{{$rp->products->avatar}}" class="img-responsive">
                                     </div>
                                     <div class="productName">
-                                        Gym Product 1
+                                        {{ $rp->products->name}}
                                         <div class="FProductsStars">
                                             <span class="fa fa-star checked"></span>
                                             <span class="fa fa-star checked"></span>
@@ -148,47 +150,11 @@
                                         </div>
                                     </div>
                                     <div class="productAction">
-                                        <a href="" class="btn btn-primary btnCart">Add To Cart</a>
+                                        <a href="{{asset('user/productdetail?prod_id='. $rp->products->id)}}" class="btn btn-primary btnCart">Add To Cart</a>
                                     </div>
                                 </div>
-                                <!-- item2 -->
-                                <div class="recomendedItem">
-                                    <div class="productImg">
-                                        <img src="{{asset('images/product-03.jpg')}}" class="img-responsive">
-                                    </div>
-                                    <div class="productName">
-                                        Gym Product 1
-                                        <div class="FProductsStars">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                        </div>
-                                    </div>
-                                    <div class="productAction">
-                                        <a href="" class="btn btn-primary btnCart">Add To Cart</a>
-                                    </div>
-                                </div>
-                                <!-- item3 -->
-                                <div class="recomendedItem">
-                                    <div class="productImg">
-                                        <img src="{{asset('images/product-03.jpg')}}" class="img-responsive">
-                                    </div>
-                                    <div class="productName">
-                                        Gym Product 1
-                                        <div class="FProductsStars">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                        </div>
-                                    </div>
-                                    <div class="productAction">
-                                        <a href="" class="btn btn-primary btnCart">Add To Cart</a>
-                                    </div>
-                                </div>
+                                @endforeach
+                               
                                 <ul class="list-inline">
                                     <li><a href= "" class="btn btn-primary">Order Now </a></li>
                                 </ul>

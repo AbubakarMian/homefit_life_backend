@@ -1,0 +1,75 @@
+
+
+.tabros {
+    background-color: white;
+     background-color: white;
+    padding-top: 6px;
+}
+.helix {
+    /* margin-right: 115px; */
+    margin-left: -163px;
+    /* padding-right: 41px; */
+    /* float: left; */
+    padding-left: -22px;
+}
+
+.modulesu{
+    background-color: #0c94ea;
+    margin-left: 0px;
+    margin-right: 1176px;
+    color: white;
+    font-size: 32px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 11px;
+    margin-top: 18px;
+}
+
+.category {
+    margin-top: 25px;
+    padding-left: 1px;
+    margin-bottom: 29px;
+}
+
+.date {
+    padding-left: 20;
+    padding-left: 1px;
+    margin-bottom: 29px;
+}
+
+input#yoga {
+    padding-right: 51px;
+    margin-left: 27px;
+}
+
+input#folic {
+    padding-right: 52px;
+    margin-left: 11px;
+}
+
+.button1 {
+    margin-top: 31px;
+    background-color: #0c94ea;
+    border-radius: 7px;
+    font-size: 22px;
+    color: white;
+}
+
+button#obu {
+    /* color: black; */
+    background-color: black;
+    margin-left: 19px;
+}
+p#demo {
+    font-size: 29px;
+    margin-top: -41px;
+    margin-left: 103px;
+
+    }
+
+    label#type {
+    padding-right: 18px;
+    padding-left: 3px;
+    font-size: bold;
+    font-weight: bold;
+}

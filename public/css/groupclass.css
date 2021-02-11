@@ -18,6 +18,9 @@
     border-bottom: 1px solid #0c94ea;
     margin-bottom: 15px;
 }
+.col-sm-3.nygym {
+    text-align: center;
+}
 .controls {
     margin-top: 15px;
 }
@@ -27,7 +30,7 @@
 }
 .Details {
     text-align: center;
-    line-height: 12px;
+    line-height: 20px;
     padding: 15px 0px;
     min-height: 101px;
 }

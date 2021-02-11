@@ -6,6 +6,7 @@ $dt = new DateTime();
 <link href="{{asset('css/nutrition.css')}}" rel="stylesheet">
 
 
+
 @section('dashboard')
 
 <section>
@@ -37,10 +38,10 @@ $dt = new DateTime();
                     <div class="goalhead">
                         <ul>
                             <li id="start_weight_li" class="eightykg"> 0 Kg on {!! $dt->format('Y-m-d') !!}</li>
-                            <li id="current_weight_li">00 Kg</li>
-                            <li id="goal_weight_li">00 Kg</li>
-                            <li id="weekly_goal_li">00 Kg</li>
-                            <li id="activity_level_li">00 Kg</li>
+                            <li id="current_weight_li">{!! $user_goal['current_weight'] ?? '00'!!} kg</li>
+                            <li id="goal_weight_li">{!! $user_goal['goal_weight'] ?? '00' !!} kg</li>
+                            <li id="weekly_goal_li">{!! $user_goal['weekly_weight'] ?? '00'!!} kg</li>
+                            <li id="activity_level_li">{!! $user_goal['actively_level'] ?? 00!!} kg</li>
                         </ul>
                     </div>
                 </div>
@@ -83,7 +84,7 @@ $dt = new DateTime();
             <div class="row">
                 <div class="col-sm-2">
                     <div class="nutritiondata">
-                        <h4 id="total_goal_cal">0000</h4>
+                        <h4 id="total_goal_cal">{!! $user_goal['calories_level'] ?? 00!!}</h4>
                         <p>Calories</p>
                     </div>
                 </div>
@@ -94,7 +95,7 @@ $dt = new DateTime();
                 </div>
                 <div class="col-sm-2">
                     <div class="nutritiondata">
-                        <h4>0000</h4>
+                        <h4 id="consume_cal">0000</h4>
                         <p>Consume</p>
                     </div>
                 </div>
@@ -116,7 +117,7 @@ $dt = new DateTime();
                 </div>
                 <div class="col-sm-2">
                     <div class="nutritiondata">
-                        <h4>1500</h4>
+                        <h4 id="remaining_cal">000</h4>
                         <p>Remaining</p>
                     </div>
                 </div>
@@ -152,18 +153,18 @@ $dt = new DateTime();
                     <tbody>
                         <tr class="tabborder">
                             <td>Carbohydrates</td>
-                            <td>00 Calories</td>
-                            <td id="cabs_goal">00 Calories</td>
+                            <td id="actual_carbs">00 g</td>
+                            <td id="cabs_goal">{!! $user_goal['carbohydrates'] ?? 00!!} g</td>
                         </tr>
                         <tr class="tabborder">
                             <td>Proteins</td>
-                            <td>00 Calories</td>
-                            <td id="proteins_goal">00 Calories</td>
+                            <td id="actual_proteins">00 g</td>
+                            <td id="proteins_goal">{!! $user_goal['proteins'] ?? 00!!} g</td>
                         </tr>
                         <tr class="tabborder">
                             <td>Fats</td>
-                            <td>00 Calories</td>
-                            <td id="fats_goal">00 Calories</td>
+                            <td id="actual_fats">00 g</td>
+                            <td id="fats_goal">{!! $user_goal['fats'] ?? 00!!} g</td>
                         </tr>
                     </tbody>
                 </table>
@@ -189,10 +190,10 @@ $dt = new DateTime();
                         <li role="presentation" id="breakfast_tab" class="tabs active">
                             <a href="#breakfast" aria-controls="Breakfast" role="tab" data-toggle="tab">Breakfast</a>
                         </li>
-                        <li role="presentation" id="lunch" class="tabs">
+                        <li role="presentation" id="lunch_tab" class="tabs">
                             <a href="#lunch" aria-controls="Lunch" role="tab" data-toggle="tab">Lunch</a>
                         </li>
-                        <li role="presentation" id="dinner" class="tabs">
+                        <li role="presentation" id="dinner_tab" class="tabs">
                             <a href="#dinner" aria-controls="Dinner" role="tab" data-toggle="tab">Dinner</a>
                         </li>
                         <button type="button" class="btn btn-primary addmeal" data-toggle="modal" href='#meal_modal'>Add Meal</button>
@@ -212,49 +213,15 @@ $dt = new DateTime();
                                     <th scope="col">Calories Breakfast</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 Calories</td>
-                                </tr>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 Calories</td>
-                                </tr>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 Calories</td>
-                                </tr>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 Calories</td>
-                                </tr>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 Calories</td>
-                                </tr>
+                            <tbody id="breakfast_data">
+
                             </tbody>
                         </table>
 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="lunch">
 
-                        <table class="table mytable">
+                        <table class="table mytable table-bordered">
                             <thead>
                                 <tr class="tabborder">
                                     <th scope="col">Food / Ingredients</th>
@@ -264,42 +231,8 @@ $dt = new DateTime();
                                     <th scope="col">Calories</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 Calories</td>
-                                </tr>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 Calories</td>
-                                </tr>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 Calories</td>
-                                </tr>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 Calories</td>
-                                </tr>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 Calories</td>
-                                </tr>
+                            <tbody id="lunch_data">
+
                             </tbody>
                         </table>
 
@@ -307,7 +240,7 @@ $dt = new DateTime();
 
                     <div role="tabpanel" class="tab-pane" id="dinner">
 
-                        <table class="table mytable">
+                        <table class="table mytable table-bordered">
                             <thead>
                                 <tr class="tabborder">
                                     <th scope="col">Food / Ingredients</th>
@@ -317,42 +250,8 @@ $dt = new DateTime();
                                     <th scope="col">Calories</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 Calories</td>
-                                </tr>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 Calories</td>
-                                </tr>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 Calories</td>
-                                </tr>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 3232323Calories</td>
-                                </tr>
-                                <tr class="tabborder">
-                                    <td>Chicken Soup</td>
-                                    <td>0g</td>
-                                    <td>7g</td>
-                                    <td>6g</td>
-                                    <td>94 Calories</td>
-                                </tr>
+                            <tbody id="dinner_data">
+
                             </tbody>
                         </table>
 
@@ -514,6 +413,7 @@ $dt = new DateTime();
                                 <img src="{{ asset('images/product-02.jpg')}}" class="img-responsive" id="food_image">
                             </div>
                         </div>
+                        <input id="meal_carbs" name="meal_carbs" value="" type="hidden" />
                         <input id="meal_type" name="meal_type" value="" type="hidden" />
                         <input id="meal_name" name="meal_name" value="" type="hidden" />
                         <input id="meal_protein" name="meal_protein" value="" type="hidden" />
@@ -573,7 +473,7 @@ $dt = new DateTime();
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="modaltwocklick">
-                                <button type="submit" class="btn btn-primary prime">Add Meal</button>
+                                <button type="submit" id="submit_meal" class="btn btn-primary prime">Add Meal</button>
                             </div>
                         </div>
 
@@ -697,22 +597,29 @@ $dt = new DateTime();
     }
 
     function open_detail_modal(item) {
-        console.log('item 25376523765423764', item)
         let food_image = item.photo.highres;
         let food_lable = item.food_name;
         let food_fat = item.nf_total_fat;
         let food_protein = item.nf_protein;
+        let food_carbs = item.nf_total_carbohydrate;
         let food_cal = item.nf_calories;
         let serve_unit = item.serving_unit;
         let serve_qty = item.serving_qty;
+        let meal_type = ''
 
-        console.log('lable !!!!!!!!!!!', food_lable);
-        console.log('image !!!!!!!!!!!', food_image);
         var active_tab = $('ul#nav_tab').find('li.active').attr('id')
-        console.log('interest interest interest', active_tab);
+        if (active_tab == 'breakfast_tab') {
+            meal_type = 'breakfast';
+        } else if (active_tab == 'lunch_tab') {
+            meal_type = 'lunch';
+        } else {
+            meal_type = 'dinner'
+        }
 
+        $('#meal_type').val(meal_type);
         $('#meal_name').val(food_lable);
         $('#meal_protein').val(food_protein);
+        $('#meal_carbs').val(food_carbs);
         $('#meal_fats').val(food_fat);
         $('#meal_cal').val(food_cal);
         $('#no_of_serving').val(serve_qty);
@@ -754,7 +661,7 @@ $dt = new DateTime();
         $("#start_weight_li").html(current_weight);
         $("#cabs_goal").html(carbohydrates);
         $("#proteins_goal").html(proteins);
-        $("#fats_goal").html(fats);
+        $("#fats_goal").html(fats); 
 
         $.ajax({
             url: my_url,
@@ -781,25 +688,95 @@ $dt = new DateTime();
         console.log('current_ex_cal', current_ex_cal)
 
         $("#exercise_cal").html(current_ex_cal);
+
+        let total_goal_cal = $('#total_goal_cal').text(); //consume_cal
+        let consume_cal = $('#consume_cal').text(); //consume_cal
+        let add_cal = total_goal_cal + consume_cal; //-current_ex_cal
+        let remaining_cal = add_cal - current_ex_cal
+        $("#remaining_cal").html(remaining_cal);
+
+        let calculator_url = "{!! url('user/nutritionCal') !!}";
+        let _token = "{{ csrf_token() }}";
+        $.ajax({
+            type: "POST",
+            url: calculator_url,
+            data: {
+                remaining_cal,
+                consume_cal,
+                total_goal_cal,
+                _token
+            }, // serializes the form's elements.
+            success: function(response) {
+                console.log(response.data);
+            }
+
+        });
+
+
     });
 
-    $("#formoid").submit(function(e) {
-    // $('form').on('submit', function(e) {
+    //add meal form submit 
+    $("#addmeal").submit(function(e) {
 
-        e.preventDefault();
+        e.preventDefault(); // avoid to execute the actual submit of the form.
 
-        console.log(' e e e e e e e e e e')
-        return ;
+        var form = $(this);
+        var url = form.attr('action');
+
         $.ajax({
-            type: 'post',
-            url: 'post.php',
-            data: $('form').serialize(),
-            success: function() {
-                alert('form was submitted');
+            type: "POST",
+            url: url,
+            data: form.serialize(), // serializes the form's elements.
+            success: function(response) {
+                console.log(response.data);
+                let response_data = response.data
+
+                console.log('response_data response_data', response_data);
+                let list_html;
+                list_html = list_html + meal_html(response_data);
+
+                $('#' + response.meal_tab).append(list_html);
+
+                // actual fats
+                let actual_fats = $('#actual_fats').text();
+                actual_fats = parseInt(actual_fats.substring(0, actual_fats.length - 1)) + response_data.fats;
+                $('#actual_fats').html(actual_fats);
+
+                // actual proteins
+                let actual_proteins = $('#actual_proteins').text();
+                actual_proteins = parseInt(actual_proteins.substring(0, actual_proteins.length - 1)) + response_data.protein;
+                $('#actual_proteins').html(actual_proteins);
+                // actual carbs
+                let actual_carbs = $('#actual_carbs').text();
+                actual_carbs = parseInt(actual_carbs.substring(0, actual_carbs.length - 1)) + response_data.carbohydrates;
+                $('#actual_carbs').html(actual_carbs);
+
+                let consume_cal = $('#consume_cal').text();
+                consume_cal = parseInt(consume_cal.substring(0, consume_cal.length - 1)) + response_data.calories;
+                $('#consume_cal').html(consume_cal);
+                console.log('consume_cal consume_cal', consume_cal);
+
+                let total_goal_cal = $('#total_goal_cal').text(); //consume_cal
+                let nutrition_cal = total_goal_cal + consume_cal;
+
+
             }
         });
 
     });
+
+    function meal_html(item) {
+
+        return `
+                <tr class="tabborder">
+                    <td>` + item.meal_name + `</td>
+                    <td>` + item.carbohydrates + ` g</td>
+                    <td>` + item.fats + ` g</td>
+                    <td>` + item.protein + `g</td>
+                    <td>` + item.calories + ` Calories</td>
+                </tr>
+            `
+    }
 </script>
 
 
