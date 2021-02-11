@@ -92,14 +92,14 @@
                                 <div id="liveSessionsSlider" class="carousel slide hidden-xs" data-ride="carousel">
                                     <!-- Wrapper for slides -->
                                     <div class="carousel-inner">
+                                       
                                         @if($free_live_session)
                                         @foreach($free_live_session as $key=>$ls)
 
                                         <div class="item {!!$key === 0 ? 'active':'' !!}">
                                             <div class="row">
-
+                                                
                                                 @foreach($ls as $fls)
-
                                                 <div class="col-sm-3">
                                                     <div class="col-item">
                                                         <div class="photo">
@@ -107,8 +107,8 @@
                                                                 class="img-responsive" alt="Home Fit Group Class" />
                                                         </div>
                                                         <div class="Details">
-                                                            <h5>{!! $fls->name !!}</h5>
-                                                            <p>{!! $fls->details !!}</p>
+                                                            <h5>{!! $fls->training_class->name !!}</h5>
+                                                            <p>{!! $fls->training_class->details !!}</p>
                                                             <span>20 Members</span>
                                                         </div>
                                                     </div>

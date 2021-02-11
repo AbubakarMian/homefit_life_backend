@@ -253,6 +253,9 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     Route::get('gettotalconsumenutritions', 'User\UserController@getTotalConsumeNutritions')->name('gettotalconsumenutritions');
 });
 
+// add session route
+Route::get('user/addsession', 'User\GroupClassController@addSessions')->name('user.addsession');
+
 
 // ------------Trainer Route start----------------- 
 

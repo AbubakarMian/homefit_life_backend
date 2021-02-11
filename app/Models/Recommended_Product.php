@@ -10,4 +10,10 @@ class Recommended_Product extends Model
 
     use SoftDeletes;
     protected $table = 'recommended_products';
+
+
+    public function products()
+    {
+        return $this->hasOne('App\models\Product', 'id', 'product_id');
+    }
 }
