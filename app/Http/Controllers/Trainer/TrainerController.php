@@ -115,6 +115,7 @@ class TrainerController extends Controller
         $rec_product = new Recommended_Product();
         $rec_product->product_id = $request->prod_id;
         $rec_product->trainer_id = $trainer_id;
+        $rec_product->save();
 
         $response = Response::json([
             "status" => true,
@@ -122,8 +123,10 @@ class TrainerController extends Controller
         ]);
         return $response;
     }
-    public function profile(){
+    public function profile()
+    {
+        
 
-        return \View('trainer.profile.index');   
+        return \View('trainer.profile.index');
     }
 }
