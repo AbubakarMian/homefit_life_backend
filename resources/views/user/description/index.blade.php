@@ -41,12 +41,12 @@
                                                 <li>
                                                     <div class="featuredTrainerBox">
                                                         <div class="featuredTrainerBoxImg">
-                                                            <img src="{{ $gm->user->avatar }}" class="img-responsive">
+                                                            <img src="{{ $gm->user->avatar ?? ''}}" class="img-responsive">
                                                             <div class="featuredTrainerActive">
                                                             </div>
                                                         </div>
                                                         <div class="featuredTrainerName">
-                                                           {!! $gm->user->name!!}
+                                                           {!! $gm->user->name ?? ''!!}
                                                         </div>
                                                     </div>
                                                 </li>

@@ -34,8 +34,8 @@ class GroupClassController extends Controller
         //         });
         //     })->get();
 
-        $items_list_free = Training_Session::whereHas('training_class',function($q) use ($request){
-            $q->where('type_id',$request->cat_id);
+        $items_list_free = Training_Session::whereHas('training_class', function ($q) use ($request) {
+            $q->where('type_id', $request->cat_id);
         })->with('training_class')->get();
         $per_page = 6;
         $training_class = $this->get_items_per_page($items_list, $per_page);
@@ -54,6 +54,7 @@ class GroupClassController extends Controller
 
     public function group_desc(Request $request)
     {
+       
         $class_detail = Training_Class::with('trainer')->where('id', $request->class_id)->first();
 
 
@@ -67,14 +68,13 @@ class GroupClassController extends Controller
 
     public function groupClassLiveSession(Request $request)
     {
-
-        // dd($request->session_id);
+        // dd($request->all());
         $session = Training_Session::with('training_class')->find($request->session_id);
 
         //get recomended item according to trainer id 
-        $recomended_product = Recommended_Product::with('products')->where('trainer_id',$session->training_class->trainer_id)->get();
+        $recomended_product = Recommended_Product::with('products')->where('trainer_id', $session->training_class->trainer_id)->get();
 
-        return \View('user.livesession.index',compact('session','recomended_product'));
+        return \View('user.livesession.index', compact('session', 'recomended_product'));
     }
 
     // crown job  function
@@ -87,15 +87,15 @@ class GroupClassController extends Controller
 
         // dd($group_class);
         foreach ($group_class as $gc) {
-       
+
             foreach ($gc->training_slot as $ts) {
                 $randomString = Str::random(10);
                 $live_url = 'https://appr.tc/r/' . $randomString;
                 $timestapmDate =  strtotime("next " . $ts->weekday->name);  //strtotime('next'+$ts->weekday->name);
                 $nextDate = date('y/m/d', $timestapmDate);
 
-                $tran_session = Training_Session::where('class_Day',$nextDate)->where('training_class_id',$ts->training_class_id)->get();
-                if(!sizeof( $tran_session) ){
+                $tran_session = Training_Session::where('class_Day', $nextDate)->where('training_class_id', $ts->training_class_id)->get();
+                if (!sizeof($tran_session)) {
                     $training_session = new Training_Session();
                     $training_session->live_url = $live_url;
                     $training_session->training_class_id = $gc->id;
@@ -106,7 +106,6 @@ class GroupClassController extends Controller
                     $training_session->training_slot_id = 0;
                     $training_session->save();
                 }
-                
             }
         }
         return true;

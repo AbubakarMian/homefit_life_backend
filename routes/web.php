@@ -251,6 +251,13 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
 
     Route::get('nutritiondailygoalmonthly/{month_id}', 'User\UserController@nutritionDailyGoalMonthly')->name('nutritionDailyGoalMonthly');
     Route::get('gettotalconsumenutritions', 'User\UserController@getTotalConsumeNutritions')->name('gettotalconsumenutritions');
+
+
+    // ============================================================
+    // user Scheduler route 
+
+    Route::get('myshedule', 'User\ScheduleController@index')->name('myshedule');
+
 });
 
 // add session route

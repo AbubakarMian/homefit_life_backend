@@ -54,7 +54,7 @@
                                                             </div>
                                                         </div>
                                                     </a>
-                                                    <a href="{{asset('user/grouplivesession?groupclass_id=')}}"
+                                                    <a href="{!!asset('user/groupclass/group_desc?class_id=').$stc->id!!}"
                                                         class="btn btn-primary join">JOIN CLASS</a>
                                                 </div>
 
