@@ -204,19 +204,20 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Add Speciality </h4>
                         </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
+                        <div class="row">
+                            @foreach ($trainer_types as $item)
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="checkbox" class="form-check-input speciality"
+                                            id="speciality_{{ $item->id }}" name="speciality[]"
+                                            onchange="add_speciality(this)" value="{{ $item->name }}">
+                                        <label class="form-check-label"
+                                            for="speciality_{{ $item->id }}">{{ $item->name }}</label>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                         <div class="modal-footer">
-
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
@@ -241,10 +242,10 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <input type="checkbox" class="form-check-input speciality"
-                                                id="speciality_{{ $item->id }}" name="speciality[]"
-                                                onchange="doalert(this)" value="{{ $item->name }}">
+                                                id="categories_{{ $item->id }}" name="categories[]"
+                                                onchange="add_categories(this)" value="{{ $item->name }}">
                                             <label class="form-check-label"
-                                                for="speciality_{{ $item->id }}">{{ $item->name }}</label>
+                                                for="categories_{{ $item->id }}">{{ $item->name }}</label>
                                         </div>
                                     </div>
                                 @endforeach
@@ -252,7 +253,6 @@
 
                         </div>
                         <div class="modal-footer">
-                            {{-- <button type="button" class="btn btn-default" data-dismiss="modal" onclick="speciality()">Add</button> --}}
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
@@ -330,17 +330,17 @@
         console.log('speciality ', length);
     }
 
-    function doalert(training_types) {
+    function add_categories(training_types) {
         console.log('checkboxElem ', training_types);
         if (training_types.checked) {
-            $(".speciality_badge").append(badgeHtml(training_types))
+            $(".speciality_badge").append(categoryBadgeHtml(training_types))
         } else {
             removeBtn(training_types)
         }
     }
 
 
-    function badgeHtml(training_types) {
+    function categoryBadgeHtml(training_types) {
         return `
                 <button type="button" class="btn btn-primary" id="` + training_types.id + `" name="training_types[]">
                     ` + training_types.value + ` <span class="badge badge-light"><i class="fa fa-times-circle"></i></span>
@@ -351,6 +351,20 @@
 
     function removeBtn(element) {
         $('#' + element.id).remove();
+    }
+
+    function add_speciality(speciality) {
+
+        if (speciality.checked) {
+            $(".speciality_badge").append(specialityBadgeHtml(speciality))
+        } else {
+            removeBtn(speciality)
+        }
+
+    }
+
+    function specialityBadgeHtml (spec){
+
     }
 
 </script>
