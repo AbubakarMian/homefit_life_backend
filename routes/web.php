@@ -275,6 +275,7 @@ Route::get('trainer/logout', 'Trainer\TrainerController@logout')->name('logout')
 
 // trainer profile route
 Route::get('trainer/profile', 'Trainer\TrainerController@profile')->name('trainer.profile');
+Route::post('trainer/updateprofile', 'Trainer\TrainerController@saveProfile')->name('trainer.updateprofile');
 
 Route::get('trainer/dashboard', 'Trainer\TrainerController@dashboard')->name('trainer.dashboard');
 Route::get('trainer/myclass', 'Trainer\TrainerController@myClass')->name('trainer.myclass');

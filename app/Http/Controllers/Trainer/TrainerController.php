@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Trainer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Package;
 use App\Models\Product;
 use App\Models\Recommended_Product;
+use App\Models\Trainer;
+use App\Models\Trainer_Training_Type;
 use App\Models\Training_Class;
+use App\Models\Training_Type;
 use App\User;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
@@ -125,7 +129,29 @@ class TrainerController extends Controller
     }
     public function profile()
     {
+        $user_id= Auth::id();
+        $trainer = Trainer::with('training_type')->where('user_id',$user_id)->first();
         
+        $trainer_types = Training_Type::get();
+
+        return \View('trainer.profile.index',compact('trainer_types'));
+    }
+
+    public function saveProfile(Request $request)
+    {
+        dd($request->all());
+        $trainer_id= Auth::id();
+
+        $package = new Package();
+        $package->name = $request->package_name ; 
+        $package->price = $request->package_price ; 
+        $package->trainer_id = $trainer_id; 
+        $package->total_sessions = 10; 
+        $package->save();
+
+
+        //add packages 
+
 
         return \View('trainer.profile.index');
     }
