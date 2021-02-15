@@ -1,5 +1,6 @@
 <?php
 
+use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Route;
 
 //=================================================
@@ -73,6 +74,7 @@ Route::group(['middleware' => 'adminAuth', 'prefix' => 'admin'], function () {
 
     Route::get('user', 'admin\UserController@index')->name('user.index');
     Route::post('user/delete/{id}', 'admin\UserController.@destroy_undestroy')->name('user.delete');
+    
 
     // ================================================
     // Food
@@ -164,7 +166,7 @@ Route::post('user/checklogin', 'User\UserController@checklogin')->name('checklog
 
 Route::get('user/logout', 'User\UserController@logout')->name('logout');
 Route::post('user/save', 'User\UserController@save')->name('save');
-
+Route::get('/user/shedulereport','User\UserController@shedulereport');
 // ------------User Route start----------------- 
 
 Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
@@ -257,6 +259,7 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
 Route::get('user/addsession', 'User\GroupClassController@addSessions')->name('user.addsession');
 
 
+
 // ------------Trainer Route start----------------- 
 
 Route::get('trainer/login', 'Trainer\TrainerController@login')->name('trainerlogin');
@@ -285,3 +288,4 @@ Route::get('trainer/recomproduct', 'Trainer\TrainerController@recomendedProduct'
 
 Route::get('trainer/createpersonalclass', 'Trainer\PersonalGroupClassController@createClass')->name('trainer.createpersonalclass');
 Route::post('trainer/savepersonalclass', 'Trainer\PersonalGroupClassController@saveClass')->name('trainer.savepersonalclass');
+

@@ -1,0 +1,18 @@
+.heading{
+    color: #2196f3;
+    border-bottom: 2px solid;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+.divDatePicker{
+    background-color: #d6d6d6;
+    margin-bottom: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.divDatePicker label{
+    color: #2196f3;
+    font-size: 20px;
+}
