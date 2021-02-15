@@ -20,9 +20,15 @@ use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Facade\FlareClient\View;
 
 class UserController extends Controller
 {
+
+    public function shedulereport()
+    {
+        return View('user.schedulereports.index');
+    }
     public function index()
     {
 
