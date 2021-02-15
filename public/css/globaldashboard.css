@@ -51,3 +51,7 @@ div.content {
     margin: 10px 0px;
     color: #909090;
 }
+
+li :hover  > ul {
+    display: block;
+}
