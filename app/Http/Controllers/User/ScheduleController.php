@@ -13,7 +13,6 @@ class ScheduleController extends Controller
 
     public function index(Request $request)
     {
-
         $trainer_id = '';
         
         $user_id = Auth::id();
