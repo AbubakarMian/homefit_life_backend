@@ -18,5 +18,9 @@ class Trainer extends Model
     {
         return $this->hasOne('App\User', 'id', 'user_id');
     }
+    public function gallery()
+    {
+        return $this->hasOne('App\Models\Trainer_Gallery', 'trainer_id', 'id');
+    }
 
 }
