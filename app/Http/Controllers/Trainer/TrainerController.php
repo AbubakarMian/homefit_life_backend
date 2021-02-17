@@ -130,11 +130,9 @@ class TrainerController extends Controller
     public function profile()
     {
         $user_id= Auth::id();
-        $trainer = Trainer::with('training_type')->where('user_id',$user_id)->first();
-        
+        $trainer = Trainer::with('user','gallery')->where('user_id',$user_id)->first();
         $trainer_types = Training_Type::get();
-
-        return \View('trainer.profile.index',compact('trainer_types'));
+        return \View('trainer.profile.index',compact('trainer_types','trainer'));
     }
 
     public function saveProfile(Request $request)
@@ -148,8 +146,6 @@ class TrainerController extends Controller
         $package->trainer_id = $trainer_id; 
         $package->total_sessions = 10; 
         $package->save();
-
-
         //add packages 
 
 
