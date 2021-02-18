@@ -20,6 +20,13 @@ class ScheduleController extends Controller
 
         // dd($trainingclass_user);
 
-        return \View('user.myschedule.index', compact('trainingclass_user'));
+        return \View('user.schedulereports.index', compact('trainingclass_user'));
     }
+
+    public function reportSearch(Request $request){
+
+        dd($request->all());
+        
+    }
+
 }
