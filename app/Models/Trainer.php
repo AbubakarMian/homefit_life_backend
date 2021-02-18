@@ -11,7 +11,7 @@ class Trainer extends Model
 
     public function training_type()
     {
-        return $this->hasOne('App\Models\Training_Type', 'id', 'training_type_id');
+        return $this->hasMany('App\Models\Training_Type', 'id', 'training_type_id');
     }
 
     public function user()
@@ -20,7 +20,7 @@ class Trainer extends Model
     }
     public function gallery()
     {
-        return $this->hasOne('App\Models\Trainer_Gallery', 'trainer_id', 'id');
+        return $this->hasMany('App\Models\Trainer_Gallery', 'trainer_id', 'id');
     }
 
 }
