@@ -74,7 +74,7 @@ Route::group(['middleware' => 'adminAuth', 'prefix' => 'admin'], function () {
 
     Route::get('user', 'admin\UserController@index')->name('user.index');
     Route::post('user/delete/{id}', 'admin\UserController.@destroy_undestroy')->name('user.delete');
-    
+
 
     // ================================================
     // Food
@@ -166,7 +166,7 @@ Route::post('user/checklogin', 'User\UserController@checklogin')->name('checklog
 
 Route::get('user/logout', 'User\UserController@logout')->name('logout');
 Route::post('user/save', 'User\UserController@save')->name('save');
-Route::get('/user/shedulereport','User\UserController@shedulereport');
+// Route::get('/user/shedulereport', 'User\UserController@shedulereport');
 // ------------User Route start----------------- 
 
 Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
@@ -259,7 +259,7 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     // user Scheduler route 
 
     Route::get('myshedule', 'User\ScheduleController@index')->name('myshedule');
-
+    Route::post('searchshedule', 'User\ScheduleController@index')->name('searchshedule');
 });
 
 // add session route
@@ -276,24 +276,28 @@ Route::post('forgetpwd', 'Trainer\TrainerController@forgetpwd')->name('forgetpwd
 Route::get('trainer/logout', 'Trainer\TrainerController@logout')->name('logout');
 
 
-// trainer profile route
-Route::get('trainer/profile', 'Trainer\TrainerController@profile')->name('trainer.profile');
-Route::post('trainer/updateprofile', 'Trainer\TrainerController@saveProfile')->name('trainer.updateprofile');
+Route::group(['middleware' => 'trainerAuth', 'prefix' => 'trainer'], function () {
 
-Route::get('trainer/dashboard', 'Trainer\TrainerController@dashboard')->name('trainer.dashboard');
-Route::get('trainer/myclass', 'Trainer\TrainerController@myClass')->name('trainer.myclass');
-// Route::get('trainer/livesession', 'Trainer\TrainerController@liveSession')->name('trainer.myclass');
+    // trainer profile route
+    Route::get('profile', 'Trainer\TrainerController@profile')->name('trainer.profile');
+    Route::post('updateprofile', 'Trainer\TrainerController@saveProfile')->name('trainer.updateprofile');
 
-Route::get('trainer/groupclass', 'Trainer\GroupClassController@index')->name('trainer.groupclass');
-Route::get('trainer/createclass', 'Trainer\GroupClassController@createGroupClass')->name('trainer.createclass');
-Route::post('trainer/saveclass', 'Trainer\GroupClassController@SaveClass')->name('trainer.saveclass');
-Route::post('trainer/searchgroupclass', 'Trainer\GroupClassController@index')->name('trainer.searchgroupclass');
+    Route::get('dashboard', 'Trainer\TrainerController@dashboard')->name('trainer.dashboard');
+    Route::get('myclass', 'Trainer\TrainerController@myClass')->name('trainer.myclass');
+    // Route::get('trainer/livesession', 'Trainer\TrainerController@liveSession')->name('trainer.myclass');
 
-Route::get('trainer/liveSession', 'Trainer\GroupClassController@liveSession')->name('trainer.liveSession');
-Route::get('trainer/classdetail', 'Trainer\GroupClassController@classDetail')->name('trainer.classdetail');
-Route::get('trainer/recomproduct', 'Trainer\TrainerController@recomendedProduct')->name('trainer.recomproduct');
+    Route::get('groupclass', 'Trainer\GroupClassController@index')->name('trainer.groupclass');
+    Route::get('createclass', 'Trainer\GroupClassController@createGroupClass')->name('trainer.createclass');
+    Route::post('saveclass', 'Trainer\GroupClassController@SaveClass')->name('trainer.saveclass');
+    Route::post('searchgroupclass', 'Trainer\GroupClassController@index')->name('trainer.searchgroupclass');
+
+    Route::get('liveSession', 'Trainer\GroupClassController@liveSession')->name('trainer.liveSession');
+    Route::get('classdetail', 'Trainer\GroupClassController@classDetail')->name('trainer.classdetail');
+    Route::get('recomproduct', 'Trainer\TrainerController@recomendedProduct')->name('trainer.recomproduct');
 
 
-Route::get('trainer/createpersonalclass', 'Trainer\PersonalGroupClassController@createClass')->name('trainer.createpersonalclass');
-Route::post('trainer/savepersonalclass', 'Trainer\PersonalGroupClassController@saveClass')->name('trainer.savepersonalclass');
+    Route::get('createpersonalclass', 'Trainer\PersonalGroupClassController@createClass')->name('trainer.createpersonalclass');
+    Route::post('savepersonalclass', 'Trainer\PersonalGroupClassController@saveClass')->name('trainer.savepersonalclass');
 
+
+});

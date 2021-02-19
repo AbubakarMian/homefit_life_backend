@@ -14,7 +14,7 @@
         <a href="#"><i class="flaticon-monitor"></i> Free Live Sessions</a>
         <a href="#"><i class="flaticon-team"></i> Group Classes</a>
         <a href="{{asset('user/nutrition')}}"><i class="flaticon-calculator"></i> Nutration Calculator</a> 
-        <a href="#"><i class="flaticon-calendar"></i> My Schedule</a>
+        <a href="{{asset('user/myshedule')}}"><i class="flaticon-calendar"></i> My Schedule</a>
         <a href="{{asset('user/logout')}}"><i class="flaticon-logout"></i> Logout</a>
     </div>
 

@@ -7,6 +7,7 @@ use App\Models\Package;
 use App\Models\Product;
 use App\Models\Recommended_Product;
 use App\Models\Trainer;
+use App\Models\Trainer_Gallery;
 use App\Models\Trainer_Training_Type;
 use App\Models\Training_Class;
 use App\Models\Training_Type;
@@ -129,26 +130,94 @@ class TrainerController extends Controller
     }
     public function profile()
     {
-        $user_id= Auth::id();
-        $trainer = Trainer::with('user','gallery')->where('user_id',$user_id)->first();
+
+        $user_id = Auth::id();
+        $per_page = 6;
+        $trainer = Trainer::with('user', 'gallery')->where('user_id', $user_id)->first();
         $trainer_types = Training_Type::get();
-        return \View('trainer.profile.index',compact('trainer_types','trainer'));
+        $trainer_gallery = $this->get_items_per_page( $trainer->gallery,$per_page);
+        $tariner_training_type = Trainer_Training_Type::with('type')->where('trainer',$trainer->id)->get();
+        // dd($tariner_training_type);
+        return \View('trainer.profile.index', compact('trainer_types', 'trainer','trainer_gallery','tariner_training_type'));
     }
 
     public function saveProfile(Request $request)
     {
-        dd($request->all());
-        $trainer_id= Auth::id();
 
-        $package = new Package();
-        $package->name = $request->package_name ; 
-        $package->price = $request->package_price ; 
-        $package->trainer_id = $trainer_id; 
-        $package->total_sessions = 10; 
-        $package->save();
-        //add packages 
+        $user_id = Auth::id();
+
+        $user = User::find($user_id);
+        if (isset($request->profile_avatar)) {
+            if ($request->hasFile('profile_avatar')) {
+                $image = $request->profile_avatar;
+                $root = $request->root();
+                $data = $this->move_img_get_path($image, $root, 'property');
+            }
+            $user->avatar  = $data;
+            $user->save();
+        }
+
+        $trainer = Trainer::where('user_id', $user_id)->first();
+        $trainer->details = $request->description;
+        $trainer->name = $request->name;
+        if (isset($request->speciality)) {
+            foreach ($request->speciality as $speci) {
+                $speciality[] = $speci;
+            }
+            $trainer->specialities = json_encode($speciality);
+
+            $trainer->save();
+        }
 
 
-        return \View('trainer.profile.index');
+        if (isset($request->training_types)) {
+            foreach ($request->training_types as $types) {
+
+                $trainer_type = Trainer_Training_Type::where('trainer', $trainer->id)->where('training_type', $types)->first();
+                if (!$trainer_type) {
+                    $trainer_type = new Trainer_Training_Type();
+                    $trainer_type->trainer = $trainer->id;
+                    $trainer_type->training_type = $types;
+                    $trainer_type->save();
+                }
+            }
+        }
+        if ($request->hasFile('gallery')) {
+            foreach ($request->file('gallery') as $file) {
+                // dd($file->getClientMimeType());
+                $image = $file;
+                $root = $request->root();
+                $data = $this->move_img_get_path($image, $root, 'trainer_gallery');
+                $trainer_gallery = new Trainer_Gallery();
+                $trainer_gallery->url = $data;
+                $trainer_gallery->trainer_id = $trainer->id;
+                $trainer_gallery->type = $file->getClientMimeType();
+                $trainer_gallery->save();
+            }
+        }
+        // dd($request->all());
+        if (isset($request->total_package_name[0])) {
+            foreach ($request->total_package_name as $key => $t_package) {
+
+                $package = new Package();
+                $package->name = $t_package;
+                $package->price = $request->total_price[$key];
+                $package->trainer_id = $trainer->id;
+                $package->total_sessions = $request->total_sessions[$key];
+                $package->save();
+            }
+        }
+
+
+        return redirect('trainer/dashboard');
+    }
+
+    public function get_items_per_page($items_list, $per_page)
+    {
+        $items_count = $items_list->count();
+        $items_split_count = $items_count / $per_page;
+        $items_split_count = is_float($items_split_count) ? floor($items_split_count) + 1 : $items_split_count;
+        $items_list = $items_list->split($items_split_count);
+        return $items_list;
     }
 }

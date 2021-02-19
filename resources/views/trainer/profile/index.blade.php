@@ -1,6 +1,33 @@
 @extends('trainer.layouts.dasboard')
 
 <link href="{{ asset('css/trainerprofile.css') }}" rel="stylesheet">
+
+<style>
+    .upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .btn {
+        border: 2px solid gray;
+        color: gray;
+        background-color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .upload-btn-wrapper input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+
+</style>
 @section('dashboard')
     <div class="innerPage">
         <form method="post" action="{{ url('trainer/updateprofile') }}" enctype="multipart/form-data">
@@ -15,7 +42,7 @@
                     @endif
                     <div class="form-group">
                         {!! Form::label('avatar', 'Trainer Image') !!}
-                        {!! Form::file('avatar', ['class' => 'btn btn-primary btnEditImg', 'id' => 'avatar']) !!}
+                        {!! Form::file('profile_avatar',null, ['class' => 'btn btn-primary btnEditImg', 'id' => 'avatar']) !!}
                     </div>
                 </div>
                 <div class="editProfile">
@@ -27,7 +54,7 @@
 
                     <div class="form-group">
                         <input id="email" type="text" class="form-control" name="email"
-                            value="{!!  $trainer->user->email !!}" placeholder="Email">
+                            value="{!!  $trainer->user->email !!}" placeholder="Email" readonly>
                     </div>
 
                     <div class="form-group">
@@ -35,14 +62,44 @@
                             name="description"> {!!  $trainer->user->description !!}</textarea>
                     </div>
 
-                    <div class="form-controle" style="border:1px #aaa solid;margin-bottom: 10px;padding: 10px;">
+                    {{-- <div class="form-controle" style="border:1px #aaa solid;margin-bottom: 10px;padding: 10px;">
                         <h5>Training Speciality</h5>
-                        <div style="display: flex;width: 100%;justify-content: space-between;margin-bottom: 10px;">
+                        <div style="display: flex;width: 100%;justify-content: space-between;margin-bottom: 10px;"
+                            class="speciality_badge">
                             <button type="button" class="btn btn-primary">
                                 {{ $trainer->specialities }}<span class="badge badge-light" style="margin-left: 5px"><i
                                         class="fa fa-times-circle"></i></span>
                             </button>
 
+                            <button type="button" class="btn" style="background-color: #333333;color: #fff;"
+                                data-toggle="modal" data-target="#specialityModal">
+                                Search <span class="badge badge-light"><i class="fa fa-search"></i></span>
+                            </button>
+                        </div>
+                    </div> --}}
+                    <div class="row"
+                        style="border:1px #aaa solid;margin-bottom: 10px;padding: 10px;margin-left: px;margin-right: 3px">
+                        <div class="col-sm-10 scrollmenu">
+                            <div class="form-controle">
+                                <h5>Training Speciality</h5>
+                                <div style="display: flex;width: 100%;justify-content: space-between;margin-bottom: 10px;overflow: scroll;"
+                                    class="speciality_badge">
+                                    <?php
+                                        $specialities = json_decode($trainer->specialities);
+                                        // $image = $image[0];
+                                    ?>
+                                    @foreach($specialities as $spec)
+                                    <button type="button" class="btn btn-primary">
+                                        {{ $spec }}<span class="badge badge-light" style="margin-left: 5px"><i
+                                                class="fa fa-times-circle"></i></span>
+                                    </button>
+                                    @endforeach
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
                             <button type="button" class="btn" style="background-color: #333333;color: #fff;"
                                 data-toggle="modal" data-target="#specialityModal">
                                 Search <span class="badge badge-light"><i class="fa fa-search"></i></span>
@@ -55,10 +112,10 @@
                             <div class="form-controle">
                                 <h5>Training Categories</h5>
                                 <div style="display: flex;width: 100%;justify-content: space-between;margin-bottom: 10px;overflow: scroll;"
-                                    class="speciality_badge">
-                                    <button type="button" class="btn btn-primary col-sm-3" name="sfds">
+                                    class="type_badge">
+                                    {{-- <button type="button" class="btn btn-primary col-sm-3" name="sfds">
                                         Fitness <span class="badge badge-light"><i class="fa fa-times-circle"></i></span>
-                                    </button>
+                                    </button> --}}
 
 
                                 </div>
@@ -91,55 +148,28 @@
 
                                         <!-- Wrapper for slides -->
                                         <div class="carousel-inner">
-                                            <div class="item active">
+                                            @foreach($trainer->gallery as $key=>$tg)
+                                            <div class="item {!!$key === 0 ? 'active':'' !!}">
                                                 <div style="display: flex; flex-direction: row" id="gallery_row">
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
+                                                    @if($tg->type == 'image/jpeg' || $tg->type == 'image/png' )
+                                                    <img src="{!!$tg->URL !!}"
                                                         style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
+                                                        
+                                                    @else
+                                                    <video id="media" width="320" height="240" class="img-responsive gallery" name="media[]" controls>
+                                                        <source src="{!!$tg->URL !!}" >      
+                                                    </video>
+                                                    @endif
+                                                   
+
                                                 </div>
                                             </div>
-                                            <div class="item">
-                                                <div style="display: flex; flex-direction: row">
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div style="display: flex; flex-direction: row">
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                    <img src="{{ asset('images/default-trainer.jpg') }}"
-                                                        style="height: 100px;width: 100px;margin-right: 5px" />
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
+
+
+
+                                     
 
                                         <!-- Left and right controls -->
                                         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -155,14 +185,14 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="col-item">
-                                        <div class="photo" style="height: 100px;width: 100px; background-color: #0f96e7;align-items: center;justify-content: center">
-                                            <i class="fa fa-plus-circle" style="margin-left: 24px;margin-top: 20;font-size: 60px;color: #fff"></i>
-                                            {{-- <input class="fa fa-plus-circle fa-10x" type="file" id="trainergallery"
-                                            name="gallery[]" multiple> --}}
-                                            
-                                               
-                                        
+                                        <div class="photo"
+                                            style="height: 100px;width: 100px; background-color: #0f96e7;align-items: center;justify-content: center">
+                                            <i class="fa fa-plus-circle"
+                                                style="margin-left: 24px;margin-top: 20;font-size: 60px;color: #fff"></i>
+                                            <input class="fa fa-plus-circle fa-10x" type="file" id="trainergallery"
+                                                name="gallery[]" multiple>
                                         </div>
+
 
                                     </div>
                                 </div>
@@ -204,7 +234,7 @@
                         <div class="add_package">
                             <div style="border-bottom:2px solid #aaa;margin-bottom:10px">
                                 <div class="form-group">
-                                    <input id="package_name" type="text" class="form-control" name="package_name"
+                                    <input id="package_name" type="text" class="form-control" name="total_package_name[]"
                                         placeholder="Enter Package Name">
 
                                 </div>
@@ -212,25 +242,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <!-- <input id="email" type="text" class="form-control" name="email" placeholder="Gender"> -->
-                                            <select class="form-control" id="gender">
-                                                <option>Sessions </option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                            </select>
+                                                <input type="number" class="form-control" placeholder="Enter total session" name="total_sessions[]">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
 
                                         <div class="form-group">
-                                            <input id="price" type="text" class="form-control" name="price"
+                                            <input id="price" type="number" class="form-control" name="total_price[]"
                                                 placeholder="Price">
                                         </div>
                                     </div>
@@ -268,7 +286,7 @@
                                     <div class="form-group">
                                         <input type="checkbox" class="form-check-input speciality"
                                             id="speciality_{{ $item->id }}" name="speciality[]"
-                                            onchange="add_speciality(this)" value="{{ $item->name }}">
+                                            onchange="add_speciality(this)" value="{{ $item->name }}" >
                                         <label class="form-check-label"
                                             for="speciality_{{ $item->id }}">{{ $item->name }}</label>
                                     </div>
@@ -300,10 +318,10 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <input type="checkbox" class="form-check-input speciality"
-                                                id="categories_{{ $item->id }}" name="categories[]"
+                                                id="{{ $item->id }}" name="categories[]"
                                                 onchange="add_categories(this)" value="{{ $item->name }}">
                                             <label class="form-check-label"
-                                                for="categories_{{ $item->id }}">{{ $item->name }}</label>
+                                                for="{{ $item->id }}">{{ $item->name }}</label>
                                         </div>
                                     </div>
                                 @endforeach
@@ -336,56 +354,39 @@
     <script>
         function add_package() {
             console.log('fdhkjhsfdfdkjhskdf');
-
-            var nextdivnum = $('.add_package').length + 1;
+            // var package_arr[] = [] 
+            var nextdivnum = $('.add_package').length ;
             $('.add_package').append(package_html(nextdivnum));
         }
 
         function package_html(num) {
             return `
-                                            <div style="border-bottom:2px solid #aaa;margin-bottom:10px" >
-                                                                    <div class="form-group">
-                                                                        <input id="package_name_` + num +
-                `" type="text" class="form-control" name="package_name_` + num +
-                `"
-                                                                            placeholder="Enter Package Name">
+        <div style="border-bottom:2px solid #aaa;margin-bottom:10px" >
+                                <div class="form-group">
+                                    <input id="package_name_` + num +
+                `" type="text" class="form-control" name="total_package_name[]"
+                placeholder="Enter Package Name">
 
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-sm-6">
-                                                                            <div class="form-group">
-                                                                                <select class="form-control" id="session_` +
-                num +
-                `" name="session_` +
-                num +
-                `">
-                                                                                    <option>Sessions </option>
-                                                                                    <option value="1">1</option>
-                                                                                    <option value="2">2</option>
-                                                                                    <option value="3">3</option>
-                                                                                    <option value="4">4</option>
-                                                                                    <option value="5">5</option>
-                                                                                    <option value="6">6</option>
-                                                                                    <option value="7">7</option>
-                                                                                    <option value="8">8</option>
-                                                                                    <option value="9">9</option>
-                                                                                    <option value="10">10</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6">
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                   
+                    <input type="number" class="form-control" placeholder="Enter total session" name="total_sessions[]">
+                </div>
+            </div>
+            <div class="col-sm-6">
 
-                                                                            <div class="form-group">
-                                                                                <input id="price" type="text" class="form-control" name="price_` +
-                num + `"
-                                                                                    placeholder="Price">
-                                                                            </div>
-                                                                        </div>
+            <div class="form-group">
+                <input id="price" type="number" class="form-control" name="total_price[]"
+                            placeholder="Price">
+                    </div>
+                </div>
 
-                                                                    </div>
+            </div>
 
-                                                                </div>
-                                            `
+        </div>
+                                                            `
         }
 
 
@@ -396,9 +397,9 @@
         }
 
         function add_categories(training_types) {
-            console.log('checkboxElem ', training_types);
+            console.log('add_categories function')
             if (training_types.checked) {
-                $(".speciality_badge").append(categoryBadgeHtml(training_types))
+                $(".type_badge").append(categoryBadgeHtml(training_types))
             } else {
                 removeBtn(training_types)
             }
@@ -407,12 +408,13 @@
 
         function categoryBadgeHtml(training_types) {
             return `
-                                                    <button type="button" class="btn btn-primary" id="` + training_types
+                    <button type="button" class="btn btn-primary" id="` +
+                training_types
                 .id + `" name="training_types[]">
-                                                        ` + training_types.value + ` <span class="badge badge-light"><i class="fa fa-times-circle"></i></span>
-                                                    </button>
-                                                    <input id="training_types" value="` + training_types.id + `" name="training_types[]" hidden/>
-                                                                `
+                        ` + training_types.value + ` <span class="badge badge-light"><i class="fa fa-times-circle"></i></span>
+                    </button>
+                    <input id="training_types" value="` + training_types.id + `" name="training_types[]" hidden/>
+                                                                                `
         }
 
         function removeBtn(element) {
@@ -421,6 +423,7 @@
 
         function add_speciality(speciality) {
 
+            console.log('add_speciality function')
             if (speciality.checked) {
                 $(".speciality_badge").append(specialityBadgeHtml(speciality))
             } else {
@@ -430,7 +433,13 @@
         }
 
         function specialityBadgeHtml(spec) {
-
+            return `
+                    <button type="button" class="btn btn-primary" id="` + spec.id + `" >
+                        ` + spec.value + `<span class="badge badge-light" style="margin-left: 5px"><i
+                                class="fa fa-times-circle"></i></span>
+                    </button>
+                    <input id="speciality" value="` + spec.id + `" hidden/>
+                    `
         }
 
         $("#trainergallery").change(function() {
@@ -449,7 +458,7 @@
 
                 $('#gallery_row').append(trainerGalleryImageHtml(nextdivnum));
                 reader.onload = function(e) {
-                    $('#blah_' + nextdivnum).attr('src', e.target.result);
+                    $('#media_' + nextdivnum).attr('src', e.target.result);
                 }
 
                 reader.readAsDataURL(input.files[0]); // convert to base64 string
@@ -457,7 +466,7 @@
             } else {
                 console.log('else condition')
                 $('#gallery_row').append(trainerGalleryVideoHtml(nextdivnum));
-                var video = document.getElementById('blah_' + nextdivnum);
+                var video = document.getElementById('media_' + nextdivnum);
                 console.log('as video', video);
 
                 var videoSource = document.createElement('source');
@@ -486,32 +495,32 @@
         function trainerGalleryImageHtml(nextdivnum) {
 
             return `
-                                            <div class="col-sm-3 galleryitem">
-                                                <div class="col-item">
-                                                    <div class="photo">
-                                                        <img id="blah_` + nextdivnum + `" src="http://localhost/homefit_life_backend/public/images/gallery-18.jpg"
-                                                            class="img-responsive gallery" alt="Home Fit Group Class">
-                                                    </div>
+                    <div class="col-sm-3 galleryitem">
+                        <div class="col-item">
+                            <div class="photo">
+                                <img id="media_` + nextdivnum + `" src="http://localhost/homefit_life_backend/public/images/gallery-18.jpg"
+                                    class="img-responsive gallery" name="media[] alt="Home Fit Group Class">
+                            </div>
 
-                                                </div>
-                                            </div>
-                                            `
+                        </div>
+                    </div>
+                            `
         }
 
         function trainerGalleryVideoHtml(nextdivnum) {
 
             return `
-                        <div class="col-sm-3 galleryitem">
-                            <div class="col-item">
-                                <div class="photo">
-                                        <video id="blah_` + nextdivnum + `" width="320" height="240" class="img-responsive gallery" controls>
-                                                
-                                        </video>
-                                </div>
+                                        <div class="col-sm-3 galleryitem">
+                                            <div class="col-item">
+                                                <div class="photo">
+                                                        <video id="media_` + nextdivnum + `" width="320" height="240" class="img-responsive gallery" name="media[]" controls>
+                                                                
+                                                        </video>
+                                                </div>
 
-                            </div>
-                        </div>
-                                `
+                                            </div>
+                                        </div>
+                                                `
         }
 
     </script>
