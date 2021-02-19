@@ -144,7 +144,7 @@ $header = $user_common['header'] ?? '';
                             @if(Auth::check())
                             <a href="{{ asset('user/logout')}}" class="btn btn-primary btn-sm btn-UserLogin ">User Logout <i class="fa fa-user-circle" aria-hidden="true"></i></a>
                             @else
-                            <a href="{{ asset('/homefit/login.php')}}" class="btn btn-primary btn-sm btn-UserLogin ">User Login <i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                            <a href="{{ asset('user/login')}}" class="btn btn-primary btn-sm btn-UserLogin ">User Login <i class="fa fa-user-circle" aria-hidden="true"></i></a>
                             @endif
                         </div>
                     </div>
