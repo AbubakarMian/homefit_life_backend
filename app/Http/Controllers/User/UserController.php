@@ -118,7 +118,7 @@ class UserController extends Controller
         $user = Auth::user();
         $training_categories = Training_Type::get();
         $featured_trainer = $this->trainer_query($search_text, 'featured');
-       
+
         $sessions = Training_Class::with('training_slot.training_session')
             ->whereHas('training_slot', function ($t) {
                 $t->whereHas('training_session', function ($ts) {
@@ -161,16 +161,16 @@ class UserController extends Controller
             ])
             ->get()->toArray();
 
-            if(!$user_nutritions){
-                $user_nutritions = [
-                    'avg_proteins'=>00,
-                    'avg_carbohydrates'=>00,
-                    'avg_fats'=>00,
-                    'total_carbohydrates'=>00,
-                    'total_proteins'=>00,
-                    'total_fats'=>00,
-                ];
-            }
+        if (!$user_nutritions) {
+            $user_nutritions = [
+                'avg_proteins' => 00,
+                'avg_carbohydrates' => 00,
+                'avg_fats' => 00,
+                'total_carbohydrates' => 00,
+                'total_proteins' => 00,
+                'total_fats' => 00,
+            ];
+        }
 
         $res = new \stdClass();
         $res->status = true;
@@ -199,7 +199,7 @@ class UserController extends Controller
 
         for ($i = 0; $i < 12; $i++) {
 
-            $days = cal_days_in_month(CAL_GREGORIAN, $i+1, $year);
+            $days = cal_days_in_month(CAL_GREGORIAN, $i + 1, $year);
             $month_last_date = strtotime($days . '-' . $i . '-' . $year); // d/m/y
             $month_start_date = strtotime('1-' . $i . '-' . $year);
             $months[$i] = [];
