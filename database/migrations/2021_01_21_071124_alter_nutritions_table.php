@@ -13,9 +13,9 @@ class AlterNutritionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('user_nutrition_goal', function (Blueprint $table) {
-            $table->bigInteger('user_id')->nullable()->default(0);
-        });
+        // Schema::table('user_nutrition_goal', function (Blueprint $table) {
+        //     $table->bigInteger('user_id')->nullable()->default(0);
+        // });
         // Schema::table('trainer_slots', function (Blueprint $table) {
         //     $table->dropColumn('user_booked_id');
         // });
