@@ -18,7 +18,6 @@ class GroupClassController extends Controller
 {
     public function index(Request $request)
     {
-        //trainer_type
         $title = $request->title ?? '';
         $category_id = $request->type_id ?? 0;
         $week_day_id = $request->day_id ?? 0;
@@ -33,7 +32,7 @@ class GroupClassController extends Controller
             $trainng_class = $trainng_class->where('type_id', $category_id);
         }
         $trainng_class = $trainng_class->paginate(10);
-        $weekdays = Weekday::get(['name','id']);
+        $weekdays = Weekday::get(['name', 'id']);
         $training_type = Training_Type::get();
         return \View('trainer.groupclass.index', compact('weekdays', 'training_type', 'trainng_class'));
     }
@@ -52,8 +51,8 @@ class GroupClassController extends Controller
 
         $user_id = Auth::id();
         $trainng_class = new Training_Class();
-        if($request->is_paid){
-            $trainng_class->is_paid = $request->is_paid; 
+        if ($request->is_paid) {
+            $trainng_class->is_paid = $request->is_paid;
         }
         $trainng_class->trainer_id = $user_id;
         $trainng_class->name = $request->class_name;
@@ -85,21 +84,20 @@ class GroupClassController extends Controller
     }
 
     public function liveSession(Request $request)
-    {   
-        $trainng_class = Training_Class::with(['training_class_user.user','trainer_type'])->find($request->class_id);
+    {
+        $trainng_class = Training_Class::with(['training_class_user.user', 'trainer_type'])->find($request->class_id);
         $produst_list = Product::with(['recomendedProduct'])->get();
-        return \View('trainer.livesessiongroup.index',compact('trainng_class','produst_list'));
+        return \View('trainer.livesessiongroup.index', compact('trainng_class', 'produst_list'));
     }
 
-    public function classDetail(Request $request){
+    public function classDetail(Request $request)
+    {
 
         $trainng_class = Training_Class::with(['training_slot.weekday'])->find($request->class_id);
         $response = Response::json([
-            "status"=>true,
-            "msg"=>$trainng_class
+            "status" => true,
+            "msg" => $trainng_class
         ]);
         return $response;
-
     }
-
 }

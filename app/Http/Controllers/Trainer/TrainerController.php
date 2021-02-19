@@ -145,7 +145,6 @@ class TrainerController extends Controller
     {
 
         $user_id = Auth::id();
-
         $user = User::find($user_id);
         if (isset($request->profile_avatar)) {
             if ($request->hasFile('profile_avatar')) {

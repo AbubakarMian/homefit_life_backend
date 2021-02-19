@@ -64,7 +64,8 @@
                                 <td>{!! $tc_user->trainingclass->trainer->name !!}</td>
                                 <td>{!! $tc_user->trainingclass->is_personal == 0 ? 'group' : 'personal' !!}</td>
                                 <td>
-                                    <a href="{!!  $tc_user->trainingclass->live_url !!}" class="btn btn-sm btn-danger"
+                                    <a href="{!!  $tc_user->trainingclass->live_url !!}"
+                                        onclick="updateUser({{ $tc_user }})" class="btn btn-sm btn-danger"
                                         target="_blank">JOIN</a>
                                 </td>
 
@@ -75,4 +76,35 @@
             </div>
         </div>
     </section>
+
+
+
+    <script>
+        function updateUser(traininguser_class) {
+
+            console.log('jfjgfg fgfhg', traininguser_class.id);
+            let update_user_url = "{!! url('user/updateUserSession') !!}";  //http://localhost/homefit_life_backend/public/user/updateUserSession
+            let _token = "{{ csrf_token() }}";
+            let user_id = traininguser_class.user_id ; 
+            let training_class_id = traininguser_class.training_class_id ;
+            let package_id = traininguser_class.package_id;
+
+            $.ajax({
+                url: update_user_url,
+                type: 'POST',
+                data: {
+                    user_id,
+                    training_class_id,
+                    package_id,
+                    _token
+                },
+                dataType: 'json', // added data type
+                success: function(res) {
+                    console.log(res);
+                    // alert(res);
+                }
+            });
+        }
+
+    </script>
 @endsection
