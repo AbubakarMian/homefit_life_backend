@@ -260,9 +260,14 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
 
     Route::get('myshedule', 'User\ScheduleController@index')->name('myshedule');
     Route::post('searchshedule', 'User\ScheduleController@index')->name('searchshedule');
+
+    // ============================================================
+    // update user Session route 
+
+    Route::post('updateUserSession', 'User\ScheduleController@updateUserSession')->name('updateUserSession');
 });
 
-// add session route
+// add session 
 Route::get('user/addsession', 'User\GroupClassController@addSessions')->name('user.addsession');
 
 
@@ -299,5 +304,7 @@ Route::group(['middleware' => 'trainerAuth', 'prefix' => 'trainer'], function ()
     Route::get('createpersonalclass', 'Trainer\PersonalGroupClassController@createClass')->name('trainer.createpersonalclass');
     Route::post('savepersonalclass', 'Trainer\PersonalGroupClassController@saveClass')->name('trainer.savepersonalclass');
 
-
+    //payment session
+    Route::get('paymentSession', 'Trainer\SessionController@paymentSession')->name('trainer.paymentSession');
+    Route::post('searchsessionpayment', 'Trainer\SessionController@paymentSession')->name('trainer.searchsessionpayment');
 });
