@@ -13,7 +13,7 @@ class Trainer_slot extends Model
 
     public function training_session()
     {
-        return $this->hasOne('App\models\Training_Session', 'training_slot_id', 'id');
+        return $this->hasOne('App\Models\Training_Session', 'training_slot_id', 'id');
     }
     public function training_class()
     {

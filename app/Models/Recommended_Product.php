@@ -14,6 +14,6 @@ class Recommended_Product extends Model
 
     public function products()
     {
-        return $this->hasOne('App\models\Product', 'id', 'product_id');
+        return $this->hasOne('App\Models\Product', 'id', 'product_id');
     }
 }
