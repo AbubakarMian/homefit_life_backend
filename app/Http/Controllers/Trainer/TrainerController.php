@@ -220,4 +220,6 @@ class TrainerController extends Controller
         $items_list = $items_list->split($items_split_count);
         return $items_list;
     }
+
+    
 }

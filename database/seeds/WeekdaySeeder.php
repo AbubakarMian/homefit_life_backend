@@ -13,7 +13,7 @@ class WeekdaySeeder extends Seeder
     public function run()
     {
 
-        Weekday::insert([
+        Weekday::firstOrCreate([
             ['id' => 1,'name' => 'monday'],
             ['id' => 2,'name' => 'tuesday'],
             ['id' => 3,'name' => 'wednesday'],
