@@ -1,4 +1,4 @@
-@include('user.layouts.header')
+@include('trainer.layouts.header')
 
 <link href="{{ asset('css/globaldashboard.css')}}" rel="stylesheet">
 <section>
