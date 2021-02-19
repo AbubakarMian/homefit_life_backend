@@ -14,7 +14,7 @@ class AlterFixesTable extends Migration
     public function up()
     {
         Schema::table('trainer', function (Blueprint $table) {
-            $table->double('personal_session_price')->nullable()->default(0);
+            // $table->double('personal_session_price')->nullable()->default(0);
             $table->dropColumn('training_type_id');
         });
         Schema::table('trainer_slots', function (Blueprint $table) {
