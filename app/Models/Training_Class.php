@@ -31,14 +31,14 @@ class Training_Class extends Model
 
     public function training_session()
     {
-        return $this->hasOne('App\models\Training_Session', 'training_class_id', 'id');
+        return $this->hasOne('App\Models\Training_Session', 'training_class_id', 'id');
     }
     public function training_slot()
     {
-        return $this->hasMany('App\models\Trainer_slot', 'training_class_id', 'id');
+        return $this->hasMany('App\Models\Trainer_slot', 'training_class_id', 'id');
     }
     public function training_class_user()
     {
-        return $this->hasMany('App\models\Training_Class_Users', 'training_class_id', 'id');
+        return $this->hasMany('App\Models\Training_Class_Users', 'training_class_id', 'id');
     }
 }
