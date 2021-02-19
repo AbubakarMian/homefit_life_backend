@@ -259,7 +259,7 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     // user Scheduler route 
 
     Route::get('myshedule', 'User\ScheduleController@index')->name('myshedule');
-    Route::post('searchshedule', 'User\ScheduleController@reportSearch')->name('searchshedule');
+    Route::post('searchshedule', 'User\ScheduleController@index')->name('searchshedule');
 });
 
 // add session route
