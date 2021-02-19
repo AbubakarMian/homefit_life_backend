@@ -88,13 +88,14 @@
                                         $specialities = json_decode($trainer->specialities);
                                         // $image = $image[0];
                                     ?>
+                                    @if($specialities)
                                     @foreach($specialities as $spec)
                                     <button type="button" class="btn btn-primary">
                                         {{ $spec }}<span class="badge badge-light" style="margin-left: 5px"><i
                                                 class="fa fa-times-circle"></i></span>
                                     </button>
                                     @endforeach
-
+                                    @endif
                                 </div>
 
                             </div>
