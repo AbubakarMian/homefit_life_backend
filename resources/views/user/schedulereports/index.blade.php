@@ -58,14 +58,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($trainingclass_user as $tc_user)
+                        @foreach ($user_slot as $u_slot)
                             <tr>
-                                <td> {!! $tc_user->trainingclass->name !!}</td>
-                                <td>{!! $tc_user->trainingclass->trainer->name !!}</td>
-                                <td>{!! $tc_user->trainingclass->is_personal == 0 ? 'group' : 'personal' !!}</td>
+                                <td> {!! $u_slot->training_class->name !!}</td>
+                                <td>{!!  $u_slot->training_class->trainer->name !!}</td>
+                                <td>{!!  $u_slot->training_class->is_personal == 0 ? 'group' : 'personal' !!}</td>
                                 <td>
-                                    <a href="{!!  $tc_user->trainingclass->live_url !!}"
-                                        onclick="updateUser({{ $tc_user }})" class="btn btn-sm btn-danger"
+                                    <a href="{!!   $u_slot->training_class->live_url !!}"
+                                        onclick="updateUser({{ $u_slot }})" class="btn btn-sm btn-danger"
                                         target="_blank">JOIN</a>
                                 </td>
 
@@ -80,14 +80,16 @@
 
 
     <script>
-        function updateUser(traininguser_class) {
+        function updateUser(trainer_slot) {
 
-            console.log('jfjgfg fgfhg', traininguser_class.id);
-            let update_user_url = "{!! url('user/updateUserSession') !!}";  //http://localhost/homefit_life_backend/public/user/updateUserSession
+           
+            let update_user_url = "{!! url('user/updateUserSession') !!}";  
             let _token = "{{ csrf_token() }}";
-            let user_id = traininguser_class.user_id ; 
-            let training_class_id = traininguser_class.training_class_id ;
-            let package_id = traininguser_class.package_id;
+            let user_id = trainer_slot.training_class.training_class_user[0].user_id ; 
+            let training_class_id = trainer_slot.training_class.id ;
+            let package_id = trainer_slot.training_class.training_class_user[0].package_id;
+            let trainer_slot_id = trainer_slot.id;
+            let trainer_class_user_id = trainer_slot.training_class.training_class_user[0].id;
 
             $.ajax({
                 url: update_user_url,
@@ -95,7 +97,9 @@
                 data: {
                     user_id,
                     training_class_id,
+                    trainer_slot_id,
                     package_id,
+                    trainer_class_user_id,
                     _token
                 },
                 dataType: 'json', // added data type
