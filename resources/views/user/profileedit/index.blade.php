@@ -15,7 +15,7 @@
                             <img src="{{asset('images/default-trainer.jpg')}}" class="img-responsive">
                             @endif
                         <div class="form-group">
-                            {!! Form::label('avatar','Product Image') !!}
+                            {!! Form::label('avatar','User Image') !!}
                             {!! Form::file('avatar', ['class' => 'btn btn-primary btnEditImg', 'id'=>'avatar'] ) !!}
                         </div>
                     </div>

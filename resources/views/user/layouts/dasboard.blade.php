@@ -10,9 +10,9 @@
         <a  href="{{asset('user/dashboard')}}"><i class="flaticon-user"></i> My Profile</a>
         <a href="{{asset('user/trainer')}}"><i class="flaticon-loupe"></i> Search Trainers</a>
         <a href="{{asset('user/trainer')}}"><i class="flaticon-trainer"></i> Featured Trainers</a>
-        <a href="#"><i class="flaticon-live"></i> Live Sessions</a>
+        {{-- <a href="#"><i class="flaticon-live"></i> Live Sessions</a>
         <a href="#"><i class="flaticon-monitor"></i> Free Live Sessions</a>
-        <a href="#"><i class="flaticon-team"></i> Group Classes</a>
+        <a href="#"><i class="flaticon-team"></i> Group Classes</a> --}}
         <a href="{{asset('user/nutrition')}}"><i class="flaticon-calculator"></i> Nutration Calculator</a> 
         <a href="{{asset('user/myshedule')}}"><i class="flaticon-calendar"></i> My Schedule</a>
         <a href="{{asset('user/logout')}}"><i class="flaticon-logout"></i> Logout</a>
