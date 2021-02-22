@@ -13,12 +13,12 @@ class UsersTablesSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        {
+    { {
             User::firstOrCreate([
+                'id'      => '1',
                 'name'      => 'Super admin',
                 'email'     => 'admin@mail.com',
-                'password'  =>  Hash::make('123456'),
+                // 'password'  =>  Hash::make('123456'),
                 'role_id'   => '1'
             ]);
         }
