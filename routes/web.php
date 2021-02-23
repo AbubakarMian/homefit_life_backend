@@ -3,6 +3,16 @@
 use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Route;
 
+
+
+
+
+Route::get('error/error404', function () {
+    return \Illuminate\Support\Facades\View::make('errors.error_404');
+});
+Route::get('error/error500', function () {
+    return \Illuminate\Support\Facades\View::make('errors.error_500');
+});
 //=================================================
 //login
 
