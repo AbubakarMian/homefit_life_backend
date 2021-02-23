@@ -77,7 +77,6 @@ class PaymentController extends Controller
             return back()->with('success','Payment successful!');
         } catch (\Exception $e) {
             Session::flash('error', "Error! Please Try again.");
-            dd($e);
             return back()->with('error', "Error! Please Try again.");
         }
     }
