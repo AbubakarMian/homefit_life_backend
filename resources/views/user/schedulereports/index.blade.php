@@ -59,11 +59,10 @@
                     </thead>
                     <tbody>
                         @foreach ($user_slot as $u_slot)
-                            {!! dd($u_slot->training_class->is_personal) !!}
                             <tr>
-                                <td> {!! $u_slot->training_class->name !!}</td>
-                                <td>{!! $u_slot->training_class->trainer->name !!}</td>
-                                <td>{!! $u_slot->training_class->is_personal == 0 ? 'group' : 'personal' !!}</td>
+                                <td> {!! $u_slot->training_class->name ?? "" !!}</td>
+                                <td>{!! $u_slot->training_class->trainer->name ?? "" !!}</td>
+                                <td>{!! $u_slot->training_class->is_personal == 0 ? 'group' : 'personal' ?? ""!!}</td>
                                 <td>
                                     <a href="{!!  $u_slot->training_class->live_url !!}"
                                         onclick="updateUser({{ $u_slot }})" class="btn btn-sm btn-danger"
