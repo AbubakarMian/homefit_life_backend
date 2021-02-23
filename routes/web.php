@@ -200,7 +200,6 @@ Route::group(['middleware' => 'userAuth', 'prefix' => 'user'], function () {
     Route::post('trainer_permission', 'User\UserController@trainer_permission')->name('trainer_permission');
 
 
-
     //=============================================================
     //user trainer module route
 
