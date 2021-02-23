@@ -15,6 +15,7 @@
         <a href="#"><i class="flaticon-team"></i> Group Classes</a> --}}
         <a href="{{asset('user/nutrition')}}"><i class="flaticon-calculator"></i> Nutration Calculator</a> 
         <a href="{{asset('user/myshedule')}}"><i class="flaticon-calendar"></i> My Schedule</a>
+        <a href="{{asset('user/trainerrequest')}}"><i class="flaticon-team"></i> Request For Trainer</a>
         <a href="{{asset('user/logout')}}"><i class="flaticon-logout"></i> Logout</a>
     </div>
 
