@@ -43,7 +43,7 @@
                             <ul class="list-inline">
                                 <li><span class="label label-primary">Upcoming Group Class 06:30 Pm</span></li>
                                 <li><span class="label label-primary">Upcoming Class 07:30 Pm</span></li>
-                                <li><span class="label label-primary">Data here</span></li>
+                                {{-- <li><span class="label label-primary">Data here</span></li> --}}
                             </ul>
                         </div>
                         <div class="profileGoalsArea">
