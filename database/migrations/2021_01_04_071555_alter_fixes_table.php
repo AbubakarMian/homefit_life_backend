@@ -19,8 +19,8 @@ class AlterFixesTable extends Migration
         });
         Schema::table('trainer_slots', function (Blueprint $table) {
             $table->bigInteger('training_class_id');
-            // $table->bigInteger('slot_start');
-            // $table->bigInteger('slot_end');
+            $table->bigInteger('slot_start');
+            $table->bigInteger('slot_end');
         });
         Schema::table('trainingclass_users', function (Blueprint $table) {
             $table->dropColumn('price');
