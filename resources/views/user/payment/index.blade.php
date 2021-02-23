@@ -53,9 +53,9 @@
                             <!-- {{ env('STRIPE_KEY') }} -->
                             <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
                                 @csrf
-
                                 @if(isset($package))
                                 <input name="ammount" value="{{$package['price'] ?? '' }}" hidden />
+                                <input name="package_id" value="{{$package['id'] ?? '' }}" hidden />
 
                                 @else
                                 <input name="ammount" value="{!!$user_request->total_price !!}" hidden />
