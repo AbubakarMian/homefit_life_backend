@@ -59,12 +59,13 @@
                     </thead>
                     <tbody>
                         @foreach ($user_slot as $u_slot)
+                            {!! dd($u_slot->training_class->is_personal) !!}
                             <tr>
                                 <td> {!! $u_slot->training_class->name !!}</td>
-                                <td>{!!  $u_slot->training_class->trainer->name !!}</td>
-                                <td>{!!  $u_slot->training_class->is_personal == 0 ? 'group' : 'personal' !!}</td>
+                                <td>{!! $u_slot->training_class->trainer->name !!}</td>
+                                <td>{!! $u_slot->training_class->is_personal == 0 ? 'group' : 'personal' !!}</td>
                                 <td>
-                                    <a href="{!!   $u_slot->training_class->live_url !!}"
+                                    <a href="{!!  $u_slot->training_class->live_url !!}"
                                         onclick="updateUser({{ $u_slot }})" class="btn btn-sm btn-danger"
                                         target="_blank">JOIN</a>
                                 </td>
@@ -82,11 +83,11 @@
     <script>
         function updateUser(trainer_slot) {
 
-           
-            let update_user_url = "{!! url('user/updateUserSession') !!}";  
+
+            let update_user_url = "{!!  url('user/updateUserSession') !!}";
             let _token = "{{ csrf_token() }}";
-            let user_id = trainer_slot.training_class.training_class_user[0].user_id ; 
-            let training_class_id = trainer_slot.training_class.id ;
+            let user_id = trainer_slot.training_class.training_class_user[0].user_id;
+            let training_class_id = trainer_slot.training_class.id;
             let package_id = trainer_slot.training_class.training_class_user[0].package_id;
             let trainer_slot_id = trainer_slot.id;
             let trainer_class_user_id = trainer_slot.training_class.training_class_user[0].id;

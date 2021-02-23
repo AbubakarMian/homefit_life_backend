@@ -28,9 +28,9 @@ class TrainerController extends Controller
         $all_training_type = Training_Type::pluck('name', 'id');
 
         $training_type_arr = Training_Type::leftjoin('trainer_training_types', function ($q) use ($id) {
-                $q->whereRaw('training_type.id = trainer_training_types.training_type  and trainer_training_types.trainer =' . $id)
-                    ->whereNull('trainer_training_types.deleted_at');
-            })
+            $q->whereRaw('training_type.id = trainer_training_types.training_type  and trainer_training_types.trainer =' . $id)
+                ->whereNull('trainer_training_types.deleted_at');
+        })
 
             ->get([
                 'training_type.name', 'training_type.id',
@@ -52,8 +52,6 @@ class TrainerController extends Controller
         $this->add_or_update($request, $trainer);
         return Redirect('admin/trainer');
     }
-
-
     public function add_or_update(Request $request, $trainer)
     {
         $trainer->name = $request->name;
