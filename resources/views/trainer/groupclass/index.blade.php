@@ -26,9 +26,7 @@
     </div>
 
     <div class="row grayback">
-        <div class="formhead">
-            <h4>Data Range Picker</h4>
-        </div>
+       
         <div class="formarea">
             <form method="post" action="{{ url('trainer/searchgroupclass') }}">
                 {{ csrf_field() }}

@@ -8,13 +8,18 @@
         </div>
         <ul class="nav">
             <li>
-                <a href="#">
+                <a href="{{asset('trainer/dashboard')}}">
                     <span><i class="fa fa-tachometer dashicon" aria-hidden="true"></i>Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{asset('trainer/profile')}}">
                     <span><i class="fa fa-user dashicon" aria-hidden="true"></i>My Profile</span>                    
+                </a>
+            </li>
+            <li>
+                <a href="{{asset('trainer/createpersonalclass')}}">
+                    <span><i class="fa fa-user-secret dashicon" aria-hidden="true"></i>Host a Personal Class</span>                   
                 </a>
             </li>
 
@@ -22,22 +27,13 @@
                 <a href="#" data-toggle="collapse" data-target="#submenu-1" class="collapsed" aria-expanded="false">
                 <i class="fa fa-users dashicon" aria-hidden="true"></i>Group Classes</a>
                 <ul id="submenu-1" class="collapse" aria-expanded="false" style="height: 0px;">
-                    <li><a href="#"> Host a Group Classes</a></li>
-                    <li><a href="#"> My Classes</a></li>
+                    <li><a href="{{asset('trainer/createclass')}}"> Host a Group Classes</a></li>
+                    <li><a href="{{asset('trainer/groupclass')}}"> My Classes</a></li>
                 </ul>
             </li>
 
             <li>
-                <a href="#" data-toggle="collapse" data-target="#submenu-2" class="collapsed" aria-expanded="false">
-                <i class="fa fa-line-chart dashicon" aria-hidden="true"></i>Live Sessions</a>
-                <ul id="submenu-2" class="collapse" aria-expanded="false" style="height: 0px;">
-                    <li><a href="#"> Paid Sessions</a></li>
-                    <li><a href="#"> Unpaid Sessions</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="#">
+                <a href="{{asset('trainer/logout')}}">
                     <span><i class="fa fa-sign-out dashicon" aria-hidden="true"></i>Logout</span>
                 </a>
             </li>
