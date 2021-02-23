@@ -29,31 +29,10 @@ $header = $user_common['header'] ?? '';
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-
 </head>
-<!-- @if ($message = Session::get('error')) <div class="alert alert-danger alert-block">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>{{ $message }}</strong>
-            </div> @endif
-            @if ($message = Session::get('success'))
-            <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>{{ $message }}</strong>
-            </div>
-            @endif
-
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif -->
 
 <body>
+
     <header>
         <div class="topHeader">
             <div class="container-fluid">
@@ -87,7 +66,7 @@ $header = $user_common['header'] ?? '';
                                         style="height: 1px;">
                                         <!-- responsive nav -->
                                         <ul class="nav navbar-nav">
-                                          
+
                                         </ul>
                                     </div> <!-- .nav-collapse -->
                                 </div> <!-- .container -->
@@ -96,53 +75,13 @@ $header = $user_common['header'] ?? '';
                     </div>
                     <div class="col-sm-3 hidden-xs">
                         <div class="cartArea">
-                            <!-- <button id="notification" class="btn btn-link btn-sm btn-notification"><i class="flaticon-bell" aria-hidden="true"></i></button>
-                            <div class="notificationArea" style="display: none;">
-                                <h3>Yoga Group Class</h3>
-                                <p>Starts in 15 Min</p>
-                                <ul class="list-inline">
-                                    <li><a href="" class="btn btn-primary btn-sm">Join!</a></li>
-                                    <li><a href="" class="btn btn-primary btn-sm">HomePage</a></li>
-                                </ul>
-                            </div>
-                            <button id="cartItems" class="btn btn-link btn-sm btn-cart"><i class="flaticon-cart" aria-hidden="true"></i></button> -->
-
-                            <!-- @if (Auth::check()) <div class="cartItemArea" style="display: none;">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Item </th>
-                                            <th>Details</th>
-                                            <th>Price</th>
-                                            <th>Qty</th>
-                                            <th>Total</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($cart as $c)
-                                        <tr>
-                                            <td class="cartImg"><img src="{!!  $c->product->avatar !!}" class="img-responsive"></td>
-                                            <td>{!!  $c->product->name !!}</td>
-                                            <td>{!!  $c->product->price !!}</td>
-                                            <td>{!!  $c->quantity !!}</td>
-                                            <td>{!!  $c->quantity * $c->product->price !!}</td>
-                                            <td><a href="{!!  asset('user/remove_cart_product?cart_id=') . $c->id !!}">X</a></td>
-                                        </tr> @endforeach
-                                    </tbody>
-                                </table>
-                                <center><a href="{{ asset('user/shippingInfo') }}" class="btn btn-primary btn-xs">Checkout</a></center>
-
-                            </div>
-                            @endif -->
                             @if (Auth::check())
-                                <a href="{{ asset('trainer/logout') }}"
-                                    class="btn btn-primary btn-sm btn-UserLogin ">Trainer Logout <i
-                                        class="fa fa-user-circle" aria-hidden="true"></i></a>
+                            <a href="{{ asset('trainer/logout') }}"
+                                class="btn btn-primary btn-sm btn-UserLogin ">Trainer Logout <i
+                                    class="fa fa-user-circle" aria-hidden="true"></i></a>
                             @else
-                                <a href="{{ asset('trainer/login') }}"
-                                    class="btn btn-primary btn-sm btn-UserLogin ">Trainer Login <i
-                                        class="fa fa-user-circle" aria-hidden="true"></i></a>
+                            <a href="{{ asset('trainer/login') }}" class="btn btn-primary btn-sm btn-UserLogin ">Trainer
+                                Login <i class="fa fa-user-circle" aria-hidden="true"></i></a>
                             @endif
                         </div>
                     </div>
@@ -151,17 +90,19 @@ $header = $user_common['header'] ?? '';
         </div>
     </header>
 
+
+
+
     <script>
-        $(document).ready(function() {
-            $("#notification").click(function() {
-                $(".notificationArea").toggle();
-            });
+    $(document).ready(function() {
+        $("#notification").click(function() {
+            $(".notificationArea").toggle();
         });
+    });
 
-        $(document).ready(function() {
-            $("#cartItems").click(function() {
-                $(".cartItemArea").toggle();
-            });
+    $(document).ready(function() {
+        $("#cartItems").click(function() {
+            $(".cartItemArea").toggle();
         });
-
+    });
     </script>

@@ -58,14 +58,25 @@ h1,h2,h3,h4,h5{
     background: #0c94ea;
 }
 .logoArea {
-        padding: 12px 14%;
+    padding: 12px 14%;
+    display: block;
+    max-width: 85%;
+    height: auto;
 }
 .menuBar {
     float: right;
 }
 .cartArea {
+    margin-top: 10px !important;
+    float: right !important;
+}
+.cartArea {
     padding: 12px 0px;
     position: relative;
+}
+.dashicon {
+    font-size: 18px;
+    margin: 1px 10px;
 }
 .cartArea .flaticon-bell:before {
     content: "\f103";
@@ -664,10 +675,14 @@ ul.ftrList a {
     color: #fff;
 }
 .copyRightArea {
-    background: #1a1a1a;
-    color: #fff;
-    text-align: center;
+    background: #1a1a1a; 
     padding: 20px 0px;
+}
+.copyRightArea p {
+    text-align: center;
+    color: white;
+    font-size: 17px;
+    margin-bottom: 0px;
 }
 /* InnerPage Global Css */
 .pageTitle {
