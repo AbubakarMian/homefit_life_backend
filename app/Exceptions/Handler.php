@@ -58,22 +58,22 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $e)
     {
-        // return parent::render($request, $e);
+        return parent::render($request, $e);
         $url = $request->fullUrl();
 
-    	if(!strpos($url,'/api/') ){
+    	// if(!strpos($url,'/api/') ){
 
-	    		if($e instanceof NotFoundHttpException) {
+	    // 		if($e instanceof NotFoundHttpException) {
 
-		    		Log::alert($e->getMessage());
-		    		return Redirect('error/error404');
-	    		}
+		//     		Log::alert($e->getMessage());
+		//     		return Redirect('error/error404');
+	    // 		}
 
-		    	else{
-		    		Log::error($e->getMessage());
-		    		return   Redirect('error/error500');
-		    	}
-    	}
+		//     	else{
+		//     		Log::error($e->getMessage());
+		//     		return   Redirect('error/error500');
+		//     	}
+    	// }
 
 
     	if($e instanceof NotFoundHttpException) {
