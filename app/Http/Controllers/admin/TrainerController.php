@@ -18,7 +18,7 @@ class TrainerController extends Controller
     public function index()
     {
 
-        $trainer = Trainer::withTrashed()->paginate(5,['id','user_id','name','gender','rating','specialities','training_type_id','is_featured','deleted_at']);
+        $trainer = Trainer::withTrashed()->paginate(5, ['id', 'user_id', 'name', 'gender', 'rating', 'specialities', 'is_featured', 'deleted_at']);
 
         return \View::make('admin.modules.trainer.index', compact('trainer'));
     }
