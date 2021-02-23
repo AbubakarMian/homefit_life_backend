@@ -33,16 +33,10 @@
     margin-top: 18px;
 }
 
- .modules1{
-    background-color: #0c94ea;
-    margin-left: 0px;
-    margin-right: 1197px;
-    color: white;
-    font-size: 32px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    padding-left: 11px;
-    margin-top: 18px;
+.modules1 {
+    background: #0c94ea;
+    width: 29%;
+    margin: 0px 0px;
 }
 
 
@@ -73,6 +67,14 @@ p#demo {
   margin: 4px 2px;
   cursor: pointer;
 
+}
+
+.modules1 h1 {
+    color: white;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-top: -30px;    
+    padding-left: 10px;
 }
 
 .button1 {padding: 10px 24px;}
@@ -131,10 +133,13 @@ button#recommend {
 
 button#view {
     background-color: black;
-    margin-left: 173px;
-
 }
 a#byer {
     background-color: red;
+}
+.bigclick {
+    height: 45px;
+    border-radius: 0px;
+    border-color: white;
 }
 
