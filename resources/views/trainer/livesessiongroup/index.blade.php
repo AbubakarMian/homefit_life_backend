@@ -44,12 +44,7 @@
                                     <div class="modal-content">
                                         <div class="fox">
                                             <strong>
-                                                <div class="modal-header">
-                                                    <div class="obi">
-                                                        <button type="button" class="close"
-                                                            data-dismiss="modal">&times;</button>
-                                                    </div>
-
+                                                <div class="modal-header">                                                   
                                                     <h4 class="mymodal-title">Participants List</h4>
                                                 </div>
                                             </strong>
@@ -85,12 +80,8 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-
-                                            <div class="obi">
-                                                <button type="button" class="close"
-                                                    data-dismiss="modal">&times;</button>
-                                            </div>
-                                            <h4 class="themodal-title">Store</h4>
+                                            
+                                            <h4 class="themodal-title">STORE</h4>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">

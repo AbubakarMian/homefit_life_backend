@@ -33,18 +33,13 @@
     text-align: center;
 }
 
- h4.mymodal-title {
-    margin-top: 35px;
-    background-color: #0c94ea;
-    color: white;
-    padding-top: 17px;
-    padding-bottom: 16px;
-    margin-left: 0px;
-    margin-right: 491px;
-    padding-right: 46px;
-    padding-left: 16px;
-    font-size: 27px;
-    margin-bottom: 26px;
+h4.mymodal-title {
+    color: #0c94ea;
+    padding-left: 15px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 0px;
 }
 .themodal-content {
     margin-top: 208px;
@@ -54,37 +49,38 @@
 
 
 h4.themodal-title {
-    margin-top: 35px;
-    background-color: #0c94ea;
-    color: white;
-    padding-top: 17px;
-    padding-bottom: 16px;
-    /* margin-left: 2px; */
-    margin-right: 725px;
-    padding-right: 82px;
-    padding-left: 16px;
+    color: #0c94ea;
     font-size: 29px;
-    margin-bottom: 25px;
-    /*color: #0c94ea; */
-    /* font-weight: 700;*/
-
-
+    font-weight: 600;
+    text-align: center;
+}
+.img1 img {
+    height: 150px !important;
+    width: 200px !important;
+    margin: 0 auto !important;
 }
 
 .text {
     font-weight: 600;
-    margin-left: 39px;
-    margin-top: 11px;
+    margin-top: 12px;
+    text-align: center;
+    font-size: 17px;
 }
 .stars {
     color: gold;
-    margin-left: 63px;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 20px;
+    margin-bottom: -5px;
+}
+.ob {
+    text-align: center;
 }
 .number {
-    margin-left: 76px;
-    color: #0c94ea;
-    font-size: 22px;
-    margin-top: 8px;
+    color: #0c94ea !important;
+    font-size: 19px !important;
+    text-align: center !important;
+    font-weight: 600 !important;
 }
 
 button#byer{
