@@ -9,7 +9,29 @@
     padding: 14px;
      border-bottom: 0px solid #e5e5e5; 
 }
-
+.modclick {
+    height: 35px !important;
+    font-size: 16px !important;
+    background: #0c94ea !important;
+    border-color: white !important;
+    color: white !important;
+}
+.modalheaddata h4 {
+    text-align: center;
+    color: #0c94ea;
+    font-size: 25px;
+    font-weight: 700;
+}
+.shedulebox th {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+.modalclick {
+    text-align: center;
+}
 
  h4.mymodal-title {
     margin-top: 35px;
