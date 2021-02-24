@@ -63,6 +63,8 @@ class PaymentController extends Controller
                 $user_request->payment_id = $payment->id;
                 $user_request->status = $stripe->status;
                 $user_request->save();
+
+                return redirect('user/payment')->with('success','Payment successful!');
             } else {
                 $user_request = "";
                 // user package booking 
@@ -71,13 +73,15 @@ class PaymentController extends Controller
                 $user_booking->package_id = $request->package_id;
                 $user_booking->payment_id = $payment->id;
                 $user_booking->save();
+                return back()->with('success','Payment successful!');
             }
             Session::flash('success', 'Payment successful!');
             // return \View('user.payment.index', compact('user_request'));
-            return back()->with('success','Payment successful!');
+            // return back()->with('success','Payment successful!');
         } catch (\Exception $e) {
             Session::flash('error', "Error! Please Try again.");
-            return back()->with('error', "Error! Please Try again.");
+            return redirect('user/payment')->with('success','Payment successful!');
+            // return back()->with('error', "Error! Please Try again.");
         }
     }
 }

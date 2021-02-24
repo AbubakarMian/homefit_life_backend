@@ -22,7 +22,6 @@ class TrainerController extends Controller
 
         return \View::make('admin.modules.trainer.index', compact('trainer'));
     }
-
     public function edit($id)
     {
         $all_training_type = Training_Type::pluck('name', 'id');

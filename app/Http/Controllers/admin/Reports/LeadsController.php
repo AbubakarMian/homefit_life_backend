@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Libraries\ExcelExport;
 use App\Models\Leads;
 use App\Models\Trainer;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -59,13 +60,17 @@ class LeadsController extends Controller
         $lead = leads::find($id);
         $lead->status = $request->status;
         $lead->save();
-        //        dd($lead);
+        
         if ($request->status == Config::get('constants.request_status.accepted')) {
             $trainer = new Trainer();
             $trainer->user_id = $lead->user->id;
             $trainer->name = $lead->user->name;
             $trainer->save();
 
+
+            $user =User::find($trainer->user_id);
+            $user->role_id = 3 ;
+            $user->save();
         }
 
         $response = Response::json([
