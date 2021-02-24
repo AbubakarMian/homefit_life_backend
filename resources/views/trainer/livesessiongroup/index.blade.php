@@ -18,7 +18,7 @@
 
 <section>
 
-    <div class="content">
+    <div class="contents">
         <div class="hilton">
             <strong>
                 <div class="modules1">
@@ -37,7 +37,7 @@
                                 <iframe src="{!! $trainng_class->live_url !!}" allow="camera ;microphone" height="100%"
                                     width="100%"></iframe>
                             </div>
-                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                            <button type="button" class="btn btn-info btn-lg bigclick" data-toggle="modal"
                                 data-target="#ViewParticipants" id="view">View Participants</button>
                             <div class="modal fade" id="ViewParticipants" role="dialog">
                                 <div class="modal-dialog">
@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                            <button type="button" class="btn btn-info btn-lg bigclick" data-toggle="modal"
                                 data-target="#Recommend" id="recommend">Recommend</button>
                             <div class="modal fade" id="Recommend" role="dialog">
                                 <div class="modal-dialog">
@@ -129,8 +129,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <a class="button button1" id="byer" href="{!! asset('trainer/groupclass') !!}">Leave
-                                Class</a>
+                            <a button type="button" class="button button1 bigclick" id="byer" href="{!! asset('trainer/groupclass') !!}">Leave
+                                Class</button></a>
 
                             <script>
                             var countDownDate = new Date("Jan 29, 2021 15:37:25").getTime();
