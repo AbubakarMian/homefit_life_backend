@@ -6,11 +6,9 @@
 }
 
 .number {
-    margin-left: 70px;
     color: #0c94ea;
     margin-top: 8px;
-   
-
+    text-align: center;
 }
 
 .modules h1 {
