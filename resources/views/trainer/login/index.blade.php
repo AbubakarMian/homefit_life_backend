@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="pageTitle">
-                        <h1>LogIn To Your Account</h1>
+                        <h1>LogIn For Trainer Account!</h1>
                     </div>
                 </div>
 
